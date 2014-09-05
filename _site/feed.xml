@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>邹帅的技术博客</title>
+    <description>this zoushuai technology blog
+</description>
+    <link>http://zoushuai518.github.io/</link>
+    <atom:link href="http://zoushuai518.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Fri, 05 Sep 2014 13:39:55 +0800</pubDate>
+    <lastBuildDate>Fri, 05 Sep 2014 13:39:55 +0800</lastBuildDate>
+    <generator>Jekyll v2.3.0</generator>
+    
+      <item>
+        <title>jekyll 使用教程</title>
+        <description>
+</description>
+        <pubDate>Fri, 05 Sep 2014 17:18:51 +0800</pubDate>
+        <link>http://zoushuai518.github.io/jekyll/2014/09/05/ubuntu-use-jekyll.html</link>
+        <guid isPermaLink="true">http://zoushuai518.github.io/jekyll/2014/09/05/ubuntu-use-jekyll.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>jekyll 安装教程</title>
+        <description>
+</description>
+        <pubDate>Fri, 05 Sep 2014 17:18:51 +0800</pubDate>
+        <link>http://zoushuai518.github.io/jekyll/2014/09/05/ubuntu-install-jekyll.html</link>
+        <guid isPermaLink="true">http://zoushuai518.github.io/jekyll/2014/09/05/ubuntu-install-jekyll.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+  </channel>
+</rss>
