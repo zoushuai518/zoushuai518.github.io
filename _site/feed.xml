@@ -6,9 +6,24 @@
 </description>
     <link>http://zoushuai518.github.io/</link>
     <atom:link href="http://zoushuai518.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 10 Sep 2014 10:05:49 +0800</pubDate>
-    <lastBuildDate>Wed, 10 Sep 2014 10:05:49 +0800</lastBuildDate>
+    <pubDate>Wed, 10 Sep 2014 20:02:59 +0800</pubDate>
+    <lastBuildDate>Wed, 10 Sep 2014 20:02:59 +0800</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
+    
+      <item>
+        <title>php加密解密</title>
+        <description>&lt;h4 id=&quot;phpdes&quot;&gt;使用PHP内置的DES算法函数实现数据加密解密&lt;/h4&gt;
+&lt;p&gt;http://www.nowamagic.net/librarys/veda/detail/1953
+http://www.nowamagic.net/librarys/veda/detail/2094&lt;/p&gt;
+</description>
+        <pubDate>Thu, 11 Sep 2014 03:35:51 +0800</pubDate>
+        <link>http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/11/php-%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86.html</link>
+        <guid isPermaLink="true">http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/11/php-%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86.html</guid>
+        
+        
+        <category>php开发</category>
+        
+      </item>
     
       <item>
         <title>jekyll 使用教程</title>
