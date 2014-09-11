@@ -1,7 +1,5 @@
-jekyll 问题：
+Github jekyll markdown 免费建立个人博客：
 ====
 
-### jekyll 初次使用
+[Page Home](http://zoushuai518.github.io)
 
-<p>1. 如何在载入css/js - 直接在布局里面用link载入即可</p>
-<p>2. 如何按照分类生成文章</p>
