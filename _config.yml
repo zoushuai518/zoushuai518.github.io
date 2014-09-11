@@ -8,6 +8,7 @@ url: "http://zoushuai518.github.io" # the base hostname & protocol for your site
 twitter_username: jekyllrb
 github_username:  jekyll
 safe: false
+pygments: true
 
 # Build settings
 markdown: kramdown
