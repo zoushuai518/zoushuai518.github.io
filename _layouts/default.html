@@ -7,6 +7,18 @@
 
     {% include header.html %}
 
+	<!-- 左侧分类 -->
+	<aside id="left-side">
+		{% include categories.ext %}
+	</aside>
+	<!-- 右侧归档分类 -->
+	<!--
+	<aside id="right-side">
+		{% include archives.ext %}
+	</aside>
+	-->
+
+	<!-- 主体内容 -->
     <div class="page-content">
       <div class="wrapper">
         {{ content }}

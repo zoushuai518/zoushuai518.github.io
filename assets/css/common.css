@@ -5,3 +5,22 @@
 	vertycal-align: middle;
 	text-align: center;
 }
+
+/**
+ * 左侧div
+ */
+#left-side{
+	float: left;
+}
+
+/**
+ * 右侧div
+ */
+#right-side{
+	float: right;
+}
+
+aside{
+	padding: 20px 20px 20px 20px;
+}
+

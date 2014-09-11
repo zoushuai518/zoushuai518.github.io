@@ -9,19 +9,30 @@ title: 博客首页
 		<h1 class="page-heading">蜗牛代码观</h1>
 	</div>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+	<ul class="post-list">
+    {% for post in paginator.posts %}
+		<li>
+		<div class="post-title">
+			<a href="{{site.baseurl}}{{post.url}}"> {{post.title}}</a> </br>
+		</div>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
+		<div class="post-info">
+			<ol>
+			<li class="post-time">{{ post.date | date: "%F" }}</li> 
+			<li class="post-category"> 
+			{{ post.categories | join: '&nbsp&nbsp' }}
+			</li>
+			</ol>
+		</div>
+		<div class="post-preview">
+			{{ post.excerpt }} 
+			<a href="{{site.baseurl}}{{post.url}}"> 更多... </a> </br>
+		</div>
+		</li>
     {% endfor %}
-  </ul>
+	</ul>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+  	<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>
 

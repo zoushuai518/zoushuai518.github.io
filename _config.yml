@@ -35,3 +35,8 @@ paginate: 5
 #active: 技术                                 #自定义常量
 #subscribe_rss: /pages/atom.xml              #订阅地址
 #markdown: redcarpet                         #markdown解释器
+
+#logo：网站logo
+#search：是否运行搜索
+#encoding：编码
+#timezone：时区

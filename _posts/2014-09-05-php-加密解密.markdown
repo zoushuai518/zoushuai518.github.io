@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "php加密解密"
+title: "php加密解密"
 category: php开发
 comments: true
 date:   2014-09-10 19:35:51
 ---
 
 #### 使用PHP内置的DES算法函数实现数据加密解密
-http://www.nowamagic.net/librarys/veda/detail/1953
-http://www.nowamagic.net/librarys/veda/detail/2094
+[1.](http://www.nowamagic.net/librarys/veda/detail/1953)
+[2.](http://www.nowamagic.net/librarys/veda/detail/2094)
