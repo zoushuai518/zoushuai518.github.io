@@ -1,0 +1,13 @@
+---
+layout: post
+title: "Jekyll插件开发"
+category: jekyll
+comments: true
+date:   2014-09-12 09:38:51
+---
+
+#### Jekyll插件开发
+
+Jekyll的强大之一，在于其可以用是插件,Jekyll的插件使用Ruby来编写  
+
+未完待需...
