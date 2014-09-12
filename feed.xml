@@ -6,9 +6,129 @@
 </description>
     <link>http://zoushuai518.github.io/</link>
     <atom:link href="http://zoushuai518.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 11 Sep 2014 14:04:06 +0800</pubDate>
-    <lastBuildDate>Thu, 11 Sep 2014 14:04:06 +0800</lastBuildDate>
+    <pubDate>Fri, 12 Sep 2014 14:25:24 +0800</pubDate>
+    <lastBuildDate>Fri, 12 Sep 2014 14:25:24 +0800</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
+    
+      <item>
+        <title>Linux命令之find</title>
+        <description>&lt;h4 id=&quot;find&quot;&gt;find&lt;/h4&gt;
+
+&lt;p&gt;待须…&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 12 Sep 2014 20:32:51 +0800</pubDate>
+        <link>http://zoushuai518.github.io/linux/2014/09/12/find.html</link>
+        <guid isPermaLink="true">http://zoushuai518.github.io/linux/2014/09/12/find.html</guid>
+        
+        
+        <category>linux</category>
+        
+      </item>
+    
+      <item>
+        <title>phpdoc|phpDocumentor</title>
+        <description>&lt;h4 id=&quot;php&quot;&gt;php注释规范&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.phpdoc.org/&quot;&gt;phpdoc&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 12 Sep 2014 18:59:51 +0800</pubDate>
+        <link>http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/12/phpdoc.html</link>
+        <guid isPermaLink="true">http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/12/phpdoc.html</guid>
+        
+        
+        <category>php开发</category>
+        
+      </item>
+    
+      <item>
+        <title>Git分布式版本管理工具</title>
+        <description>&lt;h4 id=&quot;git&quot;&gt;Git分布式版本管理工具&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;http://gitbook.liuhui998.com/&quot;&gt;1.Git Community Book 中文版&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://git-scm.com/book/zh/&quot;&gt;2.Git中文手册&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 12 Sep 2014 18:59:51 +0800</pubDate>
+        <link>http://zoushuai518.github.io/%E5%B7%A5%E5%85%B7/2014/09/12/git%E4%BB%8B%E7%BB%8D.html</link>
+        <guid isPermaLink="true">http://zoushuai518.github.io/%E5%B7%A5%E5%85%B7/2014/09/12/git%E4%BB%8B%E7%BB%8D.html</guid>
+        
+        
+        <category>工具</category>
+        
+      </item>
+    
+      <item>
+        <title>关于Jekyll</title>
+        <description>&lt;h4 id=&quot;jekyll&quot;&gt;Jekyll介绍&lt;/h4&gt;
+
+&lt;p&gt;Jekyll是一个使用Ruby编写的静态站点生成工具，使用Liquid模板渲染引擎，支持Markdown和Textile标记语言，并且可以为所有以 .html、.markdown、.textile扩展名结尾的文件使用YAML配置，内置语法高亮功能。而Github的Pages服务可以为每个Github主机上的仓库提供静态页面服务，并且Pages服务支持Jekyll。因为Github Pages有两种Pages，分别是用户页面和项目页面，所以我们可以使用用户页面来创建自己的Blog。  &lt;/p&gt;
+
+&lt;p&gt;其实Jekyll的核心其实是一个文本转换引擎。它的概念其实就是：你用你最喜欢的标记语言来写文章，可以是Markdown，也可以是Textile,或者就是简单的HTML,然后Jekyll就会帮你套入一个或一系列的布局中。在整个过程中你可以设置URL路径,你的文本在布局中的显示样式等等。这些都可以通过纯文本编辑来实现，最终生成的静态页面就是你的成品了。(官方解释)  &lt;/p&gt;
+
+&lt;p&gt;Jekyll的强大之处在于其可以用是，&lt;a href=&quot;/jekyll/2014/09/12/jekyll-模板使用.html&quot;&gt;模板&lt;/a&gt;和&lt;a href=&quot;/jekyll/2014/09/12/jekyll-插件开发.html&quot;&gt;插件&lt;/a&gt;等等&lt;/p&gt;
+
+&lt;p&gt;ps：&lt;br /&gt;
+jekyll参考网站:&lt;br /&gt;
+1.&lt;a href=&quot;http://jekyllcn.com/&quot;&gt;jekyllcn.com&lt;/a&gt;&lt;br /&gt;
+2.&lt;a href=&quot;http://jekyllrb.com/&quot;&gt;jekyllrb.com&lt;/a&gt;  &lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 12 Sep 2014 17:38:51 +0800</pubDate>
+        <link>http://zoushuai518.github.io/jekyll/2014/09/12/%E5%85%B3%E4%BA%8EJekyll.html</link>
+        <guid isPermaLink="true">http://zoushuai518.github.io/jekyll/2014/09/12/%E5%85%B3%E4%BA%8EJekyll.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>Jekyll模板使用</title>
+        <description>&lt;h4 id=&quot;jekyll&quot;&gt;Jekyll模板使用&lt;/h4&gt;
+
+&lt;p&gt;Jekyll的强大之一，在于其可以使用模板…  &lt;/p&gt;
+
+&lt;p&gt;未完待需…&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 12 Sep 2014 17:38:51 +0800</pubDate>
+        <link>http://zoushuai518.github.io/jekyll/2014/09/12/jekyll-%E6%A8%A1%E6%9D%BF%E4%BD%BF%E7%94%A8.html</link>
+        <guid isPermaLink="true">http://zoushuai518.github.io/jekyll/2014/09/12/jekyll-%E6%A8%A1%E6%9D%BF%E4%BD%BF%E7%94%A8.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>Jekyll插件开发</title>
+        <description>&lt;h4 id=&quot;jekyll&quot;&gt;Jekyll插件开发&lt;/h4&gt;
+
+&lt;p&gt;Jekyll的强大之一，在于其可以用是插件,Jekyll的插件使用Ruby来编写  &lt;/p&gt;
+
+&lt;p&gt;未完待需…&lt;/p&gt;
+</description>
+        <pubDate>Fri, 12 Sep 2014 17:38:51 +0800</pubDate>
+        <link>http://zoushuai518.github.io/jekyll/2014/09/12/jekyll-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91.html</link>
+        <guid isPermaLink="true">http://zoushuai518.github.io/jekyll/2014/09/12/jekyll-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>yii2介绍</title>
+        <description>&lt;h4 id=&quot;yii2&quot;&gt;yii2&lt;/h4&gt;
+
+&lt;p&gt;待须…&lt;/p&gt;
+</description>
+        <pubDate>Fri, 12 Sep 2014 17:35:51 +0800</pubDate>
+        <link>http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/12/%E4%BB%8B%E7%BB%8Dyii2.html</link>
+        <guid isPermaLink="true">http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/12/%E4%BB%8B%E7%BB%8Dyii2.html</guid>
+        
+        
+        <category>php开发</category>
+        
+      </item>
     
       <item>
         <title>使用 GitHub, Jekyll 打造自己的独立博客</title>
@@ -41,104 +161,126 @@
     
       <item>
         <title>jekyll 使用教程</title>
-        <description>&lt;h4 id=&quot;jekyll-&quot;&gt;jekyll使用 待完善&lt;/h4&gt;
+        <description>&lt;h3 id=&quot;jekyll&quot;&gt;使用jekyll建立博客&lt;/h3&gt;
+
+&lt;h1 id=&quot;psjekyll-jekylljekyll20140905ubuntu-install-jekyllhtml&quot;&gt;ps：如果你还没有安装Jekyll，请转到 &lt;a href=&quot;/jekyll/2014/09/05/ubuntu-install-jekyll.html&quot;&gt;Jekyll安装教程&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h4 id=&quot;jekyll-blog&quot;&gt;1.jekyll 初始化Blog&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;jekyll new myblog	#初始化blog系统
+jekyll server	#启动jekyll内置的服务,jekyll会监听本地的4000端口号;执行此命令jekyll会自动在 _site/目录下生成blog静态html文件&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;jekyll-&quot;&gt;2.jekyll 目录结构&lt;/h4&gt;
+&lt;p&gt;ps：&lt;a href=&quot;http://jekyllcn.com/docs/structure/&quot;&gt;官网解释&lt;/a&gt;  &lt;/p&gt;
+&lt;pre&gt;
+|-- _includes		#存放一些公共的主题模板,和一些常用的工具,评论等
+|-- _layouts		#布局,一般会include/下的模板片段
+|   |-- default.html
+|   `-- post.html
+|-- _plugins		#插件目录,即：jekyll的插件存放在此目录
+|-- _posts		#存放数据,我用的是Markdown格式文件用来存储数据
+|   |-- 2007-10-29-why-every-programmer-should-play-nethack.textile
+|   `-- 2009-04-26-barcamp-boston-4-roundup.textile
+|-- _sass		#存放css编译之始文件, 一般是 *.scss格式的文件
+|-- css		#_sass文件夹编译之后的css文件
+|-- _site		#html文件生成在此目录
+|-- assets		#自己定义的文件夹,用来存放image,css,js等文件
+|   |--  css
+|   |--  image
+|   `--  js
+`-- index.html		#blog_入口文件
+|-- _config.yml		#配置文件
+`-- feed.xml		#xml
+`-- about.md		#about文件
+`-- README.md		#README文件
+&lt;/pre&gt;
+
+&lt;h4 id=&quot;jekyll--1&quot;&gt;3.jekyll 配置&lt;/h4&gt;
+&lt;p&gt;1.我的jekyll配置：&lt;br /&gt;
+ps：不再过多解释,&lt;a href=&quot;http://jekyllcn.com/docs/configuration/&quot;&gt;官网配置&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;
+title: 邹帅的技术博客
+email: zoushuai518@gmail.com
+description: this zoushuai technology blog
+baseurl: &quot;&quot; # the subpath of your site, e.g. /blog/
+url: &quot;http://zoushuai518.github.io&quot; # the base hostname &amp;amp; protocol for your site
+twitter_username: jekyllrb
+github_username:  jekyll
+safe: false
+pygments: true
+markdown: kramdown
+paginate: 5
+&lt;/pre&gt;
+
+&lt;p&gt;以下配置为网络收集,仅供参考：  &lt;/p&gt;
+&lt;pre&gt;
+permalink: /:year/:month/:day/:title.html   #博文的固定链接
+paginate: 10                                #分页时每页博文数量
+author:                                     #自定义常亮
+name: zoushuai
+email: zoushuai518@gmail.com
+link: http://zoushuai518.github.io
+title: zoushuai的博客                             #自定义常量
+locals:                                     #自定义常量
+tags: 标签
+about: 关于
+active: 技术                                 #自定义常量
+subscribe_rss: /pages/atom.xml              #订阅地址
+markdown: redcarpet                         #markdown解释器
+logo：网站logo
+search：是否运行搜索
+encoding：编码
+timezone：时区
+&lt;/pre&gt;
+
+&lt;h4 id=&quot;jekyll--2&quot;&gt;4.jekyll 常用命令&lt;/h4&gt;
+&lt;p&gt;快速开始：&lt;/p&gt;
+&lt;pre&gt;
+ ~ $gem install jekyll
+ ~ $jekyll new my-awesome-site
+ ~ $cd my-awesome-site
+ ~ /my-awesome-site $ jekyll serve
+ ~ Now browse to http://localhost:4000
+&lt;/pre&gt;
+
+&lt;p&gt;基本用法：  &lt;/p&gt;
+
+&lt;p&gt;1.Jekyll 同时也集成了一个开发用的服务器，可以让你使用浏览器在本地进行预览：&lt;br /&gt;
+ps：&lt;a href=&quot;http://jekyllcn.com/docs/usage/&quot;&gt;Usage&lt;/a&gt;  &lt;/p&gt;
+&lt;pre&gt;
+$ jekyll serve
+# =&amp;gt; 一个开发服务器将会运行在 http://localhost:4000/
+
+$ jekyll serve --detach
+# =&amp;gt; 功能和`jekyll serve`命令相同，但是会脱离终端在后台运行。
+#    如果你想关闭服务器，可以使用`kill -9 1234`命令，&quot;1234&quot; 是进程号（PID）。
+#    如果你找不到进程号，那么就用`ps aux | grep jekyll`命令来查看，然后关闭服务器。[更多](http://unixhelp.ed.ac.uk/shell/jobz5.html).
+
+$ jekyll serve --watch
+# =&amp;gt; 和`jekyll serve`相同，但是会查看变更并且自动再生成。
+&lt;/pre&gt;
+
+&lt;p&gt;2.安装了 Jekyll 的 Gem 包之后，就可以在命令行中使用 Jekyll 命令了。有以下这些用法：  &lt;/p&gt;
+&lt;pre&gt;
+$ jekyll build
+# =&amp;gt; 当前文件夹中的内容将会生成到 ./_site 文件夹中。
+
+$ jekyll build --destination &lt;destination&gt;
+# =&amp;gt; 当前文件夹中的内容将会生成到目标文件夹&lt;destination&gt;中。
+
+$ jekyll build --source &lt;source /&gt; --destination &lt;destination&gt;
+# =&amp;gt; 指定源文件夹&lt;source /&gt;中的内容将会生成到目标文件夹&lt;destination&gt;中。
+
+$ jekyll build --watch
+# =&amp;gt; 当前文件夹中的内容将会生成到 ./_site 文件夹中，
+#    查看改变，并且自动再生成。
+
+
+
+&lt;/destination&gt;&lt;/destination&gt;&lt;/destination&gt;&lt;/destination&gt;&lt;/pre&gt;
 </description>
         <pubDate>Fri, 05 Sep 2014 17:18:51 +0800</pubDate>
         <link>http://zoushuai518.github.io/jekyll/2014/09/05/ubuntu-use-jekyll.html</link>
         <guid isPermaLink="true">http://zoushuai518.github.io/jekyll/2014/09/05/ubuntu-use-jekyll.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>jekyll 安装教程</title>
-        <description>&lt;h4 id=&quot;ubuntu-ruby-&quot;&gt;Ubuntu Ruby 安装&lt;/h4&gt;
-&lt;p&gt;一.准备工作:&lt;br /&gt;
-1.sudo apt-get install build-essential 安装开发编译环境&lt;br /&gt;
-2.用apt-get 来安装libyaml  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo apt-get install build-essential bison
-sudo apt-get install libyaml-dev
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;3.安装zlib  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;apt-get install zlib1g-dev
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;4.安装sqlite3&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo apt-get install sqlite3 libsqlite3-dev
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;5.安装js运行环境&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo apt-get install nodejs
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;6.安装libssl&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo apt-get install libssl-dev
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;6.http://rubyonrails.org/download&lt;br /&gt;
-下载源码 ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p0.tar.gz&lt;br /&gt;
-1.9.2打包有rubygems,不用自己动手安装了, ruby -v,gem -v查看是否安装成功&lt;/p&gt;
-
-&lt;p&gt;二.安装过程:&lt;br /&gt;
-1.安装ruby  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;tar xvzf ruby-1.9.2-p0.tar.bz2
-cd ruby-1.9.2-p0
-./configure -prefix=/usr/local/ruby  #指定安装路径
-make &amp;amp;&amp;amp; make install
-sudo ln -s /usr/local/ruby/bin/ruby /usr/bin/ruby
-sudo ln -s /usr/local/ruby/bin/gem /usr/bin/gem
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;2.安装openssl  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;cd ruby-1.9.2-p0/ext/openssl
-ruby ruby extconf.rb
-make
-make install
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;3.安装zlib  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;cd ruby-1.9.2-p0/ext/zlib
-ruby extconf.rb
-make
-make install
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;4.改变安装源,突破墙限制  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;gem sources --remove http://rubygems.org/
-gem sources -a http://ruby.taobao.org/
-gem sources -l
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;5.安装rails  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;gem install rails
-gem install sqlite3 -v '1.3.7'
-sudo ln -s /usr/local/ruby/bin/rails /usr/bin/rails
-sudo ln -s /usr/local/ruby/bin/bundle /usr/bin/bundle
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;6.创建一个简单的demo应用:&lt;br /&gt;
-首先创建一个你自己的工作目录，我的是：/root/ruby/apps，然后进入cd /root/ruby/apps&lt;br /&gt;
-命令行输入：rails new demo –skip-bundle,等一下完成后&lt;br /&gt;
-进入到demo目录，找到Gemfile文件，打开，将第一行：source ‘https://rubygems.org ‘&lt;br /&gt;
-修改为：source ‘http://ruby.taobao.org/’&lt;br /&gt;
-进入到demo目录，执行命令bundle install&lt;/p&gt;
-
-&lt;p&gt;7.运行应用
-只要你再输入最后一个命令，你就可以通过浏览器运行你的app了–
-demo目录下命令行输入：rails server–
-看到了吗？你的rails应用程序服务器启动成功了，赶快打开浏览器体验一下吧：–
-输入：http://localhost:3000&lt;/p&gt;
-
-&lt;p&gt;8.jekyll 安装:  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;gem install Jekyll
-jekyll --version
-gem install rdiscount		#安装Rdiscount，这个用来解析Markdown标记的包
-jekyll new myblog		#使用jekyll初始化blog_系统
-jekyll --server			#到工程目录启动服务
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Fri, 05 Sep 2014 17:18:51 +0800</pubDate>
-        <link>http://zoushuai518.github.io/jekyll/2014/09/05/ubuntu-install-jekyll.html</link>
-        <guid isPermaLink="true">http://zoushuai518.github.io/jekyll/2014/09/05/ubuntu-install-jekyll.html</guid>
         
         
         <category>jekyll</category>
