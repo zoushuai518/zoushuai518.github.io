@@ -6,9 +6,69 @@
 </description>
     <link>http://zoushuai518.github.io/</link>
     <atom:link href="http://zoushuai518.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 11 Sep 2014 14:04:06 +0800</pubDate>
-    <lastBuildDate>Thu, 11 Sep 2014 14:04:06 +0800</lastBuildDate>
+    <pubDate>Fri, 12 Sep 2014 11:05:04 +0800</pubDate>
+    <lastBuildDate>Fri, 12 Sep 2014 11:05:04 +0800</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
+    
+      <item>
+        <title>phpdoc|phpDocumentor</title>
+        <description>&lt;h4 id=&quot;php&quot;&gt;php注释规范&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.phpdoc.org/&quot;&gt;phpdoc&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 12 Sep 2014 18:59:51 +0800</pubDate>
+        <link>http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/12/phpdoc.html</link>
+        <guid isPermaLink="true">http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/12/phpdoc.html</guid>
+        
+        
+        <category>php开发</category>
+        
+      </item>
+    
+      <item>
+        <title>Git分布式版本管理工具</title>
+        <description>&lt;h4 id=&quot;git&quot;&gt;Git分布式版本管理工具&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;http://gitbook.liuhui998.com/&quot;&gt;1.Git Community Book 中文版&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://git-scm.com/book/zh/&quot;&gt;2.Git中文手册&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 12 Sep 2014 18:59:51 +0800</pubDate>
+        <link>http://zoushuai518.github.io/%E5%B7%A5%E5%85%B7/2014/09/12/git%E4%BB%8B%E7%BB%8D.html</link>
+        <guid isPermaLink="true">http://zoushuai518.github.io/%E5%B7%A5%E5%85%B7/2014/09/12/git%E4%BB%8B%E7%BB%8D.html</guid>
+        
+        
+        <category>工具</category>
+        
+      </item>
+    
+      <item>
+        <title>Jekyll介绍</title>
+        <description>&lt;h4 id=&quot;jekyll-&quot;&gt;Jekyll 介绍&lt;/h4&gt;
+
+&lt;p&gt;待须…&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 12 Sep 2014 17:38:51 +0800</pubDate>
+        <link>http://zoushuai518.github.io/jekyll/2014/09/12/%E5%85%B3%E4%BA%8EJekyll.html</link>
+        <guid isPermaLink="true">http://zoushuai518.github.io/jekyll/2014/09/12/%E5%85%B3%E4%BA%8EJekyll.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>yii2介绍</title>
+        <description>&lt;h4 id=&quot;yii2&quot;&gt;yii2&lt;/h4&gt;
+
+&lt;p&gt;待须…&lt;/p&gt;
+</description>
+        <pubDate>Fri, 12 Sep 2014 17:35:51 +0800</pubDate>
+        <link>http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/12/%E4%BB%8B%E7%BB%8Dyii2.html</link>
+        <guid isPermaLink="true">http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/12/%E4%BB%8B%E7%BB%8Dyii2.html</guid>
+        
+        
+        <category>php开发</category>
+        
+      </item>
     
       <item>
         <title>使用 GitHub, Jekyll 打造自己的独立博客</title>
