@@ -6,8 +6,8 @@
 </description>
     <link>http://zoushuai518.github.io/</link>
     <atom:link href="http://zoushuai518.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 12 Sep 2014 15:38:32 +0800</pubDate>
-    <lastBuildDate>Fri, 12 Sep 2014 15:38:32 +0800</lastBuildDate>
+    <pubDate>Fri, 12 Sep 2014 15:43:05 +0800</pubDate>
+    <lastBuildDate>Fri, 12 Sep 2014 15:43:05 +0800</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
     
       <item>
@@ -20,6 +20,21 @@
         <pubDate>Fri, 12 Sep 2014 20:32:51 +0800</pubDate>
         <link>http://zoushuai518.github.io/linux/2014/09/12/find.html</link>
         <guid isPermaLink="true">http://zoushuai518.github.io/linux/2014/09/12/find.html</guid>
+        
+        
+        <category>linux</category>
+        
+      </item>
+    
+      <item>
+        <title>Linux命令之crontab</title>
+        <description>&lt;h4 id=&quot;crontab&quot;&gt;crontab&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/ethanzhao/article/details/4406017&quot;&gt;crontab&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 12 Sep 2014 20:32:51 +0800</pubDate>
+        <link>http://zoushuai518.github.io/linux/2014/09/12/crontab.html</link>
+        <guid isPermaLink="true">http://zoushuai518.github.io/linux/2014/09/12/crontab.html</guid>
         
         
         <category>linux</category>
@@ -168,21 +183,6 @@ jekyll参考网站:&lt;br /&gt;
         
         
         <category>工具</category>
-        
-      </item>
-    
-      <item>
-        <title>php加密解密</title>
-        <description>&lt;h4 id=&quot;phpdes&quot;&gt;使用PHP内置的DES算法函数实现数据加密解密&lt;/h4&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/1953&quot;&gt;1.&lt;/a&gt;
-&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/2094&quot;&gt;2.&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Thu, 11 Sep 2014 03:35:51 +0800</pubDate>
-        <link>http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/11/php-%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86.html</link>
-        <guid isPermaLink="true">http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/11/php-%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86.html</guid>
-        
-        
-        <category>php开发</category>
         
       </item>
     
