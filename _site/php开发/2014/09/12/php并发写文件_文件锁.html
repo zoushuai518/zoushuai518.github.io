@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Jekyll插件开发</title>
+    <title>php并发写文件|文件锁</title>
     <meta name="description" content="this zoushuai technology blog
 ">
 
     <link rel="stylesheet" href="/assets/css/common.css">
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://zoushuai518.github.io/jekyll/2014/09/12/jekyll-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91.html">
+    <link rel="canonical" href="http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/12/php%E5%B9%B6%E5%8F%91%E5%86%99%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E9%94%81.html">
 </head>
 
 
@@ -80,13 +80,13 @@
   <ul class="category-list">
       
             
-                <li style="background-color: #f1edc2">
+                <li>
                 <a href="/categories/jekyll"> jekyll (5) </a>
                 </li>
             
       
             
-                <li>
+                <li style="background-color: #f1edc2">
                 <a href="/categories/php开发"> php开发 (4) </a>
                 </li>
             
@@ -194,16 +194,26 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Jekyll插件开发</h1>
+    <h1 class="post-title">php并发写文件|文件锁</h1>
     <p class="post-meta">Sep 12, 2014</p>
   </header>
 
   <article class="post-content">
-    <h4 id="jekyll">Jekyll插件开发</h4>
+    <h4 id="php">php并发写文件|文件锁</h4>
 
-<p>Jekyll的强大之一，在于其可以用是插件,Jekyll的插件使用Ruby来编写  </p>
+<pre><code>
+$fp = fopen("b.txt", "w+");
 
-<p>未完待需…</p>
+if (flock($fp, LOCK_EX)) { // 进行排它型锁定
+    fwrite($fp, "Write something here\n");
+    flock($fp, LOCK_UN); // 释放锁定
+} else {
+    echo "Couldn't lock the file !";
+}
+fclose($fp);
+</code></pre>
+
+<p><a href="http://www.cnblogs.com/chenwenbiao/archive/2011/08/01/2123905.html">php文件锁</a></p>
 
   </article>
 
