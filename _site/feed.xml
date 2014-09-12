@@ -6,8 +6,8 @@
 </description>
     <link>http://zoushuai518.github.io/</link>
     <atom:link href="http://zoushuai518.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 12 Sep 2014 15:43:05 +0800</pubDate>
-    <lastBuildDate>Fri, 12 Sep 2014 15:43:05 +0800</lastBuildDate>
+    <pubDate>Fri, 12 Sep 2014 15:48:51 +0800</pubDate>
+    <lastBuildDate>Fri, 12 Sep 2014 15:48:51 +0800</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
     
       <item>
@@ -42,22 +42,11 @@
       </item>
     
       <item>
-        <title>php并发写文件|文件锁</title>
-        <description>&lt;h4 id=&quot;php&quot;&gt;php并发写文件|文件锁&lt;/h4&gt;
+        <title>php composer</title>
+        <description>&lt;h4 id=&quot;php--composer&quot;&gt;php 包管理之 composer&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;
-$fp = fopen(&quot;b.txt&quot;, &quot;w+&quot;);
-
-if (flock($fp, LOCK_EX)) { // 进行排它型锁定
-    fwrite($fp, &quot;Write something here\n&quot;);
-    flock($fp, LOCK_UN); // 释放锁定
-} else {
-    echo &quot;Couldn't lock the file !&quot;;
-}
-fclose($fp);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/chenwenbiao/archive/2011/08/01/2123905.html&quot;&gt;php文件锁&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.phpcomposer.com/&quot;&gt;php composer&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://docs.phpcomposer.com/&quot;&gt;php composer docs&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 12 Sep 2014 18:59:51 +0800</pubDate>
         <link>http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/12/php%E5%B9%B6%E5%8F%91%E5%86%99%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E9%94%81.html</link>
@@ -76,6 +65,21 @@ fclose($fp);
         <pubDate>Fri, 12 Sep 2014 18:59:51 +0800</pubDate>
         <link>http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/12/phpdoc.html</link>
         <guid isPermaLink="true">http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/12/phpdoc.html</guid>
+        
+        
+        <category>php开发</category>
+        
+      </item>
+    
+      <item>
+        <title>php pear|pecl</title>
+        <description>&lt;h4 id=&quot;php--pearpecl&quot;&gt;php 包管理之 pear|pecl&lt;/h4&gt;
+
+&lt;p&gt;未完待需…&lt;/p&gt;
+</description>
+        <pubDate>Fri, 12 Sep 2014 18:59:51 +0800</pubDate>
+        <link>http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/12/php_pear_pecl.html</link>
+        <guid isPermaLink="true">http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/12/php_pear_pecl.html</guid>
         
         
         <category>php开发</category>
@@ -169,20 +173,6 @@ jekyll参考网站:&lt;br /&gt;
         
         
         <category>php开发</category>
-        
-      </item>
-    
-      <item>
-        <title>使用 GitHub, Jekyll 打造自己的独立博客</title>
-        <description>&lt;h4 id=&quot;github-jekyll-&quot;&gt;使用 GitHub, Jekyll 打造自己的独立博客&lt;/h4&gt;
-&lt;p&gt;&lt;a href=&quot;http://minixalpha.github.io/%E5%B7%A5%E5%85%B7/2014/02/15/github-jekyll-markdown.html&quot;&gt;github Jekyll markdown免费建立自己的博客&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Fri, 12 Sep 2014 03:35:51 +0800</pubDate>
-        <link>http://zoushuai518.github.io/%E5%B7%A5%E5%85%B7/2014/09/12/github-jekyll-markdown.html</link>
-        <guid isPermaLink="true">http://zoushuai518.github.io/%E5%B7%A5%E5%85%B7/2014/09/12/github-jekyll-markdown.html</guid>
-        
-        
-        <category>工具</category>
         
       </item>
     

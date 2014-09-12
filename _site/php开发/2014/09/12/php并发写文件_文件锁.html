@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>php并发写文件|文件锁</title>
+    <title>php composer</title>
     <meta name="description" content="this zoushuai technology blog
 ">
 
@@ -87,7 +87,7 @@
       
             
                 <li style="background-color: #f1edc2">
-                <a href="/categories/php开发"> php开发 (4) </a>
+                <a href="/categories/php开发"> php开发 (5) </a>
                 </li>
             
       
@@ -178,10 +178,15 @@
         
         
         
+    
+        
+        
+        
+        
             
             <li>
                 <a href="/2014/09">
-                    2014-09 (13)
+                    2014-09 (14)
                 </a>
             </li>
 
@@ -199,26 +204,15 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">php并发写文件|文件锁</h1>
+    <h1 class="post-title">php composer</h1>
     <p class="post-meta">Sep 12, 2014</p>
   </header>
 
   <article class="post-content">
-    <h4 id="php">php并发写文件|文件锁</h4>
+    <h4 id="php--composer">php 包管理之 composer</h4>
 
-<pre><code>
-$fp = fopen("b.txt", "w+");
-
-if (flock($fp, LOCK_EX)) { // 进行排它型锁定
-    fwrite($fp, "Write something here\n");
-    flock($fp, LOCK_UN); // 释放锁定
-} else {
-    echo "Couldn't lock the file !";
-}
-fclose($fp);
-</code></pre>
-
-<p><a href="http://www.cnblogs.com/chenwenbiao/archive/2011/08/01/2123905.html">php文件锁</a></p>
+<p><a href="http://www.phpcomposer.com/">php composer</a><br />
+<a href="http://docs.phpcomposer.com/">php composer docs</a></p>
 
   </article>
 
