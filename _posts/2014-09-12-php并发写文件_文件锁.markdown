@@ -1,23 +1,12 @@
 ---
 layout: post
-title: "php并发写文件|文件锁"
+title: "php composer"
 category: php开发
 comments: true
 date:   2014-09-12 10:59:51
 ---
 
-#### php并发写文件|文件锁
+#### php 包管理之 composer
 
-<pre><code>
-$fp = fopen("b.txt", "w+");
-
-if (flock($fp, LOCK_EX)) { // 进行排它型锁定
-    fwrite($fp, "Write something here\n");
-    flock($fp, LOCK_UN); // 释放锁定
-} else {
-    echo "Couldn't lock the file !";
-}
-fclose($fp);
-</code></pre>
-
-[php文件锁](http://www.cnblogs.com/chenwenbiao/archive/2011/08/01/2123905.html)
+[php composer](http://www.phpcomposer.com/)  
+[php composer docs](http://docs.phpcomposer.com/)
