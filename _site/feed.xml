@@ -6,8 +6,8 @@
 </description>
     <link>http://zoushuai518.github.io/</link>
     <atom:link href="http://zoushuai518.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 12 Sep 2014 15:48:51 +0800</pubDate>
-    <lastBuildDate>Fri, 12 Sep 2014 15:48:51 +0800</lastBuildDate>
+    <pubDate>Fri, 12 Sep 2014 15:58:20 +0800</pubDate>
+    <lastBuildDate>Fri, 12 Sep 2014 15:58:20 +0800</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
     
       <item>
@@ -42,11 +42,21 @@
       </item>
     
       <item>
-        <title>php composer</title>
-        <description>&lt;h4 id=&quot;php--composer&quot;&gt;php 包管理之 composer&lt;/h4&gt;
+        <title>php 并发写文件|文件锁</title>
+        <description>&lt;h4 id=&quot;php-&quot;&gt;php 并发写文件|文件锁&lt;/h4&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://www.phpcomposer.com/&quot;&gt;php composer&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;http://docs.phpcomposer.com/&quot;&gt;php composer docs&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+$fp = fopen('b.txt', 'w+');
+if (flock($fp, LOCK_EX)) { // 进行排它锁定
+	fwrite($fp, 'Write something here\n');
+	flock($fp, LOCK_UN);
+} else {
+	echo 'Couldn't lock the file !';
+}
+fclose($fp);
+&lt;/code&gt;
+[php文件锁](http://www.cnblogs.com/chenwenbiao/archive/2011/08/01/2123905.html)  
+&lt;/pre&gt;
 </description>
         <pubDate>Fri, 12 Sep 2014 18:59:51 +0800</pubDate>
         <link>http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/12/php%E5%B9%B6%E5%8F%91%E5%86%99%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E9%94%81.html</link>
@@ -80,6 +90,22 @@
         <pubDate>Fri, 12 Sep 2014 18:59:51 +0800</pubDate>
         <link>http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/12/php_pear_pecl.html</link>
         <guid isPermaLink="true">http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/12/php_pear_pecl.html</guid>
+        
+        
+        <category>php开发</category>
+        
+      </item>
+    
+      <item>
+        <title>php composer</title>
+        <description>&lt;h4 id=&quot;php--composer&quot;&gt;php 包管理之 composer&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.phpcomposer.com/&quot;&gt;php composer&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://docs.phpcomposer.com/&quot;&gt;php composer docs&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 12 Sep 2014 18:59:51 +0800</pubDate>
+        <link>http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/12/php-composer.html</link>
+        <guid isPermaLink="true">http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/12/php-composer.html</guid>
         
         
         <category>php开发</category>
@@ -158,21 +184,6 @@ jekyll参考网站:&lt;br /&gt;
         
         
         <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>yii2介绍</title>
-        <description>&lt;h4 id=&quot;yii2&quot;&gt;yii2&lt;/h4&gt;
-
-&lt;p&gt;待须…&lt;/p&gt;
-</description>
-        <pubDate>Fri, 12 Sep 2014 17:35:51 +0800</pubDate>
-        <link>http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/12/%E4%BB%8B%E7%BB%8Dyii2.html</link>
-        <guid isPermaLink="true">http://zoushuai518.github.io/php%E5%BC%80%E5%8F%91/2014/09/12/%E4%BB%8B%E7%BB%8Dyii2.html</guid>
-        
-        
-        <category>php开发</category>
         
       </item>
     
