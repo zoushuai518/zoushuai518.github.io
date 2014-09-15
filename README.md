@@ -9,4 +9,4 @@
 
 #### 备注：  
 a.source分支为现在使用  
-b.source-test分支已经不维护,为 init状态,仅供参考
+b.master分支为blog静态站点文件
