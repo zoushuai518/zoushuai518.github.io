@@ -1,0 +1,12 @@
+---
+layout: post
+title: "ruby"
+category: ruby
+comments: true
+date:   2014-09-12 10:59:51
+---
+
+#### ruby开发
+
+持续更新中...
+

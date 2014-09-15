@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "php加密解密"
-category: php开发
+category: php
 comments: true
 date:   2014-09-10 19:35:51
 ---

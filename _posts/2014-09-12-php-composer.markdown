@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "php composer"
-category: php开发
+category: php
 comments: true
 date:   2014-09-12 10:59:51
 ---

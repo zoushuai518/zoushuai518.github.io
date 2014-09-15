@@ -6,3 +6,7 @@
 [minixalpha](https://github.com/minixalpha/minixalpha.github.io)  
 [yangping](https://github.com/yangping/yangping.github.io) | [yangping.me](http://yangping.me)  
 
+
+#### 备注：  
+a.source分支为现在使用  
+b.source-test分支已经不维护,为 init状态,仅供参考
