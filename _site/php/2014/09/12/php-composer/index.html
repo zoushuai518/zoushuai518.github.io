@@ -28,7 +28,7 @@
 	
 	<li id="js-label2" class="tags__li tags-btn">jekyll (8)</li>
 	
-	<li id="js-label3" class="tags__li tags-btn">php (6)</li>
+	<li id="js-label3" class="tags__li tags-btn">php (8)</li>
 	
 	<li id="js-label4" class="tags__li tags-btn">tool (1)</li>
 	
@@ -36,7 +36,13 @@
 	
 	<li id="js-label6" class="tags__li tags-btn">ruby (1)</li>
 	
-	<li id="js-label7" class="tags__li tags-btn">linux (2)</li>
+	<li id="js-label7" class="tags__li tags-btn">linux (3)</li>
+	
+	<li id="js-label8" class="tags__li tags-btn">asset (1)</li>
+	
+	<li id="js-label9" class="tags__li tags-btn">standard (1)</li>
+	
+	<li id="js-label10" class="tags__li tags-btn">agreement (1)</li>
 	
 </ul>
 
@@ -55,6 +61,18 @@
         </form>
 
         <nav id="pl__container">
+        
+          <a class="linux pl__all" href="/linux/2014/09/17/nginx-https-config"><span class="pl__circle"></span><span class="pl__title">nginx https配置</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="agreement pl__all" href="/agreement/2014/09/17/https"><span class="pl__circle"></span><span class="pl__title">https协议</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="standard pl__all" href="/standard/2014/09/17/Rest_API"><span class="pl__circle"></span><span class="pl__title">Rest API标准</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/16/laravel"><span class="pl__circle"></span><span class="pl__title">golaravel</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="asset pl__all" href="/asset/2014/09/16/js-plug-list"><span class="pl__circle"></span><span class="pl__title">js插件列表</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/16/create-composer_packagist"><span class="pl__circle"></span><span class="pl__title">创建一个自己的 Composer/Packagist包</span><span class="pl__date">Sep 2014</span></a>
         
           <a class="jekyll pl__all" href="/jekyll/2014/09/16/jekyll-3-theme"><span class="pl__circle"></span><span class="pl__title">jekyll dazzle theme</span><span class="pl__date">Sep 2014</span></a>
         
@@ -106,8 +124,38 @@
   <h1 id="post__title" data-identifier="20140912">php composer</h1>
   <h1>php 包管理之 composer</h1>
 
-<p><strong><em>简介：</em></strong>
-对于现代语言而言，包管理器基本上是标配。Java有Maven，Python有pip，Ruby有gem，Nodejs有npm。PHP的则是<a href="http://pear.php.net/">PEAR</a></p>
+<p><strong><em>简介：</em></strong></p>
+
+<ul>
+<li>对于现代语言而言，包管理器基本上是标配。Java有Maven，Python有pip，Ruby有gem，Nodejs有npm。PHP的则是<a href="http://pear.php.net/">PEAR</a></li>
+<li>简单来说，Composer 是一个新的安装包管理工具，服务于 PHP 生态系统。它实际上包含了两个部分：Composer 和 Packagist.下面我们就简单说一下他们各自的用途。</li>
+</ul>
+
+
+<p><strong><em>概念：</em></strong></p>
+
+<ul>
+<li>Composer：
+简单来说，Composer 是一个新的安装包管理工具，服务于 PHP 生态系统。它实际上包含了两个部分：<a href="https://github.com/composer/composer">Composer</a> 和 <a href="http://packagist.org/">Packagist</a>.下面我们就简单说一下他们各自的用途。<br/>
+Composer 是由 Jordi Boggiano 和 Nils Aderman 创造的一个命令行工具，它的使命就是帮你为项目自动安装所依赖的开发包。Composer 中的很多理念都借鉴了 npm 和 Bundler，如果你对这两个工具有所了解的话，就会在 composer 中发现他们的身影。Composer 包含了一个依赖解析器，用来处理开发包之间复杂的依赖关系；另外，它还包含了下载器、安装器等有趣的东西。<br/>
+作为一个用户，你所要做的就是在 <code>composer.json</code> 文件中声明当前项目所依赖的开发包，然后运行 <code>composer.phar install</code> 就行了。<code>composer.json</code> 文件定义了当前项目所依赖的开发包和 composer 的配置信息。下面是一个小型实例：</li>
+</ul>
+
+
+<pre><code>
+{
+    "require": {
+        "monolog/monolog": "1.2.*"
+    }
+}
+</code></pre>
+
+
+<ul>
+<li>Packagist：
+Packagist 是 Composer 的默认的开发包仓库。你可以将自己的安装包提交到 packagist，将来你在自己的 VCS （源码管理软件，比如 Github） 仓库中新建了 tag 或更新了代码，packagist 都会自动构建一个新的开发包。这就是 packagist 目前的运作方式，将来 packagist 将允许直接上传开发包。</li>
+</ul>
+
 
 <h1>一.前言：</h1>
 
@@ -350,16 +398,21 @@ Updating dependencies
 
 <h2><img src="/assets/postImage/php/composer-modify-image-1.png" title="composer-modify-image" alt="composer-modify-image" /></h2>
 
-<p>修改配置文件
-<code>$ sudo vim /root/.composer/config.json</code>
-增加镜像地址
-<code>{
+<p>修改配置文件<br/>
+<code>$ sudo vim /root/.composer/config.json</code><br/>
+增加镜像地址</p>
+
+<pre><code>
+{
     "repositories": [
         {"type": "composer", "url": "http://pkg.phpcomposer.com/repo/packagist/"},
         {"packagist": false}
     ]
-}</code><br/>
-修改完成，保存退出</p>
+}
+</code></pre>
+
+
+<p>修改完成，保存退出</p>
 
 <h2><img src="/assets/postImage/php/composer-modify-image-2.png" title="composer-modify-image" alt="composer-modify-image" /></h2>
 
@@ -383,7 +436,8 @@ $ composer self-update
 
 <p><a href="http://www.phpcomposer.com/">php composer</a><br/>
 <a href="https://getcomposer.org/">getcomposer</a><br/>
-<a href="http://docs.phpcomposer.com/">php composer docs</a></p>
+<a href="http://docs.phpcomposer.com/">php composer docs</a><br/>
+<a href="https://packagist.org/">packagist</a></p>
 
 </article> <!-- end #post__content -->
 

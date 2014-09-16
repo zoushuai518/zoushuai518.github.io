@@ -1,0 +1,13 @@
+---
+layout: post
+title: "Rest API标准"
+category: standard
+comments: true
+date:   2014-09-16 18:16:51
+---
+
+## Rest API标准，设计规范
+
+[Rest API 开发 学习笔记](http://www.cnblogs.com/springyangwc/archive/2012/01/18/2325784.html)  
+[REST 入门介绍](http://www.cnblogs.com/shanyou/archive/2012/05/12/2496959.html)  
+

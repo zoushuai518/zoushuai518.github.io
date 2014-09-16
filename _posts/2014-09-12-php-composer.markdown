@@ -9,7 +9,26 @@ date:   2014-09-12 10:59:51
 # php 包管理之 composer
 
 ***简介：***
-对于现代语言而言，包管理器基本上是标配。Java有Maven，Python有pip，Ruby有gem，Nodejs有npm。PHP的则是[PEAR](http://pear.php.net/)  
+
+- 对于现代语言而言，包管理器基本上是标配。Java有Maven，Python有pip，Ruby有gem，Nodejs有npm。PHP的则是[PEAR](http://pear.php.net/)  
+- 简单来说，Composer 是一个新的安装包管理工具，服务于 PHP 生态系统。它实际上包含了两个部分：Composer 和 Packagist.下面我们就简单说一下他们各自的用途。  
+
+***概念：***
+
+- Composer：
+简单来说，Composer 是一个新的安装包管理工具，服务于 PHP 生态系统。它实际上包含了两个部分：[Composer](https://github.com/composer/composer) 和 [Packagist](http://packagist.org/).下面我们就简单说一下他们各自的用途。  
+Composer 是由 Jordi Boggiano 和 Nils Aderman 创造的一个命令行工具，它的使命就是帮你为项目自动安装所依赖的开发包。Composer 中的很多理念都借鉴了 npm 和 Bundler，如果你对这两个工具有所了解的话，就会在 composer 中发现他们的身影。Composer 包含了一个依赖解析器，用来处理开发包之间复杂的依赖关系；另外，它还包含了下载器、安装器等有趣的东西。  
+作为一个用户，你所要做的就是在 <code>composer.json</code> 文件中声明当前项目所依赖的开发包，然后运行 <code>composer.phar install</code> 就行了。<code>composer.json</code> 文件定义了当前项目所依赖的开发包和 composer 的配置信息。下面是一个小型实例：  
+<pre><code>
+{
+	"require": {
+		"monolog/monolog": "1.2.*"
+	}
+}
+</code></pre>
+
+- Packagist：
+Packagist 是 Composer 的默认的开发包仓库。你可以将自己的安装包提交到 packagist，将来你在自己的 VCS （源码管理软件，比如 Github） 仓库中新建了 tag 或更新了代码，packagist 都会自动构建一个新的开发包。这就是 packagist 目前的运作方式，将来 packagist 将允许直接上传开发包。
 
 
 #一.前言：  
@@ -212,15 +231,17 @@ Updating dependencies
   
 ![composer-modify-image](/assets/postImage/php/composer-modify-image-1.png "composer-modify-image")
 --
-修改配置文件
-`$ sudo vim /root/.composer/config.json`
-增加镜像地址
-``{
+修改配置文件  
+`$ sudo vim /root/.composer/config.json`  
+增加镜像地址  
+<pre><code>
+{
 	"repositories": [
 		{"type": "composer", "url": "http://pkg.phpcomposer.com/repo/packagist/"},
 		{"packagist": false}
 	]
-}``  
+}
+</code></pre>
 修改完成，保存退出  
 ![composer-modify-image](/assets/postImage/php/composer-modify-image-2.png "composer-modify-image")
 --
@@ -241,8 +262,8 @@ $ composer self-update
 
 
 
-
 [php composer](http://www.phpcomposer.com/)  
 [getcomposer](https://getcomposer.org/)  
-[php composer docs](http://docs.phpcomposer.com/)
+[php composer docs](http://docs.phpcomposer.com/)  
+[packagist](https://packagist.org/)
 

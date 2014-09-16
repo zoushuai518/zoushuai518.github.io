@@ -4,13 +4,86 @@
  <title>CodeMadman</title>
  <link href="http://username.github.io/" rel="self"/>
  <link href="http://username.github.io"/>
- <updated>2014-09-16T15:52:03+08:00</updated>
+ <updated>2014-09-16T19:20:20+08:00</updated>
  <id>http://username.github.io</id>
  <author>
    <name>Name Lastname</name>
    <email>blah@email.test</email>
  </author>
 
+ 
+ <entry>
+   <title>nginx https配置</title>
+   <link href="http://username.github.io/linux/2014/09/17/nginx-https-config"/>
+   <updated>2014-09-17T02:16:51+08:00</updated>
+   <id>http://username.github.io/linux/2014/09/17/nginx-https-config</id>
+   <content type="html">&lt;h2&gt;nginx https配置&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.blogjava.net/ivanwan/archive/2012/12/11/392754.html&quot;&gt;Nginx配置SSL证书部署HTTPS网站&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&quot;http://www.2cto.com/os/201303/192409.html&quot;&gt;Nginx https加密以及nginx日志配置与管理&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&quot;http://nginx.org/cn/docs/http/configuring_https_servers.html&quot;&gt;配置HTTPS服务器&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&quot;http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html&quot;&gt;SSL/TLS协议运行机制的概述&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>https协议</title>
+   <link href="http://username.github.io/agreement/2014/09/17/https"/>
+   <updated>2014-09-17T02:16:51+08:00</updated>
+   <id>http://username.github.io/agreement/2014/09/17/https</id>
+   <content type="html">&lt;h2&gt;https协议&lt;/h2&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Rest API标准</title>
+   <link href="http://username.github.io/standard/2014/09/17/Rest_API"/>
+   <updated>2014-09-17T02:16:51+08:00</updated>
+   <id>http://username.github.io/standard/2014/09/17/Rest_API</id>
+   <content type="html">&lt;h2&gt;Rest API标准，设计规范&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/springyangwc/archive/2012/01/18/2325784.html&quot;&gt;Rest API 开发 学习笔记&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&quot;http://www.cnblogs.com/shanyou/archive/2012/05/12/2496959.html&quot;&gt;REST 入门介绍&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>golaravel</title>
+   <link href="http://username.github.io/php/2014/09/16/laravel"/>
+   <updated>2014-09-16T18:59:51+08:00</updated>
+   <id>http://username.github.io/php/2014/09/16/laravel</id>
+   <content type="html">&lt;h4&gt;golaravel&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.golaravel.com/&quot;&gt;golaravel&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>js插件列表</title>
+   <link href="http://username.github.io/asset/2014/09/16/js-plug-list"/>
+   <updated>2014-09-16T18:59:51+08:00</updated>
+   <id>http://username.github.io/asset/2014/09/16/js-plug-list</id>
+   <content type="html">&lt;h1&gt;js插件列表&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.nprogress.co/&quot;&gt;nprogress&lt;/a&gt;：jQuery 进度条插件:NProgress.js&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>创建一个自己的 Composer/Packagist包</title>
+   <link href="http://username.github.io/php/2014/09/16/create-composer_packagist"/>
+   <updated>2014-09-16T18:59:51+08:00</updated>
+   <id>http://username.github.io/php/2014/09/16/create-composer_packagist</id>
+   <content type="html">&lt;h1&gt;如何创建一个自己的 Composer/Packagist 包&lt;/h1&gt;
+
+&lt;h1&gt;即：搭建自己的 Composer服务，公共的代码写在此自定义仓库中；组内的其他开发人员可以通过 Composer来进获取,即所谓的依赖管理&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/zoushuai518/composer-car&quot;&gt;创建一个自己的 Composer/Packagist 包&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>jekyll dazzle theme</title>
@@ -245,8 +318,38 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FO
    <id>http://username.github.io/php/2014/09/12/php-composer</id>
    <content type="html">&lt;h1&gt;php 包管理之 composer&lt;/h1&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;简介：&lt;/em&gt;&lt;/strong&gt;
-对于现代语言而言，包管理器基本上是标配。Java有Maven，Python有pip，Ruby有gem，Nodejs有npm。PHP的则是&lt;a href=&quot;http://pear.php.net/&quot;&gt;PEAR&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;简介：&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;对于现代语言而言，包管理器基本上是标配。Java有Maven，Python有pip，Ruby有gem，Nodejs有npm。PHP的则是&lt;a href=&quot;http://pear.php.net/&quot;&gt;PEAR&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;简单来说，Composer 是一个新的安装包管理工具，服务于 PHP 生态系统。它实际上包含了两个部分：Composer 和 Packagist.下面我们就简单说一下他们各自的用途。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;概念：&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Composer：
+简单来说，Composer 是一个新的安装包管理工具，服务于 PHP 生态系统。它实际上包含了两个部分：&lt;a href=&quot;https://github.com/composer/composer&quot;&gt;Composer&lt;/a&gt; 和 &lt;a href=&quot;http://packagist.org/&quot;&gt;Packagist&lt;/a&gt;.下面我们就简单说一下他们各自的用途。&lt;br/&gt;
+Composer 是由 Jordi Boggiano 和 Nils Aderman 创造的一个命令行工具，它的使命就是帮你为项目自动安装所依赖的开发包。Composer 中的很多理念都借鉴了 npm 和 Bundler，如果你对这两个工具有所了解的话，就会在 composer 中发现他们的身影。Composer 包含了一个依赖解析器，用来处理开发包之间复杂的依赖关系；另外，它还包含了下载器、安装器等有趣的东西。&lt;br/&gt;
+作为一个用户，你所要做的就是在 &lt;code&gt;composer.json&lt;/code&gt; 文件中声明当前项目所依赖的开发包，然后运行 &lt;code&gt;composer.phar install&lt;/code&gt; 就行了。&lt;code&gt;composer.json&lt;/code&gt; 文件定义了当前项目所依赖的开发包和 composer 的配置信息。下面是一个小型实例：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+{
+    &quot;require&quot;: {
+        &quot;monolog/monolog&quot;: &quot;1.2.*&quot;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Packagist：
+Packagist 是 Composer 的默认的开发包仓库。你可以将自己的安装包提交到 packagist，将来你在自己的 VCS （源码管理软件，比如 Github） 仓库中新建了 tag 或更新了代码，packagist 都会自动构建一个新的开发包。这就是 packagist 目前的运作方式，将来 packagist 将允许直接上传开发包。&lt;/li&gt;
+&lt;/ul&gt;
+
 
 &lt;h1&gt;一.前言：&lt;/h1&gt;
 
@@ -489,16 +592,21 @@ Updating dependencies
 
 &lt;h2&gt;&lt;img src=&quot;/assets/postImage/php/composer-modify-image-1.png&quot; title=&quot;composer-modify-image&quot; alt=&quot;composer-modify-image&quot; /&gt;&lt;/h2&gt;
 
-&lt;p&gt;修改配置文件
-&lt;code&gt;$ sudo vim /root/.composer/config.json&lt;/code&gt;
-增加镜像地址
-&lt;code&gt;{
+&lt;p&gt;修改配置文件&lt;br/&gt;
+&lt;code&gt;$ sudo vim /root/.composer/config.json&lt;/code&gt;&lt;br/&gt;
+增加镜像地址&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+{
     &quot;repositories&quot;: [
         {&quot;type&quot;: &quot;composer&quot;, &quot;url&quot;: &quot;http://pkg.phpcomposer.com/repo/packagist/&quot;},
         {&quot;packagist&quot;: false}
     ]
-}&lt;/code&gt;&lt;br/&gt;
-修改完成，保存退出&lt;/p&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;修改完成，保存退出&lt;/p&gt;
 
 &lt;h2&gt;&lt;img src=&quot;/assets/postImage/php/composer-modify-image-2.png&quot; title=&quot;composer-modify-image&quot; alt=&quot;composer-modify-image&quot; /&gt;&lt;/h2&gt;
 
@@ -522,7 +630,8 @@ $ composer self-update
 
 &lt;p&gt;&lt;a href=&quot;http://www.phpcomposer.com/&quot;&gt;php composer&lt;/a&gt;&lt;br/&gt;
 &lt;a href=&quot;https://getcomposer.org/&quot;&gt;getcomposer&lt;/a&gt;&lt;br/&gt;
-&lt;a href=&quot;http://docs.phpcomposer.com/&quot;&gt;php composer docs&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&quot;http://docs.phpcomposer.com/&quot;&gt;php composer docs&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&quot;https://packagist.org/&quot;&gt;packagist&lt;/a&gt;&lt;/p&gt;
 </content>
  </entry>
  
