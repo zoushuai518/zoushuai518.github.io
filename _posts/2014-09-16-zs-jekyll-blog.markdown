@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "关于Jekyll"
+title: "基于Jekyll github创建自己的blog系统"
 category: jekyll
 comments: true
 date:   2014-09-16 09:38:51

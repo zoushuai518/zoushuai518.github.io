@@ -4,7 +4,7 @@
  <title>CodeMadman</title>
  <link href="http://username.github.io/" rel="self"/>
  <link href="http://username.github.io"/>
- <updated>2014-09-16T19:20:20+08:00</updated>
+ <updated>2014-09-16T19:32:23+08:00</updated>
  <id>http://username.github.io</id>
  <author>
    <name>Name Lastname</name>
@@ -82,6 +82,23 @@
 &lt;h1&gt;即：搭建自己的 Composer服务，公共的代码写在此自定义仓库中；组内的其他开发人员可以通过 Composer来进获取,即所谓的依赖管理&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://github.com/zoushuai518/composer-car&quot;&gt;创建一个自己的 Composer/Packagist 包&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>关于Jekyll</title>
+   <link href="http://username.github.io/jekyll/2014/09/16/zs-jekyll-blog"/>
+   <updated>2014-09-16T17:38:51+08:00</updated>
+   <id>http://username.github.io/jekyll/2014/09/16/zs-jekyll-blog</id>
+   <content type="html">&lt;h4&gt;基于jekyll的博客系统&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;jekyll&lt;/li&gt;
+&lt;li&gt;jekyll bootstrap&lt;/li&gt;
+&lt;li&gt;jekyll pygments&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/P233/3-Jekyll/&quot;&gt;div jekyll theme&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 </content>
  </entry>
  

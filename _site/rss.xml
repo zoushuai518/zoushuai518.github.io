@@ -5,8 +5,8 @@
         <description>CodeMadman - Name Lastname</description>
         <link>http://username.github.io</link>
         <link>http://username.github.io</link>
-        <lastBuildDate>2014-09-16T19:20:20+08:00</lastBuildDate>
-        <pubDate>2014-09-16T19:20:20+08:00</pubDate>
+        <lastBuildDate>2014-09-16T19:32:23+08:00</lastBuildDate>
+        <pubDate>2014-09-16T19:32:23+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -81,6 +81,23 @@
                 <link>http://username.github.io/php/2014/09/16/create-composer_packagist</link>
                 <guid>http://username.github.io/php/2014/09/16/create-composer_packagist</guid>
                 <pubDate>2014-09-16T18:59:51+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>关于Jekyll</title>
+                <description>&lt;h4&gt;基于jekyll的博客系统&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;jekyll&lt;/li&gt;
+&lt;li&gt;jekyll bootstrap&lt;/li&gt;
+&lt;li&gt;jekyll pygments&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/P233/3-Jekyll/&quot;&gt;div jekyll theme&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <link>http://username.github.io/jekyll/2014/09/16/zs-jekyll-blog</link>
+                <guid>http://username.github.io/jekyll/2014/09/16/zs-jekyll-blog</guid>
+                <pubDate>2014-09-16T17:38:51+08:00</pubDate>
         </item>
 
         <item>
