@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
 
-    <title>jekyll dazzle theme</title>
+    <title>nginx https配置</title>
     <meta name="description" content="">
 
     <link href="/assets/themes/p233/css/pygments.css" rel="stylesheet">
@@ -121,126 +121,20 @@
         
 
 <article id="post__content" class="fmt">
-  <h1 id="post__title" data-identifier="20140916">jekyll dazzle theme</h1>
-  <h2>Jekyll Dazzle theme</h2>
+  <h1 id="post__title" data-identifier="20140917">nginx https配置</h1>
+  <h2>nginx https配置</h2>
 
-<p><a href="https://github.com/P233/3-Jekyll/">Themes link</a></p>
-
-<p>欢迎任何改进建议，请直接<a href="https://github.com/P233/3-Jekyll/issues/new">提交 issues</a>，感谢。</p>
-
-<h2>主要功能</h2>
-
-<ul>
-<li>不支持 IE9 及以下浏览器。</li>
-<li>三列布局，最左侧是博客的 Tags 列表（需手动配置），点击后过滤相关文章，一篇文章可以给多个 tags 不会影响。</li>
-<li>支持 pygments 代码高亮。</li>
-<li>支持插入 Codepen。</li>
-<li>Lazy-load Disqus。</li>
-<li>自动生成文章目录列表（h1-h3），鼠标移动到浏览器右侧边缘自动滑出（给每个标题重新生成一串随机字母做 ID，但这样可能会影响分享链接）。</li>
-<li>支持移动设备，文章目录在移动设备上不显示。</li>
-</ul>
-
-
-<p>同时制作了一份 Ghost 版本，请查看：<a href="https://github.com/P233/3-Ghost">https://github.com/P233/3-Ghost</a>，你也可以移植给其他 Blog 平台，需遵守 MIT License。</p>
-
-<p><strong>安装后需要做一些简单配置才可使用，请仔细阅读下面的说明：</strong></p>
-
-<h2>配置模板</h2>
-
-<h3>模板文件</h3>
-
-<p><code>/_layouts/index.html</code> 包含整个页面框架，以及左侧 sidebar 部分；<code>/index.html</code> 仅包含首页内容；<code>/_layouts/post.html</code> 包含文章内容布局，分享按钮，以及评论等等。</p>
-
-<h3>设置标签</h3>
-
-<p>这是修改模板最关键的一步。</p>
-
-<ol>
-<li>打开 <code>/_layouts/index.html</code> 文件找到 <code>&lt;ul id="tags__ul"&gt;&lt;/ul&gt;</code> 部分，将 <code>place_your_tag_display_name_here</code> 替换成 Tag 显示名称，别忘记修改 ID 顺序，完毕之后记录 tags 顺序以及总数。</li>
-<li>打开 <code>/assets/js/script.js</code> 找到 <code>// Variables</code> 部分，将 <code>place_your_tag_name_here</code> 替换成 tag 名称，这个名称需要与编辑文章时输入的 tag 一模一样，同时也需要满足 CSS 的 class 命名规则（不得已会影响命名 tag 的方式），顺序要与第一步匹配。</li>
-<li>在 js 文件中继续寻找 <code>// Tags switcher</code> 注释后面跟着的 <code>for</code>  循环，将 <code>i &lt;= 6</code> 换成 tags 总数 + 1 (因为 No.1 是全部分类)。</li>
-</ol>
-
-
-<h3>搜索功能</h3>
-
-<p>搜索框目前只是摆设，请使用 <a href="https://www.google.com/cse/">Google Custom Search Engine</a> 或 <a href="https://github.com/slashdotdash/jekyll-lunr-js-search">jekyll-lunr-js-search</a> 插件。</p>
-
-<h3>修改头像</h3>
-
-<p>替换 <code>/assets/img/</code> 中的头像图片，<code>100px * 100px</code> 用于普通屏幕， <code>200px * 200px</code> 用于 Retina Display。</p>
-
-<h3>修改邮箱</h3>
-
-<p>通过 <a href="http://www.safeemail.org/">Stop Link Spam Bots</a> 编辑了邮箱地址，希望能防 spam。</p>
-
-<h3>Icon-font</h3>
-
-<p>使用了 <a href="http://fontello.com">Fontello icon fonts generator</a>，并附上了 config 文件放置在 <code>/assets/font/</code> 中，方便替换图标。</p>
-
-<h3>代码高亮</h3>
-
-<p>支持 pygments 代码高亮，配色使用的是 <a href="https://gist.github.com/edwardhotchkiss/2005058">https://gist.github.com/edwardhotchkiss/2005058</a> 并基于 <a href="http://prismjs.com/download.html">prism.js Coy theme</a> 修改，文件位置在 <code>/assets/_sass/_pygments.scss</code> 中。</p>
-
-<h3>Embedding Codepen</h3>
-
-<p>如果需要插入 Codepen，只需将 embed code 中的 <code>&lt;p&gt;</code> 部分粘贴在正文中，而不必粘贴 <code>&lt;script&gt;</code> 部分。更多关于插入 Codepen 的解释请查看 http://blog.codepen.io/documentation/features/how-do-i-embed-a-pen-on-another-site/ 。</p>
-
-<p>如果完全不需要这个功能可以将 <code>/assets/js/script.js</code> 中的相关代码删除。</p>
-
-<h3>修改分享链接地址</h3>
-
-<p>打开 <code>/_layouts/post.html</code> 将分享链接中的 <code>place_your_url_here</code> 提换成博客地址。</p>
-
-<h3>修改许可协议</h3>
-
-<p>在 <code>/_layouts/post.html</code> 文件的分享链接部分声明博客内容所使用的许可协议，默认使用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Attribution-NonCommercial-ShareAlike 3.0 Unported</a>。</p>
-
-<h3>Disqus 评论</h3>
-
-<p>Disqus 评论加载比较慢，所以使用了 lazy-load 的方式，在 <code>/assets/js/script.js</code> 的最下方找到 Disqus 相关代码，将 <code>window.disqus_shortname</code> 的值修改为自己的 shortname 。每篇文章的发表时间（<code>20140916</code>）作为 identifier。</p>
-
-<h3>调整配色</h3>
-
-<p>个人非常不擅长配色，所以在 <code>/assets/_sass/style.scss</code> 文件中尽可能多地定义了颜色变量方便大家修改配色。关于默认的主题配色也请大家多提建议。</p>
-
-<h3>设置 RSS</h3>
-
-<p>请不要忘记编辑 <code>rss.xml</code> 文件，语言可填 <code>zh-cn</code> 或 <code>zh-tw</code>。</p>
-
-<h2>已知问题</h2>
-
-<ol>
-<li>键盘 <kbd>Space</kbd> <kbd>PgUp</kbd> <kbd>PgDn</kbd> <kbd>↑</kbd> <kbd>↓</kbd> 等快捷键无效，这是由于当前的布局方式影响的。iOS7 Mobile Safari 自动隐藏地址栏也会无效。</li>
-</ol>
-
-
-<h2>Credits</h2>
-
-<ul>
-<li><a href="https://github.com/defunkt/jquery-pjax">jquery-pjax</a></li>
-<li><a href="http://ricostacruz.com/nprogress/">NProgress.js</a></li>
-<li><a href="https://gist.github.com/edwardhotchkiss/2005058">Solarized Light Pygments CSS</a></li>
-</ul>
-
-
-<h2>Copyright &amp; License</h2>
-
-<p>Copyright (c) 2013 Peiwen Lu - Released under The MIT License.</p>
-
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-
-<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-
-<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+<p><a href="http://www.blogjava.net/ivanwan/archive/2012/12/11/392754.html">Nginx配置SSL证书部署HTTPS网站</a><br/>
+<a href="http://www.2cto.com/os/201303/192409.html">Nginx https加密以及nginx日志配置与管理</a><br/>
+<a href="http://nginx.org/cn/docs/http/configuring_https_servers.html">配置HTTPS服务器</a><br/>
+<a href="http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html">SSL/TLS协议运行机制的概述</a></p>
 
 </article> <!-- end #post__content -->
 
 <div id="post__share">
-  <a id="icon-twitter" class="fontello" href="https://twitter.com/intent/tweet?url=place_your_url_here/jekyll/2014/09/16/jekyll-3-theme&text=jekyll dazzle theme" target="_blank"></a>
+  <a id="icon-twitter" class="fontello" href="https://twitter.com/intent/tweet?url=place_your_url_here/linux/2014/09/17/nginx-https-config&text=nginx https配置" target="_blank"></a>
   <a id="icon-cc" class="fontello" href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"></a>
-  <a id="icon-weibo" class="fontello" href="http://v.t.sina.com.cn/share/share.php?url=place_your_url_here/jekyll/2014/09/16/jekyll-3-theme&title=jekyll dazzle theme" target="_blank"></a>
+  <a id="icon-weibo" class="fontello" href="http://v.t.sina.com.cn/share/share.php?url=place_your_url_here/linux/2014/09/17/nginx-https-config&title=nginx https配置" target="_blank"></a>
 </div> <!-- end #post__share -->
 
 <div id="disqus_thread">

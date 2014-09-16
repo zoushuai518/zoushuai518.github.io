@@ -18,7 +18,10 @@ if ($(window).width() <= 1280) {
     tag4       = $('.tool'),
     tag5       = $('.python'),
     tag6       = $('.ruby'),
-    tag7       = $('.linux');
+    tag7       = $('.linux'),
+    tag8       = $('.asset'),
+    tag9       = $('.standard'),
+    tag10       = $('.agreement');
     //tag6       = $('.place_your_tag_name_here');
 var sidebar    = $('#sidebar'),
     container  = $('#post'),
@@ -33,7 +36,7 @@ var clickHandler = function(k) {
     window['tag'+k].delay(50).fadeIn(350);
   }
 };
-for (var i = 1; i <= 7; i++) {
+for (var i = 1; i <= 10; i++) {
   $('#js-label' + i).on('click', clickHandler(i));
 }
 
