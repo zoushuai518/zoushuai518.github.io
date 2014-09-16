@@ -4,7 +4,7 @@
  <title>CodeMadman</title>
  <link href="http://username.github.io/" rel="self"/>
  <link href="http://username.github.io"/>
- <updated>2014-09-16T19:32:23+08:00</updated>
+ <updated>2014-09-16T19:33:36+08:00</updated>
  <id>http://username.github.io</id>
  <author>
    <name>Name Lastname</name>
@@ -86,7 +86,7 @@
  </entry>
  
  <entry>
-   <title>关于Jekyll</title>
+   <title>基于Jekyll github创建自己的blog系统</title>
    <link href="http://username.github.io/jekyll/2014/09/16/zs-jekyll-blog"/>
    <updated>2014-09-16T17:38:51+08:00</updated>
    <id>http://username.github.io/jekyll/2014/09/16/zs-jekyll-blog</id>

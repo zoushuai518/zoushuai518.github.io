@@ -5,8 +5,8 @@
         <description>CodeMadman - Name Lastname</description>
         <link>http://username.github.io</link>
         <link>http://username.github.io</link>
-        <lastBuildDate>2014-09-16T19:32:23+08:00</lastBuildDate>
-        <pubDate>2014-09-16T19:32:23+08:00</pubDate>
+        <lastBuildDate>2014-09-16T19:33:36+08:00</lastBuildDate>
+        <pubDate>2014-09-16T19:33:36+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -84,7 +84,7 @@
         </item>
 
         <item>
-                <title>关于Jekyll</title>
+                <title>基于Jekyll github创建自己的blog系统</title>
                 <description>&lt;h4&gt;基于jekyll的博客系统&lt;/h4&gt;
 
 &lt;ul&gt;
