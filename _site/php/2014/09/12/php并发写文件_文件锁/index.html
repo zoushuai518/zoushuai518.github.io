@@ -102,22 +102,23 @@
       <div id="pjax">
         
 
-<article id="post__content">
+<article id="post__content" class="fmt">
   <h1 id="post__title" data-identifier="20140912">php 并发写文件|文件锁</h1>
-  <h4 id="php-">php 并发写文件|文件锁</h4>
+  <h4>php 并发写文件|文件锁</h4>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
 <span class="lineno"> 2</span> <span class="nv">$fp</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;b.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">);</span>
 <span class="lineno"> 3</span> <span class="k">if</span> <span class="p">(</span><span class="nb">flock</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="nx">LOCK_EX</span><span class="p">))</span> <span class="p">{</span> <span class="c1">// 进行排它锁定</span>
-<span class="lineno"> 4</span> 	<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="s1">&#39;Write something here\n&#39;</span><span class="p">);</span>
-<span class="lineno"> 5</span> 	<span class="nb">flock</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="nx">LOCK_UN</span><span class="p">);</span>
+<span class="lineno"> 4</span>  <span class="nb">fwrite</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="s1">&#39;Write something here\n&#39;</span><span class="p">);</span>
+<span class="lineno"> 5</span>  <span class="nb">flock</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="nx">LOCK_UN</span><span class="p">);</span>
 <span class="lineno"> 6</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="lineno"> 7</span> 	<span class="k">echo</span> <span class="s2">&quot;Couldn&#39;t lock the file !&quot;</span><span class="p">;</span>
+<span class="lineno"> 7</span>  <span class="k">echo</span> <span class="s2">&quot;Couldn&#39;t lock the file !&quot;</span><span class="p">;</span>
 <span class="lineno"> 8</span> <span class="p">}</span>
 <span class="lineno"> 9</span> <span class="nb">fclose</span><span class="p">(</span><span class="nv">$fp</span><span class="p">);</span>
 <span class="lineno">10</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
 
-<p><a href="http://www.cnblogs.com/chenwenbiao/archive/2011/08/01/2123905.html">php文件锁</a>  </p>
+
+<p><a href="http://www.cnblogs.com/chenwenbiao/archive/2011/08/01/2123905.html">php文件锁</a></p>
 
 </article> <!-- end #post__content -->
 
