@@ -8,12 +8,15 @@ http://username.github.io/rss.xml
 http://username.github.io/sitemap.txt
 http://username.github.io/tags.html
 
+http://username.github.io/agreement/2014/09/18/http
+http://username.github.io/mysql/2014/09/18/gaoxiao-sql
 http://username.github.io/linux/2014/09/17/nginx-https-config
 http://username.github.io/agreement/2014/09/17/https
 http://username.github.io/standard/2014/09/17/Rest_API
 http://username.github.io/php/2014/09/16/laravel
 http://username.github.io/asset/2014/09/16/js-plug-list
 http://username.github.io/php/2014/09/16/create-composer_packagist
+http://username.github.io/asset/2014/09/16/PJAX
 http://username.github.io/jekyll/2014/09/16/zs-jekyll-blog
 http://username.github.io/jekyll/2014/09/16/jekyll-3-theme
 http://username.github.io/jekyll/2014/09/13/github-jekyll-markdown
@@ -22,6 +25,7 @@ http://username.github.io/linux/2014/09/12/crontab
 http://username.github.io/ruby/2014/09/12/ruby-init
 http://username.github.io/python/2014/09/12/python-init
 http://username.github.io/php/2014/09/12/php%E5%B9%B6%E5%8F%91%E5%86%99%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E9%94%81
+http://username.github.io/php/2014/09/12/php%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5
 http://username.github.io/php/2014/09/12/phpdoc
 http://username.github.io/php/2014/09/12/php_pear_pecl
 http://username.github.io/php/2014/09/12/php-composer

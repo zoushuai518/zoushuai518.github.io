@@ -5,10 +5,30 @@
         <description>CodeMadman - Name Lastname</description>
         <link>http://username.github.io</link>
         <link>http://username.github.io</link>
-        <lastBuildDate>2014-09-16T19:33:36+08:00</lastBuildDate>
-        <pubDate>2014-09-16T19:33:36+08:00</pubDate>
+        <lastBuildDate>2014-09-17T17:54:12+08:00</lastBuildDate>
+        <pubDate>2014-09-17T17:54:12+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>http协议</title>
+                <description>&lt;h2&gt;http协议&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/li0803/archive/2008/11/03/1324746.html&quot;&gt;HTTP协议详解&lt;/a&gt;&lt;/p&gt;
+</description>
+                <link>http://username.github.io/agreement/2014/09/18/http</link>
+                <guid>http://username.github.io/agreement/2014/09/18/http</guid>
+                <pubDate>2014-09-18T02:16:51+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>编写高效的SQL</title>
+                <description>&lt;h2&gt;编写高效的SQL&lt;/h2&gt;
+</description>
+                <link>http://username.github.io/mysql/2014/09/18/gaoxiao-sql</link>
+                <guid>http://username.github.io/mysql/2014/09/18/gaoxiao-sql</guid>
+                <pubDate>2014-09-18T02:16:51+08:00</pubDate>
+        </item>
 
         <item>
                 <title>nginx https配置</title>
@@ -37,8 +57,16 @@
                 <title>Rest API标准</title>
                 <description>&lt;h2&gt;Rest API标准，设计规范&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/springyangwc/archive/2012/01/18/2325784.html&quot;&gt;Rest API 开发 学习笔记&lt;/a&gt;&lt;br/&gt;
-&lt;a href=&quot;http://www.cnblogs.com/shanyou/archive/2012/05/12/2496959.html&quot;&gt;REST 入门介绍&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/springyangwc/archive/2012/01/18/2325784.html&quot;&gt;Rest API 开发 学习笔记&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/shanyou/archive/2012/05/12/2496959.html&quot;&gt;REST 入门介绍&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.searchsoa.com.cn/guide/restful.htm&quot;&gt;REST API 开发者手册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.360doc.com/content/09/0918/23/11553_6152605.shtml&quot;&gt;REST WebService与SOAP WebService的比较&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2011/09/restful.html&quot;&gt;理解RESTful架构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.open-open.com/lib/search?q=php+restful&amp;amp;od=0&quot;&gt;php restful&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/xukai871105/article/details/18775957&quot;&gt;PHP再学习5——RESTFul框架 远程控制LED&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 </description>
                 <link>http://username.github.io/standard/2014/09/17/Rest_API</link>
                 <guid>http://username.github.io/standard/2014/09/17/Rest_API</guid>
@@ -62,6 +90,7 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.nprogress.co/&quot;&gt;nprogress&lt;/a&gt;：jQuery 进度条插件:NProgress.js&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://raphaeljs.com/&quot;&gt;raphael&lt;/a&gt;：强大的矢量图形库:Raphael JS&lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
@@ -80,6 +109,21 @@
 </description>
                 <link>http://username.github.io/php/2014/09/16/create-composer_packagist</link>
                 <guid>http://username.github.io/php/2014/09/16/create-composer_packagist</guid>
+                <pubDate>2014-09-16T18:59:51+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>PJAX</title>
+                <description>&lt;h1&gt;PJAX&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.ueffort.com/pjax-ji-shu/&quot;&gt;PJAX技术&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/flash3d/archive/2013/10/23/3384823.html&quot;&gt;利用pushState开发无刷页面切换&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <link>http://username.github.io/asset/2014/09/16/PJAX</link>
+                <guid>http://username.github.io/asset/2014/09/16/PJAX</guid>
                 <pubDate>2014-09-16T18:59:51+08:00</pubDate>
         </item>
 
@@ -296,6 +340,21 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FO
 </description>
                 <link>http://username.github.io/php/2014/09/12/php%E5%B9%B6%E5%8F%91%E5%86%99%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E9%94%81</link>
                 <guid>http://username.github.io/php/2014/09/12/php并发写文件_文件锁</guid>
+                <pubDate>2014-09-12T18:59:51+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>php依赖注入</title>
+                <description>&lt;h4&gt;php依赖注入&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.yuansir-web.com/2014/03/20/%E7%90%86%E8%A7%A3php-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5laravel-ioc%E5%AE%B9%E5%99%A8/&quot;&gt;php依赖注入&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.yuansir-web.com/&quot;&gt;http://www.yuansir-web.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <link>http://username.github.io/php/2014/09/12/php%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5</link>
+                <guid>http://username.github.io/php/2014/09/12/php依赖注入</guid>
                 <pubDate>2014-09-12T18:59:51+08:00</pubDate>
         </item>
 
