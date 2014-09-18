@@ -1,0 +1,11 @@
+---
+layout: post
+title: "php 设计模式"
+category: php
+comments: true
+date:   2014-09-18 10:50:51
+---
+
+#### php 设计模式
+
+待需...

@@ -8,6 +8,9 @@ http://username.github.io/rss.xml
 http://username.github.io/sitemap.txt
 http://username.github.io/tags.html
 
+http://username.github.io/php/2014/09/18/php-%E9%9D%A2%E8%AF%95
+http://username.github.io/php/2014/09/18/php-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F
+http://username.github.io/php/2014/09/18/php-technology-site
 http://username.github.io/agreement/2014/09/18/http
 http://username.github.io/mysql/2014/09/18/gaoxiao-sql
 http://username.github.io/linux/2014/09/17/nginx-https-config
@@ -25,10 +28,10 @@ http://username.github.io/linux/2014/09/12/crontab
 http://username.github.io/ruby/2014/09/12/ruby-init
 http://username.github.io/python/2014/09/12/python-init
 http://username.github.io/php/2014/09/12/php%E5%B9%B6%E5%8F%91%E5%86%99%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E9%94%81
-http://username.github.io/php/2014/09/12/php%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5
 http://username.github.io/php/2014/09/12/phpdoc
 http://username.github.io/php/2014/09/12/php_pear_pecl
 http://username.github.io/php/2014/09/12/php-composer
+http://username.github.io/php/2014/09/12/php-DI_IoC
 http://username.github.io/jekyll/2014/09/12/jekyll-%E4%B8%AD%E7%9A%84%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE
 http://username.github.io/tool/2014/09/12/git%E4%BB%8B%E7%BB%8D
 http://username.github.io/jekyll/2014/09/12/%E5%85%B3%E4%BA%8EJekyll

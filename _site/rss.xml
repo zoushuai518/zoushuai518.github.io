@@ -5,10 +5,47 @@
         <description>CodeMadman - Name Lastname</description>
         <link>http://username.github.io</link>
         <link>http://username.github.io</link>
-        <lastBuildDate>2014-09-17T17:54:12+08:00</lastBuildDate>
-        <pubDate>2014-09-17T17:54:12+08:00</pubDate>
+        <lastBuildDate>2014-09-18T13:14:10+08:00</lastBuildDate>
+        <pubDate>2014-09-18T13:14:10+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>php 面试提</title>
+                <description>&lt;h4&gt;php 面试提&lt;/h4&gt;
+
+&lt;p&gt;待需...&lt;/p&gt;
+</description>
+                <link>http://username.github.io/php/2014/09/18/php-%E9%9D%A2%E8%AF%95</link>
+                <guid>http://username.github.io/php/2014/09/18/php-面试</guid>
+                <pubDate>2014-09-18T18:50:51+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>php 设计模式</title>
+                <description>&lt;h4&gt;php 设计模式&lt;/h4&gt;
+
+&lt;p&gt;待需...&lt;/p&gt;
+</description>
+                <link>http://username.github.io/php/2014/09/18/php-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F</link>
+                <guid>http://username.github.io/php/2014/09/18/php-设计模式</guid>
+                <pubDate>2014-09-18T18:50:51+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>php 技术站点列表</title>
+                <description>&lt;h4&gt;php 技术站点列表&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://php-di.org/&quot;&gt;http://php-di.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.yuansir-web.com/category/php/&quot;&gt;http://www.yuansir-web.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <link>http://username.github.io/php/2014/09/18/php-technology-site</link>
+                <guid>http://username.github.io/php/2014/09/18/php-technology-site</guid>
+                <pubDate>2014-09-18T18:50:51+08:00</pubDate>
+        </item>
 
         <item>
                 <title>http协议</title>
@@ -340,21 +377,6 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FO
 </description>
                 <link>http://username.github.io/php/2014/09/12/php%E5%B9%B6%E5%8F%91%E5%86%99%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E9%94%81</link>
                 <guid>http://username.github.io/php/2014/09/12/php并发写文件_文件锁</guid>
-                <pubDate>2014-09-12T18:59:51+08:00</pubDate>
-        </item>
-
-        <item>
-                <title>php依赖注入</title>
-                <description>&lt;h4&gt;php依赖注入&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.yuansir-web.com/2014/03/20/%E7%90%86%E8%A7%A3php-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5laravel-ioc%E5%AE%B9%E5%99%A8/&quot;&gt;php依赖注入&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.yuansir-web.com/&quot;&gt;http://www.yuansir-web.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <link>http://username.github.io/php/2014/09/12/php%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5</link>
-                <guid>http://username.github.io/php/2014/09/12/php依赖注入</guid>
                 <pubDate>2014-09-12T18:59:51+08:00</pubDate>
         </item>
 
@@ -706,6 +728,23 @@ $ composer self-update
 </description>
                 <link>http://username.github.io/php/2014/09/12/php-composer</link>
                 <guid>http://username.github.io/php/2014/09/12/php-composer</guid>
+                <pubDate>2014-09-12T18:59:51+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>php 依赖注入(DI) & 控制反转(IoC)</title>
+                <description>&lt;h4&gt;php依赖注入&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.yuansir-web.com/2014/03/20/%E7%90%86%E8%A7%A3php-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5laravel-ioc%E5%AE%B9%E5%99%A8/&quot;&gt;php依赖注入&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.yuansir-web.com/&quot;&gt;http://www.yuansir-web.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.thinkphp.cn/topic/12180.html&quot;&gt;话说 依赖注入(DI) or 控制反转(IoC)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.blogjava.net/myqiao/archive/2009/05/01/268454.html&quot;&gt;用PHP实现简单的控制反转(IOC) 依赖注入(DI)，用JSON配置文件&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <link>http://username.github.io/php/2014/09/12/php-DI_IoC</link>
+                <guid>http://username.github.io/php/2014/09/12/php-DI_IoC</guid>
                 <pubDate>2014-09-12T18:59:51+08:00</pubDate>
         </item>
 
