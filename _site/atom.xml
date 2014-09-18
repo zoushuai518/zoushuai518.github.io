@@ -4,7 +4,7 @@
  <title>CodeMadman</title>
  <link href="http://username.github.io/" rel="self"/>
  <link href="http://username.github.io"/>
- <updated>2014-09-18T13:14:10+08:00</updated>
+ <updated>2014-09-18T18:00:10+08:00</updated>
  <id>http://username.github.io</id>
  <author>
    <name>Name Lastname</name>
@@ -13,11 +13,77 @@
 
  
  <entry>
-   <title>php 面试提</title>
+   <title>php 反射</title>
+   <link href="http://username.github.io/php/2014/09/18/php-%E5%8F%8D%E5%B0%84"/>
+   <updated>2014-09-18T22:20:51+08:00</updated>
+   <id>http://username.github.io/php/2014/09/18/php-反射</id>
+   <content type="html">&lt;h4&gt;php AOP&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://php.net/manual/zh/book.reflection.php&quot;&gt;php 反射&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>php AOP</title>
+   <link href="http://username.github.io/php/2014/09/18/php-AOP"/>
+   <updated>2014-09-18T22:20:51+08:00</updated>
+   <id>http://username.github.io/php/2014/09/18/php-AOP</id>
+   <content type="html">&lt;h4&gt;php AOP&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/xpbb/p/3282829.html&quot;&gt;php AOP面向切面编程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/baochuan/archive/2012/08/22/2644529.html&quot;&gt;PHP系列学习之AOP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>深入理解DIP、IoC、DI以及IoC容器</title>
+   <link href="http://username.github.io/php/2014/09/18/php-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3DIP%E3%80%81IoC%E3%80%81DI%E4%BB%A5%E5%8F%8AIoC%E5%AE%B9%E5%99%A8"/>
+   <updated>2014-09-18T18:59:51+08:00</updated>
+   <id>http://username.github.io/php/2014/09/18/php-深入理解DIP、IoC、DI以及IoC容器</id>
+   <content type="html">&lt;h4&gt;深入理解DIP、IoC、DI以及IoC容器&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/liuhaorain/p/3747470.html&quot;&gt;深入理解DIP、IoC、DI以及IoC容器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.blogjava.net/myqiao/archive/2009/05/01/268454.html&quot;&gt;用PHP实现简单的控制反转(IOC) 依赖注入(DI)，用JSON配置文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.thinkphp.cn/topic/12180.html&quot;&gt;话说 依赖注入(DI) or 控制反转(IoC)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>php 依赖注入(DI) & 控制反转(IoC)</title>
+   <link href="http://username.github.io/php/2014/09/18/php-DI_IoC"/>
+   <updated>2014-09-18T18:59:51+08:00</updated>
+   <id>http://username.github.io/php/2014/09/18/php-DI_IoC</id>
+   <content type="html">&lt;h4&gt;php依赖注入&lt;/h4&gt;
+
+&lt;p&gt;PHP实现依赖注入-使用反射机制和动态代理技术&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.yuansir-web.com/2014/03/20/%E7%90%86%E8%A7%A3php-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5laravel-ioc%E5%AE%B9%E5%99%A8/&quot;&gt;php依赖注入&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.yuansir-web.com/&quot;&gt;http://www.yuansir-web.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.thinkphp.cn/topic/12180.html&quot;&gt;话说 依赖注入(DI) or 控制反转(IoC)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.blogjava.net/myqiao/archive/2009/05/01/268454.html&quot;&gt;用PHP实现简单的控制反转(IOC) 依赖注入(DI)，用JSON配置文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://lifesign.me/php-depedency-injection/&quot;&gt;PHP中的依赖注入&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.infoq.com/cn/articles/Succeeding-Dependency-Injection&quot;&gt;http://www.infoq.com/cn/articles/Succeeding-Dependency-Injection&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>php 面试题</title>
    <link href="http://username.github.io/php/2014/09/18/php-%E9%9D%A2%E8%AF%95"/>
    <updated>2014-09-18T18:50:51+08:00</updated>
    <id>http://username.github.io/php/2014/09/18/php-面试</id>
-   <content type="html">&lt;h4&gt;php 面试提&lt;/h4&gt;
+   <content type="html">&lt;h4&gt;php 面试题&lt;/h4&gt;
 
 &lt;p&gt;待需...&lt;/p&gt;
 </content>
@@ -730,23 +796,6 @@ $ composer self-update
 &lt;a href=&quot;https://getcomposer.org/&quot;&gt;getcomposer&lt;/a&gt;&lt;br/&gt;
 &lt;a href=&quot;http://docs.phpcomposer.com/&quot;&gt;php composer docs&lt;/a&gt;&lt;br/&gt;
 &lt;a href=&quot;https://packagist.org/&quot;&gt;packagist&lt;/a&gt;&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>php 依赖注入(DI) & 控制反转(IoC)</title>
-   <link href="http://username.github.io/php/2014/09/12/php-DI_IoC"/>
-   <updated>2014-09-12T18:59:51+08:00</updated>
-   <id>http://username.github.io/php/2014/09/12/php-DI_IoC</id>
-   <content type="html">&lt;h4&gt;php依赖注入&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.yuansir-web.com/2014/03/20/%E7%90%86%E8%A7%A3php-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5laravel-ioc%E5%AE%B9%E5%99%A8/&quot;&gt;php依赖注入&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.yuansir-web.com/&quot;&gt;http://www.yuansir-web.com/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.thinkphp.cn/topic/12180.html&quot;&gt;话说 依赖注入(DI) or 控制反转(IoC)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.blogjava.net/myqiao/archive/2009/05/01/268454.html&quot;&gt;用PHP实现简单的控制反转(IOC) 依赖注入(DI)，用JSON配置文件&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
 </content>
  </entry>
  

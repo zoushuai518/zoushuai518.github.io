@@ -1,0 +1,11 @@
+---
+layout: post
+title: "php 反射"
+category: php
+comments: true
+date:   2014-09-18 14:20:51
+---
+
+#### php AOP
+
+- [php 反射](http://php.net/manual/zh/book.reflection.php)

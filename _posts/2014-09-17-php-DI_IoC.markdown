@@ -3,12 +3,16 @@ layout: post
 title: "php 依赖注入(DI) & 控制反转(IoC)"
 category: php
 comments: true
-date:   2014-09-12 10:59:51
+date:   2014-09-18 10:59:51
 ---
 
 #### php依赖注入
+
+PHP实现依赖注入-使用反射机制和动态代理技术  
 
 - [php依赖注入](http://www.yuansir-web.com/2014/03/20/%E7%90%86%E8%A7%A3php-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5laravel-ioc%E5%AE%B9%E5%99%A8/)
 - [http://www.yuansir-web.com/](http://www.yuansir-web.com/)
 - [话说 依赖注入(DI) or 控制反转(IoC)](http://www.thinkphp.cn/topic/12180.html)
 - [用PHP实现简单的控制反转(IOC) 依赖注入(DI)，用JSON配置文件](http://www.blogjava.net/myqiao/archive/2009/05/01/268454.html)
+- [PHP中的依赖注入](http://lifesign.me/php-depedency-injection/)
+- [http://www.infoq.com/cn/articles/Succeeding-Dependency-Injection](http://www.infoq.com/cn/articles/Succeeding-Dependency-Injection)
