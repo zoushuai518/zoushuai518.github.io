@@ -8,6 +8,7 @@ http://username.github.io/rss.xml
 http://username.github.io/sitemap.txt
 http://username.github.io/tags.html
 
+http://username.github.io/asset/2014/09/19/nodejs
 http://username.github.io/php/2014/09/18/php-%E5%8F%8D%E5%B0%84
 http://username.github.io/php/2014/09/18/php-AOP
 http://username.github.io/php/2014/09/18/php-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3DIP%E3%80%81IoC%E3%80%81DI%E4%BB%A5%E5%8F%8AIoC%E5%AE%B9%E5%99%A8
