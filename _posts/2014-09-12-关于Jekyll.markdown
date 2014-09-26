@@ -16,7 +16,8 @@ Jekyll的强大之处在于其可以用是，[模板](/jekyll/2014/09/12/jekyll-
 
 ps：  
 jekyll参考网站:  
-1.[jekyllcn.com](http://jekyllcn.com/)  
-2.[jekyllrb.com](http://jekyllrb.com/)  
+1. [jekyllcn.com](http://jekyllcn.com/)  
+2. [jekyllrb.com](http://jekyllrb.com/)  
+2. [jekyllbootstrap](http://jekyllbootstrap.com/)  
 
 

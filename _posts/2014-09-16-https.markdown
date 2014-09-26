@@ -3,6 +3,7 @@ layout: post
 title: "https协议"
 category: agreement
 comments: true
+tags : [https, http]
 date:   2014-09-16 18:16:51
 ---
 

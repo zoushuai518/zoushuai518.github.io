@@ -1289,6 +1289,25 @@ code{
 	border-radius: 2px;
 }
 
+.impor{
+	padding: 2px 4px;
+	font-size: 90%;
+	color: #000000;
+	background-color: #f9f2f4;
+	white-space: nowrap;
+	border-radius: 2px;
+	font-weight: bold;
+}
+
+.impor-no-weight{
+	padding: 2px 4px;
+	font-size: 90%;
+	color: #EE0000;
+	background-color: #f9f2f4;
+	white-space: nowrap;
+	border-radius: 2px;
+}
+
 /* a css */
 /*
 a{
