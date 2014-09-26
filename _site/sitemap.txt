@@ -8,7 +8,6 @@ http://username.github.io/rss.xml
 http://username.github.io/sitemap.txt
 http://username.github.io/tags.html
 
-http://username.github.io/php/2014/09/26/php-DI_IoC
 http://username.github.io/php/2014/09/26/php-session%E5%85%B1%E4%BA%AB
 http://username.github.io/php/2014/09/26/php-session_cookie
 http://username.github.io/php/2014/09/25/php-factory
@@ -28,6 +27,7 @@ http://username.github.io/php/2014/09/18/php-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8
 http://username.github.io/php/2014/09/18/php-technology-site
 http://username.github.io/agreement/2014/09/18/http
 http://username.github.io/mysql/2014/09/18/gaoxiao-sql
+http://username.github.io/php/2014/09/17/php-DI_IoC
 http://username.github.io/linux/2014/09/17/shell
 http://username.github.io/linux/2014/09/17/nginx-https-config
 http://username.github.io/agreement/2014/09/17/https

@@ -3,7 +3,7 @@ layout: post
 title: "php 依赖注入(DI) & 控制反转(IoC)"
 category: php
 comments: true
-date:   2014-09-26 10:59:51
+date:   2014-09-17 10:59:51
 ---
 
 <span class="impor">干货：依赖注入本质就是使代码耦合度更低；IoC容器是为了依赖过多程序过于复杂而诞生的，其目的就是配合依赖注入来解耦，使得代码更容易维护</span>
@@ -267,7 +267,6 @@ echo $hello->sayHello();
 // 输出：
 // English Version:Hello World!
 // 中文版世界你好！
-?>
 ?>
 {% endhighlight %}
 
