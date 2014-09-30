@@ -4,13 +4,263 @@
  <title>CodeMadman</title>
  <link href="http://username.github.io/" rel="self"/>
  <link href="http://username.github.io"/>
- <updated>2014-09-26T18:45:22+08:00</updated>
+ <updated>2014-09-30T15:52:10+08:00</updated>
  <id>http://username.github.io</id>
  <author>
    <name>Name Lastname</name>
    <email>blah@email.test</email>
  </author>
 
+ 
+ <entry>
+   <title>nginx配置详解</title>
+   <link href="http://username.github.io/linux/2014/10/01/nginx_config"/>
+   <updated>2014-10-01T02:16:51+08:00</updated>
+   <id>http://username.github.io/linux/2014/10/01/nginx_config</id>
+   <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://huangqiqing123.iteye.com/blog/1895192&quot;&gt;nginx 反向代理 取得真实IP和域名&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/meteoric_cry/archive/2011/01/10/1932312.html&quot;&gt;使用nginx反向代理获取百度MP3的真实网址&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.jbxue.com/article/nginx/19961.html&quot;&gt;nginx开启gzip&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.iteye.com/topic/1131761&quot;&gt;nginx开启gzip&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.php100.com/html/program/nginx/2013/0905/5526.html&quot;&gt;nginx开启gzip&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>NoSQL init</title>
+   <link href="http://username.github.io/mongodb/2014/10/01/NoSql"/>
+   <updated>2014-10-01T02:16:51+08:00</updated>
+   <id>http://username.github.io/mongodb/2014/10/01/NoSql</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.csdn.net/article/2012-10-12/2810660-NoSQL-MongoDB-HBase&quot;&gt;10个出色的NoSQL数据库&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>MongoDB init</title>
+   <link href="http://username.github.io/mongodb/2014/10/01/MongoDB"/>
+   <updated>2014-10-01T02:16:51+08:00</updated>
+   <id>http://username.github.io/mongodb/2014/10/01/MongoDB</id>
+   <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://php.net/manual/zh/class.mongodb.php&quot;&gt;MongoDB 类&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.mongodb.org/&quot;&gt;http://www.mongodb.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://robomongo.org/&quot;&gt;http://robomongo.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://try.mongodb.org/&quot;&gt;http://try.mongodb.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/phphuaibei/archive/2011/09/03/2164594.html&quot;&gt;Mongodb for PHP教程之管理工具&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://renial.iteye.com/blog/684829&quot;&gt;NoSQL介绍及MongoDB入门&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>php 抽象类和接口</title>
+   <link href="http://username.github.io/php/2014/09/30/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3"/>
+   <updated>2014-09-30T23:00:51+08:00</updated>
+   <id>http://username.github.io/php/2014/09/30/抽象类和接口</id>
+   <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.sina.com.cn/s/blog_65f387740100slgd.html&quot;&gt;php抽象类和接口的区别&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/hylaz/archive/2012/11/11/2765397.html&quot;&gt;php抽象类和接口&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>vim ide</title>
+   <link href="http://username.github.io/tool/2014/09/30/vim"/>
+   <updated>2014-09-30T18:59:51+08:00</updated>
+   <id>http://username.github.io/tool/2014/09/30/vim</id>
+   <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/canmusic/archive/2013/04/08/3006564.html&quot;&gt;vim js|nodejs ide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>加速PHP的ECHO</title>
+   <link href="http://username.github.io/php/2014/09/29/%E5%8A%A0%E9%80%9FPHP%E7%9A%84ECHO"/>
+   <updated>2014-09-29T22:41:51+08:00</updated>
+   <id>http://username.github.io/php/2014/09/29/加速PHP的ECHO</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.laruence.com/2011/02/13/1870.html&quot;&gt;加速PHP的ECHO&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>php正则表达式</title>
+   <link href="http://username.github.io/php/2014/09/29/php-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"/>
+   <updated>2014-09-29T22:41:51+08:00</updated>
+   <id>http://username.github.io/php/2014/09/29/php-正则表达式</id>
+   <content type="html">&lt;p&gt;定义：正则表达式描述了一种字符串匹配的模式，通过这个模式在特定的函数中对字符串进行匹配、查找、替换和分隔等操作，由原子、元字符和模式修正符三部分组成的文字模式。&lt;br/&gt;
+在PHP中，有两套正则的处理函数库：PCRE和POSIX。前者以preg&lt;em&gt;前缀命名，与Perl兼容；后者以ereg&lt;/em&gt;前缀命名。二者功能相似，但PCRE的效率略高。&lt;/p&gt;
+
+&lt;p&gt;与Perl语言兼容的正则表达式处理函数：&lt;br/&gt;
+&lt;img src=&quot;/assets/postImage/php/preg_function.png&quot; title=&quot;preg正则函数&quot; alt=&quot;preg正则函数&quot; /&gt;&lt;/p&gt;
+
+&lt;h3&gt;正则表达式基本组成部分&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;定界符：在与Perl兼容的正则函数中使用模式时，必须给模式加上定界符。除了字母、数字和反斜线()之外的任何字符都可以作为定界符号&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$m1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;/&amp;lt;\/\w+/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$m3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;!^(?i)php[34]!&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;原子：原子包含了&lt;code&gt;普通字符&lt;/code&gt;，如字母、数字；&lt;code&gt;非打印字符&lt;/code&gt;，如空格、回车；&lt;code&gt;特殊字符和元字符&lt;/code&gt;，如引号、*、+等，必须用”\”进行转义；&lt;code&gt;自定义原子表&lt;/code&gt;，如[apj]、[a-z]；&lt;code&gt;通用字符类型&lt;/code&gt;，如\d、\D。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$mail1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;/^[0-9a-zA-Z]+@[0-9a-zA-Z]+(\.[0-9a-zA-Z]+){0,3}$/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;元字符：用于构建正则表达式的具有特殊含义的字符。Perl可以使用各种元字符来搜索匹配，如*、+、？.常见的元字符如下&lt;br/&gt;
+&lt;img src=&quot;/assets/postImage/php/preg_yzf.png&quot; title=&quot;preg元字符&quot; alt=&quot;preg元字符&quot; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;模式修正符：在正则的定界符之外使用，扩展正则在匹配、替换等方面的功能。&lt;br/&gt;
+&lt;img src=&quot;/assets/postImage/php/preg_msxzf.png&quot; title=&quot;preg模式修正符&quot; alt=&quot;preg模式修正符&quot; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>从Yii2的Request看其CSRF防范策略</title>
+   <link href="http://username.github.io/php/2014/09/29/php-%E4%BB%8EYii2%E7%9A%84Request%E7%9C%8B%E5%85%B6CSRF%E9%98%B2%E8%8C%83%E7%AD%96%E7%95%A5"/>
+   <updated>2014-09-29T22:41:51+08:00</updated>
+   <id>http://username.github.io/php/2014/09/29/php-从Yii2的Request看其CSRF防范策略</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/ganiks/p/yii2-request-csrf-safe-strategy.html&quot;&gt;从Yii2的Request看其CSRF防范策略&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>php strlen和mb_strlen的区别</title>
+   <link href="http://username.github.io/php/2014/09/29/php-strlen-mb_strlen"/>
+   <updated>2014-09-29T22:41:51+08:00</updated>
+   <id>http://username.github.io/php/2014/09/29/php-strlen-mb_strlen</id>
+   <content type="html">&lt;p&gt;&lt;span class=&quot;impor&quot;&gt;干货：strlen和mb_strlen都是返回字符串的长度；strlen纯英文ok；纯中文、中英混合两个返回长度不同；后者建议使用mb_strlen。&lt;br/&gt;
+mb_strlen不是php内置函数，使用此函数，需要开启php_mbstring扩展。
+&lt;/span&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;strlen返回的是字符串的&lt;/span class=&quot;impor&quot;&gt;字节数&lt;/span&gt;。(英文字符串长度和字节数相同)&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;mb_strlen真正返回的是字符串的长度，它和字符编码相关。(gbk:{英文：1个字符占用1个字节长度；中文：1个字符占用2个字节长度}；utf8:{英文：1个字符占用1个字节长度；中文：1个字符占用3个字节长度})&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;strlen不能处理中文或者中英文混合字符串&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;mb_strlen可以处理，strlen所不能的字符串&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h3&gt;DEMO:&lt;/h3&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//测试时文件的编码方式要是UTF8  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;中文a字1符&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;strlen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;lt;br&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//14  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;mb_strlen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;utf8&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;lt;br&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//6  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;mb_strlen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;gbk&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;lt;br&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//8  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;mb_strlen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;gb2312&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;lt;br&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//10  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//结果分析：在strlen计算时，对待一个UTF8的中文字符是3个长度，所以“中文a字1符”长度是3*4+2=14&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//在mb_strlen计算时，选定内码为UTF8，则会将一个中文字符当作长度1来计算，所以“中文a字1符”长度是6 .&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://cn2.php.net/strlen&quot;&gt;strlen&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://cn2.php.net/manual/zh/function.mb-strlen.php&quot;&gt;mb_strlen&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://cn2.php.net/manual/zh/function.mb-internal-encoding.php&quot;&gt;mb_internal_encoding&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>fastcgi_finish_request</title>
+   <link href="http://username.github.io/php/2014/09/29/php-fastcgi_finish_request"/>
+   <updated>2014-09-29T22:41:51+08:00</updated>
+   <id>http://username.github.io/php/2014/09/29/php-fastcgi_finish_request</id>
+   <content type="html">&lt;h2&gt;使用fastcgi_finish_request提高页面响应速度&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.laruence.com/2011/04/13/1991.html&quot;&gt;使用fastcgi_finish_request提高页面响应速度&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://php.net/manual/zh/function.fastcgi-finish-request.php&quot;&gt;fastcgi_finish_request&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>CSRF攻击</title>
+   <link href="http://username.github.io/php/2014/09/29/php-CSRF%E6%94%BB%E5%87%BB"/>
+   <updated>2014-09-29T22:41:51+08:00</updated>
+   <id>http://username.github.io/php/2014/09/29/php-CSRF攻击</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html&quot;&gt;浅谈CSRF攻击方式&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>建造者模式</title>
+   <link href="http://username.github.io/php/2014/09/29/php-Builder"/>
+   <updated>2014-09-29T22:41:51+08:00</updated>
+   <id>http://username.github.io/php/2014/09/29/php-Builder</id>
+   <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/aqsmoke/p/3973360.html&quot;&gt;建造者模式&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>php 获取http header信息</title>
+   <link href="http://username.github.io/php/2014/09/29/php-get_http_header_msg"/>
+   <updated>2014-09-29T03:00:51+08:00</updated>
+   <id>http://username.github.io/php/2014/09/29/php-get_http_header_msg</id>
+   <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://php.net/manual/zh/reserved.variables.httpresponseheader.php&quot;&gt;$http_response_header&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://php.net/manual/zh/function.get-headers.php&quot;&gt;get_headers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://php.net/manual/zh/function.curl-getinfo.php&quot;&gt;curl_getinfo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://php.net/manual/zh/function.apache-request-headers.php&quot;&gt;apache_request_headers&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>php file_get_contents抓取网页</title>
+   <link href="http://username.github.io/php/2014/09/29/php-file_get_contents"/>
+   <updated>2014-09-29T03:00:51+08:00</updated>
+   <id>http://username.github.io/php/2014/09/29/php-file_get_contents</id>
+   <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://iamcaihuafeng.blog.sohu.com/139517344.html&quot;&gt;file_get_contents抓取网页&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Docker</title>
+   <link href="http://username.github.io/linux/2014/09/28/Docker"/>
+   <updated>2014-09-28T22:16:51+08:00</updated>
+   <id>http://username.github.io/linux/2014/09/28/Docker</id>
+   <content type="html">&lt;h2&gt;Docker&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.widuu.com/docker/&quot;&gt;Docker中文文档&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>PHP session共享</title>
@@ -691,6 +941,15 @@ Creator也可以定义一个工厂方法的缺省实现，它返回一个缺省�
 
 &lt;h2&gt;理解2(使用此)：&lt;/h2&gt;
 
+&lt;p&gt;&lt;span class=&quot;impor&quot;&gt;单例模式的三个特点：&lt;/span&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;一个类只能有一个实例&lt;/li&gt;
+&lt;li&gt;它必须自行创建这个实例&lt;/li&gt;
+&lt;li&gt;它必须自行向整个系统提供这个实例&lt;/li&gt;
+&lt;/ol&gt;
+
+
 &lt;p&gt;&lt;span class=&quot;impor&quot;&gt;单例模式的三个要点：&lt;/span&gt;&lt;/p&gt;
 
 &lt;ul&gt;
@@ -780,6 +1039,11 @@ Creator也可以定义一个工厂方法的缺省实现，它返回一个缺省�
    <content type="html">&lt;h1&gt;nodejs&lt;/h1&gt;
 
 &lt;p&gt;暂时分类到前端&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.npmjs.org/package/jshint&quot;&gt;npmjs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 </content>
  </entry>
  
@@ -1251,8 +1515,10 @@ Catchable fatal error: Argument 1 passed to Models_Workflow_Instance::getRand() 
 &lt;li&gt;&lt;a href=&quot;http://blog.samoay.me/index&quot;&gt;醉清风的博客&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.laruence.com/&quot;&gt;风雪之隅&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/bluefrog&quot;&gt;一天一点进步&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://requests.ryanmccue.info/&quot;&gt;requests for php&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/zoushuai518/DesignPatternsPHP&quot;&gt;https://github.com/zoushuai518/DesignPatternsPHP&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/zoushuai518/learn-php-core&quot;&gt;https://github.com/zoushuai518/learn-php-core&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/zoushuai518/learn-php-core&quot;&gt;https://github.com/zoushuai518/learn-php-core&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/cate/php/&quot;&gt;http://www.cnblogs.com/cate/php/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 </content>
@@ -1863,7 +2129,7 @@ location ~ \.php${
 &lt;li&gt;&lt;a href=&quot;http://www.nprogress.co/&quot;&gt;nprogress&lt;/a&gt;：jQuery 进度条插件:NProgress.js&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://ricostacruz.com/nprogress/&quot;&gt;nprogress&lt;/a&gt;：模拟youtue进度条插件:NProgress.js&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://raphaeljs.com/&quot;&gt;raphael&lt;/a&gt;：强大的矢量图形库:Raphael JS&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://jshint.com/&quot;&gt;JSHlint&lt;/a&gt;：&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.jshint.com/install/&quot;&gt;JSHlint&lt;/a&gt;：&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.jslint.com/&quot;&gt;JSlint&lt;/a&gt;：&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://prismjs.com/&quot;&gt;prismjs&lt;/a&gt;：js不同语言语法高亮插件&lt;/li&gt;
 &lt;/ul&gt;
@@ -1889,6 +2155,13 @@ location ~ \.php${
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://es6.ruanyifeng.com/&quot;&gt;es6&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;js other&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.iteye.com/news/28028-JavaScript-code-style-guidek&quot;&gt;一些达成共识的JavaScript编码风格约定&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 </content>
