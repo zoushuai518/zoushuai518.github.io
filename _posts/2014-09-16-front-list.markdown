@@ -32,7 +32,7 @@ date:   2014-09-16 10:59:51
 - [nprogress](http://www.nprogress.co/)：jQuery 进度条插件:NProgress.js
 - [nprogress](http://ricostacruz.com/nprogress/)：模拟youtue进度条插件:NProgress.js
 - [raphael](http://raphaeljs.com/)：强大的矢量图形库:Raphael JS
-- [JSHlint](http://jshint.com/)：
+- [JSHlint](http://www.jshint.com/install/)：
 - [JSlint](http://www.jslint.com/)：
 - [prismjs](http://prismjs.com/)：js不同语言语法高亮插件
 
@@ -49,3 +49,7 @@ date:   2014-09-16 10:59:51
 
 # js标准
 - [es6](http://es6.ruanyifeng.com/)
+
+
+# js other
+- [一些达成共识的JavaScript编码风格约定](http://www.iteye.com/news/28028-JavaScript-code-style-guidek)

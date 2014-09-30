@@ -20,5 +20,11 @@ date:   2014-09-18 10:50:51
 - [风雪之隅](http://www.laruence.com/)
 - [一天一点进步](http://www.cnblogs.com/bluefrog)
 
+- [requests for php](http://requests.ryanmccue.info/)
+
 - [https://github.com/zoushuai518/DesignPatternsPHP](https://github.com/zoushuai518/DesignPatternsPHP)
 - [https://github.com/zoushuai518/learn-php-core](https://github.com/zoushuai518/learn-php-core)
+
+- [http://www.cnblogs.com/cate/php/](http://www.cnblogs.com/cate/php/)
+
+

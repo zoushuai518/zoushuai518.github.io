@@ -22,7 +22,8 @@ if ($(window).width() <= 1280) {
     tag8       = $('.asset'),
     tag9       = $('.standard'),
     tag10       = $('.agreement'),
-    tag11       = $('.mysql');
+    tag11       = $('.mysql'),
+    tag12       = $('.mongodb');
     //tag6       = $('.place_your_tag_name_here');
 var sidebar    = $('#sidebar'),
     container  = $('#post'),
@@ -37,7 +38,7 @@ var clickHandler = function(k) {
     window['tag'+k].delay(50).fadeIn(350);
   }
 };
-for (var i = 1; i <= 11; i++) {
+for (var i = 1; i <= 12; i++) {
   $('#js-label' + i).on('click', clickHandler(i));
 }
 
