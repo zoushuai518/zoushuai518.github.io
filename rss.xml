@@ -5,10 +5,127 @@
         <description>CodeMadman - Name Lastname</description>
         <link>http://username.github.io</link>
         <link>http://username.github.io</link>
-        <lastBuildDate>2014-10-02T23:09:08+08:00</lastBuildDate>
-        <pubDate>2014-10-02T23:09:08+08:00</pubDate>
+        <lastBuildDate>2014-10-07T14:24:41+08:00</lastBuildDate>
+        <pubDate>2014-10-07T14:24:41+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>配置 Git 和 SSH 密钥连接 Github</title>
+                <description>&lt;h3&gt;1.准备工作&lt;/h3&gt;
+
+&lt;p&gt;安装 git&lt;br/&gt;
+sudo apt-get install git&lt;br/&gt;
+sudo apt-get install gitk&lt;/p&gt;
+
+&lt;h3&gt;2.生成SSHKeys&lt;/h3&gt;
+
+&lt;p&gt;生成 SSH Keys
+以 Linux (Ubuntu) 为例，需要用到git的 ssh-keygen 命令：&lt;/p&gt;
+
+&lt;p&gt;ssh-keygen -t rsa -C &quot;zoushuai518@gmail.com&quot; -f ~/.ssh/csser-github&lt;/p&gt;
+
+&lt;p&gt;简单介绍下参数含义：
+-t 指定密钥类型，默认即 rsa ，可以省略
+-C 设置注释文字，比如你的邮箱
+-f 指定密钥文件存储文件名，会生成 csser-github 和 csser-github.pub 两个密钥文件
+回车后，遇到提示输入 yes 即可，剩下一路回车，密钥文件就在指定路径下生成了。&lt;/p&gt;
+
+&lt;h3&gt;3.将SSH公钥添加到Github&lt;/h3&gt;
+
+&lt;p&gt;将 SSH 公钥添加到 Github(或者其它的git server)
+登录 Github 帐号，找到帐号设置 -&gt; SSH Keys
+点击 Add New SSH Key
+将本地生成的公钥文件（csser-github.pub）中的文字全选复制到 key 栏，点击 add key 保存。&lt;/p&gt;
+
+&lt;h3&gt;4.本地添加SSH别名&lt;/h3&gt;
+
+&lt;p&gt;本地添加 SSH 别名
+如果本机有其它密钥，连接 github 时可能不会自动使用刚生成的密钥，需要设置别名：&lt;/p&gt;
+
+&lt;p&gt;$ sudo vi ~/.ssh/config
+加入类似的一段代码：
+host csser-github
+user git
+hostname github.com
+port 22
+identityfile ~/.ssh/csser-github
+保存退出。&lt;/p&gt;
+
+&lt;h3&gt;5.测试连接&lt;/h3&gt;
+
+&lt;p&gt;$ssh -T csser-github
+Hi csser! You've successfully authenticated, but GitHub does not provide shell access.
+表示设置的 SSH Keys 认证通过，但 Github 不提供 shell 访问。
+此时就可以正常使用 Github 了'&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;impor&quot;&gt;url是https的时候会采用用户名认证。 是ssh地址的时候才会采用ssh认证,即密钥认证,不再是用户名密码认证方式&lt;/span&gt;&lt;/p&gt;
+</description>
+                <link>http://username.github.io/tool/2014/10/07/%E9%85%8D%E7%BD%AEGit%E5%92%8CSSH%E5%AF%86%E9%92%A5%E8%BF%9E%E6%8E%A5Github</link>
+                <guid>http://username.github.io/tool/2014/10/07/配置Git和SSH密钥连接Github</guid>
+                <pubDate>2014-10-07T21:41:51+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>Linux下硬盘分区命名</title>
+                <description>&lt;h3&gt;介绍&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;Linux分区的命名: /dev/xxyN /dev/ 这个字串是所有设备文件所在的目录名。因为分区在硬盘上，而硬盘是设备，所以这些文件代表了在/dev/上所有可能的分区。  
+xx    分区名的前两个字母表明分区所在设备的类型。通常是hd(IDE磁盘)或sd(SCSI磁盘)  
+y     这个字母标明分区所在的设备。例如，/dev/hda(第一个IDE磁盘)或/dev/sdb(第二个SCSI磁盘)  
+N     最后的数字代表分区。前四个(主分区或扩展分区)使用数字从1排列到4；逻辑分区从5开始。  
+
+例如:/dev/hda3是在第一个IDE硬盘上的第三个主分区或扩展分区；/dev/sdb6是在第二个SCSI硬盘上的第二个逻辑分区。  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;详解&lt;/h3&gt;
+
+&lt;p&gt;一块硬盘最多只能有四个主分区。其中一个可以为扩展分区（主分区的特殊形式），扩展分区中可以有60个逻辑分区。linux表示分区，与顺序和类型有关。&lt;/p&gt;
+
+&lt;p&gt;/dev/sda1为第一主分区&lt;br/&gt;
+/dev/sda2为第二主分区&lt;br/&gt;
+/dev/sda3为第三主分区&lt;br/&gt;
+/dev/sda4为第四主分区&lt;br/&gt;
+/dev/sda5为第一逻辑分区&lt;br/&gt;
+/dev/sda6为第二逻辑分区&lt;br/&gt;
+……
+不管有几个主分区，逻辑分区都是从/dev/sda5开始的。也就是说，第一个逻辑分区是/dev/sda5。
+而四个主分区，可能只有一个，或二个。而且不一定是从/dev/sda1开始的。&lt;/p&gt;
+
+&lt;p&gt;一般以前的DOS和windows系统（2000/XP/2003，不包括windows7），使用自带的分区工具，只能分一个主分区和一个扩展分区（内含多个逻辑分区）所以，默认情况下（不是一定，可以改变的），C盘为/dev/sda1，D盘为/dev/sda5，E盘为/dev/sda6……&lt;/p&gt;
+
+&lt;p&gt;其中/dev/sda为第一块硬盘&lt;br/&gt;
+/dev/sdb为第二块硬盘（如果有的话），分区表示法后面的数字一样。&lt;/p&gt;
+
+&lt;p&gt;&lt;span calss=&quot;impor&quot;&gt;grub&lt;/span&gt;是linux系统的启动管理器，也是根据分区顺序表示，但有不同；是以0开始的，不是以1开始的。&lt;br/&gt;
+(hd0,0)为第一主分区&lt;br/&gt;
+(hd0,1)为第二主分区&lt;br/&gt;
+(hd0,4)为第一逻辑分区（通常为D盘）&lt;br/&gt;
+(hd0,5)为第二个逻辑争区（通常为E盘）&lt;br/&gt;
+……
+(hd0)为第一个硬盘&lt;br/&gt;
+(hd1)为第二个硬盘&lt;/p&gt;
+
+&lt;p&gt;grub2是新的启动管理器，表示方法与grub有些微妙但很重要的不同&lt;br/&gt;
+(hd0,1)为第一主分区&lt;br/&gt;
+(hd0,2)为第二主分区&lt;br/&gt;
+(hd0,5)为第一逻辑分区（通常为D盘）&lt;br/&gt;
+(hd0,6)为第二个逻辑争区（通常为E盘）&lt;br/&gt;
+……
+(hd0)为第一个硬盘&lt;br/&gt;
+(hd1)为第二个硬盘&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;impor&quot;&gt;
+备注：
+本来Linux会给IDE硬盘标记hdx，给SCSI硬盘标记sdx，按这个规定，你的SCSI硬盘该是sda。&lt;br/&gt;
+但近来很多发行版不再细分，而是将U盘、SATA硬盘甚至存储卡、IDE硬盘等通通标记为sdx，这样一来，你的IDE硬盘也可能被命名为sdx，那么SCSI硬盘是sda还是sdb就难说了。&lt;br/&gt;
+先看看IDE硬盘是什么：如果是hda，那么SCSI硬盘就是sda；如果是sda（sdb），那SCSI硬盘就可能是sdb（sda）。&lt;br/&gt;
+&lt;/span&gt;&lt;/p&gt;
+</description>
+                <link>http://username.github.io/linux/2014/10/07/Linux%E4%B8%8B%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA%E5%91%BD%E5%90%8D</link>
+                <guid>http://username.github.io/linux/2014/10/07/Linux下硬盘分区命名</guid>
+                <pubDate>2014-10-07T21:41:51+08:00</pubDate>
+        </item>
 
         <item>
                 <title>nginx配置详解</title>
@@ -3208,7 +3325,8 @@ $ jekyll build --watch
 
 &lt;h2&gt;1. 准备工作:&lt;/h2&gt;
 
-&lt;p&gt;1&gt;. &lt;code&gt;sudo apt-get install build-essential&lt;/code&gt; 安装开发编译环境&lt;/p&gt;
+&lt;p&gt;1&gt;.安装开发编译环境&lt;br/&gt;
+&lt;code&gt;sudo apt-get install build-essential&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;2&gt;. 用apt-get 来安装libyaml&lt;br/&gt;
 &lt;code&gt;sudo apt-get install build-essential bison libyaml-dev&lt;/code&gt;&lt;/p&gt;
@@ -3216,13 +3334,13 @@ $ jekyll build --watch
 &lt;p&gt;3&gt;. 安装zlib&lt;br/&gt;
 &lt;code&gt;apt-get install zlib1g-dev&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;4&gt;. 安装sqlite3
+&lt;p&gt;4&gt;. 安装sqlite3&lt;br/&gt;
 &lt;code&gt;sudo apt-get install sqlite3 libsqlite3-dev&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;5&gt;. 安装js运行环境
+&lt;p&gt;5&gt;. 安装js运行环境&lt;br/&gt;
 &lt;code&gt;sudo apt-get install nodejs&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;6&gt;. 安装libssl
+&lt;p&gt;6&gt;. 安装libssl&lt;br/&gt;
 &lt;code&gt;sudo apt-get install libssl-dev&lt;/code&gt;&lt;/p&gt;
 
 &lt;h2&gt;2. Ruby安装过程:&lt;/h2&gt;
@@ -3230,7 +3348,7 @@ $ jekyll build --watch
 &lt;p&gt;1&gt;. 安装ruby&lt;br/&gt;
 &lt;span class=&quot;impor&quot;&gt;http://rubyonrails.org/download&lt;br/&gt;
 下载源码 ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p0.tar.gz&lt;br/&gt;
-1.9.2打包有rubygems,不用自己动手安装了, ruby -v,gem -v查看是否安装成功&lt;/span&gt;&lt;/p&gt;
+ruby v1.9.2 之后打包有rubygems,不用自己动手安装了, ruby -v,gem -v查看是否安装成功&lt;/span&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;
 tar xvzf ruby-1.9.2-p0.tar.bz2
@@ -3282,7 +3400,7 @@ jekyll serve            #到工程目录启动服务。输入：http://localhost
 &lt;/code&gt;&lt;/pre&gt;
 
 
-&lt;p&gt;&lt;span class=&quot;impor&quot;&gt;注：jekyll的运行，基于ruby &amp;amp; nodejs。所以，必须安装nodejs否则，即使jekyll安装成功，也无法运行&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;impor&quot;&gt;注：jekyll的运行，基于ruby &amp;amp; nodejs。所以，必须安装Ruby &amp;amp; nodejs ; 两者缺一不可,否则，即使jekyll安装成功，也无法运行&lt;/span&gt;&lt;/p&gt;
 
 &lt;h2&gt;3. Ruby rails安装，使用。ext demo&lt;/h2&gt;
 

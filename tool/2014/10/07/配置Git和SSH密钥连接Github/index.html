@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
 
-    <title>php spl</title>
+    <title>配置 Git 和 SSH 密钥连接 Github</title>
     <meta name="description" content="">
 
     <link href="/assets/themes/p233/css/pygments.css" rel="stylesheet">
@@ -211,21 +211,62 @@
         
 
 <article id="post__content" class="fmt">
-  <h1 id="post__title" data-identifier="20140918">php spl</h1>
-  <h4>php spl</h4>
+  <h1 id="post__title" data-identifier="20141007">配置 Git 和 SSH 密钥连接 Github</h1>
+  <h3>1.准备工作</h3>
 
-<ul>
-<li><a href="http://php.net/manual/zh/book.spl.php">php spl</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2008/07/php_spl_notes.html">php spl</a></li>
-</ul>
+<p>安装 git<br/>
+sudo apt-get install git<br/>
+sudo apt-get install gitk</p>
 
+<h3>2.生成SSHKeys</h3>
+
+<p>生成 SSH Keys
+以 Linux (Ubuntu) 为例，需要用到git的 ssh-keygen 命令：</p>
+
+<p>ssh-keygen -t rsa -C "zoushuai518@gmail.com" -f ~/.ssh/csser-github</p>
+
+<p>简单介绍下参数含义：
+-t 指定密钥类型，默认即 rsa ，可以省略
+-C 设置注释文字，比如你的邮箱
+-f 指定密钥文件存储文件名，会生成 csser-github 和 csser-github.pub 两个密钥文件
+回车后，遇到提示输入 yes 即可，剩下一路回车，密钥文件就在指定路径下生成了。</p>
+
+<h3>3.将SSH公钥添加到Github</h3>
+
+<p>将 SSH 公钥添加到 Github(或者其它的git server)
+登录 Github 帐号，找到帐号设置 -> SSH Keys
+点击 Add New SSH Key
+将本地生成的公钥文件（csser-github.pub）中的文字全选复制到 key 栏，点击 add key 保存。</p>
+
+<h3>4.本地添加SSH别名</h3>
+
+<p>本地添加 SSH 别名
+如果本机有其它密钥，连接 github 时可能不会自动使用刚生成的密钥，需要设置别名：</p>
+
+<p>$ sudo vi ~/.ssh/config
+加入类似的一段代码：
+host csser-github
+user git
+hostname github.com
+port 22
+identityfile ~/.ssh/csser-github
+保存退出。</p>
+
+<h3>5.测试连接</h3>
+
+<p>$ssh -T csser-github
+Hi csser! You've successfully authenticated, but GitHub does not provide shell access.
+表示设置的 SSH Keys 认证通过，但 Github 不提供 shell 访问。
+此时就可以正常使用 Github 了'</p>
+
+<p><span class="impor">url是https的时候会采用用户名认证。 是ssh地址的时候才会采用ssh认证,即密钥认证,不再是用户名密码认证方式</span></p>
 
 </article> <!-- end #post__content -->
 
 <div id="post__share">
-  <a id="icon-twitter" class="fontello" href="https://twitter.com/intent/tweet?url=place_your_url_here/php/2014/09/18/php-spl&text=php spl" target="_blank"></a>
+  <a id="icon-twitter" class="fontello" href="https://twitter.com/intent/tweet?url=place_your_url_here/tool/2014/10/07/%E9%85%8D%E7%BD%AEGit%E5%92%8CSSH%E5%AF%86%E9%92%A5%E8%BF%9E%E6%8E%A5Github&text=配置 Git 和 SSH 密钥连接 Github" target="_blank"></a>
   <a id="icon-cc" class="fontello" href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"></a>
-  <a id="icon-weibo" class="fontello" href="http://v.t.sina.com.cn/share/share.php?url=place_your_url_here/php/2014/09/18/php-spl&title=php spl" target="_blank"></a>
+  <a id="icon-weibo" class="fontello" href="http://v.t.sina.com.cn/share/share.php?url=place_your_url_here/tool/2014/10/07/%E9%85%8D%E7%BD%AEGit%E5%92%8CSSH%E5%AF%86%E9%92%A5%E8%BF%9E%E6%8E%A5Github&title=配置 Git 和 SSH 密钥连接 Github" target="_blank"></a>
 </div> <!-- end #post__share -->
 
 <div id="disqus_thread">
