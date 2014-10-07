@@ -30,13 +30,13 @@
 	
 	<li id="js-label3" class="tags__li tags-btn">php (38)</li>
 	
-	<li id="js-label4" class="tags__li tags-btn">tool (2)</li>
+	<li id="js-label4" class="tags__li tags-btn">tool (3)</li>
 	
 	<li id="js-label5" class="tags__li tags-btn">python (1)</li>
 	
 	<li id="js-label6" class="tags__li tags-btn">ruby (1)</li>
 	
-	<li id="js-label7" class="tags__li tags-btn">linux (6)</li>
+	<li id="js-label7" class="tags__li tags-btn">linux (7)</li>
 	
 	<li id="js-label8" class="tags__li tags-btn">asset (3)</li>
 	
@@ -65,6 +65,10 @@
         </form>
 
         <nav id="pl__container">
+        
+          <a class="tool pl__all" href="/tool/2014/10/07/%E9%85%8D%E7%BD%AEGit%E5%92%8CSSH%E5%AF%86%E9%92%A5%E8%BF%9E%E6%8E%A5Github"><span class="pl__circle"></span><span class="pl__title">配置 Git 和 SSH 密钥连接 Github</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="linux pl__all" href="/linux/2014/10/07/Linux%E4%B8%8B%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA%E5%91%BD%E5%90%8D"><span class="pl__circle"></span><span class="pl__title">Linux下硬盘分区命名</span><span class="pl__date">Oct 2014</span></a>
         
           <a class="linux pl__all" href="/linux/2014/10/01/nginx_config"><span class="pl__circle"></span><span class="pl__title">nginx配置详解</span><span class="pl__date">Oct 2014</span></a>
         
@@ -212,7 +216,8 @@
 
 <h2>1. 准备工作:</h2>
 
-<p>1>. <code>sudo apt-get install build-essential</code> 安装开发编译环境</p>
+<p>1>.安装开发编译环境<br/>
+<code>sudo apt-get install build-essential</code></p>
 
 <p>2>. 用apt-get 来安装libyaml<br/>
 <code>sudo apt-get install build-essential bison libyaml-dev</code></p>
@@ -220,13 +225,13 @@
 <p>3>. 安装zlib<br/>
 <code>apt-get install zlib1g-dev</code></p>
 
-<p>4>. 安装sqlite3
+<p>4>. 安装sqlite3<br/>
 <code>sudo apt-get install sqlite3 libsqlite3-dev</code></p>
 
-<p>5>. 安装js运行环境
+<p>5>. 安装js运行环境<br/>
 <code>sudo apt-get install nodejs</code></p>
 
-<p>6>. 安装libssl
+<p>6>. 安装libssl<br/>
 <code>sudo apt-get install libssl-dev</code></p>
 
 <h2>2. Ruby安装过程:</h2>
@@ -234,7 +239,7 @@
 <p>1>. 安装ruby<br/>
 <span class="impor">http://rubyonrails.org/download<br/>
 下载源码 ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p0.tar.gz<br/>
-1.9.2打包有rubygems,不用自己动手安装了, ruby -v,gem -v查看是否安装成功</span></p>
+ruby v1.9.2 之后打包有rubygems,不用自己动手安装了, ruby -v,gem -v查看是否安装成功</span></p>
 
 <pre><code>
 tar xvzf ruby-1.9.2-p0.tar.bz2
@@ -286,7 +291,7 @@ jekyll serve            #到工程目录启动服务。输入：http://localhost
 </code></pre>
 
 
-<p><span class="impor">注：jekyll的运行，基于ruby &amp; nodejs。所以，必须安装nodejs否则，即使jekyll安装成功，也无法运行</span></p>
+<p><span class="impor">注：jekyll的运行，基于ruby &amp; nodejs。所以，必须安装Ruby &amp; nodejs ; 两者缺一不可,否则，即使jekyll安装成功，也无法运行</span></p>
 
 <h2>3. Ruby rails安装，使用。ext demo</h2>
 

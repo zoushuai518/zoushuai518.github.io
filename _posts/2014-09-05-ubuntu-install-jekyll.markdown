@@ -10,7 +10,8 @@ date:   2014-09-05 09:18:51
 
 ##1. 准备工作:  
 
-1>. `sudo apt-get install build-essential` 安装开发编译环境  
+1>.安装开发编译环境  
+`sudo apt-get install build-essential`
 
 2>. 用apt-get 来安装libyaml  
 `sudo apt-get install build-essential bison libyaml-dev`
@@ -18,13 +19,13 @@ date:   2014-09-05 09:18:51
 3>. 安装zlib  
 `apt-get install zlib1g-dev`
 
-4>. 安装sqlite3
+4>. 安装sqlite3  
 `sudo apt-get install sqlite3 libsqlite3-dev`
 
-5>. 安装js运行环境
+5>. 安装js运行环境  
 `sudo apt-get install nodejs`
 
-6>. 安装libssl
+6>. 安装libssl  
 `sudo apt-get install libssl-dev`
 
 
@@ -33,7 +34,7 @@ date:   2014-09-05 09:18:51
 1>. 安装ruby  
 <span class="impor">http://rubyonrails.org/download  
 下载源码 ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p0.tar.gz  
-1.9.2打包有rubygems,不用自己动手安装了, ruby -v,gem -v查看是否安装成功</span>
+ruby v1.9.2 之后打包有rubygems,不用自己动手安装了, ruby -v,gem -v查看是否安装成功</span>
 <pre><code>
 tar xvzf ruby-1.9.2-p0.tar.bz2
 cd ruby-1.9.2-p0
@@ -75,7 +76,7 @@ jekyll new myblog		#使用jekyll初始化blog_系统
 jekyll serve			#到工程目录启动服务。输入：http://localhost:4000
 </code></pre>
 
-<span class="impor">注：jekyll的运行，基于ruby & nodejs。所以，必须安装nodejs否则，即使jekyll安装成功，也无法运行</span>
+<span class="impor">注：jekyll的运行，基于ruby & nodejs。所以，必须安装Ruby & nodejs ; 两者缺一不可,否则，即使jekyll安装成功，也无法运行</span>
 
 
 ##3. Ruby rails安装，使用。ext demo
