@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "http协议"
+title: "http2协议"
 category: agreement
 comments: true
 tags : [https, http, http2]
@@ -9,4 +9,4 @@ date:   2014-10-08 17:06:51
 
 ## http2
 
-
+[http2](http://yuedu.baidu.com/ebook/478d1a62376baf1ffc4fad99?pn=1&rf=http%3A%2F%2Fyuedu.baidu.com%2Febook%2F478d1a62376baf1ffc4fad99)

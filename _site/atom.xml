@@ -4,7 +4,7 @@
  <title>CodeMadman</title>
  <link href="http://username.github.io/" rel="self"/>
  <link href="http://username.github.io"/>
- <updated>2014-10-08T17:06:48+08:00</updated>
+ <updated>2014-10-08T17:08:43+08:00</updated>
  <id>http://username.github.io</id>
  <author>
    <name>Name Lastname</name>
@@ -13,11 +13,13 @@
 
  
  <entry>
-   <title>http协议</title>
+   <title>http2协议</title>
    <link href="http://username.github.io/agreement/2014/10/09/http2"/>
    <updated>2014-10-09T01:06:51+08:00</updated>
    <id>http://username.github.io/agreement/2014/10/09/http2</id>
    <content type="html">&lt;h2&gt;http2&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://yuedu.baidu.com/ebook/478d1a62376baf1ffc4fad99?pn=1&amp;amp;rf=http%3A%2F%2Fyuedu.baidu.com%2Febook%2F478d1a62376baf1ffc4fad99&quot;&gt;http2&lt;/a&gt;&lt;/p&gt;
 </content>
  </entry>
  
