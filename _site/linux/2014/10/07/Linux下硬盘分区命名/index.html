@@ -28,7 +28,7 @@
 	
 	<li id="js-label2" class="tags__li tags-btn">jekyll (9)</li>
 	
-	<li id="js-label3" class="tags__li tags-btn">php (38)</li>
+	<li id="js-label3" class="tags__li tags-btn">php (40)</li>
 	
 	<li id="js-label4" class="tags__li tags-btn">tool (3)</li>
 	
@@ -65,6 +65,10 @@
         </form>
 
         <nav id="pl__container">
+        
+          <a class="php pl__all" href="/php/2014/10/08/php%E8%8E%B7%E5%8F%96%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9C%9F%E5%AE%9EIP"><span class="pl__circle"></span><span class="pl__title">php获取客户端真实IP</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/10/08/php-%E6%A1%86%E6%9E%B6"><span class="pl__circle"></span><span class="pl__title">php 框架</span><span class="pl__date">Oct 2014</span></a>
         
           <a class="tool pl__all" href="/tool/2014/10/07/%E9%85%8D%E7%BD%AEGit%E5%92%8CSSH%E5%AF%86%E9%92%A5%E8%BF%9E%E6%8E%A5Github"><span class="pl__circle"></span><span class="pl__title">配置 Git 和 SSH 密钥连接 Github</span><span class="pl__date">Oct 2014</span></a>
         
@@ -224,16 +228,15 @@ N     最后的数字代表分区。前四个(主分区或扩展分区)使用数
 
 <h3>详解</h3>
 
-<p>一块硬盘最多只能有四个主分区。其中一个可以为扩展分区（主分区的特殊形式），扩展分区中可以有60个逻辑分区。linux表示分区，与顺序和类型有关。</p>
-
-<p>/dev/sda1为第一主分区<br/>
+<p>一块硬盘最多只能有四个主分区。其中一个可以为扩展分区（主分区的特殊形式），扩展分区中可以有60个逻辑分区。linux表示分区，与顺序和类型有关。
+/dev/sda1为第一主分区<br/>
 /dev/sda2为第二主分区<br/>
 /dev/sda3为第三主分区<br/>
 /dev/sda4为第四主分区<br/>
 /dev/sda5为第一逻辑分区<br/>
 /dev/sda6为第二逻辑分区<br/>
-……
-不管有几个主分区，逻辑分区都是从/dev/sda5开始的。也就是说，第一个逻辑分区是/dev/sda5。
+……<br/>
+不管有几个主分区，逻辑分区都是从/dev/sda5开始的。也就是说，第一个逻辑分区是/dev/sda5。<br/>
 而四个主分区，可能只有一个，或二个。而且不一定是从/dev/sda1开始的。</p>
 
 <p>一般以前的DOS和windows系统（2000/XP/2003，不包括windows7），使用自带的分区工具，只能分一个主分区和一个扩展分区（内含多个逻辑分区）所以，默认情况下（不是一定，可以改变的），C盘为/dev/sda1，D盘为/dev/sda5，E盘为/dev/sda6……</p>
@@ -246,7 +249,7 @@ N     最后的数字代表分区。前四个(主分区或扩展分区)使用数
 (hd0,1)为第二主分区<br/>
 (hd0,4)为第一逻辑分区（通常为D盘）<br/>
 (hd0,5)为第二个逻辑争区（通常为E盘）<br/>
-……
+……<br/>
 (hd0)为第一个硬盘<br/>
 (hd1)为第二个硬盘</p>
 
@@ -255,7 +258,7 @@ N     最后的数字代表分区。前四个(主分区或扩展分区)使用数
 (hd0,2)为第二主分区<br/>
 (hd0,5)为第一逻辑分区（通常为D盘）<br/>
 (hd0,6)为第二个逻辑争区（通常为E盘）<br/>
-……
+……<br/>
 (hd0)为第一个硬盘<br/>
 (hd1)为第二个硬盘</p>
 

@@ -28,3 +28,7 @@ date:   2014-09-18 10:50:51
 - [http://www.cnblogs.com/cate/php/](http://www.cnblogs.com/cate/php/)
 
 
+### php 常用工具
+
+[50个非常有用的PHP工具](http://www.cnblogs.com/rrsina/p/3994774.html)
+
