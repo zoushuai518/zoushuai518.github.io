@@ -42,7 +42,7 @@
 	
 	<li id="js-label9" class="tags__li tags-btn">standard (1)</li>
 	
-	<li id="js-label10" class="tags__li tags-btn">agreement (2)</li>
+	<li id="js-label10" class="tags__li tags-btn">agreement (3)</li>
 	
 	<li id="js-label11" class="tags__li tags-btn">mysql (1)</li>
 	
@@ -65,6 +65,8 @@
         </form>
 
         <nav id="pl__container">
+        
+          <a class="agreement pl__all" href="/agreement/2014/10/09/http2"><span class="pl__circle"></span><span class="pl__title">http协议</span><span class="pl__date">Oct 2014</span></a>
         
           <a class="php pl__all" href="/php/2014/10/08/php%E8%8E%B7%E5%8F%96%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9C%9F%E5%AE%9EIP"><span class="pl__circle"></span><span class="pl__title">php获取客户端真实IP</span><span class="pl__date">Oct 2014</span></a>
         
@@ -225,13 +227,13 @@ HTTP_CLIENT_IP 是代理服务器发送的HTTP头[是由UserAgent向HTTP头写�
 HTTP_X_FORWARDED_FOR：可通过http头伪造<br/>
 REMOTE_ADDR：可能是用户真实IP也可能是代理IP</p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> 
-<span class="lineno">3</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">];</span> <span class="c1">//访问端（有可能是真实用户，有可能是代理的）IP  </span>
-<span class="lineno">4</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_CLIENT_IP&#39;</span><span class="p">];</span>   <span class="c1">//代理端的（有可能存在，可伪造）  </span>
-<span class="lineno">5</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">];</span> <span class="c1">//用户是在哪个IP使用的代理（有可能存在，也可以伪造）  </span>
-<span class="lineno">6</span> 
-<span class="lineno">7</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">];</span> <span class="c1">//访问端（有可能是真实用户，有可能是代理的）IP  </span>
+<span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_CLIENT_IP&#39;</span><span class="p">];</span>   <span class="c1">//代理端的（有可能存在，可伪造）  </span>
+<span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">];</span> <span class="c1">//用户是在哪个IP使用的代理（有可能存在，也可以伪造）  </span>
+
+<span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
 
 
 <p><span class="impor">顺便说下$_SERVER和getenv的区别，getenv不支持IIS的isapi方式运行的php</span></p>
@@ -268,101 +270,101 @@ HTTP_X_FORWARDED_FOR = 没数值或不显示 ，经过多个代理服务器时�
 
 <h3>三.获取客户端真实函数</h3>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> 
-<span class="lineno"> 3</span> <span class="sd">/**</span>
-<span class="lineno"> 4</span> <span class="sd"> * 获得用户的真实IP地址</span>
-<span class="lineno"> 5</span> <span class="sd"> *</span>
-<span class="lineno"> 6</span> <span class="sd"> * @access  public</span>
-<span class="lineno"> 7</span> <span class="sd"> * @return  string</span>
-<span class="lineno"> 8</span> <span class="sd"> */</span>
-<span class="lineno"> 9</span> <span class="k">function</span> <span class="nf">real_ip</span><span class="p">()</span>
-<span class="lineno">10</span> <span class="p">{</span>
-<span class="lineno">11</span>     <span class="k">static</span> <span class="nv">$realip</span> <span class="o">=</span> <span class="k">NULL</span><span class="p">;</span>
-<span class="lineno">12</span>  
-<span class="lineno">13</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$realip</span> <span class="o">!==</span> <span class="k">NULL</span><span class="p">)</span>
-<span class="lineno">14</span>     <span class="p">{</span>
-<span class="lineno">15</span>         <span class="k">return</span> <span class="nv">$realip</span><span class="p">;</span>
-<span class="lineno">16</span>     <span class="p">}</span>
-<span class="lineno">17</span>  
-<span class="lineno">18</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">))</span>
-<span class="lineno">19</span>     <span class="p">{</span>
-<span class="lineno">20</span>         <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">]))</span>
-<span class="lineno">21</span>         <span class="p">{</span>
-<span class="lineno">22</span>             <span class="nv">$arr</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">]);</span>
-<span class="lineno">23</span>  
-<span class="lineno">24</span>             <span class="cm">/* 取X-Forwarded-For中第一个非unknown的有效IP字符串 */</span>
-<span class="lineno">25</span>             <span class="k">foreach</span> <span class="p">(</span><span class="nv">$arr</span> <span class="k">AS</span> <span class="nv">$ip</span><span class="p">)</span>
-<span class="lineno">26</span>             <span class="p">{</span>
-<span class="lineno">27</span>                 <span class="nv">$ip</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$ip</span><span class="p">);</span>
-<span class="lineno">28</span>  
-<span class="lineno">29</span>                 <span class="k">if</span> <span class="p">(</span><span class="nv">$ip</span> <span class="o">!=</span> <span class="s1">&#39;unknown&#39;</span><span class="p">)</span>
-<span class="lineno">30</span>                 <span class="p">{</span>
-<span class="lineno">31</span>                     <span class="nv">$realip</span> <span class="o">=</span> <span class="nv">$ip</span><span class="p">;</span>
-<span class="lineno">32</span>  
-<span class="lineno">33</span>                     <span class="k">break</span><span class="p">;</span>
-<span class="lineno">34</span>                 <span class="p">}</span>
-<span class="lineno">35</span>             <span class="p">}</span>
-<span class="lineno">36</span>         <span class="p">}</span>
-<span class="lineno">37</span>         <span class="k">elseif</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_CLIENT_IP&#39;</span><span class="p">]))</span>
-<span class="lineno">38</span>         <span class="p">{</span>
-<span class="lineno">39</span>             <span class="nv">$realip</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_CLIENT_IP&#39;</span><span class="p">];</span>
-<span class="lineno">40</span>         <span class="p">}</span>
-<span class="lineno">41</span>         <span class="k">else</span>
-<span class="lineno">42</span>         <span class="p">{</span>
-<span class="lineno">43</span>             <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">]))</span>
-<span class="lineno">44</span>             <span class="p">{</span>
-<span class="lineno">45</span>                 <span class="nv">$realip</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">];</span>
-<span class="lineno">46</span>             <span class="p">}</span>
-<span class="lineno">47</span>             <span class="k">else</span>
-<span class="lineno">48</span>             <span class="p">{</span>
-<span class="lineno">49</span>                 <span class="nv">$realip</span> <span class="o">=</span> <span class="s1">&#39;0.0.0.0&#39;</span><span class="p">;</span>
-<span class="lineno">50</span>             <span class="p">}</span>
-<span class="lineno">51</span>         <span class="p">}</span>
-<span class="lineno">52</span>     <span class="p">}</span>
-<span class="lineno">53</span>     <span class="k">else</span>
-<span class="lineno">54</span>     <span class="p">{</span>
-<span class="lineno">55</span>         <span class="k">if</span> <span class="p">(</span><span class="nb">getenv</span><span class="p">(</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">))</span>
-<span class="lineno">56</span>         <span class="p">{</span>
-<span class="lineno">57</span>             <span class="nv">$realip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">);</span>
-<span class="lineno">58</span>         <span class="p">}</span>
-<span class="lineno">59</span>         <span class="k">elseif</span> <span class="p">(</span><span class="nb">getenv</span><span class="p">(</span><span class="s1">&#39;HTTP_CLIENT_IP&#39;</span><span class="p">))</span>
-<span class="lineno">60</span>         <span class="p">{</span>
-<span class="lineno">61</span>             <span class="nv">$realip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="s1">&#39;HTTP_CLIENT_IP&#39;</span><span class="p">);</span>
-<span class="lineno">62</span>         <span class="p">}</span>
-<span class="lineno">63</span>         <span class="k">else</span>
-<span class="lineno">64</span>         <span class="p">{</span>
-<span class="lineno">65</span>             <span class="nv">$realip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">);</span>
-<span class="lineno">66</span>         <span class="p">}</span>
-<span class="lineno">67</span>     <span class="p">}</span>
-<span class="lineno">68</span>  
-<span class="lineno">69</span>     <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/[\d\.]{7,15}/&quot;</span><span class="p">,</span> <span class="nv">$realip</span><span class="p">,</span> <span class="nv">$onlineip</span><span class="p">);</span>
-<span class="lineno">70</span>     <span class="nv">$realip</span> <span class="o">=</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$onlineip</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$onlineip</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">:</span> <span class="s1">&#39;0.0.0.0&#39;</span><span class="p">;</span>
-<span class="lineno">71</span>  
-<span class="lineno">72</span>     <span class="k">return</span> <span class="nv">$realip</span><span class="p">;</span>
-<span class="lineno">73</span> <span class="p">}</span>
-<span class="lineno">74</span> 
-<span class="lineno">75</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * 获得用户的真实IP地址</span>
+<span class="sd"> *</span>
+<span class="sd"> * @access  public</span>
+<span class="sd"> * @return  string</span>
+<span class="sd"> */</span>
+<span class="k">function</span> <span class="nf">real_ip</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="nv">$realip</span> <span class="o">=</span> <span class="k">NULL</span><span class="p">;</span>
+ 
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$realip</span> <span class="o">!==</span> <span class="k">NULL</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$realip</span><span class="p">;</span>
+    <span class="p">}</span>
+ 
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">]))</span>
+        <span class="p">{</span>
+            <span class="nv">$arr</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">]);</span>
+ 
+            <span class="cm">/* 取X-Forwarded-For中第一个非unknown的有效IP字符串 */</span>
+            <span class="k">foreach</span> <span class="p">(</span><span class="nv">$arr</span> <span class="k">AS</span> <span class="nv">$ip</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="nv">$ip</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$ip</span><span class="p">);</span>
+ 
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$ip</span> <span class="o">!=</span> <span class="s1">&#39;unknown&#39;</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="nv">$realip</span> <span class="o">=</span> <span class="nv">$ip</span><span class="p">;</span>
+ 
+                    <span class="k">break</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">elseif</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_CLIENT_IP&#39;</span><span class="p">]))</span>
+        <span class="p">{</span>
+            <span class="nv">$realip</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_CLIENT_IP&#39;</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">]))</span>
+            <span class="p">{</span>
+                <span class="nv">$realip</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">];</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="nv">$realip</span> <span class="o">=</span> <span class="s1">&#39;0.0.0.0&#39;</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">getenv</span><span class="p">(</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="nv">$realip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">elseif</span> <span class="p">(</span><span class="nb">getenv</span><span class="p">(</span><span class="s1">&#39;HTTP_CLIENT_IP&#39;</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="nv">$realip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="s1">&#39;HTTP_CLIENT_IP&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="nv">$realip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+ 
+    <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/[\d\.]{7,15}/&quot;</span><span class="p">,</span> <span class="nv">$realip</span><span class="p">,</span> <span class="nv">$onlineip</span><span class="p">);</span>
+    <span class="nv">$realip</span> <span class="o">=</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$onlineip</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$onlineip</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">:</span> <span class="s1">&#39;0.0.0.0&#39;</span><span class="p">;</span>
+ 
+    <span class="k">return</span> <span class="nv">$realip</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
 
 
 
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// 获取客户端真实IP function getIP()</span>
-<span class="lineno"> 3</span> <span class="k">function</span> <span class="nf">getIP</span><span class="p">()</span>
-<span class="lineno"> 4</span> <span class="p">{</span>
-<span class="lineno"> 5</span>  <span class="k">global</span> <span class="nv">$ip</span><span class="p">;</span>
-<span class="lineno"> 6</span>  <span class="k">if</span> <span class="p">(</span><span class="nb">getenv</span><span class="p">(</span><span class="s2">&quot;HTTP_CLIENT_IP&quot;</span><span class="p">))</span>
-<span class="lineno"> 7</span>      <span class="nv">$ip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="s2">&quot;HTTP_CLIENT_IP&quot;</span><span class="p">);</span>
-<span class="lineno"> 8</span>  <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nb">getenv</span><span class="p">(</span><span class="s2">&quot;HTTP_X_FORWARDED_FOR&quot;</span><span class="p">))</span>
-<span class="lineno"> 9</span>      <span class="nv">$ip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="s2">&quot;HTTP_X_FORWARDED_FOR&quot;</span><span class="p">);</span>
-<span class="lineno">10</span>  <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nb">getenv</span><span class="p">(</span><span class="s2">&quot;REMOTE_ADDR&quot;</span><span class="p">))</span>
-<span class="lineno">11</span>      <span class="nv">$ip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="s2">&quot;REMOTE_ADDR&quot;</span><span class="p">);</span>
-<span class="lineno">12</span>  <span class="k">else</span> <span class="nv">$ip</span> <span class="o">=</span> <span class="s2">&quot;Unknow&quot;</span><span class="p">;</span>
-<span class="lineno">13</span>  <span class="k">return</span> <span class="nv">$ip</span><span class="p">;</span>
-<span class="lineno">14</span> <span class="p">}</span>
-<span class="lineno">15</span> 
-<span class="lineno">16</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// 获取客户端真实IP function getIP()</span>
+<span class="k">function</span> <span class="nf">getIP</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">global</span> <span class="nv">$ip</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">getenv</span><span class="p">(</span><span class="s2">&quot;HTTP_CLIENT_IP&quot;</span><span class="p">))</span>
+        <span class="nv">$ip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="s2">&quot;HTTP_CLIENT_IP&quot;</span><span class="p">);</span>
+    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nb">getenv</span><span class="p">(</span><span class="s2">&quot;HTTP_X_FORWARDED_FOR&quot;</span><span class="p">))</span>
+        <span class="nv">$ip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="s2">&quot;HTTP_X_FORWARDED_FOR&quot;</span><span class="p">);</span>
+    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nb">getenv</span><span class="p">(</span><span class="s2">&quot;REMOTE_ADDR&quot;</span><span class="p">))</span>
+        <span class="nv">$ip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="s2">&quot;REMOTE_ADDR&quot;</span><span class="p">);</span>
+    <span class="k">else</span> <span class="nv">$ip</span> <span class="o">=</span> <span class="s2">&quot;Unknow&quot;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nv">$ip</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
 
 
 <h3>四.客户端伪造,代理ip测试</h3>
@@ -372,22 +374,22 @@ HTTP_X_FORWARDED_FOR = 没数值或不显示 ，经过多个代理服务器时�
 </ul>
 
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> 
-<span class="lineno"> 3</span> <span class="nv">$s_onlineip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="nx">‘HTTP_CLIENT_IP’</span><span class="p">);</span>
-<span class="lineno"> 4</span> <span class="k">echo</span> <span class="nx">“HTTP_CLIENT_IP</span><span class="o">:</span><span class="nx">”</span><span class="o">.</span><span class="nv">$s_onlineip</span><span class="o">.</span><span class="nx">”</span>
-<span class="lineno"> 5</span> <span class="nx">n”</span><span class="p">;</span>
-<span class="lineno"> 6</span> <span class="nv">$s_onlineip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="nx">‘HTTP_X_FORWARDED_FOR’</span><span class="p">);</span>
-<span class="lineno"> 7</span> <span class="k">echo</span> <span class="nx">“HTTP_X_FORWARDED_FOR</span><span class="o">:</span><span class="nx">”</span><span class="o">.</span><span class="nv">$s_onlineip</span><span class="o">.</span><span class="nx">”</span>
-<span class="lineno"> 8</span> <span class="nx">n”</span><span class="p">;</span>
-<span class="lineno"> 9</span> <span class="nv">$s_onlineip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="nx">‘REMOTE_ADDR’</span><span class="p">);</span>
-<span class="lineno">10</span> <span class="k">echo</span> <span class="nx">“REMOTE_ADDR</span><span class="o">:</span><span class="nx">”</span><span class="o">.</span><span class="nv">$s_onlineip</span><span class="o">.</span><span class="nx">”</span>
-<span class="lineno">11</span> <span class="nx">n”</span><span class="p">;</span>
-<span class="lineno">12</span> <span class="nv">$s_onlineip</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">];</span>
-<span class="lineno">13</span> <span class="k">echo</span> <span class="nx">“</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">]</span><span class="o">:</span><span class="nx">”</span><span class="o">.</span><span class="nv">$s_onlineip</span><span class="o">.</span><span class="nx">”</span>
-<span class="lineno">14</span> <span class="nx">n”</span><span class="p">;</span>
-<span class="lineno">15</span> 
-<span class="lineno">16</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="nv">$s_onlineip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="nx">‘HTTP_CLIENT_IP’</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">“HTTP_CLIENT_IP</span><span class="o">:</span><span class="nx">”</span><span class="o">.</span><span class="nv">$s_onlineip</span><span class="o">.</span><span class="nx">”</span>
+<span class="nx">n”</span><span class="p">;</span>
+<span class="nv">$s_onlineip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="nx">‘HTTP_X_FORWARDED_FOR’</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">“HTTP_X_FORWARDED_FOR</span><span class="o">:</span><span class="nx">”</span><span class="o">.</span><span class="nv">$s_onlineip</span><span class="o">.</span><span class="nx">”</span>
+<span class="nx">n”</span><span class="p">;</span>
+<span class="nv">$s_onlineip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="nx">‘REMOTE_ADDR’</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">“REMOTE_ADDR</span><span class="o">:</span><span class="nx">”</span><span class="o">.</span><span class="nv">$s_onlineip</span><span class="o">.</span><span class="nx">”</span>
+<span class="nx">n”</span><span class="p">;</span>
+<span class="nv">$s_onlineip</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">];</span>
+<span class="k">echo</span> <span class="nx">“</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">]</span><span class="o">:</span><span class="nx">”</span><span class="o">.</span><span class="nv">$s_onlineip</span><span class="o">.</span><span class="nx">”</span>
+<span class="nx">n”</span><span class="p">;</span>
+
+<span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
 
 
 <ul>
@@ -395,42 +397,42 @@ HTTP_X_FORWARDED_FOR = 没数值或不显示 ，经过多个代理服务器时�
 </ul>
 
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> 
-<span class="lineno"> 3</span> <span class="c1">//客户端代码</span>
-<span class="lineno"> 4</span> <span class="nv">$url</span> <span class="o">=</span> <span class="s1">&#39;http://www.taoyiz.com/util/ip&#39;</span><span class="p">;</span>
-<span class="lineno"> 5</span> <span class="nv">$data_string</span> <span class="o">=</span> <span class="s1">&#39;test=test&#39;</span><span class="p">;</span>
-<span class="lineno"> 6</span> <span class="nv">$URL_Info</span>    <span class="o">=</span>  <span class="nb">parse_url</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
-<span class="lineno"> 7</span> <span class="nv">$request</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-<span class="lineno"> 8</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$URL_Info</span><span class="p">[</span><span class="s2">&quot;port&quot;</span><span class="p">]))</span>
-<span class="lineno"> 9</span> <span class="nv">$URL_Info</span><span class="p">[</span><span class="s2">&quot;port&quot;</span><span class="p">]</span><span class="o">=</span><span class="mi">80</span><span class="p">;</span>
-<span class="lineno">10</span> <span class="nv">$request</span><span class="o">.=</span><span class="s1">&#39;POST &#39;</span><span class="o">.</span><span class="nv">$URL_Info</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">]</span><span class="o">.</span><span class="s1">&#39; HTTP/1.1n&#39;</span><span class="p">;</span>
-<span class="lineno">11</span> <span class="nv">$request</span><span class="o">.=</span><span class="s1">&#39;Host: &#39;</span><span class="o">.</span><span class="nv">$URL_Info</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span><span class="o">.</span><span class="s1">&#39;n&#39;</span><span class="p">;</span>
-<span class="lineno">12</span> <span class="nv">$request</span><span class="o">.=</span><span class="s1">&#39;Referer: “.$URL_Info[&quot;host&quot;].&#39;</span><span class="nx">n</span><span class="s1">&#39;;</span>
-<span class="lineno">13</span> <span class="s1">$request.=&#39;</span><span class="nx">Content</span><span class="o">-</span><span class="nx">type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">x</span><span class="o">-</span><span class="nx">www</span><span class="o">-</span><span class="nx">form</span><span class="o">-</span><span class="nx">urlencodedn</span><span class="s1">&#39;;</span>
-<span class="lineno">14</span> <span class="s1">$request.=&#39;</span><span class="nx">X</span><span class="o">-</span><span class="nx">Forwarded</span><span class="o">-</span><span class="k">For</span><span class="o">:</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.4</span><span class="nx">n</span><span class="s1">&#39;;//HTTP_X_FORWARDED_FOR的值</span>
-<span class="lineno">15</span> <span class="s1">$request.=&#39;</span><span class="nx">client_ip</span><span class="o">:</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.5</span><span class="nx">n</span><span class="s1">&#39;;//HTTP_CLIENT_IP的值</span>
-<span class="lineno">16</span> <span class="s1">$request.=&#39;</span><span class="nx">Content</span><span class="o">-</span><span class="nx">length</span><span class="o">:</span> <span class="nx">“</span><span class="o">.</span><span class="nb">strlen</span><span class="p">(</span><span class="nv">$data_string</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;n&#39;</span><span class="p">;</span>
-<span class="lineno">17</span> <span class="nv">$request</span><span class="o">.=</span><span class="s1">&#39;Connection: closen&#39;</span><span class="p">;</span>
-<span class="lineno">18</span> <span class="nv">$request</span><span class="o">.=</span><span class="s1">&#39;n&#39;</span><span class="p">;</span>
-<span class="lineno">19</span> <span class="nv">$request</span><span class="o">.=</span><span class="nv">$data_string</span><span class="o">.</span><span class="s1">&#39;n&#39;</span><span class="p">;</span>
-<span class="lineno">20</span> 
-<span class="lineno">21</span> <span class="nv">$fp</span> <span class="o">=</span> <span class="nb">fsockopen</span><span class="p">(</span><span class="nv">$URL_Info</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="nv">$URL_Info</span><span class="p">[</span><span class="s2">&quot;port&quot;</span><span class="p">]);</span>
-<span class="lineno">22</span> <span class="nb">fputs</span><span class="p">(</span><span class="nv">$fp</span> <span class="nv">$request</span><span class="p">);</span>
-<span class="lineno">23</span> <span class="nv">$result</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-<span class="lineno">24</span> <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="nb">feof</span><span class="p">(</span><span class="nv">$fp</span><span class="p">))</span> <span class="p">{</span>
-<span class="lineno">25</span>  <span class="nv">$result</span> <span class="o">.=</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$fp</span> <span class="mi">1024</span><span class="p">);</span>
-<span class="lineno">26</span> <span class="p">}</span>
-<span class="lineno">27</span> <span class="nb">fclose</span><span class="p">(</span><span class="nv">$fp</span><span class="p">);</span>
-<span class="lineno">28</span> <span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span>
-<span class="lineno">29</span> 
-<span class="lineno">30</span> <span class="c1">//输出：</span>
-<span class="lineno">31</span> <span class="c1">//HTTP_CLIENT_IP:192.168.1.5</span>
-<span class="lineno">32</span> <span class="c1">//HTTP_X_FORWARDED_FOR:192.168.1.4</span>
-<span class="lineno">33</span> <span class="c1">//REMOTE_ADDR:127.0.0.1</span>
-<span class="lineno">34</span> <span class="c1">//$_SERVER[&#39;REMOTE_ADDR&#39;]:127.0.0.1</span>
-<span class="lineno">35</span> 
-<span class="lineno">36</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="c1">//客户端代码</span>
+<span class="nv">$url</span> <span class="o">=</span> <span class="s1">&#39;http://www.taoyiz.com/util/ip&#39;</span><span class="p">;</span>
+<span class="nv">$data_string</span> <span class="o">=</span> <span class="s1">&#39;test=test&#39;</span><span class="p">;</span>
+<span class="nv">$URL_Info</span>    <span class="o">=</span>  <span class="nb">parse_url</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$URL_Info</span><span class="p">[</span><span class="s2">&quot;port&quot;</span><span class="p">]))</span>
+<span class="nv">$URL_Info</span><span class="p">[</span><span class="s2">&quot;port&quot;</span><span class="p">]</span><span class="o">=</span><span class="mi">80</span><span class="p">;</span>
+<span class="nv">$request</span><span class="o">.=</span><span class="s1">&#39;POST &#39;</span><span class="o">.</span><span class="nv">$URL_Info</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">]</span><span class="o">.</span><span class="s1">&#39; HTTP/1.1n&#39;</span><span class="p">;</span>
+<span class="nv">$request</span><span class="o">.=</span><span class="s1">&#39;Host: &#39;</span><span class="o">.</span><span class="nv">$URL_Info</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span><span class="o">.</span><span class="s1">&#39;n&#39;</span><span class="p">;</span>
+<span class="nv">$request</span><span class="o">.=</span><span class="s1">&#39;Referer: “.$URL_Info[&quot;host&quot;].&#39;</span><span class="nx">n</span><span class="s1">&#39;;</span>
+<span class="s1">$request.=&#39;</span><span class="nx">Content</span><span class="o">-</span><span class="nx">type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">x</span><span class="o">-</span><span class="nx">www</span><span class="o">-</span><span class="nx">form</span><span class="o">-</span><span class="nx">urlencodedn</span><span class="s1">&#39;;</span>
+<span class="s1">$request.=&#39;</span><span class="nx">X</span><span class="o">-</span><span class="nx">Forwarded</span><span class="o">-</span><span class="k">For</span><span class="o">:</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.4</span><span class="nx">n</span><span class="s1">&#39;;//HTTP_X_FORWARDED_FOR的值</span>
+<span class="s1">$request.=&#39;</span><span class="nx">client_ip</span><span class="o">:</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.5</span><span class="nx">n</span><span class="s1">&#39;;//HTTP_CLIENT_IP的值</span>
+<span class="s1">$request.=&#39;</span><span class="nx">Content</span><span class="o">-</span><span class="nx">length</span><span class="o">:</span> <span class="nx">“</span><span class="o">.</span><span class="nb">strlen</span><span class="p">(</span><span class="nv">$data_string</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;n&#39;</span><span class="p">;</span>
+<span class="nv">$request</span><span class="o">.=</span><span class="s1">&#39;Connection: closen&#39;</span><span class="p">;</span>
+<span class="nv">$request</span><span class="o">.=</span><span class="s1">&#39;n&#39;</span><span class="p">;</span>
+<span class="nv">$request</span><span class="o">.=</span><span class="nv">$data_string</span><span class="o">.</span><span class="s1">&#39;n&#39;</span><span class="p">;</span>
+
+<span class="nv">$fp</span> <span class="o">=</span> <span class="nb">fsockopen</span><span class="p">(</span><span class="nv">$URL_Info</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="nv">$URL_Info</span><span class="p">[</span><span class="s2">&quot;port&quot;</span><span class="p">]);</span>
+<span class="nb">fputs</span><span class="p">(</span><span class="nv">$fp</span> <span class="nv">$request</span><span class="p">);</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="nb">feof</span><span class="p">(</span><span class="nv">$fp</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$result</span> <span class="o">.=</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$fp</span> <span class="mi">1024</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nb">fclose</span><span class="p">(</span><span class="nv">$fp</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span>
+
+<span class="c1">//输出：</span>
+<span class="c1">//HTTP_CLIENT_IP:192.168.1.5</span>
+<span class="c1">//HTTP_X_FORWARDED_FOR:192.168.1.4</span>
+<span class="c1">//REMOTE_ADDR:127.0.0.1</span>
+<span class="c1">//$_SERVER[&#39;REMOTE_ADDR&#39;]:127.0.0.1</span>
+
+<span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
 
 
 <ul>
@@ -438,26 +440,26 @@ HTTP_X_FORWARDED_FOR = 没数值或不显示 ，经过多个代理服务器时�
 </ul>
 
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> 
-<span class="lineno"> 3</span> <span class="nv">$cUrl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
-<span class="lineno"> 4</span> <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$cUrl</span> <span class="nx">CURLOPT_URL</span> <span class="nv">$url</span><span class="p">);</span>
-<span class="lineno"> 5</span> <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$cUrl</span> <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="mi">1</span><span class="p">);</span>
-<span class="lineno"> 6</span> <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$cUrl</span> <span class="nx">CURLOPT_HEADER</span> <span class="mi">1</span><span class="p">);</span>
-<span class="lineno"> 7</span> <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$cUrl</span> <span class="nx">CURLOPT_USERAGENT</span> <span class="s1">&#39;Mozilla/99.99&#39;</span><span class="p">);</span>
-<span class="lineno"> 8</span> <span class="c1">//curl_setopt($cUrl CURLOPT_TIMEOUT 10);</span>
-<span class="lineno"> 9</span> <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$cUrl</span> <span class="nx">CURLOPT_PROXY</span> <span class="s1">&#39;125.77.194.103:80&#39;</span><span class="p">);</span>
-<span class="lineno">10</span> <span class="nv">$c</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$cUrl</span><span class="p">);</span>
-<span class="lineno">11</span> <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$cUrl</span><span class="p">);</span>
-<span class="lineno">12</span> <span class="k">echo</span> <span class="nv">$c</span><span class="p">;</span>
-<span class="lineno">13</span> 
-<span class="lineno">14</span> <span class="c1">//输出：</span>
-<span class="lineno">15</span> <span class="c1">//HTTP_CLIENT_IP:</span>
-<span class="lineno">16</span> <span class="c1">//HTTP_X_FORWARDED_FOR:</span>
-<span class="lineno">17</span> <span class="c1">//REMOTE_ADDR:125.77.194.103</span>
-<span class="lineno">18</span> <span class="c1">//$_SERVER[&#39;REMOTE_ADDR&#39;]:125.77.194.103</span>
-<span class="lineno">19</span> 
-<span class="lineno">20</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="nv">$cUrl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$cUrl</span> <span class="nx">CURLOPT_URL</span> <span class="nv">$url</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$cUrl</span> <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$cUrl</span> <span class="nx">CURLOPT_HEADER</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$cUrl</span> <span class="nx">CURLOPT_USERAGENT</span> <span class="s1">&#39;Mozilla/99.99&#39;</span><span class="p">);</span>
+<span class="c1">//curl_setopt($cUrl CURLOPT_TIMEOUT 10);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$cUrl</span> <span class="nx">CURLOPT_PROXY</span> <span class="s1">&#39;125.77.194.103:80&#39;</span><span class="p">);</span>
+<span class="nv">$c</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$cUrl</span><span class="p">);</span>
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$cUrl</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$c</span><span class="p">;</span>
+
+<span class="c1">//输出：</span>
+<span class="c1">//HTTP_CLIENT_IP:</span>
+<span class="c1">//HTTP_X_FORWARDED_FOR:</span>
+<span class="c1">//REMOTE_ADDR:125.77.194.103</span>
+<span class="c1">//$_SERVER[&#39;REMOTE_ADDR&#39;]:125.77.194.103</span>
+
+<span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
 
 
 

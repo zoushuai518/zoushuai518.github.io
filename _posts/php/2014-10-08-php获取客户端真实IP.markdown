@@ -15,7 +15,7 @@ HTTP_CLIENT_IP：可通过http头伪造
 HTTP_X_FORWARDED_FOR：可通过http头伪造  
 REMOTE_ADDR：可能是用户真实IP也可能是代理IP  
 
-{% highlight php linenos %}
+{% highlight php %}
 <?php
 
 $_SERVER['REMOTE_ADDR']; //访问端（有可能是真实用户，有可能是代理的）IP  
@@ -62,7 +62,7 @@ HTTP_X_FORWARDED_FOR = 没数值或不显示 ，经过多个代理服务器时�
 
 ###三.获取客户端真实函数
 
-{% highlight php linenos %}
+{% highlight php %}
 <?php
 
 /**
@@ -140,7 +140,7 @@ function real_ip()
 ?>
 {% endhighlight %}
 
-{% highlight php linenos %}
+{% highlight php %}
 <?php
 // 获取客户端真实IP function getIP()
 function getIP()
@@ -163,7 +163,7 @@ function getIP()
 ###四.客户端伪造,代理ip测试
 
 - 服务端获取IP:
-{% highlight php linenos %}
+{% highlight php %}
 <?php
 
 $s_onlineip = getenv(‘HTTP_CLIENT_IP’);
@@ -183,7 +183,7 @@ n”;
 {% endhighlight %}
 
 - 伪造IP测试:
-{% highlight php linenos %}
+{% highlight php %}
 <?php
 
 //客户端代码
@@ -223,7 +223,7 @@ echo $result;
 {% endhighlight %}
 
 - 代理IP测试:
-{% highlight php linenos %}
+{% highlight php %}
 <?php
 
 $cUrl = curl_init();

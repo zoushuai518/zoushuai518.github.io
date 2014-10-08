@@ -1,0 +1,12 @@
+---
+layout: post
+title: "http协议"
+category: agreement
+comments: true
+tags : [https, http, http2]
+date:   2014-10-08 17:06:51
+---
+
+## http2
+
+
