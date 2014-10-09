@@ -248,62 +248,64 @@ PHP memory_get_usage() 函数还可以有个参数，$real_usage，其值为布�
 <span class="lineno"> 6</span> <span class="sd"> * @return 返回单位大小</span>
 <span class="lineno"> 7</span> <span class="sd"> */</span>
 <span class="lineno"> 8</span> <span class="k">function</span> <span class="nf">formatBytes</span><span class="p">(</span><span class="nv">$size</span><span class="p">)</span> <span class="p">{</span> 
-<span class="lineno"> 9</span>   <span class="nv">$units</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39; B&#39;</span><span class="p">,</span> <span class="s1">&#39; KB&#39;</span><span class="p">,</span> <span class="s1">&#39; MB&#39;</span><span class="p">,</span> <span class="s1">&#39; GB&#39;</span><span class="p">,</span> <span class="s1">&#39; TB&#39;</span><span class="p">);</span> 
-<span class="lineno">10</span>   <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$size</span> <span class="o">&gt;=</span> <span class="mi">1024</span> <span class="o">&amp;&amp;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="nv">$size</span> <span class="o">/=</span> <span class="mi">1024</span><span class="p">;</span> 
-<span class="lineno">11</span>   <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="nv">$size</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="nv">$units</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span> 
+<span class="lineno"> 9</span>  <span class="nv">$units</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39; B&#39;</span><span class="p">,</span> <span class="s1">&#39; KB&#39;</span><span class="p">,</span> <span class="s1">&#39; MB&#39;</span><span class="p">,</span> <span class="s1">&#39; GB&#39;</span><span class="p">,</span> <span class="s1">&#39; TB&#39;</span><span class="p">);</span> 
+<span class="lineno">10</span>  <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$size</span> <span class="o">&gt;=</span> <span class="mi">1024</span> <span class="o">&amp;&amp;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">11</span>      <span class="nv">$size</span> <span class="o">/=</span> <span class="mi">1024</span><span class="p">;</span> 
 <span class="lineno">12</span>  <span class="p">}</span>
-<span class="lineno">13</span> 
-<span class="lineno">14</span> <span class="sd">/**</span>
-<span class="lineno">15</span> <span class="sd"> * 获取程序占用内存情况</span>
-<span class="lineno">16</span> <span class="sd"> * @param boolean $real_usage FALSE不包括函数本身占用内存,TRUE包括函数本身占用内容</span>
-<span class="lineno">17</span> <span class="sd"> * @return int $memoryUsage 返回php代码占用的内存</span>
-<span class="lineno">18</span> <span class="sd"> */</span>
-<span class="lineno">19</span> <span class="k">function</span> <span class="nf">get_memory_usage</span><span class="p">(</span><span class="nv">$real_usage</span> <span class="o">=</span> <span class="k">FALSE</span><span class="p">)</span>
-<span class="lineno">20</span> <span class="p">{</span>
-<span class="lineno">21</span>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">function_exists</span><span class="p">(</span><span class="s1">&#39;memory_get_usage&#39;</span><span class="p">))</span> 
-<span class="lineno">22</span>  <span class="p">{</span>
-<span class="lineno">23</span>      <span class="sd">/**</span>
-<span class="lineno">24</span> <span class="sd">         * 取得内存使用情况</span>
-<span class="lineno">25</span> <span class="sd">         * @return integer</span>
-<span class="lineno">26</span> <span class="sd">         */</span>
-<span class="lineno">27</span>      <span class="c1">//function memory_get_usage()</span>
-<span class="lineno">28</span>      <span class="c1">//{</span>
-<span class="lineno">29</span>          <span class="nv">$pid</span> <span class="o">=</span> <span class="nb">getmypid</span><span class="p">();</span>
-<span class="lineno">30</span>          <span class="k">if</span> <span class="p">(</span><span class="nx">IS_WIN</span><span class="p">)</span> 
-<span class="lineno">31</span>          <span class="p">{</span>
-<span class="lineno">32</span>              <span class="nb">exec</span><span class="p">(</span><span class="s1">&#39;tasklist /FI &quot;PID eq &#39;</span> <span class="o">.</span> <span class="nv">$pid</span> <span class="o">.</span> <span class="s1">&#39;&quot; /FO LIST&#39;</span><span class="p">,</span> <span class="nv">$output</span><span class="p">);</span>
-<span class="lineno">33</span>              <span class="k">return</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="s1">&#39;/[^0-9]/&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nv">$output</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">;</span>
-<span class="lineno">34</span>          <span class="p">}</span> 
-<span class="lineno">35</span>          <span class="k">else</span> 
-<span class="lineno">36</span>          <span class="p">{</span>
-<span class="lineno">37</span>              <span class="nb">exec</span><span class="p">(</span><span class="s2">&quot;ps -eo%mem,rss,pid | grep </span><span class="si">$pid</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$output</span><span class="p">);</span>
-<span class="lineno">38</span>              <span class="nv">$output</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="nv">$output</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-<span class="lineno">39</span>              <span class="k">return</span> <span class="nv">$output</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">;</span>
-<span class="lineno">40</span>          <span class="p">}</span>
-<span class="lineno">41</span>      <span class="c1">//}</span>
-<span class="lineno">42</span>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="lineno">43</span>      <span class="k">return</span> <span class="nb">memory_get_usage</span><span class="p">(</span><span class="nv">$real_usage</span><span class="p">);</span>
-<span class="lineno">44</span>      <span class="c1">//return formatBytes(memory_get_usage($real_usage));</span>
-<span class="lineno">45</span>  <span class="p">}</span>
-<span class="lineno">46</span> <span class="p">}</span>
-<span class="lineno">47</span> 
-<span class="lineno">48</span> <span class="c1">//memory_get_usage();  </span>
-<span class="lineno">49</span> <span class="nv">$m1</span> <span class="o">=</span> <span class="nx">get_memory_usage</span><span class="p">();</span>  
-<span class="lineno">50</span> <span class="c1">//$m1 = memory_get_usage();  </span>
-<span class="lineno">51</span> <span class="k">echo</span> <span class="s1">&#39;&lt;br /&gt; m1:&#39;</span><span class="p">,</span><span class="nx">formatBytes</span><span class="p">(</span><span class="nv">$m1</span><span class="p">);</span>
-<span class="lineno">52</span>   
-<span class="lineno">53</span> <span class="nv">$a</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span><span class="p">;</span>  
-<span class="lineno">54</span> <span class="nv">$b</span> <span class="o">=</span>  <span class="nb">str_repeat</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>  
-<span class="lineno">55</span>   
-<span class="lineno">56</span> <span class="nv">$m2</span> <span class="o">=</span> <span class="nb">memory_get_usage</span><span class="p">();</span>  
-<span class="lineno">57</span> <span class="k">echo</span> <span class="s1">&#39;&lt;br /&gt; m2:&#39;</span><span class="p">,</span><span class="nx">formatBytes</span><span class="p">(</span><span class="nv">$m2</span><span class="p">);</span>
-<span class="lineno">58</span>   
-<span class="lineno">59</span> <span class="nb">unset</span><span class="p">(</span><span class="nv">$b</span><span class="p">);</span>  
+<span class="lineno">13</span>      <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="nv">$size</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="nv">$units</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span> 
+<span class="lineno">14</span>  <span class="p">}</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span> <span class="sd">/**</span>
+<span class="lineno">17</span> <span class="sd"> * 获取程序占用内存情况</span>
+<span class="lineno">18</span> <span class="sd"> * @param boolean $real_usage FALSE不包括函数本身占用内存,TRUE包括函数本身占用内容</span>
+<span class="lineno">19</span> <span class="sd"> * @return int $memoryUsage 返回php代码占用的内存</span>
+<span class="lineno">20</span> <span class="sd"> */</span>
+<span class="lineno">21</span> <span class="k">function</span> <span class="nf">get_memory_usage</span><span class="p">(</span><span class="nv">$real_usage</span> <span class="o">=</span> <span class="k">FALSE</span><span class="p">)</span>
+<span class="lineno">22</span> <span class="p">{</span>
+<span class="lineno">23</span>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">function_exists</span><span class="p">(</span><span class="s1">&#39;memory_get_usage&#39;</span><span class="p">))</span> 
+<span class="lineno">24</span>  <span class="p">{</span>
+<span class="lineno">25</span>      <span class="sd">/**</span>
+<span class="lineno">26</span> <span class="sd">         * 取得内存使用情况</span>
+<span class="lineno">27</span> <span class="sd">         * @return integer</span>
+<span class="lineno">28</span> <span class="sd">         */</span>
+<span class="lineno">29</span>      <span class="c1">//function memory_get_usage()</span>
+<span class="lineno">30</span>      <span class="c1">//{</span>
+<span class="lineno">31</span>          <span class="nv">$pid</span> <span class="o">=</span> <span class="nb">getmypid</span><span class="p">();</span>
+<span class="lineno">32</span>          <span class="k">if</span> <span class="p">(</span><span class="nx">IS_WIN</span><span class="p">)</span> 
+<span class="lineno">33</span>          <span class="p">{</span>
+<span class="lineno">34</span>              <span class="nb">exec</span><span class="p">(</span><span class="s1">&#39;tasklist /FI &quot;PID eq &#39;</span> <span class="o">.</span> <span class="nv">$pid</span> <span class="o">.</span> <span class="s1">&#39;&quot; /FO LIST&#39;</span><span class="p">,</span> <span class="nv">$output</span><span class="p">);</span>
+<span class="lineno">35</span>              <span class="k">return</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="s1">&#39;/[^0-9]/&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nv">$output</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">;</span>
+<span class="lineno">36</span>          <span class="p">}</span> 
+<span class="lineno">37</span>          <span class="k">else</span> 
+<span class="lineno">38</span>          <span class="p">{</span>
+<span class="lineno">39</span>              <span class="nb">exec</span><span class="p">(</span><span class="s2">&quot;ps -eo%mem,rss,pid | grep </span><span class="si">$pid</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$output</span><span class="p">);</span>
+<span class="lineno">40</span>              <span class="nv">$output</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="nv">$output</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="lineno">41</span>              <span class="k">return</span> <span class="nv">$output</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">;</span>
+<span class="lineno">42</span>          <span class="p">}</span>
+<span class="lineno">43</span>      <span class="c1">//}</span>
+<span class="lineno">44</span>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">45</span>      <span class="k">return</span> <span class="nb">memory_get_usage</span><span class="p">(</span><span class="nv">$real_usage</span><span class="p">);</span>
+<span class="lineno">46</span>      <span class="c1">//return formatBytes(memory_get_usage($real_usage));</span>
+<span class="lineno">47</span>  <span class="p">}</span>
+<span class="lineno">48</span> <span class="p">}</span>
+<span class="lineno">49</span> 
+<span class="lineno">50</span> <span class="c1">//memory_get_usage();  </span>
+<span class="lineno">51</span> <span class="nv">$m1</span> <span class="o">=</span> <span class="nx">get_memory_usage</span><span class="p">();</span>  
+<span class="lineno">52</span> <span class="c1">//$m1 = memory_get_usage();  </span>
+<span class="lineno">53</span> <span class="k">echo</span> <span class="s1">&#39;&lt;br /&gt; m1:&#39;</span><span class="p">,</span><span class="nx">formatBytes</span><span class="p">(</span><span class="nv">$m1</span><span class="p">);</span>
+<span class="lineno">54</span>   
+<span class="lineno">55</span> <span class="nv">$a</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span><span class="p">;</span>  
+<span class="lineno">56</span> <span class="nv">$b</span> <span class="o">=</span>  <span class="nb">str_repeat</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>  
+<span class="lineno">57</span>   
+<span class="lineno">58</span> <span class="nv">$m2</span> <span class="o">=</span> <span class="nb">memory_get_usage</span><span class="p">();</span>  
+<span class="lineno">59</span> <span class="k">echo</span> <span class="s1">&#39;&lt;br /&gt; m2:&#39;</span><span class="p">,</span><span class="nx">formatBytes</span><span class="p">(</span><span class="nv">$m2</span><span class="p">);</span>
 <span class="lineno">60</span>   
-<span class="lineno">61</span> <span class="nv">$m3</span> <span class="o">=</span> <span class="nb">memory_get_usage</span><span class="p">();</span>  
-<span class="lineno">62</span> <span class="k">echo</span> <span class="s1">&#39;&lt;br /&gt; m3:&#39;</span><span class="p">,</span><span class="nx">formatBytes</span><span class="p">(</span><span class="nv">$m3</span><span class="p">);</span>
-<span class="lineno">63</span> 
-<span class="lineno">64</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+<span class="lineno">61</span> <span class="nb">unset</span><span class="p">(</span><span class="nv">$b</span><span class="p">);</span>  
+<span class="lineno">62</span>   
+<span class="lineno">63</span> <span class="nv">$m3</span> <span class="o">=</span> <span class="nb">memory_get_usage</span><span class="p">();</span>  
+<span class="lineno">64</span> <span class="k">echo</span> <span class="s1">&#39;&lt;br /&gt; m3:&#39;</span><span class="p">,</span><span class="nx">formatBytes</span><span class="p">(</span><span class="nv">$m3</span><span class="p">);</span>
+<span class="lineno">65</span> 
+<span class="lineno">66</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
 
 
 <p><a href="http://www.nowamagic.net/php/php_MemoryGetUsage.php">原文链接</a></p>
