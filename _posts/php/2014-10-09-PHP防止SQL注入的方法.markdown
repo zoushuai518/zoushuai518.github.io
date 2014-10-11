@@ -1,0 +1,9 @@
+---
+layout: post
+title: "PHP防止SQL注入的方法"
+category: php
+comments: true
+date:   2014-10-09 16:35:51
+---
+
+[PHP防止SQL注入的方法](http://www.cnblogs.com/syx9527/p/3988472.html)

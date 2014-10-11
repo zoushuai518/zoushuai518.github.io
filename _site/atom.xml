@@ -4,13 +4,114 @@
  <title>CodeMadman</title>
  <link href="http://username.github.io/" rel="self"/>
  <link href="http://username.github.io"/>
- <updated>2014-10-09T16:09:16+08:00</updated>
+ <updated>2014-10-11T18:18:06+08:00</updated>
  <id>http://username.github.io</id>
  <author>
    <name>Name Lastname</name>
    <email>blah@email.test</email>
  </author>
 
+ 
+ <entry>
+   <title>基于原生PHP交叉会员权限控制</title>
+   <link href="http://username.github.io/php/2014/10/12/%E5%9F%BA%E4%BA%8E%E5%8E%9F%E7%94%9FPHP%E4%BA%A4%E5%8F%89%E4%BC%9A%E5%91%98%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6"/>
+   <updated>2014-10-12T03:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/12/基于原生PHP交叉会员权限控制</id>
+   <content type="html">&lt;p&gt;仅作为参考：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/lichenwei/p/3896145.html&quot;&gt;基于原生PHP交叉会员权限控制&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;&lt;a href=&quot;/php/2014/10/12/RBAC&quot;&gt;EXT:&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>个性化自己的二维码</title>
+   <link href="http://username.github.io/php/2014/10/12/php%E7%94%9F%E6%88%90%E4%BA%8C%E7%BB%B4%E7%A0%81"/>
+   <updated>2014-10-12T03:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/12/php生成二维码</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/litturtle/p/3893842.html&quot;&gt;个性化自己的二维码&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>RBAC 权限</title>
+   <link href="http://username.github.io/php/2014/10/12/RBAC"/>
+   <updated>2014-10-12T03:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/12/RBAC</id>
+   <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/huanghanzzz2006/article/details/1429666&quot;&gt;基于RBAC的权限设计模型&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/zc22/archive/2007/10/08/917493.html&quot;&gt;RBAC 权限入门&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.thinkphp.cn/extend/235.html&quot;&gt;ThinkPHP示例：RBAC&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>管理员必备的20个Linux系统监控工具</title>
+   <link href="http://username.github.io/linux/2014/10/12/%E7%AE%A1%E7%90%86%E5%91%98%E5%BF%85%E5%A4%87%E7%9A%8420%E4%B8%AALinux%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7"/>
+   <updated>2014-10-12T01:32:51+08:00</updated>
+   <id>http://username.github.io/linux/2014/10/12/管理员必备的20个Linux系统监控工具</id>
+   <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://os.51cto.com/art/201005/200714_all.htm&quot;&gt;管理员必备的20个Linux系统监控工具&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://os.51cto.com/art/201005/200714.htm&quot;&gt;管理员必备的20个Linux系统监控工具 page:1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>基于WEB界面的分布式系统监视程序</title>
+   <link href="http://username.github.io/linux/2014/10/11/zabbix"/>
+   <updated>2014-10-11T20:32:51+08:00</updated>
+   <id>http://username.github.io/linux/2014/10/11/zabbix</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.zabbix.com/&quot;&gt;zabbix&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>PHP REST</title>
+   <link href="http://username.github.io/php/2014/10/10/php_REST"/>
+   <updated>2014-10-10T18:50:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/10/php_REST</id>
+   <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/x3d/p/3894565.html&quot;&gt;PHP 中的 REST&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://gitcafe.com/web3d/uxf/blob/master/upload/source/class/rest/rest_controller.php&quot;&gt;PHP 中的 REST code&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>PHP的PSR规范中文版</title>
+   <link href="http://username.github.io/php/2014/10/10/PHP%E7%9A%84PSR%E8%A7%84%E8%8C%83"/>
+   <updated>2014-10-10T18:50:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/10/PHP的PSR规范</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://feiyang.me/2013/03/php-psr-in-chinese/&quot;&gt;PHP的PSR规范中文版&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Xss攻击</title>
+   <link href="http://username.github.io/php/2014/10/10/Xss%E6%94%BB%E5%87%BB"/>
+   <updated>2014-10-10T00:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/10/Xss攻击</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>PHP防止SQL注入的方法</title>
+   <link href="http://username.github.io/php/2014/10/10/PHP%E9%98%B2%E6%AD%A2SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E6%96%B9%E6%B3%95"/>
+   <updated>2014-10-10T00:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/10/PHP防止SQL注入的方法</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/syx9527/p/3988472.html&quot;&gt;PHP防止SQL注入的方法&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>http2协议</title>
@@ -647,6 +748,27 @@ mb_strlen不是php内置函数，使用此函数，需要开启php_mbstring扩�
 &lt;li&gt;&lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+</content>
+ </entry>
+ 
+ <entry>
+   <title>PHP输入输出流</title>
+   <link href="http://username.github.io/php/2014/09/26/php%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81"/>
+   <updated>2014-09-26T18:50:51+08:00</updated>
+   <id>http://username.github.io/php/2014/09/26/php输入输出流</id>
+   <content type="html">&lt;ul&gt;
+&lt;li&gt;file_get_contents('php://input')&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;PHP仅仅解析Content-Type为 application/x-www-form-urlencoded 或 multipart/form-data的Http请求。之所以这样是因为历史原因，PHP最初实现$_POST时，最流行的就是上面两种类型。因此虽说现在有些类型（比如application/json）很流行，但PHP中还是没有去实现自动处理。&lt;/p&gt;
+
+&lt;p&gt;因为POST是全局变量，所以更改&lt;em&gt;POST会全局有效。因此对于Content-Type为 application/json 的请求，我们需要手工去解析json数据，然后修改$&lt;/em&gt;POST变量。&lt;/p&gt;
+
+&lt;p&gt;$&lt;em&gt;POST = json_decode(file_get_contents('php://input'), true);
+//此时，我们再去输出$&lt;/em&gt;POST变量，则会得到我们期望的输出：&lt;/p&gt;
+
+&lt;p&gt;array(2) { [&quot;a&quot;]=&gt; string(1) &quot;a&quot; [&quot;b&quot;]=&gt; string(1) &quot;b&quot; }&lt;/p&gt;
 </content>
  </entry>
  
@@ -1904,8 +2026,14 @@ Catchable fatal error: Argument 1 passed to Models_Workflow_Instance::getRand() 
 &lt;li&gt;&lt;a href=&quot;http://www.laruence.com/&quot;&gt;风雪之隅&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/bluefrog&quot;&gt;一天一点进步&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://requests.ryanmccue.info/&quot;&gt;requests for php&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.php-fig.org/&quot;&gt;php-fig&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.phpcomposer.com/&quot;&gt;composer&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://packagist.org/&quot;&gt;packagist&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://phpexcel.codeplex.com/&quot;&gt;PHPExecl&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://gitcafe.com/&quot;&gt;gitcafe&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/zoushuai518/DesignPatternsPHP&quot;&gt;https://github.com/zoushuai518/DesignPatternsPHP&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/zoushuai518/learn-php-core&quot;&gt;https://github.com/zoushuai518/learn-php-core&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/zoushuai518/learn-php-core&quot;&gt;https://github.com/zoushuai518/learn-php-core&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/zoushuai518/fig-standards&quot;&gt;https://github.com/zoushuai518/fig-standards&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/cate/php/&quot;&gt;http://www.cnblogs.com/cate/php/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 

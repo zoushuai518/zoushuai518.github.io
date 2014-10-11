@@ -21,9 +21,18 @@ date:   2014-09-18 10:50:51
 - [一天一点进步](http://www.cnblogs.com/bluefrog)
 
 - [requests for php](http://requests.ryanmccue.info/)
+- [php-fig](http://www.php-fig.org/)
+
+- [composer](http://www.phpcomposer.com/)
+- [packagist](https://packagist.org/)
+
+- [PHPExecl](http://phpexcel.codeplex.com/)
+
+- [gitcafe](https://gitcafe.com/)
 
 - [https://github.com/zoushuai518/DesignPatternsPHP](https://github.com/zoushuai518/DesignPatternsPHP)
 - [https://github.com/zoushuai518/learn-php-core](https://github.com/zoushuai518/learn-php-core)
+- [https://github.com/zoushuai518/fig-standards](https://github.com/zoushuai518/fig-standards)
 
 - [http://www.cnblogs.com/cate/php/](http://www.cnblogs.com/cate/php/)
 

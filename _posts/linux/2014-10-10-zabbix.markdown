@@ -1,0 +1,9 @@
+---
+layout: post
+title: "基于WEB界面的分布式系统监视程序"
+category: Linux
+comments: true
+date:   2014-10-11 12:32:51
+---
+
+[zabbix](http://www.zabbix.com/)

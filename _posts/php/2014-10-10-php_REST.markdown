@@ -1,0 +1,10 @@
+---
+layout: post
+title: "PHP REST"
+category: php
+comments: true
+date:   2014-10-10 10:50:51
+---
+
+- [PHP 中的 REST](http://www.cnblogs.com/x3d/p/3894565.html)
+- [PHP 中的 REST code](https://gitcafe.com/web3d/uxf/blob/master/upload/source/class/rest/rest_controller.php)
