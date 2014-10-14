@@ -1,0 +1,553 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
+
+    <title>git-flow使用详解</title>
+    <meta name="description" content="">
+
+    <link href="/assets/themes/p233/css/pygments.css" rel="stylesheet">
+    <link href="/assets/themes/p233/css/style.css" rel="stylesheet">
+
+    <!-- atom & rss feed || zs fuck! -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+  </head>
+  <body>
+    <aside id="sidebar">
+      <nav id="tags">
+        <a href="/index.html" id="avatar"></a>
+
+		<!-- 分类 -->
+		<ul id="tags__ul">
+	<li id="js-label1" class="tags__li tags-btn active">全部文章</li>
+	
+	<li id="js-label2" class="tags__li tags-btn">jekyll (9)</li>
+	
+	<li id="js-label3" class="tags__li tags-btn">php (49)</li>
+	
+	<li id="js-label4" class="tags__li tags-btn">tool (6)</li>
+	
+	<li id="js-label5" class="tags__li tags-btn">python (1)</li>
+	
+	<li id="js-label6" class="tags__li tags-btn">ruby (1)</li>
+	
+	<li id="js-label7" class="tags__li tags-btn">linux (9)</li>
+	
+	<li id="js-label8" class="tags__li tags-btn">asset (3)</li>
+	
+	<li id="js-label9" class="tags__li tags-btn">standard (1)</li>
+	
+	<li id="js-label10" class="tags__li tags-btn">agreement (3)</li>
+	
+	<li id="js-label11" class="tags__li tags-btn">mysql (1)</li>
+	
+	<li id="js-label12" class="tags__li tags-btn">mongodb (2)</li>
+	
+</ul>
+
+
+        <div id="tags__bottom">
+          <a href="mailto:zoushuai518@gmail.com" id="icon-email" class="tags-btn fontello"></a>
+          <a href="/rss.xml" id="icon-feed" class="tags-btn fontello"></a>
+        </div>
+      </nav> <!-- end #tags -->
+
+      <div id="posts-list">
+        <form action="" id="search-form">
+          <a href="/index.html" id="mobile-avatar"></a>
+          <!-- NOTE: input field is disabled by default -->
+          <input id="search-input" type="text" placeholder="Search..." disabled >
+        </form>
+
+        <nav id="pl__container">
+        
+          <a class="tool pl__all" href="/tool/2014/10/14/gitlab"><span class="pl__circle"></span><span class="pl__title">gitlab</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="tool pl__all" href="/tool/2014/10/14/git-flow-%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3"><span class="pl__circle"></span><span class="pl__title">git-flow使用详解</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="tool pl__all" href="/tool/2014/10/14/git-flow"><span class="pl__circle"></span><span class="pl__title">git flow</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/10/14/PHP%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E5%A4%9A%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="pl__circle"></span><span class="pl__title">PHP读取文件多种方法</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/10/12/%E5%9F%BA%E4%BA%8E%E5%8E%9F%E7%94%9FPHP%E4%BA%A4%E5%8F%89%E4%BC%9A%E5%91%98%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6"><span class="pl__circle"></span><span class="pl__title">基于原生PHP交叉会员权限控制</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/10/12/php%E7%94%9F%E6%88%90%E4%BA%8C%E7%BB%B4%E7%A0%81"><span class="pl__circle"></span><span class="pl__title">个性化自己的二维码</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/10/12/RBAC"><span class="pl__circle"></span><span class="pl__title">RBAC 权限</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="linux pl__all" href="/linux/2014/10/12/%E7%AE%A1%E7%90%86%E5%91%98%E5%BF%85%E5%A4%87%E7%9A%8420%E4%B8%AALinux%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7"><span class="pl__circle"></span><span class="pl__title">管理员必备的20个Linux系统监控工具</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="linux pl__all" href="/linux/2014/10/11/zabbix"><span class="pl__circle"></span><span class="pl__title">基于WEB界面的分布式系统监视程序</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/10/10/php_REST"><span class="pl__circle"></span><span class="pl__title">PHP REST</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/10/10/PHP%E7%9A%84PSR%E8%A7%84%E8%8C%83"><span class="pl__circle"></span><span class="pl__title">PHP的PSR规范中文版</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/10/10/Xss%E6%94%BB%E5%87%BB"><span class="pl__circle"></span><span class="pl__title">Xss攻击</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/10/10/PHP%E9%98%B2%E6%AD%A2SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E6%96%B9%E6%B3%95"><span class="pl__circle"></span><span class="pl__title">PHP防止SQL注入的方法</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="agreement pl__all" href="/agreement/2014/10/09/http2"><span class="pl__circle"></span><span class="pl__title">http2协议</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/10/08/php%E8%8E%B7%E5%8F%96%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9C%9F%E5%AE%9EIP"><span class="pl__circle"></span><span class="pl__title">php获取客户端真实IP</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/10/08/php-%E6%A1%86%E6%9E%B6"><span class="pl__circle"></span><span class="pl__title">php 框架</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="tool pl__all" href="/tool/2014/10/07/%E9%85%8D%E7%BD%AEGit%E5%92%8CSSH%E5%AF%86%E9%92%A5%E8%BF%9E%E6%8E%A5Github"><span class="pl__circle"></span><span class="pl__title">配置 Git 和 SSH 密钥连接 Github</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="linux pl__all" href="/linux/2014/10/07/Linux%E4%B8%8B%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA%E5%91%BD%E5%90%8D"><span class="pl__circle"></span><span class="pl__title">Linux下硬盘分区命名</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="linux pl__all" href="/linux/2014/10/01/nginx_config"><span class="pl__circle"></span><span class="pl__title">nginx配置详解</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="mongodb pl__all" href="/mongodb/2014/10/01/NoSql"><span class="pl__circle"></span><span class="pl__title">NoSQL init</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="mongodb pl__all" href="/mongodb/2014/10/01/MongoDB"><span class="pl__circle"></span><span class="pl__title">MongoDB init</span><span class="pl__date">Oct 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/30/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3"><span class="pl__circle"></span><span class="pl__title">php 抽象类和接口</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="tool pl__all" href="/tool/2014/09/30/vim"><span class="pl__circle"></span><span class="pl__title">vim ide</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/29/%E5%8A%A0%E9%80%9FPHP%E7%9A%84ECHO"><span class="pl__circle"></span><span class="pl__title">加速PHP的ECHO</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/29/php-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="pl__circle"></span><span class="pl__title">php正则表达式</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/29/php-%E4%BB%8EYii2%E7%9A%84Request%E7%9C%8B%E5%85%B6CSRF%E9%98%B2%E8%8C%83%E7%AD%96%E7%95%A5"><span class="pl__circle"></span><span class="pl__title">从Yii2的Request看其CSRF防范策略</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/29/php-strlen-mb_strlen"><span class="pl__circle"></span><span class="pl__title">php strlen和mb_strlen的区别</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/29/php-fastcgi_finish_request"><span class="pl__circle"></span><span class="pl__title">fastcgi_finish_request</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/29/php-CSRF%E6%94%BB%E5%87%BB"><span class="pl__circle"></span><span class="pl__title">CSRF攻击</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/29/php-Builder"><span class="pl__circle"></span><span class="pl__title">建造者模式</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/29/php-get_http_header_msg"><span class="pl__circle"></span><span class="pl__title">php 获取http header信息</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/29/php-file_get_contents"><span class="pl__circle"></span><span class="pl__title">php file_get_contents抓取网页</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="linux pl__all" href="/linux/2014/09/28/Docker"><span class="pl__circle"></span><span class="pl__title">Docker</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/26/php%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81"><span class="pl__circle"></span><span class="pl__title">PHP输入输出流</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/26/php-session%E5%85%B1%E4%BA%AB"><span class="pl__circle"></span><span class="pl__title">PHP session共享</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/26/php-session_cookie"><span class="pl__circle"></span><span class="pl__title">PHP session cookie</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/25/php-factory"><span class="pl__circle"></span><span class="pl__title">PHP设计模式之工厂模式(Factory Pattern)</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/24/php-singleton"><span class="pl__circle"></span><span class="pl__title">PHP设计模式之单例模式与静态变量</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="asset pl__all" href="/asset/2014/09/19/nodejs"><span class="pl__circle"></span><span class="pl__title">nodejs</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/18/php%E5%8A%A8%E6%80%81%E5%8F%98%E9%87%8F%EF%BC%8C%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%EF%BC%8C%E5%A0%86%E5%92%8C%E6%A0%88%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="pl__circle"></span><span class="pl__title">动态变量，静态变量，堆和栈的区别</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/18/php-%E7%B1%BB%E5%9E%8B%E7%BA%A6%E6%9D%9F"><span class="pl__circle"></span><span class="pl__title">PHP 类型约束</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/18/php-%E5%8F%8D%E5%B0%84"><span class="pl__circle"></span><span class="pl__title">php 反射</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/18/php-spl"><span class="pl__circle"></span><span class="pl__title">php spl</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/18/php-oop"><span class="pl__circle"></span><span class="pl__title">PHP OOP</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/18/php-instanceof%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="pl__circle"></span><span class="pl__title">PHP instanceof运算符</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/18/php-AOP"><span class="pl__circle"></span><span class="pl__title">php AOP</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/18/php-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="pl__circle"></span><span class="pl__title">php生命周期</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/18/php-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3DIP%E3%80%81IoC%E3%80%81DI%E4%BB%A5%E5%8F%8AIoC%E5%AE%B9%E5%99%A8"><span class="pl__circle"></span><span class="pl__title">深入理解DIP、IoC、DI以及IoC容器</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/18/php-%E9%9D%A2%E8%AF%95"><span class="pl__circle"></span><span class="pl__title">php 面试题</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/18/php-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="pl__circle"></span><span class="pl__title">php 设计模式</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/18/php-technology-site"><span class="pl__circle"></span><span class="pl__title">php 的那些事儿</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="agreement pl__all" href="/agreement/2014/09/18/http"><span class="pl__circle"></span><span class="pl__title">http协议</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="mysql pl__all" href="/mysql/2014/09/18/gaoxiao-sql"><span class="pl__circle"></span><span class="pl__title">编写高效的SQL</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/17/php-DI_IoC"><span class="pl__circle"></span><span class="pl__title">php 依赖注入(DI) & 控制反转(IoC)</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="linux pl__all" href="/linux/2014/09/17/shell"><span class="pl__circle"></span><span class="pl__title">Linux shell</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="linux pl__all" href="/linux/2014/09/17/nginx-https-config"><span class="pl__circle"></span><span class="pl__title">nginx https配置</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="agreement pl__all" href="/agreement/2014/09/17/https"><span class="pl__circle"></span><span class="pl__title">https协议</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="standard pl__all" href="/standard/2014/09/17/Rest_API"><span class="pl__circle"></span><span class="pl__title">Rest API标准</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/16/php-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="pl__circle"></span><span class="pl__title">php 垃圾回收机制</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/16/laravel"><span class="pl__circle"></span><span class="pl__title">golaravel</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="asset pl__all" href="/asset/2014/09/16/front-list"><span class="pl__circle"></span><span class="pl__title">前端技术</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/16/create-composer_packagist"><span class="pl__circle"></span><span class="pl__title">创建一个自己的 Composer/Packagist包</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="asset pl__all" href="/asset/2014/09/16/PJAX"><span class="pl__circle"></span><span class="pl__title">PJAX</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="jekyll pl__all" href="/jekyll/2014/09/16/zs-jekyll-blog"><span class="pl__circle"></span><span class="pl__title">基于Jekyll github创建自己的blog系统</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="jekyll pl__all" href="/jekyll/2014/09/16/jekyll-3-theme"><span class="pl__circle"></span><span class="pl__title">jekyll dazzle theme</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="jekyll pl__all" href="/jekyll/2014/09/13/github-jekyll-markdown"><span class="pl__circle"></span><span class="pl__title">使用 GitHub, Jekyll 打造自己的独立博客</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="linux pl__all" href="/linux/2014/09/12/find"><span class="pl__circle"></span><span class="pl__title">Linux命令之find</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="linux pl__all" href="/linux/2014/09/12/crontab"><span class="pl__circle"></span><span class="pl__title">Linux命令之crontab</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="ruby pl__all" href="/ruby/2014/09/12/ruby-init"><span class="pl__circle"></span><span class="pl__title">ruby</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="python pl__all" href="/python/2014/09/12/python-init"><span class="pl__circle"></span><span class="pl__title">python</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/12/php%E5%B9%B6%E5%8F%91%E5%86%99%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E9%94%81"><span class="pl__circle"></span><span class="pl__title">php 并发写文件|文件锁</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/12/phpdoc"><span class="pl__circle"></span><span class="pl__title">phpdoc|phpDocumentor</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/12/php_pear_pecl"><span class="pl__circle"></span><span class="pl__title">php pear|pecl</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/12/php-composer"><span class="pl__circle"></span><span class="pl__title">php composer</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/12/memory_get_usage"><span class="pl__circle"></span><span class="pl__title">获得PHP代码占用内存的情况</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="jekyll pl__all" href="/jekyll/2014/09/12/jekyll-%E4%B8%AD%E7%9A%84%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE"><span class="pl__circle"></span><span class="pl__title">jekyll中的语法高亮</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="tool pl__all" href="/tool/2014/09/12/git%E4%BB%8B%E7%BB%8D"><span class="pl__circle"></span><span class="pl__title">Git分布式版本管理工具</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/12/PHP%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%88%86%E9%85%8D"><span class="pl__circle"></span><span class="pl__title">PHP对象类型在内存中的分配</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="jekyll pl__all" href="/jekyll/2014/09/12/%E5%85%B3%E4%BA%8EJekyll"><span class="pl__circle"></span><span class="pl__title">关于Jekyll</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="jekyll pl__all" href="/jekyll/2014/09/12/jekyll-%E6%A8%A1%E6%9D%BF%E4%BD%BF%E7%94%A8"><span class="pl__circle"></span><span class="pl__title">Jekyll模板使用</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="jekyll pl__all" href="/jekyll/2014/09/12/jekyll-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91"><span class="pl__circle"></span><span class="pl__title">Jekyll插件开发</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/12/%E4%BB%8B%E7%BB%8Dyii2"><span class="pl__circle"></span><span class="pl__title">yii2介绍</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="php pl__all" href="/php/2014/09/11/php-%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86"><span class="pl__circle"></span><span class="pl__title">php加密解密</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="jekyll pl__all" href="/jekyll/2014/09/05/ubuntu-use-jekyll"><span class="pl__circle"></span><span class="pl__title">jekyll 使用教程</span><span class="pl__date">Sep 2014</span></a>
+        
+          <a class="jekyll pl__all" href="/jekyll/2014/09/05/ubuntu-install-jekyll"><span class="pl__circle"></span><span class="pl__title">jekyll 安装教程</span><span class="pl__date">Sep 2014</span></a>
+        
+        </nav>
+      </div> <!-- end #posts-list -->
+    </aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        
+
+<article id="post__content" class="fmt">
+  <h1 id="post__title" data-identifier="20141014">git-flow使用详解</h1>
+  <p>本文中我会展示一种开发模型，一年前该模型就已经被我用在所有的项目中（包括工作中的项目和私有项目），结果是非常成功的。我早就想为此写点东西，可直到现在才有时间。本文不会讲述任何项目的细节，只会涉及到分支策略和发布管理。</p>
+
+<p><img src="/assets/postImage/tool/git-branch-1.png" title="git-flow" alt="git-flow" /></p>
+
+<p>本文使用<a href="http://git-scm.com/">Git</a>作为所有源码的版本控制工具。</p>
+
+<h2>什么是Git：</h2>
+
+<p>Git是分布式的版本管理工具</p>
+
+<h2>去中心化但仍保持中心化：</h2>
+
+<p>在这个分支模型中我们使用的，且被证实工作得很好的仓库配置，其核心是一个中心“真理”仓库。注意只有该仓库才被认为是中心库（由于Git是DVCS [分布式版本控制系统]，在技术层面没有中心库这一东西）。之后我们用origin指代该仓库，因为大多数Git用户都熟悉这个名称。</p>
+
+<p><img src="/assets/postImage/tool/git-branch-2.png" title="git-flow" alt="git-flow" /></p>
+
+<p>每个开发者都对origin做push和pull操作。不过除了这种中心化的push-pull关系外，每个开发者还可以从其他开发者或者小组处pull变更。例如，可能两个或更多的开发者一起开发一个大的特性，在往origin永久性的push工作代码之前，他们之间可以执行一些去中心化的操作。在上图中，分别有Alice和Bob、Alice和David、Clair和David这些小组。</p>
+
+<p>从技术上来说，这仅仅是Alice定义一个Git remote，名字为bob，指向Bob的仓库，反过来也一样。</p>
+
+<h2>主要分支：</h2>
+
+<p>此开发模型的核心主要受现有的模型启发。中心仓库包含了两个主要分支，这两个分支的寿命是无限的：</p>
+
+<ul>
+<li>master</li>
+<li>develop</li>
+</ul>
+
+
+<p><img src="/assets/postImage/tool/git-branch-3.png" title="git-flow" alt="git-flow" /></p>
+
+<p>每个Git用于都应该熟悉origin上的master分支。与master分支平行存在的，是另外一个名为develop的分支。</p>
+
+<p>我们认为origin/develop分支上的HEAD源码反映了开发过程中最新的提交变更。有人会称之为“集成分支”。该分支是自动化每日构建的代码源。</p>
+
+<p>当develop分支上的源码到达一个稳定的状态时，就可以发布版本。所有develop上的变更都应该以某种方式合并回master分支，并且使用发布版本号打上标签。稍后我们会讨论具体操作细节。</p>
+
+<p>因此，每次有变化被合并到master分支时，根据定义这就是一次新的产品版本发布。我们趋向于严格遵守该规范，所以理论上来说，每次master有提交时，我们都可以使用一个Git钩子（hook）脚本来自动构建并部署软件至产品环境服务器。</p>
+
+<h2>支持性分支：</h2>
+
+<p>紧接着主要分支master和develop，我们的开发模型使用多种支持性分支来帮助团队成员间实现并行开发、追踪产品特性、准备产品版本发布、以及快速修复产品问题。与主要分支不同的是，这些分支的寿命是有限的，它们最终都会被删除。</p>
+
+<p>我们会用到的分支有这几类：</p>
+
+<ul>
+<li>特性分支（feature branch）</li>
+<li>发布分支（release branch）</li>
+<li>热补丁分支（hotfix branch）</li>
+</ul>
+
+
+<p>上述每种分支都有特定的用途，它们各自关于源自什么分支、合并回什么分支，都有严格的规定。稍后我们逐个进行介绍。</p>
+
+<p>从技术角度来说，这些分支一点都不“特殊”。分支按照我们对其的使用方式进行分类。技术角度它们都一样是平常的Git分支。</p>
+
+<h2>特性分支：</h2>
+
+<p><img src="/assets/postImage/tool/git-branch-4.png" title="git-flow" alt="git-flow" /></p>
+
+<ul>
+<li>可能的分支来源：<code>develop</code></li>
+<li>必须合并回：<code>develop</code></li>
+<li>分支命令约定：任何除<code>master</code>, <code>develop</code>, <code>release-*</code>, 或 <code>hotfix-*</code>以外的名称</li>
+</ul>
+
+
+<p>特性分支（有时也被称作topic分支）是用来为下一发布版本开发新特性。当开始开发一个特性的时候，该特性会成为哪个发布版本的一部分，往往还不知道。特性分支的重点是，只要特性还在开发，该分支就会一直存在，不过它最终会被合并回develop分支（将该特性加入到发布版本中），或者被丢弃（如果试验的结果令人失望）。</p>
+
+<p>特性分支往往只存在于开发者的仓库中，而不会出现在origin</p>
+
+<h3>创建一个特性分支</h3>
+
+<p>开始开发新特性的时候，从develop分支创建特性分支。</p>
+
+<pre><code>
+$ git checkout -b myfeature develop
+Switch to a new branch “myfeature”
+</code></pre>
+
+
+<h3>合并完成的特性回develop</h3>
+
+<p>完成的特性应该被合并回develop分支以将特性加入到下一个发布版本中：</p>
+
+<pre><code>
+$ git checkout develop
+Switch to branch ‘develop’
+$ git merge –no-ff myfeature
+Updating ea1b82a..05e9557
+(Summary of changes)
+$ git branch -d myfeature
+Deleted branch myfeature (was 05e9557).
+$ git push origin develop
+</code></pre>
+
+
+<p>上述代码中的<span class="impor">–no-ff</span>标记会使合并永远创建一个新的commit对象，即使该合并能以fast-forward的方式进行。这么做可以避免丢失特性分支存在的历史信息，同时也能清晰的展现一组commit一起构成一个特性。比较下面的图：</p>
+
+<p><img src="/assets/postImage/tool/git-branch-5.png" title="git-flow" alt="git-flow" /></p>
+
+<p>在第2张图中，已经无法一眼从Git历史中看到哪些commit对象构成了一个特性——你需要阅读日志以获得该信息。在这种情况下，回退（revert）整个特性（一组commit）就会比较麻烦，而如果使用了–no-diff就会简单很多。</p>
+
+<p>是的，这么做会造成一些（空的）commit对象，但这么做是利大于弊的。</p>
+
+<p>可惜的是，我没能找到方法让–no-diff成为默认的git merge行为参数，但其实应该这么做。</p>
+
+<h2>发布分支：</h2>
+
+<ul>
+<li>可能的分支来源：<code>develop</code></li>
+<li>必须合并回：<code>develop</code>和<code>master</code></li>
+<li>分支命名约定：<code>release-*</code></li>
+</ul>
+
+
+<p>发布分支为准备新的产品版本发布做支持。它允许你在最后时刻检查所有的细节。此外，它还允许你修复小bug以及准备版本发布的元数据（例如版本号，构建日期等等）。在发布分支做这些事情之后，develop分支就会显得比较干净，也方便为下一大版本发布接受特性。</p>
+
+<p>从develop分支创建发布分支的时间通常是develop分支（差不多）能反映新版本所期望状态的时候。至少说，这是时候版本发布所计划的特性都已经合并回了develop分支。而未来其它版本发布计划的特性则不应该合并，它们必须等到当前的版本分支创建好之后才能合并。</p>
+
+<p>正是在发布分支创建的时候，对应的版本发布才获得一个版本号——不能更早。在该时刻之前，develop分支反映的是“下一版本”的相关变更，但不知道这“下一版本”到底会成为0.3还是1.0，直到发布分支被创建。版本号是在发布分支创建时，基于项目版本号规则确定的。</p>
+
+<h3>创建一个发布分支</h3>
+
+<p>发布分支从develop分支创建。例如，假设1.1.5是当前的产品版本，同时我们即将发布下个版本。develop分支的状态已经是准备好“下一版本”发布了，我们也决定下个版本是1.2（而不是1.1.6或者2.0）。因此我们创建发布分支，并且为其赋予一个能体现新版本号的名称：</p>
+
+<pre><code>
+$ git checkout -b releases-1.2 develop
+Switched to a new branch “release-1.2”
+$ ./bump-version.sh 1.2
+Files modified successfully. version bumped to 1.2.
+$ git commit -a -m “Bumped version number to 1.2”
+[release-1.2 74d9424] Bumped version number to 1.2
+1 files changed. 1 insertions(+). 1 deletions(-)
+</code></pre>
+
+
+<p>创建新分支并转到该分支之后，我们设定版本号。这里的bump-version.sh是一个虚构的shell脚本，它修改一些本地工作区的文件以体现新的版本号。（当然这也可以手动完成——这里只是说要有一些文件变更）接着，提交新版本号。</p>
+
+<p>新的发布分支可能存在一段时间，直到该版本明确对外交付。这段时间内，该分支上可能会有一些bug的修复（而不是在develop分支上）。在该分支上添加新特性是严格禁止的。新特性必须合并到develop分支，然后等待下一个版本发布。</p>
+
+<h3>结束一个发布分支</h3>
+
+<p>当发布分支达到一个可以正式发布的状态时，我们就需要执行一些操作。首先，将发布分支合并至master（记住，我们之前定义master分支上的每一个commit都对应一个新版本）。接着，master分支上的commit必须被打上标签（tag），以方便将来寻找历史版本。最后，发布分支上的变更需要合并回develop，这样将来的版本也能包含相关的bug修复。</p>
+
+<p>前两步在Git中的操作：</p>
+
+<pre><code>
+$ git checkout master
+Switched to branch ‘master’
+$ git merge –no-ff release-1.2
+Merge made by recursive.
+(Summary of changes)
+$ git tag -a 1.2
+</code></pre>
+
+
+<p>现在版本发布完成了，而且为未来的查阅提供了标签。</p>
+
+<p><span class="impor">提醒：</span>你可能同时也会想要用 -s 或者 -u <key> 来对标签进行签名。</p>
+
+<p>为了能保留发布分支上的变更，我们还需要将分支合并回develop。在Git中：</p>
+
+<pre><code>
+$ git checkout develop
+Switched to branch ‘develop’
+$ git merge –no-ff release-1.2
+Merge made by recursive.
+(Summary of changes)
+</code></pre>
+
+
+<p>这一操作可能会导致合并冲突（可能性还很大，因为我们改变了版本号）。如果发现，则修复之并提交。</p>
+
+<p>现在工作才算真正完成了，最后一步是删除发布分支，因为我们已不再需要它：</p>
+
+<pre><code>
+$ git branch -d release-1.2
+Deleted branch release-1.2 (was ff452fe).
+</code></pre>
+
+
+<h2>热补丁分支：</h2>
+
+<p><img src="/assets/postImage/tool/git-branch-6.png" title="git-flow" alt="git-flow" /></p>
+
+<ul>
+<li>可能的分支来源：<code>master</code></li>
+<li>必须合并回：<code>develop</code>和<code>master</code></li>
+<li>分支命名约定：<code>hotfix-*</code></li>
+</ul>
+
+
+<p>热补丁分支和发布分支十分类似，它的目的也是发布一个新的产品版本，尽管是不在计划中的版本发布。当产品版本发现未预期的问题的时候，就需要理解着手处理，这个时候就要用到热补丁分支。当产品版本的重大bug需要立即解决的时候，我们从对应版本的标签创建出一个热补丁分支。</p>
+
+<p>使用热补丁分支的主要作用是（develop分支上的）团队成员可以继续工作，而另外的人可以在热补丁分支上进行快速的产品bug修复。</p>
+
+<h3>创建一个热补丁分支</h3>
+
+<p>热补丁分支从master分支创建。例如，假设1.2是当前正在被使用的产品版本，由于一个严重的bug，产品引起了很多问题。同时，develop分支还处于不稳定状态，无法发布新的版本。这时我们可以创建一个热补丁分支，并在该分支上修复问题：</p>
+
+<pre><code>
+$ git checkout -b hotfix-1.2.1 master
+Switched to a new branch “hotfix-1.2.1″
+$ ./bump-version.sh 1.2.1
+Files modified successfully, version bumped to 1.2.1.
+$ git commit -a -m “Bumped version number to 1.2.1″
+[hotfix-1.2.1 41e61bb] Bumped version number to 1.2.1
+1 files changed, 1 insertions(+), 1 deletions(-)
+</code></pre>
+
+
+<p>不要忘了在创建热补丁分之后设定一个新的版本号！</p>
+
+<p>然后，修复bug并使用一个或者多个单独的commit提交。</p>
+
+<pre><code>
+$ git commit -m “Fixed severe production problem”
+[hotfix-1.2.1 abbe5d6] Fixed severe production problem
+5 files changed, 32 insertions(+), 17 deletions(-)
+</code></pre>
+
+
+<h3>结束一个热补丁分支</h3>
+
+<p>修复完成后，热补丁分支需要合并回master，但同时它还需要被合并回develop，这样相关的修复代码才会同时被包含在下个版本中。这与我们完成发布分支很类似。</p>
+
+<p>首先，更新master分支并打上标签。</p>
+
+<pre><code>
+$ git checkout master
+Switched to branch ‘master’
+$ git merge –no-ff hotfix-1.2.1
+Merge made by recursive.
+(Summary of changes)
+$ git tag -a 1.2.1
+</code></pre>
+
+
+<p><span class="impor">提醒：</span>你可能同时也会想要用 -s 或者 -u <key> 来对标签进行签名。</p>
+
+<p>接着，将修复代码合并到develop：</p>
+
+<pre><code>
+$ git checkout develop
+Switched to branch ‘develop’
+$ git merge –no-ff hotfix-1.2.1
+Merge made by recursive.
+(Summary of changes)
+</code></pre>
+
+
+<p>这里还有个例外情况，<span class="impor">如果这个时候有发布分支存在，热补丁分支的变更则应该合并至发布分支，而不是develop</span>。将热补丁合并到发布分支，也意味着当发布分支结束的时候，变更最终会被合并到develop。（如果develop上的开发工作急需热补丁并无法等待发布分支完成，这时你也已经可以安全地将热补丁合并到develop分支。）</p>
+
+<p>最后，删除临时的热补丁分支：</p>
+
+<pre><code>
+$ git branch -d hotfix-1.2.1
+Deleted branch hotfix-1.2.1 (was abbe5d6).
+</code></pre>
+
+
+<h2>小结</h2>
+
+<p>虽然这个分支模型中没有什么特别新鲜的东西，但本文起始处的“全景图”事实上在我们的项目中起到了非常大的作用。它帮助建立了优雅的，易理解的概念模型，使得团队成员能够快速建立并理解一个公用的分支和发布过程。</p>
+
+<p><a href="http://www.juvenxu.com/2010/11/28/a-successful-git-branching-model/">link</a></p>
+
+</article> <!-- end #post__content -->
+
+<div id="post__share">
+  <a id="icon-twitter" class="fontello" href="https://twitter.com/intent/tweet?url=place_your_url_here/tool/2014/10/14/git-flow-%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3&text=git-flow使用详解" target="_blank"></a>
+  <a id="icon-cc" class="fontello" href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"></a>
+  <a id="icon-weibo" class="fontello" href="http://v.t.sina.com.cn/share/share.php?url=place_your_url_here/tool/2014/10/14/git-flow-%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3&title=git-flow使用详解" target="_blank"></a>
+</div> <!-- end #post__share -->
+
+<div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink" target="_blank">Loading Disqus comments...</a>
+</div> <!-- end #disqus_thread -->
+
+
+      </div> <!-- end #pjax -->
+
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">Table of Contents</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div> <!-- end #post -->
+
+    <button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
+
+    <script src="/assets/themes/p233/js/jquery-2.0.3.min.js"></script>
+    <script src="/assets/themes/p233/js/jquery.pjax.js"></script>
+    <script src="/assets/themes/p233/js/nprogress.js"></script>
+	<!-- 语法高亮 -->
+	<!-- <script src="/assets/themes/p233/js/prism.js"></script> -->
+	<!-- <script src="/assets/themes/p233/js/jquery-tapir.js"></script> -->
+    <script src="/assets/themes/p233/js/script.js"></script>
+  </body>
+</html>
+
