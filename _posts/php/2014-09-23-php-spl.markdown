@@ -11,3 +11,4 @@ date:   2014-09-18 14:20:51
 - [php spl](http://php.net/manual/zh/book.spl.php)
 - [php spl](http://www.ruanyifeng.com/blog/2008/07/php_spl_notes.html)
 - [php 与定义接口](http://www.nowamagic.net/librarys/veda/detail/2167)
+- [php spl](http://www.nowamagic.net/librarys/veda/detail/2165)
