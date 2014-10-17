@@ -4,7 +4,7 @@
  <title>CodeMadman</title>
  <link href="http://username.github.io/" rel="self"/>
  <link href="http://username.github.io"/>
- <updated>2014-10-17T17:32:34+08:00</updated>
+ <updated>2014-10-17T17:33:01+08:00</updated>
  <id>http://username.github.io</id>
  <author>
    <name>Name Lastname</name>
@@ -2966,6 +2966,7 @@ Catchable fatal error: Argument 1 passed to Models_Workflow_Instance::getRand() 
 &lt;li&gt;&lt;a href=&quot;http://php.net/manual/zh/book.spl.php&quot;&gt;php spl&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2008/07/php_spl_notes.html&quot;&gt;php spl&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/2167&quot;&gt;php 与定义接口&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/2165&quot;&gt;php spl&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 </content>
