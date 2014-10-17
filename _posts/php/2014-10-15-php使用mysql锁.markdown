@@ -1,0 +1,8 @@
+---
+layout: post
+title: "PHP使用mysql锁"
+category: php
+comments: true
+date:   2014-10-15 16:35:51
+---
+

@@ -1261,7 +1261,8 @@ pre > code {
 	border: 0;
 	overflow: auto;
 	max-height: 400px;
-	line-height: 1.3;
+	//line-height: 1.3;
+	line-height: 1.5;
 }
 
 /* color css */

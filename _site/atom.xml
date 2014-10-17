@@ -4,13 +4,402 @@
  <title>CodeMadman</title>
  <link href="http://username.github.io/" rel="self"/>
  <link href="http://username.github.io"/>
- <updated>2014-10-14T17:55:01+08:00</updated>
+ <updated>2014-10-17T09:51:09+08:00</updated>
  <id>http://username.github.io</id>
  <author>
    <name>Name Lastname</name>
    <email>blah@email.test</email>
  </author>
 
+ 
+ <entry>
+   <title>OO设计原则之DRY</title>
+   <link href="http://username.github.io/php/2014/10/17/OO%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99%E4%B9%8BDRY"/>
+   <updated>2014-10-17T03:50:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/17/OO设计原则之DRY</id>
+   <content type="html">&lt;p&gt;DRY——Don't Repeat Yourself Principle，直译为“不要重复自己”原则&lt;/p&gt;
+
+&lt;p&gt;DRY简而言之，就是不要写重复的代码。原则本身很简单，但是，对于OOAD来说，有着非常重大的意义。&lt;/p&gt;
+
+&lt;p&gt;DRY利用的方法就是抽象：把共同的事物抽象出来，把代码抽取到一个地方去。这样就可以避免写重复的代码。&lt;/p&gt;
+
+&lt;p&gt;举一个DRY的典型例子，如果在一个类构造的时候，需要进行成员的初始化，在进行了某些操作以后，同样要进行初始化，那么就可以把“初始化”抽象出来，做成一个方法Initial()，在构造和需要用到的地方调用它。&lt;/p&gt;
+
+&lt;p&gt;虽然，抽取重复代码是利用DRY的一个好的开端，但DRY的实质是，一个需求，用一个部分来完成。当你试图避免重复代码的时候，实际上，你做的应该是用一段代码来完成一个需求。&lt;/p&gt;
+
+&lt;p&gt;为什么要用DRY原则？DRY会给代码维护带来很大的好处。以类的初始化为例，假设类修改了，增加、减少或是修改了成员，如果不写Initial()，那么你可能至少要修改两处，而且，修改之处也可能出现不一致，维护成本大大增加。而写了Initial()方法，那么只要集中修改Initial()就行了。&lt;/p&gt;
+
+&lt;p&gt;既然DRY是关于“一个方法，实现一个需求”的，那么，是不是可以把DRY应用到需求分析中？呵呵，答案是肯定的，而且，个人认为，这是个非常好的主意。多个重复的需求可能导致多个重复或者相近的类，最后导致重复代码。所以DRY绝不仅仅对代码适用，它是一个广泛适用的原则。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>PHP流(stream)</title>
+   <link href="http://username.github.io/php/2014/10/16/php%E6%B5%81(stream)"/>
+   <updated>2014-10-16T18:50:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/16/php流(stream)</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/2587&quot;&gt;了解PHP中Stream（流）的概念与用法&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>php & SAPI</title>
+   <link href="http://username.github.io/php/2014/10/16/php_SAPI"/>
+   <updated>2014-10-16T18:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/16/php_SAPI</id>
+   <content type="html">&lt;h2&gt;一.几个重要概念：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;SAPI：(Server Application Program Interface)是 &quot;服务器端应用编程接口&quot;；用于,服务端不同应用之间的通信。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;CGI：(Common Gateway Interface)通用网关接口,是WWW技术中最重要的技术之一，有着不可替代的重要地位。CGI是外部应用程序（CGI程序）与Web服务器之间的接口标准，是在CGI程序和Web服务器之间传递信息的规程。CGI规范允许Web服务器执行外部程序，CGI编程是与语言无关的。并将它们的输出发送给Web浏览器，CGI将Web的一组简单的静态超媒体文档变成一个完整的新的交互式媒体。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h2&gt;二.php的运行模式：&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;/php/2014/10/16/PHP%E7%9A%84ISAPI%E5%92%8CFastCGI%E6%AF%94%E8%BE%83&quot;&gt;php运行模式比较&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ISAPI&lt;/li&gt;
+&lt;li&gt;CGI(FastCGI)&lt;/li&gt;
+&lt;li&gt;CLI CGI&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h2&gt;三.php运行机制，从SAPI接口开始：&lt;/h2&gt;
+
+&lt;p&gt;SAPI:Server Application Programming Interface 服务器端应用编程端口。研究过PHP架构的同学应该知道这个东东的重要性，它提供了一个接口，使得PHP可以和其他应用进行交互数据。 本文不会详细介绍每个PHP的SAPI，只是针对最简单的CGI SAPI，来说明SAPI的机制。&lt;/p&gt;
+
+&lt;p&gt;我们先来看看PHP的架构图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/postImage/php/php_sapi.jpg&quot; title=&quot;php SAPI&quot; alt=&quot;php SAPI&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;SAPI指的是PHP具体应用的编程接口， 就像PC一样，无论安装哪些操作系统，只要满足了PC的接口规范都可以在PC上正常运行， PHP脚本要执行有很多种方式，通过Web服务器，或者直接在命令行下，也可以嵌入在其他程序中。&lt;/p&gt;
+
+&lt;p&gt;通常，我们使用Apache或者Nginx这类Web服务器来测试PHP脚本，或者在命令行下通过PHP解释器程序来执行。 脚本执行完后，Web服务器应答，浏览器显示应答信息，或者在命令行标准输出上显示内容。&lt;/p&gt;
+
+&lt;p&gt;我们很少关心PHP解释器在哪里。虽然通过Web服务器和命令行程序执行脚本看起来很不一样， 实际上它们的工作流程是一样的。命令行参数传递给PHP解释器要执行的脚本， 相当于通过url请求一个PHP页面。脚本执行完成后返回响应结果，只不过命令行的响应结果是显示在终端上。&lt;/p&gt;
+
+&lt;p&gt;脚本执行的开始都是以SAPI接口实现开始的。只是不同的SAPI接口实现会完成他们特定的工作， 例如Apache的mod_php SAPI实现需要初始化从Apache获取的一些信息，在输出内容是将内容返回给Apache， 其他的SAPI实现也类似。&lt;/p&gt;
+
+&lt;p&gt;SAPI提供了一个和外部通信的接口， 对于PHP5.2，默认提供了很多种SAPI， 常见的给apache的mod_php5，CGI，给IIS的ISAPI，还有Shell的CLI，本文就从CGI SAPI入手 ，介绍SAPI的机制。 虽然CGI简单，但是不用担心，它包含了绝大部分内容，足以让你深刻理解SAPI的工作原理。&lt;/p&gt;
+
+&lt;p&gt;php &lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/1285&quot;&gt;从SAPI接口开始&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>开源的数据库连接池 SQL Relay</title>
+   <link href="http://username.github.io/php/2014/10/16/%E5%BC%80%E6%BA%90%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0SQLRelay"/>
+   <updated>2014-10-16T00:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/16/开源的数据库连接池SQLRelay</id>
+   <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/heiyeshuwu/article/details/748897&quot;&gt;转一个SQL Relay数据库连接池的PHP操作类&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/heiyeshuwu/article/details/743303&quot;&gt;开源的数据库连接池 SQL Relay 介绍&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://sqlrelay.sourceforge.net/&quot;&gt;SQL Relay&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>php的SAPI CLI SAPI、CGI SAPI</title>
+   <link href="http://username.github.io/php/2014/10/16/php%E7%9A%84SAPI-CLI_SAPI-CGI_SAPI"/>
+   <updated>2014-10-16T00:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/16/php的SAPI-CLI_SAPI-CGI_SAPI</id>
+   <content type="html">&lt;p&gt;首先一个问题：在命令行下执行：php -r 'echo 12;'&lt;/p&gt;
+
+&lt;p&gt;控制台会打印出 12；&lt;/p&gt;
+
+&lt;p&gt;这个过程不是很奇妙么，我输入的是shell命令，但是执行的却是php脚本。php脚本执行完成之后的输出还能在控制台输出。&lt;/p&gt;
+
+&lt;p&gt;那在这个shell命令（控制台命令）和php中间一定有一种接口，能将shell的参数，代码，等转换成php，然后将php的输出转换成shell的输出。这个接口就叫做SAPI（Server Application Programimg Interface）。它就相当于PHP外部环境的代理器。&lt;/p&gt;
+
+&lt;p&gt;那么由于PHP可以应用在终端上，也可以应用在Web服务器中，所以呢，应用在终端上的SAPI就叫做CLI SAPI，应用在Web服务器中的就叫做CGI SAPI。在windows下安装php你会看到两个exe：php.exe和php-cgi.exe这个就对应的是这两种SAPI。再比如，在控制台上使用php -v，你就会发现PHP的版本信息中有个（cli）标示，就代表你这里的php应用程序使用的是cli SAPI。&lt;/p&gt;
+
+&lt;p&gt;关于CLI SAPI：&lt;a href=&quot;http://php.net/manual/zh/features.commandline.php&quot;&gt;手册上有很详细的说明：&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>PHP使用mysql锁</title>
+   <link href="http://username.github.io/php/2014/10/16/php%E4%BD%BF%E7%94%A8mysql%E9%94%81"/>
+   <updated>2014-10-16T00:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/16/php使用mysql锁</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>php pthreads</title>
+   <link href="http://username.github.io/php/2014/10/16/php_pthreads"/>
+   <updated>2014-10-16T00:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/16/php_pthreads</id>
+   <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://php.net/manual/en/book.pthreads.php&quot;&gt;php pthreads&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>php pcntl</title>
+   <link href="http://username.github.io/php/2014/10/16/php_pcntl"/>
+   <updated>2014-10-16T00:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/16/php_pcntl</id>
+   <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://php.net/manual/zh/book.pcntl.php&quot;&gt;php pcntl&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>php opcode</title>
+   <link href="http://username.github.io/php/2014/10/16/php_opcode"/>
+   <updated>2014-10-16T00:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/16/php_opcode</id>
+   <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/1325&quot;&gt;php opcode&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>gearman php</title>
+   <link href="http://username.github.io/php/2014/10/16/php_gearman"/>
+   <updated>2014-10-16T00:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/16/php_gearman</id>
+   <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://php.net/manual/en/book.gearman.php&quot;&gt;php gearman&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>php apc</title>
+   <link href="http://username.github.io/php/2014/10/16/php_apc"/>
+   <updated>2014-10-16T00:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/16/php_apc</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>PHP的ISAPI和FastCGI比较</title>
+   <link href="http://username.github.io/php/2014/10/16/PHP%E7%9A%84ISAPI%E5%92%8CFastCGI%E6%AF%94%E8%BE%83"/>
+   <updated>2014-10-16T00:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/16/PHP的ISAPI和FastCGI比较</id>
+   <content type="html">&lt;p&gt;1、CGI（通用网关接口/Common Gateway Interface）一般是可执行程序，例如EXE文件，和WEB服务器各自占据着不同的进程,而且一般一个CGI程序只能处理一个用户请求。这样，当用 户请求数量非常多时，会大量占用系统的资源，如内存、CPU时间等，造成效能低下。&lt;/p&gt;
+
+&lt;p&gt;2、ISAPI（Internet Server Application Program Interface）是微软提供的一套面向WEB服务的API接口，它能实现CGI提供的全部功能，并在此基础上进行了扩展，如提供了过滤器应用程序接 口。ISAPI应用大多数以DLL动态库的形式使用，可以在被用户请求后执行，，在处理完一个用户请求后不会马上消失，而是继续驻留在内存中等待处理别的 用户输入。此外,ISAPI的DLL应用程序和WEB服务器处于同一个进程中，效率要显著高于CGI。&lt;/p&gt;
+
+&lt;p&gt;3、FastCGI是可伸缩架构的CGI开放扩展，其主要行为是将CGI解释器进程保持在内存中并因此获得较高的性能。传统的CGI解释器的反复加载是 CGI性能低下的主要原因，如果CGI解释器保持在内存中并接受FastCGI进程管理器调度，则可以提供良好的性能、伸缩性等。&lt;/p&gt;
+
+&lt;p&gt;4.php的两种运行方式:&lt;/p&gt;
+
+&lt;p&gt;1&gt;.以 ISAPI 模式运行 PHP 的，这种方式最大的缺点就是稳定性不好，当 PHP 出错的时候，Apache进程也死掉。&lt;/p&gt;
+
+&lt;p&gt;2&gt;.以 FastCGI 模式运行 PHP&lt;/p&gt;
+
+&lt;p&gt;a&gt;.以 FastCGI 模式运行 PHP 的优点(php-fpm)：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;首先就是 PHP 出错的时候不会搞垮 Apache，只是 PHP 自己的进程当掉（但 FastCGI 会立即重新启动一个新 PHP 进程来代替当掉的进程）。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;其次 FastCGI 模式运行 PHP 比 ISAPI 模式性能更好。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;最后，就是可以同时运行 PHP5 和 PHP4。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;b&gt;.FastCGI 模式的一些缺点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用 FastCGI 模式更适合生产环境的服务器，但对于开发用机器来说就不太合适。因为当使用 Zend Studio 调试程序时，由于 FastCGI 会认为 PHP 进程超时，从而在页面返回 500 错误。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;从版本 4.3.0 开始，PHP 提供了一种新类型的 SAPI（Server Application Programming Interface，服务端应用编程端口）支持，名为 CLI，意为 Command Line Interface，即命令行接口。顾名思义，该 SAPI 模块主要用作 PHP 的开发外壳应用。CLI SAPI 和其它 SAPI 模块相比有很多的不同之处。值得一提的是，CLI 和 CGI 是不同的 SAPI，尽管它们之间有很多共同的行为。&lt;/p&gt;
+
+&lt;p&gt;CLI SAPI 最先是随 PHP 4.2.0 版本发布的，但仍旧只是一个实验性的版本，并需要在运行 ./configure 时加上 –enable-cli 参数。从 PHP 4.3.0 版本开始，CLI SAPI 成为了正式模块，–enable-cli 参数会被默认得设置为 on，也可以用参数 –disable-cli 来屏蔽。&lt;/p&gt;
+
+&lt;p&gt;从 PHP 4.3.0开始，CLI/CGI 二进制执行文件的文件名、位置和是否存在会根据 PHP 在系统上的安装而不同。在默认情况下，当运行 make 时，CGI 和 CLI 都会被编译并且分别放置在 PHP 源文件目录的 sapi/cgi/php 和 sapi/cli/php 下。可以注意到两个文件都被命名为了 php。在 make install 的过程中会发生什么取决于配置行。如果在配置的时候选择了一个 SAPI 模块，如 apxs，或者使用了 –disable-cgi 参数，则在 make install 的过程中，CLI 将被拷贝到 {PREFIX}/bin/php，除非 CGI 已经被放置在了那个位置。因此，例如，如果在配置行中有 –with–apxs，则在 make install 的过程中，CLI 将被拷贝到 {PREFIX}/bin/php。如果希望撤销 CGI 执行文件的安装，请在 make install 之后运行 make install-cli。或者，也可以在配置行中加上 –disable-cgi 参数。&lt;/p&gt;
+
+&lt;p&gt;以下为 CLI SAPI 和其它 SAPI 模块相比的显著区别：
+- 与 CGI SAPI 不同，其输出没有任何头信息。尽管 CGI SAPI 提供了取消 HTTP 头信息的方法，但在 CLI SAPI 中并不存在类似的方法以开启 HTTP 头信息的输出。CLI 默认以安静模式开始，但为了保证兼容性，-q 和 –no-header 参数为了向后兼容仍然保留，使得可以使用旧的 CGI 脚本。在运行时，不会把工作目录改为脚本的当前目录（可以使用 -C 和 –no-chdir 参数来兼容 CGI 模式）。出错时输出纯文本的错误信息（非 HTML 格式）。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CLI SAPI 强制覆盖了 php.ini 中的某些设置，因为这些设置在外壳环境下是没有意义的。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;&lt;a href=&quot;/php/2014/10/16/php%E7%9A%84SAPI-CLI_SAPI-CGI_SAPI&quot;&gt;php的SAPI，CLI SAPI，CGI SAPI&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>mysql乐观锁和悲观锁</title>
+   <link href="http://username.github.io/mysql/2014/10/16/mysql%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81"/>
+   <updated>2014-10-16T00:16:51+08:00</updated>
+   <id>http://username.github.io/mysql/2014/10/16/mysql乐观锁和悲观锁</id>
+   <content type="html">&lt;h2&gt;悲观锁(MySql InnoDB)：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;介绍：悲观锁，正如其名，它指的是对数据被外界（包括本系统当前的其他事务，以及来自外部系统的事务处理）修改持保守态度，因此，在整个数据处理过程中，将数据处于锁定状态。悲观锁的实现，往往依靠数据库提供的锁机制（也只有数据库层提供的锁机制才能真正保证数据访问的排他性，否则，即使在本系统中实现了加锁机制，也无法保证外部系统不会修改数据）&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;不足：因为悲观锁大多数情况下依靠数据库的锁机制实现，以保证操作最大程度的独占性。如果加锁的时间过长，其他用户长时间无法访问，影响了程序的并发访问性，同时这样对数据库性能开销影响也很大，特别是对长事务而言，这样的开销往往无法承受&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;锁策略：在读取数据时锁住那几行，其他对这几行的更新需要等到悲观锁结束时才能继续；悲观锁是以来与数据库(mysql)本身机制来实现的。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;优点：几乎无&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;缺点：等待时间长,增加数据库开销&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h2&gt;乐观锁：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;介绍：乐观锁（ Optimistic Locking ） 相对悲观锁而言，乐观锁假设认为数据一般情况下不会造成冲突，所以在数据进行提交更新的时候，才会正式对数据的冲突与否进行检测，如果发现冲突了，则让返回用户错误的信息，让用户决定如何去做。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;锁策略：读取数据时不锁，更新时检查是否数据已经被更新过，如果是则取消当前更新；乐观锁是在业务逻辑(程序中)实现的。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用时机：一般在悲观锁的等待时间过长而不能接受时我们才会选择乐观锁&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;优点：速度快,不会增加数据库开销&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;缺点：等待时间长,增加数据库开销；由于乐观锁机制是在我们的系统中实现，来自外部系统的用户更新操作不受我们系统的控制，因此可能会造成脏数据被更新到数据库中。&lt;span class=&quot;impor&quot;&gt;在系统设计阶段，我们应该充分考虑到这些情况出现的可能性，并进行相应调整（如将乐观锁策略在数据库存储过程中实现，对外只开放基于此存储过程的数据更新途径，而不是将数据库表直接对外公开）。&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h3&gt;乐观锁的实现方案：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用数据版本（Version）记录机制实现，这是乐观锁最常用的一种实现方式。何谓数据版本？即为数据增加一个版本标识，一般是通过为数据库表增加一个数字类型的 “version” 字段来实现。当读取数据时，将version字段的值一同读出，数据每更新一次，对此version值加一。当我们提交更新的时候，判断数据库表对应记录的当前版本信息与第一次取出来的version值进行比对，如果数据库表当前版本号与第一次取出来的version值相等，则予以更新，否则认为是过期数据。用下面的一张图来说明：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;&lt;img src=&quot;/assets/postImage/mysql/leguanshuo.jpg&quot; title=&quot;乐观锁&quot; alt=&quot;乐观锁&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如上图所示，如果更新操作顺序执行，则数据的版本（version）依次递增，不会产生冲突。但是如果发生有不同的业务操作对同一版本的数据进行修改，那么，先提交的操作（图中B）会把数据version更新为2，当A在B之后提交更新时发现数据的version已经被修改了，那么A的更新操作会失败。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;乐观锁定的第二种实现方式和第一种差不多，同样是在需要乐观锁控制的table中增加一个字段，名称无所谓，字段类型使用时间戳（timestamp）, 和上面的version类似，也是在更新提交的时候检查当前数据库中数据的时间戳和自己更新前取到的时间戳进行对比，如果一致则OK，否则就是版本冲突。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;扩展 &lt;a href=&quot;javascript:;&quot;&gt;mysql锁&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>git flow完整使用流程</title>
+   <link href="http://username.github.io/tool/2014/10/15/git-flow%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B"/>
+   <updated>2014-10-15T18:59:51+08:00</updated>
+   <id>http://username.github.io/tool/2014/10/15/git-flow使用完整流程</id>
+   <content type="html">&lt;h2&gt;一.git模拟git flow&lt;/h2&gt;
+
+&lt;h3&gt;模拟场景(开发购物车)&lt;/h3&gt;
+
+&lt;p&gt;1.创建一个特性分支:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+git checkout -b feature/cart develop
+git add .
+git add -u
+git add commit -m''
+git pull origin feature/cart
+git push origin feature/cart
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;在feature/cart分支正常开发&lt;br/&gt;
+功能测试通过，进入2步骤，如果功能不理想或者失败则直接丢弃该分支&lt;/p&gt;
+
+&lt;p&gt;2.开发完成合并到develop:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+git checkout develop
+git merge –no-ff feature/cart
+git branch -d feature/cart
+git push origin develop
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;因只有开发完成的feature分支才允许merge到develop分支，因为发布分支从此分支创建&lt;br/&gt;
+develop分支和master分支时间线要保持一致&lt;/p&gt;
+
+&lt;p&gt;3.创建一个发布分支:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+git checkout -b releases-1.2 develop
+git commit -a -m &quot;Bumped version number to 1.2&quot;
+git push origin releases-1.2
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;4.release合并到master分支:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+git checkout master
+git merge –no-ff release-1.2
+git tag -a v1.2 -m 'my version 1.2'
+git push origin v1.2
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;5.为了能保留发布分支上的变更，我们还需要将分支合并回develop:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+git checkout develop
+git merge –no-ff release-1.2
+git push origin develop
+git branch -d release-1.2
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;6.bug紧急bug修复,hotfix分支:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+git checkout -b hotfix-1.2.1 master
+git commit -a -m &quot;Bumped version number to 1.2.1&quot;
+git checkout master
+git merge –no-ff hotfix-1.2.1
+git tag -a 1.2.1
+git push origin v1.2.1
+git checkout develop
+git merge –no-ff hotfix-1.2.1
+git push origin develop
+git branch -d hotfix-1.2.1
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;hotfix分支要从master分支的最近一个tag节点拉取&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;impor&quot;&gt;注：&lt;/span&gt;除了master|develop这两个主分支之外，其它的三个(feature|release|hotfix)分支存在都有时效性，如果是一个人负责一个项目的开发，feature|release|hotfix分支可以只存在与开发者的本地，无需提交远程(当然，提交也并无影响)&lt;/p&gt;
+
+&lt;h2&gt;二.git flow&lt;/h2&gt;
+
+&lt;p&gt;(git flow初始化：git flow init)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+git flow feature start cart         #创建特性分支
+git add .                           #
+git add -u                          #
+git commit -m''                     #开发,提交commit
+git flow feature publish cart       #feature/cart push到remote,多人开发；单人开发可以跳过此步骤,只commit即可
+git flow feature finish cart        #结束feature/cart, 会把feature/cart自动合并到develop,并且删除feature/cart
+git flow release start cart-1.1     #创建release分支
+git flow release finish cart-1.1    #结束release分支,中间可以做小幅修改,自动合并到master|develop分支,删除release分支,自动创建cart-1.1 tag,同时会让你为tag添加一个commit(commit必须添加,否则finish release分支会失败)。如果产生冲突，本地解决并提交后，重新执行上面的finish命令。成功后，feature分支会被删除，本地位于主干
+git push origin master
+git flow hotfix start bug1          #创建bug修复
+git flow hotfix finish bug1         #结束bug修复,自动合并到master|develop分支,删除bug1
+git push origin master
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;&lt;span class=&quot;impor&quot;&gt;注：&lt;/span&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;git flow是git命令的集合；如果过程中有冲突，则需要手动解决&lt;/li&gt;
+&lt;li&gt;git flow流程里所有git命令,流程都可以正常使用&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>gitlab</title>
@@ -442,11 +831,11 @@ git flow只是在本地执行分支/合并操作的脚本，不是一个流程�
 
 &lt;h3&gt;1.构建git flow模型&lt;/h3&gt;
 
-&lt;p&gt;&lt;code&gt;git flow init&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git flow init #从master分支开始&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3&gt;2.新功能开发,分支名称f1&lt;/h3&gt;
 
-&lt;p&gt;&lt;code&gt;git flow feature start f1&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git flow feature start f1 #从master分支开始&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;git-flow 从 &lt;code&gt;develop&lt;/code&gt; 分支创建了一个新的分支 &lt;code&gt;feature/f1&lt;/code&gt;，并自动切换到这个分支下面。然后就可以进行 f1 功能开发，中间可以多次的 &lt;code&gt;commit&lt;/code&gt; 操作。当功能完成后：&lt;/p&gt;
 
@@ -454,7 +843,15 @@ git flow只是在本地执行分支/合并操作的脚本，不是一个流程�
 
 &lt;p&gt;&lt;code&gt;feature/f1&lt;/code&gt; 分支的代码会被合并到 &lt;code&gt;develop&lt;/code&gt; 里面，然后删除该分支，切换回 &lt;code&gt;develop&lt;/code&gt;. 到此，新功能开发这个场景完毕。&lt;/p&gt;
 
-&lt;h3&gt;3.紧急bug修复：&lt;/h3&gt;
+&lt;h3&gt;3.发布分支：&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;git flow release start 0.1&lt;/code&gt;
+&lt;code&gt;git flow release finish 0.1&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;git-flow 会依次切换到 &lt;code&gt;master&lt;/code&gt; &lt;code&gt;develop&lt;/code&gt; 下合并 release/v0.1 里的修改，删除releases/v0.1分支，然后用 &lt;code&gt;git tag&lt;/code&gt; 给当此发布打上 tag v0.1，可以通过 &lt;code&gt;git tag&lt;/code&gt; 查看所有 tag&lt;br/&gt;
+在release分支,可以做小幅度的修改&lt;/p&gt;
+
+&lt;h3&gt;4.紧急bug修复：&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;git flow hotfix start bug1&lt;/code&gt;&lt;/p&gt;
 
@@ -467,6 +864,10 @@ git flow只是在本地执行分支/合并操作的脚本，不是一个流程�
 &lt;p&gt;备注：git-flow的 feature|release分支都是从develop分支创建的；hotfix|support分支都是从master分支创建的&lt;/p&gt;
 
 &lt;p&gt;nvie: 为了简化使用Git Flow模型时Git指令的复杂性，nvie开发出了一套&lt;a href=&quot;https://github.com/nvie/gitflow&quot;&gt;git增强指令集&lt;/a&gt;。可以运行于Windows、Linux、Unix和Mac操作系统之下。有兴趣的同学可以去看看&lt;/p&gt;
+
+&lt;h2&gt;五.git-flow使用完整流程：&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;/tool/2014/10/15/git-flow%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B&quot;&gt;git flow zs&lt;/a&gt;&lt;/p&gt;
 </content>
  </entry>
  
@@ -3183,23 +3584,6 @@ location ~ \.php${
  </entry>
  
  <entry>
-   <title>基于Jekyll github创建自己的blog系统</title>
-   <link href="http://username.github.io/jekyll/2014/09/16/zs-jekyll-blog"/>
-   <updated>2014-09-16T17:38:51+08:00</updated>
-   <id>http://username.github.io/jekyll/2014/09/16/zs-jekyll-blog</id>
-   <content type="html">&lt;h4&gt;基于jekyll的博客系统&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;jekyll&lt;/li&gt;
-&lt;li&gt;jekyll bootstrap&lt;/li&gt;
-&lt;li&gt;jekyll pygments&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/P233/3-Jekyll/&quot;&gt;div jekyll theme&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</content>
- </entry>
- 
- <entry>
    <title>jekyll dazzle theme</title>
    <link href="http://username.github.io/jekyll/2014/09/16/jekyll-3-theme"/>
    <updated>2014-09-16T03:35:51+08:00</updated>
@@ -3316,17 +3700,6 @@ location ~ \.php${
 
 &lt;p&gt;THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
 NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>使用 GitHub, Jekyll 打造自己的独立博客</title>
-   <link href="http://username.github.io/jekyll/2014/09/13/github-jekyll-markdown"/>
-   <updated>2014-09-13T03:35:51+08:00</updated>
-   <id>http://username.github.io/jekyll/2014/09/13/github-jekyll-markdown</id>
-   <content type="html">&lt;h2&gt;使用 GitHub, Jekyll 打造自己的独立博客&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://minixalpha.github.io/%E5%B7%A5%E5%85%B7/2014/02/15/github-jekyll-markdown.html&quot;&gt;github Jekyll markdown免费建立自己的博客&lt;/a&gt;&lt;/p&gt;
 </content>
  </entry>
  

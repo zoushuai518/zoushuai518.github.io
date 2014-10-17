@@ -8,6 +8,20 @@ http://username.github.io/rss.xml
 http://username.github.io/sitemap.txt
 http://username.github.io/tags.html
 
+http://username.github.io/php/2014/10/17/OO%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99%E4%B9%8BDRY
+http://username.github.io/php/2014/10/16/php%E6%B5%81(stream)
+http://username.github.io/php/2014/10/16/php_SAPI
+http://username.github.io/php/2014/10/16/%E5%BC%80%E6%BA%90%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0SQLRelay
+http://username.github.io/php/2014/10/16/php%E7%9A%84SAPI-CLI_SAPI-CGI_SAPI
+http://username.github.io/php/2014/10/16/php%E4%BD%BF%E7%94%A8mysql%E9%94%81
+http://username.github.io/php/2014/10/16/php_pthreads
+http://username.github.io/php/2014/10/16/php_pcntl
+http://username.github.io/php/2014/10/16/php_opcode
+http://username.github.io/php/2014/10/16/php_gearman
+http://username.github.io/php/2014/10/16/php_apc
+http://username.github.io/php/2014/10/16/PHP%E7%9A%84ISAPI%E5%92%8CFastCGI%E6%AF%94%E8%BE%83
+http://username.github.io/mysql/2014/10/16/mysql%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81
+http://username.github.io/tool/2014/10/15/git-flow%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B
 http://username.github.io/tool/2014/10/14/gitlab
 http://username.github.io/tool/2014/10/14/git-flow-%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3
 http://username.github.io/tool/2014/10/14/git-flow
@@ -71,9 +85,7 @@ http://username.github.io/php/2014/09/16/laravel
 http://username.github.io/asset/2014/09/16/front-list
 http://username.github.io/php/2014/09/16/create-composer_packagist
 http://username.github.io/asset/2014/09/16/PJAX
-http://username.github.io/jekyll/2014/09/16/zs-jekyll-blog
 http://username.github.io/jekyll/2014/09/16/jekyll-3-theme
-http://username.github.io/jekyll/2014/09/13/github-jekyll-markdown
 http://username.github.io/linux/2014/09/12/find
 http://username.github.io/linux/2014/09/12/crontab
 http://username.github.io/ruby/2014/09/12/ruby-init
