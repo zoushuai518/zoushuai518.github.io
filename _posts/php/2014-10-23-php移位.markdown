@@ -1,0 +1,8 @@
+---
+layout: post
+title: "php移位"
+category: php
+comments: true
+date:   2014-10-23 12:35:51
+---
+

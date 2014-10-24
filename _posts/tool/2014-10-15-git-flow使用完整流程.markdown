@@ -88,6 +88,9 @@ git flow release start cart-1.1		#创建release分支
 git flow release finish cart-1.1	#结束release分支,中间可以做小幅修改,自动合并到master|develop分支,删除release分支,自动创建cart-1.1 tag,同时会让你为tag添加一个commit(commit必须添加,否则finish release分支会失败)。如果产生冲突，本地解决并提交后，重新执行上面的finish命令。成功后，feature分支会被删除，本地位于主干
 git push origin master
 git flow hotfix start bug1			#创建bug修复
+git add .							#
+git add -u							#
+git commit -m''						#开发,提交commit
 git flow hotfix finish bug1			#结束bug修复,自动合并到master|develop分支,删除bug1
 git push origin master
 </code></pre>

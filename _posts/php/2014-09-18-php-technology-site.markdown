@@ -17,7 +17,7 @@ date:   2014-09-18 10:50:51
 - [http://www.yuansir-web.com/](http://www.yuansir-web.com/category/php/)
 - [简明现代魔法](http://www.nowamagic.net/librarys/veda/cate/PHP)
 - [醉清风的博客](http://blog.samoay.me/index)
-- [风雪之隅](http://www.laruence.com/)
+- [风雪之隅*](http://www.laruence.com/)
 - [一天一点进步](http://www.cnblogs.com/bluefrog)
 
 - [requests for php](http://requests.ryanmccue.info/)

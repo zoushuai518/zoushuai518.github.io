@@ -4,13 +4,427 @@
  <title>CodeMadman</title>
  <link href="http://username.github.io/" rel="self"/>
  <link href="http://username.github.io"/>
- <updated>2014-10-17T17:33:01+08:00</updated>
+ <updated>2014-10-24T18:35:49+08:00</updated>
  <id>http://username.github.io</id>
  <author>
    <name>Name Lastname</name>
    <email>blah@email.test</email>
  </author>
 
+ 
+ <entry>
+   <title>多进程/线程的SAPI生命周期</title>
+   <link href="http://username.github.io/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"/>
+   <updated>2014-10-25T02:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/25/多进程_线程的SAPI生命周期</id>
+   <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/1290&quot;&gt;多进程/线程的SAPI生命周期&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>单进程SAPI生命周期</title>
+   <link href="http://username.github.io/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"/>
+   <updated>2014-10-25T02:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/25/单进程SAPI生命周期</id>
+   <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/1289&quot;&gt;单进程SAPI生命周期&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>深入理解php原理</title>
+   <link href="http://username.github.io/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86"/>
+   <updated>2014-10-24T03:59:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/24/深入理解php原理</id>
+   <content type="html">&lt;p&gt;深入理解php原理 baidu list&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>php使用soap调用WebService</title>
+   <link href="http://username.github.io/php/2014/10/24/php_soap"/>
+   <updated>2014-10-24T03:59:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/24/php_soap</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/2156&quot;&gt;php soap&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>mysql字段类型</title>
+   <link href="http://username.github.io/tool/2014/10/24/mysql%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B"/>
+   <updated>2014-10-24T01:49:51+08:00</updated>
+   <id>http://username.github.io/tool/2014/10/24/mysql字段类型</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/Alacky/articles/937826.html&quot;&gt;link&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>SSH原理与运用</title>
+   <link href="http://username.github.io/tool/2014/10/24/ssh"/>
+   <updated>2014-10-24T00:49:51+08:00</updated>
+   <id>http://username.github.io/tool/2014/10/24/ssh</id>
+   <content type="html">&lt;h3&gt;一.介绍&lt;/h3&gt;
+
+&lt;p&gt;SSH是每一台Linux电脑的标准配置。&lt;/p&gt;
+
+&lt;p&gt;随着Linux设备从电脑逐渐扩展到手机、外设和家用电器，SSH的使用范围也越来越广。不仅程序员离不开它，很多普通用户也每天使用。&lt;/p&gt;
+
+&lt;p&gt;SSH具备多种功能，可以用于很多场合。有些事情，没有它就是办不成。本文是我的学习笔记，总结和解释了SSH的常见用法，希望对大家有用。&lt;/p&gt;
+
+&lt;p&gt;虽然本文内容只涉及初级应用，较为简单，但是需要读者具备最基本的&quot;Shell知识&quot;和了解&quot;公钥加密&quot;的概念。如果你对它们不熟悉，我推荐先阅读&lt;a href=&quot;http://www.ee.surrey.ac.uk/Teaching/Unix/&quot;&gt;《UNIX / Linux 初学者教程》&lt;/a&gt;和&lt;a href=&quot;http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html&quot;&gt;《数字签名是什么？》&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h3&gt;二.什么是SSH&lt;/h3&gt;
+
+&lt;p&gt;简单说，SSH是一种网络协议，用于计算机之间的加密登录。&lt;/p&gt;
+
+&lt;p&gt;如果一个用户从本地计算机，使用SSH协议登录另一台远程计算机，我们就可以认为，这种登录是安全的，即使被中途截获，密码也不会泄露。&lt;/p&gt;
+
+&lt;p&gt;最早的时候，互联网通信都是明文通信，一旦被截获，内容就暴露无疑。1995年，芬兰学者Tatu Ylonen设计了SSH协议，将登录信息全部加密，成为互联网安全的一个基本解决方案，迅速在全世界获得推广，目前已经成为Linux系统的标准配置。&lt;/p&gt;
+
+&lt;p&gt;需要指出的是，SSH只是一种协议，存在多种实现，既有商业实现，也有开源实现。本文针对的实现是OpenSSH，它是自由软件，应用非常广泛。&lt;/p&gt;
+
+&lt;p&gt;此外，本文只讨论SSH在Linux Shell中的用法。如果要在Windows系统中使用SSH，会用到另一种软件PuTTY，这需要另文介绍。&lt;/p&gt;
+
+&lt;h3&gt;三.最基本的用法&lt;/h3&gt;
+
+&lt;p&gt;SSH主要用于远程登录。假定你要以用户名user，登录远程主机host，只要一条简单命令就可以了。&lt;/p&gt;
+
+&lt;p&gt;　　$ ssh user@host&lt;/p&gt;
+
+&lt;p&gt;如果本地用户名与远程用户名一致，登录时可以省略用户名。&lt;/p&gt;
+
+&lt;p&gt;　　$ ssh host&lt;/p&gt;
+
+&lt;p&gt;SSH的默认端口是22，也就是说，你的登录请求会送进远程主机的22端口。使用p参数，可以修改这个端口。&lt;/p&gt;
+
+&lt;p&gt;　　$ ssh -p 2222 user@host&lt;/p&gt;
+
+&lt;p&gt;上面这条命令表示，ssh直接连接远程主机的2222端口。&lt;/p&gt;
+
+&lt;h3&gt;四.中间人攻击&lt;/h3&gt;
+
+&lt;p&gt;SSH之所以能够保证安全，原因在于它采用了公钥加密。&lt;/p&gt;
+
+&lt;p&gt;整个过程是这样的：（1）远程主机收到用户的登录请求，把自己的公钥发给用户。（2）用户使用这个公钥，将登录密码加密后，发送回来。（3）远程主机用自己的私钥，解密登录密码，如果密码正确，就同意用户登录。&lt;/p&gt;
+
+&lt;p&gt;这个过程本身是安全的，但是实施的时候存在一个风险：如果有人截获了登录请求，然后冒充远程主机，将伪造的公钥发给用户，那么用户很难辨别真伪。因为不像https协议，SSH协议的公钥是没有证书中心（CA）公证的，也就是说，都是自己签发的。&lt;/p&gt;
+
+&lt;p&gt;可以设想，如果攻击者插在用户与远程主机之间（比如在公共的wifi区域），用伪造的公钥，获取用户的登录密码。再用这个密码登录远程主机，那么SSH的安全机制就荡然无存了。这种风险就是著名的&quot;中间人攻击&quot;（Man-in-the-middle attack）。&lt;/p&gt;
+
+&lt;p&gt;SSH协议是如何应对的呢？&lt;/p&gt;
+
+&lt;h3&gt;五.口令登录&lt;/h3&gt;
+
+&lt;p&gt;如果你是第一次登录对方主机，系统会出现下面的提示：&lt;/p&gt;
+
+&lt;p&gt;　　$ssh user@host&lt;/p&gt;
+
+&lt;p&gt;　　The authenticity of host 'host (12.18.429.21)' can't be established.&lt;/p&gt;
+
+&lt;p&gt;　　RSA key fingerprint is 98:2e:d7:e0:de:9f:ac:67:28:c2:42:2d:37:16:58:4d.&lt;/p&gt;
+
+&lt;p&gt;　　Are you sure you want to continue connecting (yes/no)?&lt;/p&gt;
+
+&lt;p&gt;这段话的意思是，无法确认host主机的真实性，只知道它的公钥指纹，问你还想继续连接吗？&lt;/p&gt;
+
+&lt;p&gt;所谓&quot;公钥指纹&quot;，是指公钥长度较长（这里采用RSA算法，长达1024位），很难比对，所以对其进行MD5计算，将它变成一个128位的指纹。上例中是98:2e:d7:e0:de:9f:ac:67:28:c2:42:2d:37:16:58:4d，再进行比较，就容易多了。&lt;/p&gt;
+
+&lt;p&gt;很自然的一个问题就是，用户怎么知道远程主机的公钥指纹应该是多少？回答是没有好办法，远程主机必须在自己的网站上贴出公钥指纹，以便用户自行核对。&lt;/p&gt;
+
+&lt;p&gt;假定经过风险衡量以后，用户决定接受这个远程主机的公钥。&lt;/p&gt;
+
+&lt;p&gt;　　Are you sure you want to continue connecting (yes/no)? yes&lt;/p&gt;
+
+&lt;p&gt;系统会出现一句提示，表示host主机已经得到认可。&lt;/p&gt;
+
+&lt;p&gt;　　Warning: Permanently added 'host,12.18.429.21' (RSA) to the list of known hosts.&lt;/p&gt;
+
+&lt;p&gt;然后，会要求输入密码。&lt;/p&gt;
+
+&lt;p&gt;　　Password: (enter password)&lt;/p&gt;
+
+&lt;p&gt;如果密码正确，就可以登录了。&lt;/p&gt;
+
+&lt;p&gt;当远程主机的公钥被接受以后，它就会被保存在文件$HOME/.ssh/known_hosts之中。下次再连接这台主机，系统就会认出它的公钥已经保存在本地了，从而跳过警告部分，直接提示输入密码。&lt;/p&gt;
+
+&lt;p&gt;每个SSH用户都有自己的known_hosts文件，此外系统也有一个这样的文件，通常是/etc/ssh/ssh_known_hosts，保存一些对所有用户都可信赖的远程主机的公钥。&lt;/p&gt;
+
+&lt;h3&gt;六.公钥登录&lt;/h3&gt;
+
+&lt;p&gt;使用密码登录，每次都必须输入密码，非常麻烦。好在SSH还提供了公钥登录，可以省去输入密码的步骤。&lt;/p&gt;
+
+&lt;p&gt;所谓&quot;公钥登录&quot;，原理很简单，就是用户将自己的公钥储存在远程主机上。登录的时候，远程主机会向用户发送一段随机字符串，用户用自己的私钥加密后，再发回来。远程主机用事先储存的公钥进行解密，如果成功，就证明用户是可信的，直接允许登录shell，不再要求密码。&lt;/p&gt;
+
+&lt;p&gt;这种方法要求用户必须提供自己的公钥。如果没有现成的，可以直接用ssh-keygen生成一个：&lt;/p&gt;
+
+&lt;p&gt;　　$ ssh-keygen&lt;/p&gt;
+
+&lt;p&gt;运行上面的命令以后，系统会出现一系列提示，可以一路回车。其中有一个问题是，要不要对私钥设置口令（passphrase），如果担心私钥的安全，这里可以设置一个。&lt;/p&gt;
+
+&lt;p&gt;运行结束以后，在$HOME/.ssh/目录下，会新生成两个文件：id_rsa.pub和id_rsa。前者是你的公钥，后者是你的私钥。&lt;/p&gt;
+
+&lt;p&gt;这时再输入下面的命令，将公钥传送到远程主机host上面：&lt;/p&gt;
+
+&lt;p&gt;　　$ ssh-copy-id user@host&lt;/p&gt;
+
+&lt;p&gt;好了，从此你再登录，就不需要输入密码了。&lt;/p&gt;
+
+&lt;p&gt;如果还是不行，就打开远程主机的/etc/ssh/sshd_config这个文件，检查下面几行前面&quot;#&quot;注释是否取掉。&lt;/p&gt;
+
+&lt;p&gt;　　RSAAuthentication yes
+　　PubkeyAuthentication yes
+　　AuthorizedKeysFile .ssh/authorized_keys&lt;/p&gt;
+
+&lt;p&gt;然后，重启远程主机的ssh服务。&lt;/p&gt;
+
+&lt;p&gt;　　// ubuntu系统
+　　service ssh restart&lt;/p&gt;
+
+&lt;p&gt;　　// debian系统
+　　/etc/init.d/ssh restart&lt;/p&gt;
+
+&lt;h3&gt;七.authorized_keys文件&lt;/h3&gt;
+
+&lt;p&gt;远程主机将用户的公钥，保存在登录后的用户主目录的$HOME/.ssh/authorized_keys文件中。公钥就是一段字符串，只要把它追加在authorized_keys文件的末尾就行了。&lt;/p&gt;
+
+&lt;p&gt;这里不使用上面的ssh-copy-id命令，改用下面的命令，解释公钥的保存过程：&lt;/p&gt;
+
+&lt;p&gt;　　$ ssh user@host 'mkdir -p .ssh &amp;amp;&amp;amp; cat &gt;&gt; .ssh/authorized_keys' &amp;lt; ~/.ssh/id_rsa.pub&lt;/p&gt;
+
+&lt;p&gt;这条命令由多个语句组成，依次分解开来看：（1）&quot;$ ssh user@host&quot;，表示登录远程主机；（2）单引号中的mkdir .ssh &amp;amp;&amp;amp; cat &gt;&gt; .ssh/authorized_keys，表示登录后在远程shell上执行的命令：（3）&quot;$ mkdir -p .ssh&quot;的作用是，如果用户主目录中的.ssh目录不存在，就创建一个；（4）'cat &gt;&gt; .ssh/authorized_keys' &amp;lt; ~/.ssh/id_rsa.pub的作用是，将本地的公钥文件~/.ssh/id_rsa.pub，重定向追加到远程文件authorized_keys的末尾。&lt;/p&gt;
+
+&lt;p&gt;写入authorized_keys文件后，公钥登录的设置就完成了。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/tool/2014/10/23/ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95&quot;&gt;6-7 ssh免密码登录&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>ssh免密码登录</title>
+   <link href="http://username.github.io/tool/2014/10/23/ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95"/>
+   <updated>2014-10-23T20:49:51+08:00</updated>
+   <id>http://username.github.io/tool/2014/10/23/ssh免密码登录</id>
+   <content type="html">&lt;p&gt;ssh 无密码登录要使用公钥与私钥。linux下可以用用ssh-keygen生成公钥/私钥对，下面我以CentOS为例。&lt;/p&gt;
+
+&lt;p&gt;有机器A(192.168.1.155)，B(192.168.1.181)。现想A通过ssh免密码登录到B。&lt;/p&gt;
+
+&lt;p&gt;1.在A机下生成公钥/私钥对。&lt;br/&gt;
+&lt;code&gt;[chenlb@A ~]$ ssh-keygen -t rsa -P ''&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;-P表示密码，-P '' 就表示空密码，也可以不用-P参数，这样就要三车回车，用-P就一次回车。
+它在/home/chenlb下生成.ssh目录，.ssh下有id_rsa和id_rsa.pub。&lt;/p&gt;
+
+&lt;p&gt;2.把A机下的id_rsa.pub复制到B机下，在B机的.ssh/authorized_keys文件里，我用scp复制。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+[chenlb@A ~]$ scp .ssh/id_rsa.pub chenlb@192.168.1.181:/home/chenlb/id_rsa.pub 
+chenlb@192.168.1.181's password:
+id_rsa.pub                                    100%  223     0.2KB/s   00:00
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;由于还没有免密码登录的，所以要输入密码。&lt;/p&gt;
+
+&lt;p&gt;3.B机把从A机复制的id_rsa.pub添加到.ssh/authorzied_keys文件里。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+[chenlb@B ~]$ cat id_rsa.pub &gt;&gt; .ssh/authorized_keys
+[chenlb@B ~]$ chmod 600 .ssh/authorized_keys
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;authorized_keys的权限要是600。&lt;/p&gt;
+
+&lt;p&gt;4.A机登录B机。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+[chenlb@A ~]$ ssh 192.168.1.181
+The authenticity of host '192.168.1.181 (192.168.1.181)' can't be established.
+RSA key fingerprint is 00:a6:a8:87:eb:c7:40:10:39:cc:a0:eb:50:d9:6a:5b.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '192.168.1.181' (RSA) to the list of known hosts.
+Last login: Thu Jul  3 09:53:18 2008 from chenlb
+[chenlb@B ~]$
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;第一次登录是时要你输入yes。&lt;/p&gt;
+
+&lt;p&gt;现在A机可以无密码登录B机了。&lt;/p&gt;
+
+&lt;p&gt;小结：登录的机子可有私钥，被登录的机子要有登录机子的公钥。这个公钥/私钥对一般在私钥宿主机产生。上面是用rsa算法的公钥/私钥对，当然也可以用dsa(对应的文件是id_dsa，id_dsa.pub)&lt;/p&gt;
+
+&lt;p&gt;想让A，B机无密码互登录，那B机以上面同样的方式配置即可。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>UML</title>
+   <link href="http://username.github.io/tool/2014/10/23/UML"/>
+   <updated>2014-10-23T20:49:51+08:00</updated>
+   <id>http://username.github.io/tool/2014/10/23/UML</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>php移位</title>
+   <link href="http://username.github.io/php/2014/10/23/php%E7%A7%BB%E4%BD%8D"/>
+   <updated>2014-10-23T20:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/23/php移位</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>mysql开启远程连接</title>
+   <link href="http://username.github.io/mysql/2014/10/23/mysql%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5"/>
+   <updated>2014-10-23T20:16:51+08:00</updated>
+   <id>http://username.github.io/mysql/2014/10/23/mysql开启远程连接</id>
+   <content type="html">&lt;h3&gt;一.插入普通用户&lt;/h3&gt;
+
+&lt;p&gt;use mysql&lt;/p&gt;
+
+&lt;p&gt;insert into user(host,user,password) values('local',jun,PASSWORD('xxxxxx'));&lt;/p&gt;
+
+&lt;h3&gt;二.开通远程&lt;/h3&gt;
+
+&lt;p&gt;grant all PRIVILEGES on cms.* to ted@'123.123.123.123' identified by '123456';  #开通远程&lt;/p&gt;
+
+&lt;p&gt;flush privileges;   #刷新使其立刻生效&lt;/p&gt;
+
+&lt;p&gt;注：格式: grant 权限 on 数据库名.表名 用户@登录主机 identified by &quot;用户密码&quot;;
+grant select,update,insert,delete on &lt;em&gt;.&lt;/em&gt; to xuys@192.168.88.234 identified by &quot;xuys1234&quot;;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/zoushuai518/linux/blob/master/ubuntu/ubuntu_use.me&quot;&gt;ext&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>E-R模型</title>
+   <link href="http://username.github.io/mysql/2014/10/23/E-R%E6%A8%A1%E5%9E%8B"/>
+   <updated>2014-10-23T20:16:51+08:00</updated>
+   <id>http://username.github.io/mysql/2014/10/23/E-R模型</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>计算机中的原码、反码和补码 </title>
+   <link href="http://username.github.io/php/2014/10/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81"/>
+   <updated>2014-10-21T18:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/21/计算机中的原码-反码-补码</id>
+   <content type="html">&lt;p&gt;关键词：原码,反码,补码&lt;/p&gt;
+
+&lt;p&gt;一、机器数和真值&lt;/p&gt;
+
+&lt;p&gt;1、机器数&lt;/p&gt;
+
+&lt;p&gt;数在计算机中的二进制表示形式就称为机器数。机器数是带符号的，在计算机用一个数的最高位存放符号（0为正，1为负），这样就将数的符号数值化了。&lt;/p&gt;
+
+&lt;p&gt;比如，十进制中的数 +5 ，计算机字长为8bits，转换成二进制就是00000101。如果是 -5 ，就是 10000101 。&lt;/p&gt;
+
+&lt;p&gt;那么，这里的 00000101 和 10000101 就是机器数。&lt;/p&gt;
+
+&lt;p&gt;2、真值&lt;/p&gt;
+
+&lt;p&gt;因为符号占据一位，机器数的形式值就不等于真正的数值。例如上面的有符号数 10000101，其最高位1代表负，其真正数值是 -5 而不是形式值133（10000101转换成十进制等于133）。所以，为区别起见，带符号位的机器数对应的真正数值称机器数的真值。&lt;/p&gt;
+
+&lt;p&gt;例：00100001的真值 = 0 0100001 = +33，10100011的真值 = 1 0100011 = -35&lt;/p&gt;
+
+&lt;p&gt;二、计算机符号数的表示方法&lt;/p&gt;
+
+&lt;p&gt;符号数值化后，为了方便地对机器数进行算术运算，提高运算速度，人们设计了符号数的各种编码方法，最常见的有原码、反码和补码。&lt;/p&gt;
+
+&lt;p&gt;1、原码&lt;/p&gt;
+
+&lt;p&gt;原码就是符号位加上真值的绝对值。简单说，就是符号位加上数的二进制表示。比如，+3（以8bit为例），符号位为0，3转化为二进制就是11，那么 +3 的原码就是00000011（不足部分补0）。同理， -3，符号位为1，3转化为二进制就是11，那么 -3 的原码就是10000011（不足部分补0）。即：&lt;/p&gt;
+
+&lt;p&gt;[+3] = [00000011]原&lt;/p&gt;
+
+&lt;p&gt;[-3] = [10000011]原&lt;/p&gt;
+
+&lt;p&gt;2、反码&lt;/p&gt;
+
+&lt;p&gt;一个负数的符号位不懂，其余位取反，就是机器数的另一种表示形式——反码。正数的反码与原码形式一样。&lt;/p&gt;
+
+&lt;p&gt;[+3] = [00000011]原 = [00000011]反&lt;/p&gt;
+
+&lt;p&gt;[-3] = [10000011]原 = [11111100]反&lt;/p&gt;
+
+&lt;p&gt;3、补码&lt;/p&gt;
+
+&lt;p&gt;负数的补码就是对反码加一，而正数不变，正数的原码反码补码是一样的。&lt;/p&gt;
+
+&lt;p&gt;[+3] = [00000011]原 = [00000011]反 = [00000100]补&lt;/p&gt;
+
+&lt;p&gt;[-3] = [10000011]原 = [11111100]反 = [11111101]补&lt;/p&gt;
+
+&lt;p&gt;至于为什么要使用原码、反码和补码，见我的另一篇日志《&lt;a href=&quot;/php/2014/10/21/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81/&quot;&gt;为什么要使用原码、反码、补码&lt;/a&gt;》&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://indian.blog.163.com/blog/static/1088158200610942745817/&quot;&gt;原文链接&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>为什么要使用原码、反码、补码</title>
+   <link href="http://username.github.io/php/2014/10/21/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81"/>
+   <updated>2014-10-21T18:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/21/为什么要使用原码-反码-补码</id>
+   <content type="html">&lt;p&gt;关键词：原码,反码,补码&lt;/p&gt;
+
+&lt;p&gt;前言：随着学习计算机知识的加深，许多地方都遇到原码、反码、补码。很多关于计算机的书籍都介绍原码、反码、补码的表示方法，但是为什么要用到原码、反码、补码却没详细说。为什么要使用？它们的原理是什么呢?我搜索了许多资料，也查找了许多书籍，终于弄明白了这个问题，收集整理如下。&lt;/p&gt;
+
+&lt;p&gt;我们知道数值在计算机中表示形式为机器数（机器数的概念见我的另一篇日志《&lt;a href=&quot;/php/2014/10/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81&quot;&gt;计算机中的原码、反码和补码&lt;/a&gt;》），计算机只能识别0和1，使用的是二进制。而在日常生活中人们使用的是十进制，并且我们用的数值有正负之分。于是在计算机中就用一个数的最高位存放符号(0为正，1为负)。这就是机器数的原码了。&lt;/p&gt;
+
+&lt;p&gt;有了数值的表示方法就可以对数进行算术运算，但是很快就发现用带符号位的原码进行乘除运算时结果正确，而在加减运算的时候就出现了问题，如下：假设字长为8bits&lt;/p&gt;
+
+&lt;p&gt;十进制　　(1) 10 - (1)10 = (1)10 + (-1)10 = (0)10&lt;/p&gt;
+
+&lt;p&gt;二进制　　(0 0000001)原 + (1 0000001)原 = (1 0000010)原 = ( -2 )　显然不正确。&lt;/p&gt;
+
+&lt;p&gt;因为在两个整数的加法运算中是没有问题的，于是就发现问题出现在带符号位的负数身上。对除符号位外的其余各位逐位取反就产生了反码。反码的取值空间和原码相同且一一对应。下面是反码的减法运算：&lt;/p&gt;
+
+&lt;p&gt;(1)10 - (1)10 = (1)10 + (-1)10 = (0)10&lt;/p&gt;
+
+&lt;p&gt;(0 0000001)反 + (1 1111110)反 = (1 1111111)反 = ( -0 )　有问题。&lt;/p&gt;
+
+&lt;p&gt;(1)10 - (2)10 = (1)10 + (-2)10 = (-1)10&lt;/p&gt;
+
+&lt;p&gt;(0 0000001)反 + (1 1111101)反 = (11111110)反 = (-1)　正确。&lt;/p&gt;
+
+&lt;p&gt;问题出现在(+0)和(-0)上，在人们的计算概念中零是没有正负之分的。（印度人首先将零作为标记并放入运算之中，包含有零号的印度数学和十进制计数对人类文明的贡献极大）。&lt;/p&gt;
+
+&lt;p&gt;于是就引入了补码概念。负数的补码就是对反码加一，而正数的补码不变，正数的原码反码补码是一样的。在补码中用(-128)代替了(-0)，这个是人为规定的，所以补码的表示范围为：&lt;/p&gt;
+
+&lt;p&gt;(-128~0~127)共256个。&lt;/p&gt;
+
+&lt;p&gt;注意：(-128)没有相对应的原码和反码， (-128) = (1 0000000)  补码的加减运算如下：&lt;/p&gt;
+
+&lt;p&gt;(1)10 - (1)10 = (1)10 + (-1)10 = (0)10&lt;/p&gt;
+
+&lt;p&gt;(0 0000001)补 + (1 1111111)补 = (0 0000000)补 = ( 0 )　正确。&lt;/p&gt;
+
+&lt;p&gt;(1)10 - (2)10 = (1)10 + (-2)10 = (-1)10&lt;/p&gt;
+
+&lt;p&gt;(00000001)补 + (11111110)补 = (11111111)补 = (-1)　正确。&lt;/p&gt;
+
+&lt;p&gt;所以补码的设计目的是：&lt;/p&gt;
+
+&lt;p&gt;⑴ 使符号位能与有效值部分一起参加运算，从而简化运算规则。补码机器数中的符号位，并不是强加上去的，是数据本身的自然组成部分，可以正常地参与运算。&lt;/p&gt;
+
+&lt;p&gt;⑵ 使减法运算转换为加法运算，进一步简化计算机中运算器的线路设计。&lt;/p&gt;
+
+&lt;p&gt;所有这些转换都是在计算机的最底层进行的，而在我们使用的汇编、c等其他高级语言中使用的都是原码。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://indian.blog.163.com/blog/static/1088158200611853949863/&quot;&gt;原文链接&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>php ORM框架&简单实现</title>
@@ -745,6 +1159,9 @@ git flow release start cart-1.1     #创建release分支
 git flow release finish cart-1.1    #结束release分支,中间可以做小幅修改,自动合并到master|develop分支,删除release分支,自动创建cart-1.1 tag,同时会让你为tag添加一个commit(commit必须添加,否则finish release分支会失败)。如果产生冲突，本地解决并提交后，重新执行上面的finish命令。成功后，feature分支会被删除，本地位于主干
 git push origin master
 git flow hotfix start bug1          #创建bug修复
+git add .                           #
+git add -u                          #
+git commit -m''                     #开发,提交commit
 git flow hotfix finish bug1         #结束bug修复,自动合并到master|develop分支,删除bug1
 git push origin master
 &lt;/code&gt;&lt;/pre&gt;
@@ -3252,7 +3669,7 @@ Catchable fatal error: Argument 1 passed to Models_Workflow_Instance::getRand() 
 &lt;li&gt;&lt;a href=&quot;http://www.yuansir-web.com/category/php/&quot;&gt;http://www.yuansir-web.com/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/cate/PHP&quot;&gt;简明现代魔法&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://blog.samoay.me/index&quot;&gt;醉清风的博客&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.laruence.com/&quot;&gt;风雪之隅&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.laruence.com/&quot;&gt;风雪之隅*&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/bluefrog&quot;&gt;一天一点进步&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://requests.ryanmccue.info/&quot;&gt;requests for php&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.php-fig.org/&quot;&gt;php-fig&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
