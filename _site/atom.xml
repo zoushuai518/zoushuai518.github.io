@@ -4,7 +4,7 @@
  <title>CodeMadman</title>
  <link href="http://username.github.io/" rel="self"/>
  <link href="http://username.github.io"/>
- <updated>2014-10-24T18:35:49+08:00</updated>
+ <updated>2014-10-29T17:30:53+08:00</updated>
  <id>http://username.github.io</id>
  <author>
    <name>Name Lastname</name>
@@ -13,14 +13,45 @@
 
  
  <entry>
+   <title>Web Service与Rest Service</title>
+   <link href="http://username.github.io/standard/2014/10/28/Web_Service-Rest_Service"/>
+   <updated>2014-10-28T19:16:51+08:00</updated>
+   <id>http://username.github.io/standard/2014/10/28/Web_Service-Rest_Service</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://my.oschina.net/lilw/blog/170518&quot;&gt;关于Web Service和Rest Service理解&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>rpc</title>
+   <link href="http://username.github.io/agreement/2014/10/28/rpc"/>
+   <updated>2014-10-28T18:16:51+08:00</updated>
+   <id>http://username.github.io/agreement/2014/10/28/rpc</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
    <title>多进程/线程的SAPI生命周期</title>
    <link href="http://username.github.io/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"/>
    <updated>2014-10-25T02:35:51+08:00</updated>
    <id>http://username.github.io/php/2014/10/25/多进程_线程的SAPI生命周期</id>
-   <content type="html">&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/1290&quot;&gt;多进程/线程的SAPI生命周期&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+   <content type="html">&lt;h2&gt;多进程的SAPI生命周期&lt;/h2&gt;
 
+&lt;p&gt;通常PHP是编译为apache的一个模块来处理PHP请求。Apache一般会采用多进程模式， Apache启动后会fork出多个子进程，每个进程的内存空间独立，每个子进程都会经过开始和结束环节， 不过每个进程的开始阶段只在进程fork出来以来后进行，在整个进程的生命周期内可能会处理多个请求。 只有在Apache关闭或者进程被结束之后才会进行关闭阶段，在这两个阶段之间会随着每个请求重复请求开始-请求关闭的环节。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/postImage/php/duojincheng1.jpg&quot; title=&quot;php多进程/多进程SAPI生命周期&quot; alt=&quot;php多进程/多进程SAPI生命周期&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;多进程SAPI生命周期&lt;/p&gt;
+
+&lt;h2&gt;多线程的SAPI生命周期&lt;/h2&gt;
+
+&lt;p&gt;多线程模式和多进程中的某个进程类似，不同的是在整个进程的生命周期内会并行的重复着 请求开始-请求关闭的环节。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/postImage/php/duojincheng2.jpg&quot; title=&quot;php多进程/多进程SAPI生命周期&quot; alt=&quot;php多进程/多进程SAPI生命周期&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;多线程SAPI生命周期&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/1290&quot;&gt;多进程/线程的SAPI生命周期&lt;/a&gt;&lt;/p&gt;
 </content>
  </entry>
  
@@ -29,10 +60,15 @@
    <link href="http://username.github.io/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"/>
    <updated>2014-10-25T02:35:51+08:00</updated>
    <id>http://username.github.io/php/2014/10/25/单进程SAPI生命周期</id>
-   <content type="html">&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/1289&quot;&gt;单进程SAPI生命周期&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+   <content type="html">&lt;p&gt;CLI/CGI模式的PHP属于单进程的SAPI模式。这类的请求在处理一次请求后就关闭。也就是只会经过如下几个环节： 开始 - 请求开始 - 请求关闭 - 结束 SAPI接口实现就完成了其生命周期。&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&quot;/assets/postImage/php/danjincheng1.jpg&quot; title=&quot;php单进程SAPI生命周期&quot; alt=&quot;php单进程SAPI生命周期&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;单进程多请求则如下图所示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/postImage/php/danjincheng2.jpg&quot; title=&quot;php单进程SAPI生命周期&quot; alt=&quot;php单进程SAPI生命周期&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/1289&quot;&gt;单进程SAPI生命周期&lt;/a&gt;&lt;/p&gt;
 </content>
  </entry>
  
@@ -41,7 +77,7 @@
    <link href="http://username.github.io/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86"/>
    <updated>2014-10-24T03:59:51+08:00</updated>
    <id>http://username.github.io/php/2014/10/24/深入理解php原理</id>
-   <content type="html">&lt;p&gt;深入理解php原理 baidu list&lt;/p&gt;
+   <content type="html">&lt;p&gt;深入理解php原理 search baidu list&lt;/p&gt;
 </content>
  </entry>
  
@@ -273,11 +309,119 @@ Last login: Thu Jul  3 09:53:18 2008 from chenlb
  </entry>
  
  <entry>
-   <title>php移位</title>
+   <title>php位运算符 & 移位</title>
    <link href="http://username.github.io/php/2014/10/23/php%E7%A7%BB%E4%BD%8D"/>
    <updated>2014-10-23T20:35:51+08:00</updated>
    <id>http://username.github.io/php/2014/10/23/php移位</id>
-   <content type="html">
+   <content type="html">&lt;h2&gt;一.位运算&lt;/h2&gt;
+
+&lt;h3&gt;1.原理&lt;/h3&gt;
+
+&lt;p&gt;在Linux文件系统中，一个用户对文件或目录所拥有的权限分为三种：”可读”、”可写”和”可执行”，分别用 1 、2 和 4 来表示，它们之间可以任意组合：有“可读”、“可写”权限就用 3 来表示（1 + 2 = 3）；有”可读“、”可执行“权限就用5来表示（1 + 4 = 5），三种权限全部拥有就用 7 表示（1 + 2 + 4 = 7）。&lt;/p&gt;
+
+&lt;p&gt;实际上，这种运算是基于二进制的。&lt;/p&gt;
+
+&lt;p&gt;假设可执行、可写、可读三种权限分别对应三个状态位，如果用户具有某种权限，那么将对应的状态位标识为“1”，反之则标识为“0”。如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/postImage/php/weiyunsuan.png&quot; title=&quot;linux文件权限&quot; alt=&quot;代码在内存中的分块&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如果只有“可读”权限，那么就对应二进制数：001，将这个二进制数转成十进制就得到1；如果同时具有“可读”、“可写”权限，二进制数则对应为： 011，转十进制得：3；同理，三种权限都有的，十进制就等于7。&lt;/p&gt;
+
+&lt;h3&gt;2.实现&lt;/h3&gt;
+
+&lt;p&gt;在PHP中，通过位运算符很容易就可以做到类似的权限控制：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//定义权限&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;define&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;READ&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// 把可读权限放在最右边&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;define&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;WRITE&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// 可读权限向左移一位&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;define&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;EXCUTE&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// 可执行权限向左移两位&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//赋予权限&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$user_permission&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;READ&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;WRITE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//验证权限&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;可读：&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$user_permission&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;READ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Yes&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;No&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;可写：&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$user_permission&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;WRITE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Yes&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;No&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;可执行：&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$user_permission&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;EXCUTE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Yes&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;No&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;PHP语言本身的错误控制 也是用位运算来做的，它甚至还利用了按位异或和按位非，使得错误控制更加精确。&lt;/p&gt;
+
+&lt;h3&gt;3.优点和缺陷&lt;/h3&gt;
+
+&lt;p&gt;位运算的运算对象是二进制的位，速度快，效率高，而且节省存储空间，位运算做权限控制又相当地灵活。但是，位运算也有很大的局限，因为在32位计算机上，位移不能超过32次，这就要求权限数量不超过32种。&lt;/p&gt;
+
+&lt;h2&gt;二.移位操作&lt;/h2&gt;
+
+&lt;p&gt;PHP主要是设计于文本操作的，其实PHP不适合做数学运算，效率也不高。(二进制移位操作)&lt;/p&gt;
+
+&lt;p&gt;因为PHP只有32位有符号整数，没有64位长整型，也没有无符号整数。其整型的范围是-2&lt;sup&gt;31&lt;/sup&gt;-1～2&lt;sup&gt;31&lt;/sup&gt;，超出这个范围的，将被解释为浮点数。因此，0xFFFFFFFF，直接打印，显示的是4294967295，及2&lt;sup&gt;32&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;而PHP不支持浮点数的二进制位移操作，如果要进行，会先转换为整型，最后的结果，也将按照整型来返回&lt;/p&gt;
+
+&lt;p&gt;同时PHP的向右位移操作，高位会填充符号位，而且PHP没有提供类似Java的&gt;&gt;&gt;来强制填充0&lt;/p&gt;
+
+&lt;p&gt;如何解决这个问题呢，我考虑过使用BCMath数学函数库，直接处理字符串表示的整数，或者是GMP/BigInt扩展等。不过我想既然使用字符串，那么我可以字符串地彻底一些，把数字转换成32个二进制的字符串，再手工填充0，最后转换回来。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;/**  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt; * 无符号32位右移  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt; * @param mixed $x 要进行操作的数字，如果是字符串，必须是十进制形式  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt; * @param string $bits 右移位数  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt; * @return mixed 结果，如果超出整型范围将返回浮点数  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt; */&lt;/span&gt;  
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;shr32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$bits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// 位移量超出范围的两种情况   &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;16&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//转换成代表二进制数字的字符串   &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;17&lt;/span&gt;     &lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;decbin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;18&lt;/span&gt;     &lt;span class=&quot;nv&quot;&gt;$l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;strlen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;19&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//字符串长度超出则截取底32位，长度不够，则填充高位为0到32位   &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;20&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;21&lt;/span&gt;         &lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;22&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;elseif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;23&lt;/span&gt;         &lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str_pad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;STR_PAD_LEFT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;24&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;25&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//取出要移动的位数，并在左边填充0   &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;26&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bindec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str_pad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$bits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;STR_PAD_LEFT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;27&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;28&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;/**  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;29&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt; * 无符号32位左移  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;30&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt; * @param mixed $x 要进行操作的数字，如果是字符串，必须是十进制形式  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;31&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt; * @param string $bits 左移位数  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;32&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt; * @return mixed 结果，如果超出整型范围将返回浮点数  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;33&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt; */&lt;/span&gt;  
+&lt;span class=&quot;lineno&quot;&gt;34&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;shl32&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$bits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;35&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// 位移量超出范围的两种情况   &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;36&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;37&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;38&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;39&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;40&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;41&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;42&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//转换成代表二进制数字的字符串   &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;43&lt;/span&gt;     &lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;decbin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;44&lt;/span&gt;     &lt;span class=&quot;nv&quot;&gt;$l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;strlen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;45&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//字符串长度超出则截取底32位，长度不够，则填充高位为0到32位   &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;46&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;47&lt;/span&gt;         &lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;48&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;elseif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;49&lt;/span&gt;         &lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str_pad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;STR_PAD_LEFT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;50&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;51&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//取出要移动的位数，并在右边填充0   &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;52&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bindec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str_pad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$bits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;STR_PAD_RIGHT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;53&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;54&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;a href=&quot;http://cn2.php.net/language.operators.bitwise&quot;&gt;ext&lt;/a&gt;&lt;/p&gt;
 </content>
  </entry>
  
@@ -2026,7 +2170,109 @@ HTTP_X_FORWARDED_FOR = 没数值或不显示 ，经过多个代理服务器时�
    <link href="http://username.github.io/php/2014/10/08/php-%E6%A1%86%E6%9E%B6"/>
    <updated>2014-10-08T20:41:51+08:00</updated>
    <id>http://username.github.io/php/2014/10/08/php-框架</id>
-   <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/rrsina/p/3985403.html&quot;&gt;20个2014年最优秀的PHP框架&lt;/a&gt;&lt;/p&gt;
+   <content type="html">&lt;p&gt;1.Laravel&lt;br/&gt;
+Laravel是一款免费并且开源的PHP应用框架，它是为开发基于MVC的WEB应用而设计的，个人觉得，Laravel是2014年最棒的PHP框架了，它可以帮助你创建一些很酷的WEB应用，而且可以轻松地使用权限验证、URL路由、Session以及缓存等功能。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://laravel.com/&quot;&gt;http://laravel.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;2.Phalcon&lt;br/&gt;
+Phalcon是运行速度最快的一个PHP框架，它的底层是用C实现的，但是上层提供一些PHP扩展，Phalcon作为一款PHP框架以高性能和低消耗著称。尽管它用C语言实现，但是我们并不需要使用C语言，你只要会PHP就可以使用它了。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://phalconphp.com/en/&quot;&gt;http://phalconphp.com/en/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;3.Symfony&lt;br/&gt;
+Symfony是一款为Web项目准备的PHP框架，它可以帮助你加速创建和维护PHP应用。Symfony可以帮助你省去很多重复的编码工作，让你的工作重心转移到设计和控制上面来。
+Symfony是一款可重用的PHP组件，它是基于MIT协议的开源软件，很多CMS系统和论坛程序都是基于Symfony开发的，例如Drupal和phpBB。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://symfony.com/&quot;&gt;http://symfony.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;4.Yii&lt;br/&gt;
+Yii是一款快速、安全和专业的PHP框架，同时它也是一款开发WEB 2.0应用的高性能PHP框架，Yii的功能非常强大，内置以下功能：MVC、DAO/ActiveRecord、I18N、权限验证、缓存、安全控制、测试、数据访问对象等。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://www.yiiframework.com/&quot;&gt;http://www.yiiframework.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;5.CodeIgniter&lt;br/&gt;
+CodeIgniter是一款非常敏捷的开源PHP框架，如果你要用PHP开发一个简单而优雅的工具包，那么CodeIgniter就非常合适。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;https://ellislab.com/codeigniter&quot;&gt;https://ellislab.com/codeigniter&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;6.CakePHP&lt;br/&gt;
+CakePHP是一款老牌的PHP框架，正因为它的优秀所以也列入了2014年最优秀的PHP框架中，现在稳定版本已经是V3.0了。CakePHP可以帮助你简单、快捷地创建PHP应用程序，并且你可以用很少的代码实现强大的功能。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://cakephp.org/&quot;&gt;http://cakephp.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;7.Aura&lt;br/&gt;
+如果你喜欢用简洁的代码创建应用程序，那么你可以选择使用Aura，Aura也有相当大的一部分用户，使用方法和CakePHP类似，Aura的主要目标是为PHP开发者提供一个高质量、可测试、标准化组件的框架。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://auraphp.com/&quot;&gt;http://auraphp.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;8.Zend Framework&lt;br/&gt;
+前些年我在大型的WEB项目中使用过Zend 1和Zend 2，作为顶尖的PHP框架，Zend确实比较好用，而且文档也和很丰富。我们可以利用Zend创建一些扩展性非常好的PHP应用。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://framework.zend.com/&quot;&gt;http://framework.zend.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;9.Kohana&lt;br/&gt;
+Kohana是一款敏捷但是功能强大的PHP框架，我们可以用Kohana快速地创建Web应用，因为它有丰富的组件，比如数据访问接口、代码分析、加密和验证等等。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://kohanaframework.org/&quot;&gt;http://kohanaframework.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;10.Slim framework&lt;br/&gt;
+Slim是一款轻量级的PHP框架，作为一个微框架，Slim可以让你简单地创建一些功能强大的应用程序和API接口。Slim有强大的路由功能、自定义视图模板、flash消息、AES-256加密的安全cookies、HTTP缓存、可自定义的日志、异常处理以及调试和简单的配置。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://www.slimframework.com/&quot;&gt;http://www.slimframework.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;11.Fuel PHP&lt;br/&gt;
+Fuel PHP是一款简单、可扩展的PHP框架，基于其他框架的设计理念，Fuel已经是V2.0版本了，目前认识beta版本。
+Fuel全面支持HMVC，这也是Fuel架构的一部分。另外，Fuel强大的路由功能让你灵活地处理好控制器和视图之间的对应关系。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://fuelphp.com/&quot;&gt;http://fuelphp.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;12.Flight&lt;br/&gt;
+Flight是一款扩展性很强的微型PHP框架，Flight可以让你快速创建REST风格的web应用，它需要PHP5.3以上的版本支持，当然Flight也是基于MIT协议开源的。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://flightphp.com/&quot;&gt;http://flightphp.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;13.Medoo&lt;br/&gt;
+我非常喜欢这个微型框架，Medoo是一款最轻量级的PHP框架，可以用它来加速我们的应用开发。它只有13KB的一个文件，学习和使用都非常简单，并且Medoo也是开源的。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://medoo.in/&quot;&gt;http://medoo.in/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;14.PHPixie&lt;br/&gt;
+PHPixie是一款轻量级的PHP MVC框架，它非常小巧，而且文档也比较全面，我们只需要做尽可能的配置就可以了。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://phpixie.com/&quot;&gt;http://phpixie.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;15.Pop PHP&lt;br/&gt;
+Pop是一款强劲和易学的PHP框架，并且提供很多详细的API接口及其文档，支持PHP5.3及其以上版本。现在，Pop PHP依然保持着轻量级的特点，尽管很多新特性在逐渐加入到Pop中，但它使用起来依然很方便。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://www.popphp.org/&quot;&gt;http://www.popphp.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;16.Simple MVC Framework&lt;br/&gt;
+Simple MVC Framework的安装及其简单，代码结构也非常简单，很容易学习。我们只需要设置网站路径就可以成功安装它了。在Twitter和Facebook群中也有Simple MVC Framework的讨论区，它是轻量级的，小于1M的大小。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://simplemvcframework.com/&quot;&gt;http://simplemvcframework.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;17.TYPO3 Flow&lt;br/&gt;
+TYPO3是由最大的PHP社区之一的TYPO3管理开发的，也是一个开源的PHP框架。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://flow.typo3.org/home&quot;&gt;http://flow.typo3.org/home&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;18.Nette&lt;br/&gt;
+很受欢迎的PHP开发工具，它的设计理念是尽可能地简单和安全，Nette已经为你考虑了你的网站安全，包括XSS攻击，Session劫持，Session篡改等安全问题。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://nette.org/en/&quot;&gt;http://nette.org/en/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;19.Agavi&lt;br/&gt;
+Agavi是基于PHP5的PHP MVC框架，它帮助开发者编写简洁的代码，扩展性也非常不错。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://www.agavi.org/&quot;&gt;http://www.agavi.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;20.Silex&lt;br/&gt;
+Silex也是一款基于PHP5.3及其以上版本的微型PHP框架，Silex的API使用非常有意思，因为API足够简单明了，利用Pimple的服务，成为一款很棒的第三方扩展应用。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://silex.sensiolabs.org/&quot;&gt;http://silex.sensiolabs.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;20个2014年最优秀的PHP框架,排名不分先后&lt;/p&gt;
 </content>
  </entry>
  
@@ -4217,10 +4463,10 @@ location ~ \.php${
  </entry>
  
  <entry>
-   <title>Rest API标准</title>
-   <link href="http://username.github.io/standard/2014/09/17/Rest_API"/>
+   <title>Rest Service</title>
+   <link href="http://username.github.io/standard/2014/09/17/Rest_Service"/>
    <updated>2014-09-17T02:16:51+08:00</updated>
-   <id>http://username.github.io/standard/2014/09/17/Rest_API</id>
+   <id>http://username.github.io/standard/2014/09/17/Rest_Service</id>
    <content type="html">&lt;h2&gt;Rest API标准，设计规范&lt;/h2&gt;
 
 &lt;ul&gt;
@@ -4261,7 +4507,7 @@ location ~ \.php${
    <link href="http://username.github.io/asset/2014/09/16/front-list"/>
    <updated>2014-09-16T18:59:51+08:00</updated>
    <id>http://username.github.io/asset/2014/09/16/front-list</id>
-   <content type="html">&lt;h1&gt;js 框架&lt;/h1&gt;
+   <content type="html">&lt;h1&gt;前端开发(js)框架&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://angularjs.org/&quot;&gt;angularjs&lt;/a&gt;：MVC结构的js框架，诞生与google&lt;/li&gt;
@@ -4271,10 +4517,11 @@ location ~ \.php${
 &lt;li&gt;&lt;a href=&quot;http://www.requirejs.org/&quot;&gt;requirejs&lt;/a&gt;：&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://coffee-script.org/&quot;&gt;coffeescript.cn&lt;/a&gt;：&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://coffeescript.org/&quot;&gt;coffeescript&lt;/a&gt;：&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://handlebarsjs.com/&quot;&gt;handlebarsjs&lt;/a&gt;：&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://seajs.org/docs/&quot;&gt;seajs&lt;/a&gt;：&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://handlebarsjs.com/&quot;&gt;handlebarsjs&lt;/a&gt;：模板引擎&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://seajs.org/docs/&quot;&gt;seajs&lt;/a&gt;：SeaJS是一个遵循CommonJS规范的JavaScript模块加载框架，可以实现JavaScript的模块化开发及加载机制。与jQuery等JavaScript框架不同，SeaJS不会扩展封装语言特性，而只是实现JavaScript的模块化及按模块加载。SeaJS的主要目的是令JavaScript开发模块化并可以轻松愉悦进行加载，将前端工程师从繁重的JavaScript文件及对象依赖处理中解放出来，可以专注于代码本身的逻辑。SeaJS可以与jQuery这类框架完美集成。使用SeaJS可以提高JavaScript代码的可读性和清晰度，解决目前JavaScript编程中普遍存在的依赖关系混乱和代码纠缠等问题，方便代码的编写和维护。&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://zeptojs.com/&quot;&gt;zeptojs&lt;/a&gt;：Zepto.js 是专门为现代智能手机浏览器退出的 Javascript 框架&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://docs.meteor.com/#quickstart&quot;&gt;Meteor&lt;/a&gt;：Meteor 是一个新鲜出炉的现代网站开发平台,基础构架是 Node.JS + MongoDB,它把这个基础构架同时延伸到了浏览器端&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.bootcss.com/&quot;&gt;Bootstrap&lt;/a&gt;：前端开发框架&lt;/li&gt;
 &lt;/ul&gt;
 
 
@@ -4298,6 +4545,7 @@ location ~ \.php${
 &lt;li&gt;&lt;a href=&quot;http://www.jshint.com/install/&quot;&gt;JSHlint&lt;/a&gt;：&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.jslint.com/&quot;&gt;JSlint&lt;/a&gt;：&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://prismjs.com/&quot;&gt;prismjs&lt;/a&gt;：js不同语言语法高亮插件&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://graphael.cs.arizona.edu/&quot;&gt;graphael&lt;/a&gt;：http://www.cnblogs.com/lhb25/archive/2013/01/09/gRaphael-javascript-chart-library.html&lt;/li&gt;
 &lt;/ul&gt;
 
 

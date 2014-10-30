@@ -1,0 +1,10 @@
+---
+layout: post
+title: "rpc"
+category: agreement
+comments: true
+tags : [rest WebService, SOAP WebService, RPC]
+date:   2014-10-28 10:16:51
+---
+
+

@@ -6,7 +6,7 @@ comments: true
 date:   2014-09-16 10:59:51
 ---
 
-#js 框架
+#前端开发(js)框架
 - [angularjs](http://angularjs.org/)：MVC结构的js框架，诞生与google
 - [angularjs.cn](http://www.angularjs.cn/)：MVC结构的js框架，诞生与google
 - [emberjs](http://www.emberjs.cn/guides/)：一个用于创建 web 应用的 JavaScript MVC 框架
@@ -14,10 +14,11 @@ date:   2014-09-16 10:59:51
 - [requirejs](http://www.requirejs.org/)：
 - [coffeescript.cn](http://coffee-script.org/)：
 - [coffeescript](http://coffeescript.org/)：
-- [handlebarsjs](http://handlebarsjs.com/)：
-- [seajs](http://seajs.org/docs/)：
+- [handlebarsjs](http://handlebarsjs.com/)：模板引擎
+- [seajs](http://seajs.org/docs/)：SeaJS是一个遵循CommonJS规范的JavaScript模块加载框架，可以实现JavaScript的模块化开发及加载机制。与jQuery等JavaScript框架不同，SeaJS不会扩展封装语言特性，而只是实现JavaScript的模块化及按模块加载。SeaJS的主要目的是令JavaScript开发模块化并可以轻松愉悦进行加载，将前端工程师从繁重的JavaScript文件及对象依赖处理中解放出来，可以专注于代码本身的逻辑。SeaJS可以与jQuery这类框架完美集成。使用SeaJS可以提高JavaScript代码的可读性和清晰度，解决目前JavaScript编程中普遍存在的依赖关系混乱和代码纠缠等问题，方便代码的编写和维护。
 - [zeptojs](http://zeptojs.com/)：Zepto.js 是专门为现代智能手机浏览器退出的 Javascript 框架
 - [Meteor](http://docs.meteor.com/#quickstart)：Meteor 是一个新鲜出炉的现代网站开发平台,基础构架是 Node.JS + MongoDB,它把这个基础构架同时延伸到了浏览器端
+- [Bootstrap](http://www.bootcss.com/)：前端开发框架
 
 
 # 前端构建工具
@@ -35,6 +36,7 @@ date:   2014-09-16 10:59:51
 - [JSHlint](http://www.jshint.com/install/)：
 - [JSlint](http://www.jslint.com/)：
 - [prismjs](http://prismjs.com/)：js不同语言语法高亮插件
+- [graphael](http://graphael.cs.arizona.edu/)：http://www.cnblogs.com/lhb25/archive/2013/01/09/gRaphael-javascript-chart-library.html
 
 
 # 前端新开发模式
@@ -53,3 +55,4 @@ date:   2014-09-16 10:59:51
 
 # js other
 - [一些达成共识的JavaScript编码风格约定](http://www.iteye.com/news/28028-JavaScript-code-style-guidek)
+
