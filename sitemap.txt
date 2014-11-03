@@ -8,6 +8,21 @@ http://username.github.io/rss.xml
 http://username.github.io/sitemap.txt
 http://username.github.io/tags.html
 
+http://username.github.io/standard/2014/10/28/Web_Service-Rest_Service
+http://username.github.io/agreement/2014/10/28/rpc
+http://username.github.io/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F
+http://username.github.io/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F
+http://username.github.io/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86
+http://username.github.io/php/2014/10/24/php_soap
+http://username.github.io/tool/2014/10/24/mysql%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B
+http://username.github.io/tool/2014/10/24/ssh
+http://username.github.io/tool/2014/10/23/ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95
+http://username.github.io/tool/2014/10/23/UML
+http://username.github.io/php/2014/10/23/php%E7%A7%BB%E4%BD%8D
+http://username.github.io/mysql/2014/10/23/mysql%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5
+http://username.github.io/mysql/2014/10/23/E-R%E6%A8%A1%E5%9E%8B
+http://username.github.io/php/2014/10/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81
+http://username.github.io/php/2014/10/21/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81
 http://username.github.io/php/2014/10/17/php_ORM
 http://username.github.io/php/2014/10/17/php_MVC_ORM_CURD_AR
 http://username.github.io/php/2014/10/17/php_ActiveRecord
@@ -83,7 +98,7 @@ http://username.github.io/php/2014/09/17/php-DI_IoC
 http://username.github.io/linux/2014/09/17/shell
 http://username.github.io/linux/2014/09/17/nginx-https-config
 http://username.github.io/agreement/2014/09/17/https
-http://username.github.io/standard/2014/09/17/Rest_API
+http://username.github.io/standard/2014/09/17/Rest_Service
 http://username.github.io/php/2014/09/16/php-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6
 http://username.github.io/php/2014/09/16/laravel
 http://username.github.io/asset/2014/09/16/front-list

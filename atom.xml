@@ -4,13 +4,571 @@
  <title>CodeMadman</title>
  <link href="http://username.github.io/" rel="self"/>
  <link href="http://username.github.io"/>
- <updated>2014-10-17T17:33:01+08:00</updated>
+ <updated>2014-11-03T10:47:11+08:00</updated>
  <id>http://username.github.io</id>
  <author>
    <name>Name Lastname</name>
    <email>blah@email.test</email>
  </author>
 
+ 
+ <entry>
+   <title>Web Service与Rest Service</title>
+   <link href="http://username.github.io/standard/2014/10/28/Web_Service-Rest_Service"/>
+   <updated>2014-10-28T19:16:51+08:00</updated>
+   <id>http://username.github.io/standard/2014/10/28/Web_Service-Rest_Service</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://my.oschina.net/lilw/blog/170518&quot;&gt;关于Web Service和Rest Service理解&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>rpc</title>
+   <link href="http://username.github.io/agreement/2014/10/28/rpc"/>
+   <updated>2014-10-28T18:16:51+08:00</updated>
+   <id>http://username.github.io/agreement/2014/10/28/rpc</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>多进程/线程的SAPI生命周期</title>
+   <link href="http://username.github.io/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"/>
+   <updated>2014-10-25T02:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/25/多进程_线程的SAPI生命周期</id>
+   <content type="html">&lt;h2&gt;多进程的SAPI生命周期&lt;/h2&gt;
+
+&lt;p&gt;通常PHP是编译为apache的一个模块来处理PHP请求。Apache一般会采用多进程模式， Apache启动后会fork出多个子进程，每个进程的内存空间独立，每个子进程都会经过开始和结束环节， 不过每个进程的开始阶段只在进程fork出来以来后进行，在整个进程的生命周期内可能会处理多个请求。 只有在Apache关闭或者进程被结束之后才会进行关闭阶段，在这两个阶段之间会随着每个请求重复请求开始-请求关闭的环节。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/postImage/php/duojincheng1.jpg&quot; title=&quot;php多进程/多进程SAPI生命周期&quot; alt=&quot;php多进程/多进程SAPI生命周期&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;多进程SAPI生命周期&lt;/p&gt;
+
+&lt;h2&gt;多线程的SAPI生命周期&lt;/h2&gt;
+
+&lt;p&gt;多线程模式和多进程中的某个进程类似，不同的是在整个进程的生命周期内会并行的重复着 请求开始-请求关闭的环节。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/postImage/php/duojincheng2.jpg&quot; title=&quot;php多进程/多进程SAPI生命周期&quot; alt=&quot;php多进程/多进程SAPI生命周期&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;多线程SAPI生命周期&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/1290&quot;&gt;多进程/线程的SAPI生命周期&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>单进程SAPI生命周期</title>
+   <link href="http://username.github.io/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"/>
+   <updated>2014-10-25T02:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/25/单进程SAPI生命周期</id>
+   <content type="html">&lt;p&gt;CLI/CGI模式的PHP属于单进程的SAPI模式。这类的请求在处理一次请求后就关闭。也就是只会经过如下几个环节： 开始 - 请求开始 - 请求关闭 - 结束 SAPI接口实现就完成了其生命周期。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/postImage/php/danjincheng1.jpg&quot; title=&quot;php单进程SAPI生命周期&quot; alt=&quot;php单进程SAPI生命周期&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;单进程多请求则如下图所示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/postImage/php/danjincheng2.jpg&quot; title=&quot;php单进程SAPI生命周期&quot; alt=&quot;php单进程SAPI生命周期&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/1289&quot;&gt;单进程SAPI生命周期&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>深入理解php原理</title>
+   <link href="http://username.github.io/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86"/>
+   <updated>2014-10-24T03:59:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/24/深入理解php原理</id>
+   <content type="html">&lt;p&gt;深入理解php原理 search baidu list&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>php使用soap调用WebService</title>
+   <link href="http://username.github.io/php/2014/10/24/php_soap"/>
+   <updated>2014-10-24T03:59:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/24/php_soap</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/2156&quot;&gt;php soap&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>mysql字段类型</title>
+   <link href="http://username.github.io/tool/2014/10/24/mysql%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B"/>
+   <updated>2014-10-24T01:49:51+08:00</updated>
+   <id>http://username.github.io/tool/2014/10/24/mysql字段类型</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/Alacky/articles/937826.html&quot;&gt;link&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>SSH原理与运用</title>
+   <link href="http://username.github.io/tool/2014/10/24/ssh"/>
+   <updated>2014-10-24T00:49:51+08:00</updated>
+   <id>http://username.github.io/tool/2014/10/24/ssh</id>
+   <content type="html">&lt;h3&gt;一.介绍&lt;/h3&gt;
+
+&lt;p&gt;SSH是每一台Linux电脑的标准配置。&lt;/p&gt;
+
+&lt;p&gt;随着Linux设备从电脑逐渐扩展到手机、外设和家用电器，SSH的使用范围也越来越广。不仅程序员离不开它，很多普通用户也每天使用。&lt;/p&gt;
+
+&lt;p&gt;SSH具备多种功能，可以用于很多场合。有些事情，没有它就是办不成。本文是我的学习笔记，总结和解释了SSH的常见用法，希望对大家有用。&lt;/p&gt;
+
+&lt;p&gt;虽然本文内容只涉及初级应用，较为简单，但是需要读者具备最基本的&quot;Shell知识&quot;和了解&quot;公钥加密&quot;的概念。如果你对它们不熟悉，我推荐先阅读&lt;a href=&quot;http://www.ee.surrey.ac.uk/Teaching/Unix/&quot;&gt;《UNIX / Linux 初学者教程》&lt;/a&gt;和&lt;a href=&quot;http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html&quot;&gt;《数字签名是什么？》&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h3&gt;二.什么是SSH&lt;/h3&gt;
+
+&lt;p&gt;简单说，SSH是一种网络协议，用于计算机之间的加密登录。&lt;/p&gt;
+
+&lt;p&gt;如果一个用户从本地计算机，使用SSH协议登录另一台远程计算机，我们就可以认为，这种登录是安全的，即使被中途截获，密码也不会泄露。&lt;/p&gt;
+
+&lt;p&gt;最早的时候，互联网通信都是明文通信，一旦被截获，内容就暴露无疑。1995年，芬兰学者Tatu Ylonen设计了SSH协议，将登录信息全部加密，成为互联网安全的一个基本解决方案，迅速在全世界获得推广，目前已经成为Linux系统的标准配置。&lt;/p&gt;
+
+&lt;p&gt;需要指出的是，SSH只是一种协议，存在多种实现，既有商业实现，也有开源实现。本文针对的实现是OpenSSH，它是自由软件，应用非常广泛。&lt;/p&gt;
+
+&lt;p&gt;此外，本文只讨论SSH在Linux Shell中的用法。如果要在Windows系统中使用SSH，会用到另一种软件PuTTY，这需要另文介绍。&lt;/p&gt;
+
+&lt;h3&gt;三.最基本的用法&lt;/h3&gt;
+
+&lt;p&gt;SSH主要用于远程登录。假定你要以用户名user，登录远程主机host，只要一条简单命令就可以了。&lt;/p&gt;
+
+&lt;p&gt;　　$ ssh user@host&lt;/p&gt;
+
+&lt;p&gt;如果本地用户名与远程用户名一致，登录时可以省略用户名。&lt;/p&gt;
+
+&lt;p&gt;　　$ ssh host&lt;/p&gt;
+
+&lt;p&gt;SSH的默认端口是22，也就是说，你的登录请求会送进远程主机的22端口。使用p参数，可以修改这个端口。&lt;/p&gt;
+
+&lt;p&gt;　　$ ssh -p 2222 user@host&lt;/p&gt;
+
+&lt;p&gt;上面这条命令表示，ssh直接连接远程主机的2222端口。&lt;/p&gt;
+
+&lt;h3&gt;四.中间人攻击&lt;/h3&gt;
+
+&lt;p&gt;SSH之所以能够保证安全，原因在于它采用了公钥加密。&lt;/p&gt;
+
+&lt;p&gt;整个过程是这样的：（1）远程主机收到用户的登录请求，把自己的公钥发给用户。（2）用户使用这个公钥，将登录密码加密后，发送回来。（3）远程主机用自己的私钥，解密登录密码，如果密码正确，就同意用户登录。&lt;/p&gt;
+
+&lt;p&gt;这个过程本身是安全的，但是实施的时候存在一个风险：如果有人截获了登录请求，然后冒充远程主机，将伪造的公钥发给用户，那么用户很难辨别真伪。因为不像https协议，SSH协议的公钥是没有证书中心（CA）公证的，也就是说，都是自己签发的。&lt;/p&gt;
+
+&lt;p&gt;可以设想，如果攻击者插在用户与远程主机之间（比如在公共的wifi区域），用伪造的公钥，获取用户的登录密码。再用这个密码登录远程主机，那么SSH的安全机制就荡然无存了。这种风险就是著名的&quot;中间人攻击&quot;（Man-in-the-middle attack）。&lt;/p&gt;
+
+&lt;p&gt;SSH协议是如何应对的呢？&lt;/p&gt;
+
+&lt;h3&gt;五.口令登录&lt;/h3&gt;
+
+&lt;p&gt;如果你是第一次登录对方主机，系统会出现下面的提示：&lt;/p&gt;
+
+&lt;p&gt;　　$ssh user@host&lt;/p&gt;
+
+&lt;p&gt;　　The authenticity of host 'host (12.18.429.21)' can't be established.&lt;/p&gt;
+
+&lt;p&gt;　　RSA key fingerprint is 98:2e:d7:e0:de:9f:ac:67:28:c2:42:2d:37:16:58:4d.&lt;/p&gt;
+
+&lt;p&gt;　　Are you sure you want to continue connecting (yes/no)?&lt;/p&gt;
+
+&lt;p&gt;这段话的意思是，无法确认host主机的真实性，只知道它的公钥指纹，问你还想继续连接吗？&lt;/p&gt;
+
+&lt;p&gt;所谓&quot;公钥指纹&quot;，是指公钥长度较长（这里采用RSA算法，长达1024位），很难比对，所以对其进行MD5计算，将它变成一个128位的指纹。上例中是98:2e:d7:e0:de:9f:ac:67:28:c2:42:2d:37:16:58:4d，再进行比较，就容易多了。&lt;/p&gt;
+
+&lt;p&gt;很自然的一个问题就是，用户怎么知道远程主机的公钥指纹应该是多少？回答是没有好办法，远程主机必须在自己的网站上贴出公钥指纹，以便用户自行核对。&lt;/p&gt;
+
+&lt;p&gt;假定经过风险衡量以后，用户决定接受这个远程主机的公钥。&lt;/p&gt;
+
+&lt;p&gt;　　Are you sure you want to continue connecting (yes/no)? yes&lt;/p&gt;
+
+&lt;p&gt;系统会出现一句提示，表示host主机已经得到认可。&lt;/p&gt;
+
+&lt;p&gt;　　Warning: Permanently added 'host,12.18.429.21' (RSA) to the list of known hosts.&lt;/p&gt;
+
+&lt;p&gt;然后，会要求输入密码。&lt;/p&gt;
+
+&lt;p&gt;　　Password: (enter password)&lt;/p&gt;
+
+&lt;p&gt;如果密码正确，就可以登录了。&lt;/p&gt;
+
+&lt;p&gt;当远程主机的公钥被接受以后，它就会被保存在文件$HOME/.ssh/known_hosts之中。下次再连接这台主机，系统就会认出它的公钥已经保存在本地了，从而跳过警告部分，直接提示输入密码。&lt;/p&gt;
+
+&lt;p&gt;每个SSH用户都有自己的known_hosts文件，此外系统也有一个这样的文件，通常是/etc/ssh/ssh_known_hosts，保存一些对所有用户都可信赖的远程主机的公钥。&lt;/p&gt;
+
+&lt;h3&gt;六.公钥登录&lt;/h3&gt;
+
+&lt;p&gt;使用密码登录，每次都必须输入密码，非常麻烦。好在SSH还提供了公钥登录，可以省去输入密码的步骤。&lt;/p&gt;
+
+&lt;p&gt;所谓&quot;公钥登录&quot;，原理很简单，就是用户将自己的公钥储存在远程主机上。登录的时候，远程主机会向用户发送一段随机字符串，用户用自己的私钥加密后，再发回来。远程主机用事先储存的公钥进行解密，如果成功，就证明用户是可信的，直接允许登录shell，不再要求密码。&lt;/p&gt;
+
+&lt;p&gt;这种方法要求用户必须提供自己的公钥。如果没有现成的，可以直接用ssh-keygen生成一个：&lt;/p&gt;
+
+&lt;p&gt;　　$ ssh-keygen&lt;/p&gt;
+
+&lt;p&gt;运行上面的命令以后，系统会出现一系列提示，可以一路回车。其中有一个问题是，要不要对私钥设置口令（passphrase），如果担心私钥的安全，这里可以设置一个。&lt;/p&gt;
+
+&lt;p&gt;运行结束以后，在$HOME/.ssh/目录下，会新生成两个文件：id_rsa.pub和id_rsa。前者是你的公钥，后者是你的私钥。&lt;/p&gt;
+
+&lt;p&gt;这时再输入下面的命令，将公钥传送到远程主机host上面：&lt;/p&gt;
+
+&lt;p&gt;　　$ ssh-copy-id user@host&lt;/p&gt;
+
+&lt;p&gt;好了，从此你再登录，就不需要输入密码了。&lt;/p&gt;
+
+&lt;p&gt;如果还是不行，就打开远程主机的/etc/ssh/sshd_config这个文件，检查下面几行前面&quot;#&quot;注释是否取掉。&lt;/p&gt;
+
+&lt;p&gt;　　RSAAuthentication yes
+　　PubkeyAuthentication yes
+　　AuthorizedKeysFile .ssh/authorized_keys&lt;/p&gt;
+
+&lt;p&gt;然后，重启远程主机的ssh服务。&lt;/p&gt;
+
+&lt;p&gt;　　// ubuntu系统
+　　service ssh restart&lt;/p&gt;
+
+&lt;p&gt;　　// debian系统
+　　/etc/init.d/ssh restart&lt;/p&gt;
+
+&lt;h3&gt;七.authorized_keys文件&lt;/h3&gt;
+
+&lt;p&gt;远程主机将用户的公钥，保存在登录后的用户主目录的$HOME/.ssh/authorized_keys文件中。公钥就是一段字符串，只要把它追加在authorized_keys文件的末尾就行了。&lt;/p&gt;
+
+&lt;p&gt;这里不使用上面的ssh-copy-id命令，改用下面的命令，解释公钥的保存过程：&lt;/p&gt;
+
+&lt;p&gt;　　$ ssh user@host 'mkdir -p .ssh &amp;amp;&amp;amp; cat &gt;&gt; .ssh/authorized_keys' &amp;lt; ~/.ssh/id_rsa.pub&lt;/p&gt;
+
+&lt;p&gt;这条命令由多个语句组成，依次分解开来看：（1）&quot;$ ssh user@host&quot;，表示登录远程主机；（2）单引号中的mkdir .ssh &amp;amp;&amp;amp; cat &gt;&gt; .ssh/authorized_keys，表示登录后在远程shell上执行的命令：（3）&quot;$ mkdir -p .ssh&quot;的作用是，如果用户主目录中的.ssh目录不存在，就创建一个；（4）'cat &gt;&gt; .ssh/authorized_keys' &amp;lt; ~/.ssh/id_rsa.pub的作用是，将本地的公钥文件~/.ssh/id_rsa.pub，重定向追加到远程文件authorized_keys的末尾。&lt;/p&gt;
+
+&lt;p&gt;写入authorized_keys文件后，公钥登录的设置就完成了。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/tool/2014/10/23/ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95&quot;&gt;6-7 ssh免密码登录&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>ssh免密码登录</title>
+   <link href="http://username.github.io/tool/2014/10/23/ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95"/>
+   <updated>2014-10-23T20:49:51+08:00</updated>
+   <id>http://username.github.io/tool/2014/10/23/ssh免密码登录</id>
+   <content type="html">&lt;p&gt;ssh 无密码登录要使用公钥与私钥。linux下可以用用ssh-keygen生成公钥/私钥对，下面我以CentOS为例。&lt;/p&gt;
+
+&lt;p&gt;有机器A(192.168.1.155)，B(192.168.1.181)。现想A通过ssh免密码登录到B。&lt;/p&gt;
+
+&lt;p&gt;1.在A机下生成公钥/私钥对。&lt;br/&gt;
+&lt;code&gt;[chenlb@A ~]$ ssh-keygen -t rsa -P ''&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;-P表示密码，-P '' 就表示空密码，也可以不用-P参数，这样就要三车回车，用-P就一次回车。
+它在/home/chenlb下生成.ssh目录，.ssh下有id_rsa和id_rsa.pub。&lt;/p&gt;
+
+&lt;p&gt;2.把A机下的id_rsa.pub复制到B机下，在B机的.ssh/authorized_keys文件里，我用scp复制。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+[chenlb@A ~]$ scp .ssh/id_rsa.pub chenlb@192.168.1.181:/home/chenlb/id_rsa.pub 
+chenlb@192.168.1.181's password:
+id_rsa.pub                                    100%  223     0.2KB/s   00:00
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;由于还没有免密码登录的，所以要输入密码。&lt;/p&gt;
+
+&lt;p&gt;3.B机把从A机复制的id_rsa.pub添加到.ssh/authorzied_keys文件里。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+[chenlb@B ~]$ cat id_rsa.pub &gt;&gt; .ssh/authorized_keys
+[chenlb@B ~]$ chmod 600 .ssh/authorized_keys
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;authorized_keys的权限要是600。&lt;/p&gt;
+
+&lt;p&gt;4.A机登录B机。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+[chenlb@A ~]$ ssh 192.168.1.181
+The authenticity of host '192.168.1.181 (192.168.1.181)' can't be established.
+RSA key fingerprint is 00:a6:a8:87:eb:c7:40:10:39:cc:a0:eb:50:d9:6a:5b.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '192.168.1.181' (RSA) to the list of known hosts.
+Last login: Thu Jul  3 09:53:18 2008 from chenlb
+[chenlb@B ~]$
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;第一次登录是时要你输入yes。&lt;/p&gt;
+
+&lt;p&gt;现在A机可以无密码登录B机了。&lt;/p&gt;
+
+&lt;p&gt;小结：登录的机子可有私钥，被登录的机子要有登录机子的公钥。这个公钥/私钥对一般在私钥宿主机产生。上面是用rsa算法的公钥/私钥对，当然也可以用dsa(对应的文件是id_dsa，id_dsa.pub)&lt;/p&gt;
+
+&lt;p&gt;想让A，B机无密码互登录，那B机以上面同样的方式配置即可。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>UML</title>
+   <link href="http://username.github.io/tool/2014/10/23/UML"/>
+   <updated>2014-10-23T20:49:51+08:00</updated>
+   <id>http://username.github.io/tool/2014/10/23/UML</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>php位运算符 & 移位</title>
+   <link href="http://username.github.io/php/2014/10/23/php%E7%A7%BB%E4%BD%8D"/>
+   <updated>2014-10-23T20:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/23/php移位</id>
+   <content type="html">&lt;h2&gt;一.位运算&lt;/h2&gt;
+
+&lt;h3&gt;1.原理&lt;/h3&gt;
+
+&lt;p&gt;在Linux文件系统中，一个用户对文件或目录所拥有的权限分为三种：”可读”、”可写”和”可执行”，分别用 1 、2 和 4 来表示，它们之间可以任意组合：有“可读”、“可写”权限就用 3 来表示（1 + 2 = 3）；有”可读“、”可执行“权限就用5来表示（1 + 4 = 5），三种权限全部拥有就用 7 表示（1 + 2 + 4 = 7）。&lt;/p&gt;
+
+&lt;p&gt;实际上，这种运算是基于二进制的。&lt;/p&gt;
+
+&lt;p&gt;假设可执行、可写、可读三种权限分别对应三个状态位，如果用户具有某种权限，那么将对应的状态位标识为“1”，反之则标识为“0”。如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/postImage/php/weiyunsuan.png&quot; title=&quot;linux文件权限&quot; alt=&quot;代码在内存中的分块&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如果只有“可读”权限，那么就对应二进制数：001，将这个二进制数转成十进制就得到1；如果同时具有“可读”、“可写”权限，二进制数则对应为： 011，转十进制得：3；同理，三种权限都有的，十进制就等于7。&lt;/p&gt;
+
+&lt;h3&gt;2.实现&lt;/h3&gt;
+
+&lt;p&gt;在PHP中，通过位运算符很容易就可以做到类似的权限控制：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//定义权限&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;define&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;READ&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// 把可读权限放在最右边&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;define&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;WRITE&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// 可读权限向左移一位&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;define&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;EXCUTE&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// 可执行权限向左移两位&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//赋予权限&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$user_permission&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;READ&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;WRITE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//验证权限&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;可读：&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$user_permission&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;READ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Yes&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;No&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;可写：&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$user_permission&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;WRITE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Yes&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;No&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;可执行：&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$user_permission&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;EXCUTE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Yes&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;No&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;PHP语言本身的错误控制 也是用位运算来做的，它甚至还利用了按位异或和按位非，使得错误控制更加精确。&lt;/p&gt;
+
+&lt;h3&gt;3.优点和缺陷&lt;/h3&gt;
+
+&lt;p&gt;位运算的运算对象是二进制的位，速度快，效率高，而且节省存储空间，位运算做权限控制又相当地灵活。但是，位运算也有很大的局限，因为在32位计算机上，位移不能超过32次，这就要求权限数量不超过32种。&lt;/p&gt;
+
+&lt;h2&gt;二.移位操作&lt;/h2&gt;
+
+&lt;p&gt;PHP主要是设计于文本操作的，其实PHP不适合做数学运算，效率也不高。(二进制移位操作)&lt;/p&gt;
+
+&lt;p&gt;因为PHP只有32位有符号整数，没有64位长整型，也没有无符号整数。其整型的范围是-2&lt;sup&gt;31&lt;/sup&gt;-1～2&lt;sup&gt;31&lt;/sup&gt;，超出这个范围的，将被解释为浮点数。因此，0xFFFFFFFF，直接打印，显示的是4294967295，及2&lt;sup&gt;32&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;而PHP不支持浮点数的二进制位移操作，如果要进行，会先转换为整型，最后的结果，也将按照整型来返回&lt;/p&gt;
+
+&lt;p&gt;同时PHP的向右位移操作，高位会填充符号位，而且PHP没有提供类似Java的&gt;&gt;&gt;来强制填充0&lt;/p&gt;
+
+&lt;p&gt;如何解决这个问题呢，我考虑过使用BCMath数学函数库，直接处理字符串表示的整数，或者是GMP/BigInt扩展等。不过我想既然使用字符串，那么我可以字符串地彻底一些，把数字转换成32个二进制的字符串，再手工填充0，最后转换回来。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;/**  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt; * 无符号32位右移  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt; * @param mixed $x 要进行操作的数字，如果是字符串，必须是十进制形式  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt; * @param string $bits 右移位数  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt; * @return mixed 结果，如果超出整型范围将返回浮点数  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt; */&lt;/span&gt;  
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;shr32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$bits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// 位移量超出范围的两种情况   &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;16&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//转换成代表二进制数字的字符串   &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;17&lt;/span&gt;     &lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;decbin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;18&lt;/span&gt;     &lt;span class=&quot;nv&quot;&gt;$l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;strlen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;19&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//字符串长度超出则截取底32位，长度不够，则填充高位为0到32位   &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;20&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;21&lt;/span&gt;         &lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;22&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;elseif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;23&lt;/span&gt;         &lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str_pad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;STR_PAD_LEFT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;24&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;25&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//取出要移动的位数，并在左边填充0   &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;26&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bindec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str_pad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$bits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;STR_PAD_LEFT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;27&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;28&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;/**  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;29&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt; * 无符号32位左移  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;30&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt; * @param mixed $x 要进行操作的数字，如果是字符串，必须是十进制形式  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;31&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt; * @param string $bits 左移位数  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;32&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt; * @return mixed 结果，如果超出整型范围将返回浮点数  &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;33&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt; */&lt;/span&gt;  
+&lt;span class=&quot;lineno&quot;&gt;34&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;shl32&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$bits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;35&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// 位移量超出范围的两种情况   &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;36&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;37&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;38&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;39&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;40&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;41&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;42&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//转换成代表二进制数字的字符串   &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;43&lt;/span&gt;     &lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;decbin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;44&lt;/span&gt;     &lt;span class=&quot;nv&quot;&gt;$l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;strlen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;45&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//字符串长度超出则截取底32位，长度不够，则填充高位为0到32位   &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;46&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;47&lt;/span&gt;         &lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;48&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;elseif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;49&lt;/span&gt;         &lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str_pad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;STR_PAD_LEFT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;50&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;51&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//取出要移动的位数，并在右边填充0   &lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;52&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bindec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str_pad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$bits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;STR_PAD_RIGHT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;53&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;   
+&lt;span class=&quot;lineno&quot;&gt;54&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;a href=&quot;http://cn2.php.net/language.operators.bitwise&quot;&gt;ext&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>mysql开启远程连接</title>
+   <link href="http://username.github.io/mysql/2014/10/23/mysql%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5"/>
+   <updated>2014-10-23T20:16:51+08:00</updated>
+   <id>http://username.github.io/mysql/2014/10/23/mysql开启远程连接</id>
+   <content type="html">&lt;h3&gt;一.插入普通用户&lt;/h3&gt;
+
+&lt;p&gt;use mysql&lt;/p&gt;
+
+&lt;p&gt;insert into user(host,user,password) values('local',jun,PASSWORD('xxxxxx'));&lt;/p&gt;
+
+&lt;h3&gt;二.开通远程&lt;/h3&gt;
+
+&lt;p&gt;grant all PRIVILEGES on cms.* to ted@'123.123.123.123' identified by '123456';  #开通远程&lt;/p&gt;
+
+&lt;p&gt;flush privileges;   #刷新使其立刻生效&lt;/p&gt;
+
+&lt;p&gt;注：格式: grant 权限 on 数据库名.表名 用户@登录主机 identified by &quot;用户密码&quot;;
+grant select,update,insert,delete on &lt;em&gt;.&lt;/em&gt; to xuys@192.168.88.234 identified by &quot;xuys1234&quot;;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/zoushuai518/linux/blob/master/ubuntu/ubuntu_use.me&quot;&gt;ext&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>E-R模型</title>
+   <link href="http://username.github.io/mysql/2014/10/23/E-R%E6%A8%A1%E5%9E%8B"/>
+   <updated>2014-10-23T20:16:51+08:00</updated>
+   <id>http://username.github.io/mysql/2014/10/23/E-R模型</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>计算机中的原码、反码和补码 </title>
+   <link href="http://username.github.io/php/2014/10/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81"/>
+   <updated>2014-10-21T18:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/21/计算机中的原码-反码-补码</id>
+   <content type="html">&lt;p&gt;关键词：原码,反码,补码&lt;/p&gt;
+
+&lt;p&gt;一、机器数和真值&lt;/p&gt;
+
+&lt;p&gt;1、机器数&lt;/p&gt;
+
+&lt;p&gt;数在计算机中的二进制表示形式就称为机器数。机器数是带符号的，在计算机用一个数的最高位存放符号（0为正，1为负），这样就将数的符号数值化了。&lt;/p&gt;
+
+&lt;p&gt;比如，十进制中的数 +5 ，计算机字长为8bits，转换成二进制就是00000101。如果是 -5 ，就是 10000101 。&lt;/p&gt;
+
+&lt;p&gt;那么，这里的 00000101 和 10000101 就是机器数。&lt;/p&gt;
+
+&lt;p&gt;2、真值&lt;/p&gt;
+
+&lt;p&gt;因为符号占据一位，机器数的形式值就不等于真正的数值。例如上面的有符号数 10000101，其最高位1代表负，其真正数值是 -5 而不是形式值133（10000101转换成十进制等于133）。所以，为区别起见，带符号位的机器数对应的真正数值称机器数的真值。&lt;/p&gt;
+
+&lt;p&gt;例：00100001的真值 = 0 0100001 = +33，10100011的真值 = 1 0100011 = -35&lt;/p&gt;
+
+&lt;p&gt;二、计算机符号数的表示方法&lt;/p&gt;
+
+&lt;p&gt;符号数值化后，为了方便地对机器数进行算术运算，提高运算速度，人们设计了符号数的各种编码方法，最常见的有原码、反码和补码。&lt;/p&gt;
+
+&lt;p&gt;1、原码&lt;/p&gt;
+
+&lt;p&gt;原码就是符号位加上真值的绝对值。简单说，就是符号位加上数的二进制表示。比如，+3（以8bit为例），符号位为0，3转化为二进制就是11，那么 +3 的原码就是00000011（不足部分补0）。同理， -3，符号位为1，3转化为二进制就是11，那么 -3 的原码就是10000011（不足部分补0）。即：&lt;/p&gt;
+
+&lt;p&gt;[+3] = [00000011]原&lt;/p&gt;
+
+&lt;p&gt;[-3] = [10000011]原&lt;/p&gt;
+
+&lt;p&gt;2、反码&lt;/p&gt;
+
+&lt;p&gt;一个负数的符号位不懂，其余位取反，就是机器数的另一种表示形式——反码。正数的反码与原码形式一样。&lt;/p&gt;
+
+&lt;p&gt;[+3] = [00000011]原 = [00000011]反&lt;/p&gt;
+
+&lt;p&gt;[-3] = [10000011]原 = [11111100]反&lt;/p&gt;
+
+&lt;p&gt;3、补码&lt;/p&gt;
+
+&lt;p&gt;负数的补码就是对反码加一，而正数不变，正数的原码反码补码是一样的。&lt;/p&gt;
+
+&lt;p&gt;[+3] = [00000011]原 = [00000011]反 = [00000100]补&lt;/p&gt;
+
+&lt;p&gt;[-3] = [10000011]原 = [11111100]反 = [11111101]补&lt;/p&gt;
+
+&lt;p&gt;至于为什么要使用原码、反码和补码，见我的另一篇日志《&lt;a href=&quot;/php/2014/10/21/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81/&quot;&gt;为什么要使用原码、反码、补码&lt;/a&gt;》&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://indian.blog.163.com/blog/static/1088158200610942745817/&quot;&gt;原文链接&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>为什么要使用原码、反码、补码</title>
+   <link href="http://username.github.io/php/2014/10/21/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81"/>
+   <updated>2014-10-21T18:35:51+08:00</updated>
+   <id>http://username.github.io/php/2014/10/21/为什么要使用原码-反码-补码</id>
+   <content type="html">&lt;p&gt;关键词：原码,反码,补码&lt;/p&gt;
+
+&lt;p&gt;前言：随着学习计算机知识的加深，许多地方都遇到原码、反码、补码。很多关于计算机的书籍都介绍原码、反码、补码的表示方法，但是为什么要用到原码、反码、补码却没详细说。为什么要使用？它们的原理是什么呢?我搜索了许多资料，也查找了许多书籍，终于弄明白了这个问题，收集整理如下。&lt;/p&gt;
+
+&lt;p&gt;我们知道数值在计算机中表示形式为机器数（机器数的概念见我的另一篇日志《&lt;a href=&quot;/php/2014/10/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81&quot;&gt;计算机中的原码、反码和补码&lt;/a&gt;》），计算机只能识别0和1，使用的是二进制。而在日常生活中人们使用的是十进制，并且我们用的数值有正负之分。于是在计算机中就用一个数的最高位存放符号(0为正，1为负)。这就是机器数的原码了。&lt;/p&gt;
+
+&lt;p&gt;有了数值的表示方法就可以对数进行算术运算，但是很快就发现用带符号位的原码进行乘除运算时结果正确，而在加减运算的时候就出现了问题，如下：假设字长为8bits&lt;/p&gt;
+
+&lt;p&gt;十进制　　(1) 10 - (1)10 = (1)10 + (-1)10 = (0)10&lt;/p&gt;
+
+&lt;p&gt;二进制　　(0 0000001)原 + (1 0000001)原 = (1 0000010)原 = ( -2 )　显然不正确。&lt;/p&gt;
+
+&lt;p&gt;因为在两个整数的加法运算中是没有问题的，于是就发现问题出现在带符号位的负数身上。对除符号位外的其余各位逐位取反就产生了反码。反码的取值空间和原码相同且一一对应。下面是反码的减法运算：&lt;/p&gt;
+
+&lt;p&gt;(1)10 - (1)10 = (1)10 + (-1)10 = (0)10&lt;/p&gt;
+
+&lt;p&gt;(0 0000001)反 + (1 1111110)反 = (1 1111111)反 = ( -0 )　有问题。&lt;/p&gt;
+
+&lt;p&gt;(1)10 - (2)10 = (1)10 + (-2)10 = (-1)10&lt;/p&gt;
+
+&lt;p&gt;(0 0000001)反 + (1 1111101)反 = (11111110)反 = (-1)　正确。&lt;/p&gt;
+
+&lt;p&gt;问题出现在(+0)和(-0)上，在人们的计算概念中零是没有正负之分的。（印度人首先将零作为标记并放入运算之中，包含有零号的印度数学和十进制计数对人类文明的贡献极大）。&lt;/p&gt;
+
+&lt;p&gt;于是就引入了补码概念。负数的补码就是对反码加一，而正数的补码不变，正数的原码反码补码是一样的。在补码中用(-128)代替了(-0)，这个是人为规定的，所以补码的表示范围为：&lt;/p&gt;
+
+&lt;p&gt;(-128~0~127)共256个。&lt;/p&gt;
+
+&lt;p&gt;注意：(-128)没有相对应的原码和反码， (-128) = (1 0000000)  补码的加减运算如下：&lt;/p&gt;
+
+&lt;p&gt;(1)10 - (1)10 = (1)10 + (-1)10 = (0)10&lt;/p&gt;
+
+&lt;p&gt;(0 0000001)补 + (1 1111111)补 = (0 0000000)补 = ( 0 )　正确。&lt;/p&gt;
+
+&lt;p&gt;(1)10 - (2)10 = (1)10 + (-2)10 = (-1)10&lt;/p&gt;
+
+&lt;p&gt;(00000001)补 + (11111110)补 = (11111111)补 = (-1)　正确。&lt;/p&gt;
+
+&lt;p&gt;所以补码的设计目的是：&lt;/p&gt;
+
+&lt;p&gt;⑴ 使符号位能与有效值部分一起参加运算，从而简化运算规则。补码机器数中的符号位，并不是强加上去的，是数据本身的自然组成部分，可以正常地参与运算。&lt;/p&gt;
+
+&lt;p&gt;⑵ 使减法运算转换为加法运算，进一步简化计算机中运算器的线路设计。&lt;/p&gt;
+
+&lt;p&gt;所有这些转换都是在计算机的最底层进行的，而在我们使用的汇编、c等其他高级语言中使用的都是原码。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://indian.blog.163.com/blog/static/1088158200611853949863/&quot;&gt;原文链接&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>php ORM框架&简单实现</title>
@@ -745,6 +1303,9 @@ git flow release start cart-1.1     #创建release分支
 git flow release finish cart-1.1    #结束release分支,中间可以做小幅修改,自动合并到master|develop分支,删除release分支,自动创建cart-1.1 tag,同时会让你为tag添加一个commit(commit必须添加,否则finish release分支会失败)。如果产生冲突，本地解决并提交后，重新执行上面的finish命令。成功后，feature分支会被删除，本地位于主干
 git push origin master
 git flow hotfix start bug1          #创建bug修复
+git add .                           #
+git add -u                          #
+git commit -m''                     #开发,提交commit
 git flow hotfix finish bug1         #结束bug修复,自动合并到master|develop分支,删除bug1
 git push origin master
 &lt;/code&gt;&lt;/pre&gt;
@@ -1609,7 +2170,109 @@ HTTP_X_FORWARDED_FOR = 没数值或不显示 ，经过多个代理服务器时�
    <link href="http://username.github.io/php/2014/10/08/php-%E6%A1%86%E6%9E%B6"/>
    <updated>2014-10-08T20:41:51+08:00</updated>
    <id>http://username.github.io/php/2014/10/08/php-框架</id>
-   <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/rrsina/p/3985403.html&quot;&gt;20个2014年最优秀的PHP框架&lt;/a&gt;&lt;/p&gt;
+   <content type="html">&lt;p&gt;1.Laravel&lt;br/&gt;
+Laravel是一款免费并且开源的PHP应用框架，它是为开发基于MVC的WEB应用而设计的，个人觉得，Laravel是2014年最棒的PHP框架了，它可以帮助你创建一些很酷的WEB应用，而且可以轻松地使用权限验证、URL路由、Session以及缓存等功能。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://laravel.com/&quot;&gt;http://laravel.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;2.Phalcon&lt;br/&gt;
+Phalcon是运行速度最快的一个PHP框架，它的底层是用C实现的，但是上层提供一些PHP扩展，Phalcon作为一款PHP框架以高性能和低消耗著称。尽管它用C语言实现，但是我们并不需要使用C语言，你只要会PHP就可以使用它了。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://phalconphp.com/en/&quot;&gt;http://phalconphp.com/en/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;3.Symfony&lt;br/&gt;
+Symfony是一款为Web项目准备的PHP框架，它可以帮助你加速创建和维护PHP应用。Symfony可以帮助你省去很多重复的编码工作，让你的工作重心转移到设计和控制上面来。
+Symfony是一款可重用的PHP组件，它是基于MIT协议的开源软件，很多CMS系统和论坛程序都是基于Symfony开发的，例如Drupal和phpBB。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://symfony.com/&quot;&gt;http://symfony.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;4.Yii&lt;br/&gt;
+Yii是一款快速、安全和专业的PHP框架，同时它也是一款开发WEB 2.0应用的高性能PHP框架，Yii的功能非常强大，内置以下功能：MVC、DAO/ActiveRecord、I18N、权限验证、缓存、安全控制、测试、数据访问对象等。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://www.yiiframework.com/&quot;&gt;http://www.yiiframework.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;5.CodeIgniter&lt;br/&gt;
+CodeIgniter是一款非常敏捷的开源PHP框架，如果你要用PHP开发一个简单而优雅的工具包，那么CodeIgniter就非常合适。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;https://ellislab.com/codeigniter&quot;&gt;https://ellislab.com/codeigniter&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;6.CakePHP&lt;br/&gt;
+CakePHP是一款老牌的PHP框架，正因为它的优秀所以也列入了2014年最优秀的PHP框架中，现在稳定版本已经是V3.0了。CakePHP可以帮助你简单、快捷地创建PHP应用程序，并且你可以用很少的代码实现强大的功能。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://cakephp.org/&quot;&gt;http://cakephp.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;7.Aura&lt;br/&gt;
+如果你喜欢用简洁的代码创建应用程序，那么你可以选择使用Aura，Aura也有相当大的一部分用户，使用方法和CakePHP类似，Aura的主要目标是为PHP开发者提供一个高质量、可测试、标准化组件的框架。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://auraphp.com/&quot;&gt;http://auraphp.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;8.Zend Framework&lt;br/&gt;
+前些年我在大型的WEB项目中使用过Zend 1和Zend 2，作为顶尖的PHP框架，Zend确实比较好用，而且文档也和很丰富。我们可以利用Zend创建一些扩展性非常好的PHP应用。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://framework.zend.com/&quot;&gt;http://framework.zend.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;9.Kohana&lt;br/&gt;
+Kohana是一款敏捷但是功能强大的PHP框架，我们可以用Kohana快速地创建Web应用，因为它有丰富的组件，比如数据访问接口、代码分析、加密和验证等等。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://kohanaframework.org/&quot;&gt;http://kohanaframework.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;10.Slim framework&lt;br/&gt;
+Slim是一款轻量级的PHP框架，作为一个微框架，Slim可以让你简单地创建一些功能强大的应用程序和API接口。Slim有强大的路由功能、自定义视图模板、flash消息、AES-256加密的安全cookies、HTTP缓存、可自定义的日志、异常处理以及调试和简单的配置。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://www.slimframework.com/&quot;&gt;http://www.slimframework.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;11.Fuel PHP&lt;br/&gt;
+Fuel PHP是一款简单、可扩展的PHP框架，基于其他框架的设计理念，Fuel已经是V2.0版本了，目前认识beta版本。
+Fuel全面支持HMVC，这也是Fuel架构的一部分。另外，Fuel强大的路由功能让你灵活地处理好控制器和视图之间的对应关系。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://fuelphp.com/&quot;&gt;http://fuelphp.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;12.Flight&lt;br/&gt;
+Flight是一款扩展性很强的微型PHP框架，Flight可以让你快速创建REST风格的web应用，它需要PHP5.3以上的版本支持，当然Flight也是基于MIT协议开源的。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://flightphp.com/&quot;&gt;http://flightphp.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;13.Medoo&lt;br/&gt;
+我非常喜欢这个微型框架，Medoo是一款最轻量级的PHP框架，可以用它来加速我们的应用开发。它只有13KB的一个文件，学习和使用都非常简单，并且Medoo也是开源的。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://medoo.in/&quot;&gt;http://medoo.in/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;14.PHPixie&lt;br/&gt;
+PHPixie是一款轻量级的PHP MVC框架，它非常小巧，而且文档也比较全面，我们只需要做尽可能的配置就可以了。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://phpixie.com/&quot;&gt;http://phpixie.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;15.Pop PHP&lt;br/&gt;
+Pop是一款强劲和易学的PHP框架，并且提供很多详细的API接口及其文档，支持PHP5.3及其以上版本。现在，Pop PHP依然保持着轻量级的特点，尽管很多新特性在逐渐加入到Pop中，但它使用起来依然很方便。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://www.popphp.org/&quot;&gt;http://www.popphp.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;16.Simple MVC Framework&lt;br/&gt;
+Simple MVC Framework的安装及其简单，代码结构也非常简单，很容易学习。我们只需要设置网站路径就可以成功安装它了。在Twitter和Facebook群中也有Simple MVC Framework的讨论区，它是轻量级的，小于1M的大小。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://simplemvcframework.com/&quot;&gt;http://simplemvcframework.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;17.TYPO3 Flow&lt;br/&gt;
+TYPO3是由最大的PHP社区之一的TYPO3管理开发的，也是一个开源的PHP框架。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://flow.typo3.org/home&quot;&gt;http://flow.typo3.org/home&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;18.Nette&lt;br/&gt;
+很受欢迎的PHP开发工具，它的设计理念是尽可能地简单和安全，Nette已经为你考虑了你的网站安全，包括XSS攻击，Session劫持，Session篡改等安全问题。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://nette.org/en/&quot;&gt;http://nette.org/en/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;19.Agavi&lt;br/&gt;
+Agavi是基于PHP5的PHP MVC框架，它帮助开发者编写简洁的代码，扩展性也非常不错。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://www.agavi.org/&quot;&gt;http://www.agavi.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;20.Silex&lt;br/&gt;
+Silex也是一款基于PHP5.3及其以上版本的微型PHP框架，Silex的API使用非常有意思，因为API足够简单明了，利用Pimple的服务，成为一款很棒的第三方扩展应用。&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&quot;http://silex.sensiolabs.org/&quot;&gt;http://silex.sensiolabs.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;20个2014年最优秀的PHP框架,排名不分先后&lt;/p&gt;
 </content>
  </entry>
  
@@ -3252,7 +3915,7 @@ Catchable fatal error: Argument 1 passed to Models_Workflow_Instance::getRand() 
 &lt;li&gt;&lt;a href=&quot;http://www.yuansir-web.com/category/php/&quot;&gt;http://www.yuansir-web.com/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/cate/PHP&quot;&gt;简明现代魔法&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://blog.samoay.me/index&quot;&gt;醉清风的博客&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.laruence.com/&quot;&gt;风雪之隅&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.laruence.com/&quot;&gt;风雪之隅*&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/bluefrog&quot;&gt;一天一点进步&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://requests.ryanmccue.info/&quot;&gt;requests for php&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.php-fig.org/&quot;&gt;php-fig&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
@@ -3800,10 +4463,10 @@ location ~ \.php${
  </entry>
  
  <entry>
-   <title>Rest API标准</title>
-   <link href="http://username.github.io/standard/2014/09/17/Rest_API"/>
+   <title>Rest Service</title>
+   <link href="http://username.github.io/standard/2014/09/17/Rest_Service"/>
    <updated>2014-09-17T02:16:51+08:00</updated>
-   <id>http://username.github.io/standard/2014/09/17/Rest_API</id>
+   <id>http://username.github.io/standard/2014/09/17/Rest_Service</id>
    <content type="html">&lt;h2&gt;Rest API标准，设计规范&lt;/h2&gt;
 
 &lt;ul&gt;
@@ -3844,7 +4507,7 @@ location ~ \.php${
    <link href="http://username.github.io/asset/2014/09/16/front-list"/>
    <updated>2014-09-16T18:59:51+08:00</updated>
    <id>http://username.github.io/asset/2014/09/16/front-list</id>
-   <content type="html">&lt;h1&gt;js 框架&lt;/h1&gt;
+   <content type="html">&lt;h1&gt;前端开发(js)框架&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://angularjs.org/&quot;&gt;angularjs&lt;/a&gt;：MVC结构的js框架，诞生与google&lt;/li&gt;
@@ -3854,10 +4517,11 @@ location ~ \.php${
 &lt;li&gt;&lt;a href=&quot;http://www.requirejs.org/&quot;&gt;requirejs&lt;/a&gt;：&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://coffee-script.org/&quot;&gt;coffeescript.cn&lt;/a&gt;：&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://coffeescript.org/&quot;&gt;coffeescript&lt;/a&gt;：&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://handlebarsjs.com/&quot;&gt;handlebarsjs&lt;/a&gt;：&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://seajs.org/docs/&quot;&gt;seajs&lt;/a&gt;：&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://handlebarsjs.com/&quot;&gt;handlebarsjs&lt;/a&gt;：模板引擎&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://seajs.org/docs/&quot;&gt;seajs&lt;/a&gt;：SeaJS是一个遵循CommonJS规范的JavaScript模块加载框架，可以实现JavaScript的模块化开发及加载机制。与jQuery等JavaScript框架不同，SeaJS不会扩展封装语言特性，而只是实现JavaScript的模块化及按模块加载。SeaJS的主要目的是令JavaScript开发模块化并可以轻松愉悦进行加载，将前端工程师从繁重的JavaScript文件及对象依赖处理中解放出来，可以专注于代码本身的逻辑。SeaJS可以与jQuery这类框架完美集成。使用SeaJS可以提高JavaScript代码的可读性和清晰度，解决目前JavaScript编程中普遍存在的依赖关系混乱和代码纠缠等问题，方便代码的编写和维护。&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://zeptojs.com/&quot;&gt;zeptojs&lt;/a&gt;：Zepto.js 是专门为现代智能手机浏览器退出的 Javascript 框架&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://docs.meteor.com/#quickstart&quot;&gt;Meteor&lt;/a&gt;：Meteor 是一个新鲜出炉的现代网站开发平台,基础构架是 Node.JS + MongoDB,它把这个基础构架同时延伸到了浏览器端&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.bootcss.com/&quot;&gt;Bootstrap&lt;/a&gt;：前端开发框架&lt;/li&gt;
 &lt;/ul&gt;
 
 
@@ -3881,6 +4545,11 @@ location ~ \.php${
 &lt;li&gt;&lt;a href=&quot;http://www.jshint.com/install/&quot;&gt;JSHlint&lt;/a&gt;：&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.jslint.com/&quot;&gt;JSlint&lt;/a&gt;：&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://prismjs.com/&quot;&gt;prismjs&lt;/a&gt;：js不同语言语法高亮插件&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://graphael.cs.arizona.edu/&quot;&gt;graphael&lt;/a&gt;：http://www.cnblogs.com/lhb25/archive/2013/01/09/gRaphael-javascript-chart-library.html&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://raphaeljs.com/&quot;&gt;raphaeljs&lt;/a&gt;：&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.hcharts.cn/&quot;&gt;highcharts&lt;/a&gt;：&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.hcharts.com/&quot;&gt;highcharts&lt;/a&gt;：&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://d3js.org/&quot;&gt;d3js&lt;/a&gt;：&lt;/li&gt;
 &lt;/ul&gt;
 
 
