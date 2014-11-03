@@ -37,6 +37,10 @@ date:   2014-09-16 10:59:51
 - [JSlint](http://www.jslint.com/)：
 - [prismjs](http://prismjs.com/)：js不同语言语法高亮插件
 - [graphael](http://graphael.cs.arizona.edu/)：http://www.cnblogs.com/lhb25/archive/2013/01/09/gRaphael-javascript-chart-library.html
+- [raphaeljs](http://raphaeljs.com/)：
+- [highcharts](http://www.hcharts.cn/)：
+- [highcharts](http://www.hcharts.com/)：
+- [d3js](http://d3js.org/)：
 
 
 # 前端新开发模式

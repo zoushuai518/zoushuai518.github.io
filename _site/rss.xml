@@ -5,8 +5,8 @@
         <description>CodeMadman - Name Lastname</description>
         <link>http://username.github.io</link>
         <link>http://username.github.io</link>
-        <lastBuildDate>2014-10-29T17:30:53+08:00</lastBuildDate>
-        <pubDate>2014-10-29T17:30:53+08:00</pubDate>
+        <lastBuildDate>2014-11-03T10:47:11+08:00</lastBuildDate>
+        <pubDate>2014-11-03T10:47:11+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -4541,6 +4541,10 @@ location ~ \.php${
 &lt;li&gt;&lt;a href=&quot;http://www.jslint.com/&quot;&gt;JSlint&lt;/a&gt;：&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://prismjs.com/&quot;&gt;prismjs&lt;/a&gt;：js不同语言语法高亮插件&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://graphael.cs.arizona.edu/&quot;&gt;graphael&lt;/a&gt;：http://www.cnblogs.com/lhb25/archive/2013/01/09/gRaphael-javascript-chart-library.html&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://raphaeljs.com/&quot;&gt;raphaeljs&lt;/a&gt;：&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.hcharts.cn/&quot;&gt;highcharts&lt;/a&gt;：&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.hcharts.com/&quot;&gt;highcharts&lt;/a&gt;：&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://d3js.org/&quot;&gt;d3js&lt;/a&gt;：&lt;/li&gt;
 &lt;/ul&gt;
 
 
