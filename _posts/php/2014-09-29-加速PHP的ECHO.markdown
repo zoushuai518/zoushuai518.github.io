@@ -1,9 +1,0 @@
----
-layout: post
-title: "加速PHP的ECHO"
-category: php
-comments: true
-date:   2014-09-29 14:41:51
----
-
-[加速PHP的ECHO](http://www.laruence.com/2011/02/13/1870.html)

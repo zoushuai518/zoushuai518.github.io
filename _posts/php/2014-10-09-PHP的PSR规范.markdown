@@ -1,9 +1,0 @@
----
-layout: post
-title: "PHP的PSR规范中文版"
-category: php
-comments: true
-date:   2014-10-10 10:50:51
----
-
-[PHP的PSR规范中文版](http://feiyang.me/2013/03/php-psr-in-chinese/)

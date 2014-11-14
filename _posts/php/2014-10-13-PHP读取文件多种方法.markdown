@@ -1,9 +1,0 @@
----
-layout: post
-title: "PHP读取文件多种方法"
-category: php
-comments: true
-date:   2014-10-13 19:35:51
----
-
-[PHP读取文件多种方法](http://www.cnblogs.com/yes123/p/3892652.html)

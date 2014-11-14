@@ -1,9 +1,0 @@
----
-layout: post
-title: "php使用soap调用WebService"
-category: php
-comments: true
-date:   2014-10-23 19:59:51
----
-
-[php soap](http://www.nowamagic.net/librarys/veda/detail/2156)

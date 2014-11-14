@@ -1,6 +1,0 @@
-<ul id="tags__ul">
-	<li id="js-label1" class="tags__li tags-btn active">全部文章</li>
-	{% for cat in site.categories %}
-	<li id="js-label{{forloop.index | plus: 1}}" class="tags__li tags-btn">{{ cat[0] }} ({{ cat | last | size}})</li>
-	{% endfor %}
-</ul>

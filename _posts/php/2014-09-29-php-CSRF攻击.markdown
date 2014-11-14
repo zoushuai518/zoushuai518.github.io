@@ -1,9 +1,0 @@
----
-layout: post
-title: "CSRF攻击"
-category: php
-comments: true
-date:   2014-09-29 14:41:51
----
-
-[浅谈CSRF攻击方式](http://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html)

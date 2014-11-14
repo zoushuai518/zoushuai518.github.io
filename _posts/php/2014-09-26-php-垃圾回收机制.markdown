@@ -1,9 +1,0 @@
----
-layout: post
-title: "php 垃圾回收机制"
-category: php
-comments: true
-date:   2014-09-16 15:59:51
----
-
-[http://php.net/manual/zh/features.gc.php](http://php.net/manual/zh/features.gc.php)
