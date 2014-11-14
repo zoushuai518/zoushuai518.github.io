@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>git flow完整使用流程 - Jekyll</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="邹帅" />
+        <meta name="description" content="Just another Jekyll theme design and code by zous.me." />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/assets/css/syntax.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
+        
+    </head>
+    <body>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                首页
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                分类目录
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/archives.html">
+                                文章归档
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                友情链接
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://weibo.com/luoyoo/home" target="_blank"><i class="icon-weibo"></i></a>
+                    
+                    <a href="https://github.com/zoushuai518" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                    <a href="https://twitter.com/zoushuai518" target="_blank"><i class="icon-twitter"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">git flow完整使用流程</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">15 Oct 2014</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#tool-ref" >tool</a></span>
+    </div>
+    <h2>一.git模拟git flow</h2>
+
+<h3>模拟场景(开发购物车)</h3>
+
+<p>1.创建一个特性分支:
+<pre><code>
+git checkout -b feature/cart develop
+git add .
+git add -u
+git add commit -m&#39;&#39;
+git pull origin feature/cart
+git push origin feature/cart
+</code></pre></p>
+
+<p>在feature/cart分支正常开发<br>
+功能测试通过，进入2步骤，如果功能不理想或者失败则直接丢弃该分支</p>
+
+<p>2.开发完成合并到develop:
+<pre><code>
+git checkout develop
+git merge –no-ff feature/cart
+git branch -d feature/cart
+git push origin develop
+</code></pre>
+因只有开发完成的feature分支才允许merge到develop分支，因为发布分支从此分支创建<br>
+develop分支和master分支时间线要保持一致</p>
+
+<p>3.创建一个发布分支:
+<pre><code>
+git checkout -b releases-1.2 develop
+git commit -a -m &quot;Bumped version number to 1.2&quot;
+git push origin releases-1.2
+</code></pre></p>
+
+<p>4.release合并到master分支:
+<pre><code>
+git checkout master
+git merge –no-ff release-1.2
+git tag -a v1.2 -m &#39;my version 1.2&#39;
+git push origin v1.2
+</code></pre></p>
+
+<p>5.为了能保留发布分支上的变更，我们还需要将分支合并回develop:
+<pre><code>
+git checkout develop
+git merge –no-ff release-1.2
+git push origin develop
+git branch -d release-1.2
+</code></pre></p>
+
+<p>6.bug紧急bug修复,hotfix分支:
+<pre><code>
+git checkout -b hotfix-1.2.1 master
+git commit -a -m &quot;Bumped version number to 1.2.1&quot;
+git checkout master
+git merge –no-ff hotfix-1.2.1
+git tag -a 1.2.1
+git push origin v1.2.1
+git checkout develop
+git merge –no-ff hotfix-1.2.1
+git push origin develop
+git branch -d hotfix-1.2.1
+</code></pre>
+hotfix分支要从master分支的最近一个tag节点拉取</p>
+
+<p><span class="impor">注：</span>除了master|develop这两个主分支之外，其它的三个(feature|release|hotfix)分支存在都有时效性，如果是一个人负责一个项目的开发，feature|release|hotfix分支可以只存在与开发者的本地，无需提交远程(当然，提交也并无影响)</p>
+
+<h2>二.git flow</h2>
+
+<p>(git flow初始化：git flow init)</p>
+
+<pre><code>
+git flow feature start cart         #创建特性分支
+git add .                           #
+git add -u                          #
+git commit -m''                     #开发,提交commit
+git flow feature publish cart       #feature/cart push到remote,多人开发；单人开发可以跳过此步骤,只commit即可
+git flow feature finish cart        #结束feature/cart, 会把feature/cart自动合并到develop,并且删除feature/cart
+git flow release start cart-1.1     #创建release分支
+git flow release finish cart-1.1    #结束release分支,中间可以做小幅修改,自动合并到master|develop分支,删除release分支,自动创建cart-1.1 tag,同时会让你为tag添加一个commit(commit必须添加,否则finish release分支会失败)。如果产生冲突，本地解决并提交后，重新执行上面的finish命令。成功后，feature分支会被删除，本地位于主干
+git push origin master
+git flow hotfix start bug1          #创建bug修复
+git add .                           #
+git add -u                          #
+git commit -m''                     #开发,提交commit
+git flow hotfix finish bug1         #结束bug修复,自动合并到master|develop分支,删除bug1
+git push origin master
+</code></pre>
+
+<p><span class="impor">注：</span></p>
+
+<ul>
+<li>git flow是git命令的集合；如果过程中有冲突，则需要手动解决</li>
+<li>git flow流程里所有git命令,流程都可以正常使用</li>
+</ul>
+
+    <nav class="article-previous fn-clear">
+        
+        <a class="prev" href="/tool/2014/10/14/gitlab.html" rel="bookmark">&laquo;&nbsp;gitlab</a>
+        
+        
+        <a class="next" href="/mysql/2014/10/16/mysql%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81.html" rel="bookmark">mysql乐观锁和悲观锁&nbsp;&raquo;</a>
+        
+    </nav>
+    <div class="comment">
+        
+        <div id="disqus_thread"></div>
+        
+    </div>
+</div>
+
+                </div>
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="https://avatars0.githubusercontent.com/u/5516045?v=3&s=460" />
+                            </div>
+                            <div class="det-text">
+                                <p>我是「邹帅」，目前从事php开发！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="/standard/2014/10/28/Web_Service-Rest_Service.html" title="Web Service与Rest Service" rel="bookmark">Web Service与Rest Service</a></li>
+                            
+                                <li><a href="/agreement/2014/10/28/rpc.html" title="rpc" rel="bookmark">rpc</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="多进程/线程的SAPI生命周期" rel="bookmark">多进程/线程的SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="单进程SAPI生命周期" rel="bookmark">单进程SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86.html" title="深入理解php原理" rel="bookmark">深入理解php原理</a></li>
+                            
+                                <li><a href="/php/2014/10/24/php_soap.html" title="php使用soap调用WebService" rel="bookmark">php使用soap调用WebService</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                                    
+                                    <li><a href="http://zous.me" title="jz-code" target="_blank">jz-code</a></li>
+                                    
+                                    <li><a href="http://jekyllrb.com" title="Jekyll" target="_blank">Jekyll</a></li>
+                                    
+                                    <li><a href="http://zous.me/themes.html" title="Jekyll Theme" target="_blank">Jekyll Theme</a></li>
+                                    
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="footer">
+                <p>Copyright 2013. All rights reserved. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, Design by <a href="http://zous.me" target="_blank">zous.me</a>.</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+            
+            <script type="text/javascript">
+                //disqus
+                var disqus_shortname = 'codemadman';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] ||
+                        document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            
+        
+    </body>
+</html>

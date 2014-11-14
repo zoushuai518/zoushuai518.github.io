@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>PHP 类型约束 - Jekyll</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="邹帅" />
+        <meta name="description" content="Just another Jekyll theme design and code by zous.me." />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/assets/css/syntax.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
+        
+    </head>
+    <body>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                首页
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                分类目录
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/archives.html">
+                                文章归档
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                友情链接
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://weibo.com/luoyoo/home" target="_blank"><i class="icon-weibo"></i></a>
+                    
+                    <a href="https://github.com/zoushuai518" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                    <a href="https://twitter.com/zoushuai518" target="_blank"><i class="icon-twitter"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">PHP 类型约束</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">18 Sep 2014</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#php-ref" >php</a></span>
+    </div>
+    <h1>一.PHP类型约束之定义：</h1>
+
+<p>PHP 从5以后 可以使用类型约束。  </p>
+
+<p><span class="impor">函数、类的成员函数</span>的参数可以指定必须为对象（在函数原型里面指定类的名字），接口，数组（PHP 5.1 起）或者 callable（PHP 5.4 起）。不过如果使用 NULL 作为参数的默认值，那么在调用函数的时候依然可以使用 NULL 作为实参。  </p>
+
+<p>如果一个类或接口指定了类型约束，则其所有的子类或实现也都如此。  </p>
+
+<p>使用类型约束之手，也可以同时为参数赋默认值  </p>
+
+<p>类型约束不能用于标量类型如 int 或 string。Traits 也不允许。  </p>
+
+<p>错误使用字符串类型约束会导致类似以下错误：
+Catchable fatal error: Argument 1 passed to Models<em>Workflow</em>Instance::getRand() must be an instance of string, string given,  </p>
+
+<h1>二.为什么要使用类型约束：</h1>
+
+<ul>
+<li>可能会导致程序逻辑异常：<br>
+&nbsp;&nbsp;&nbsp;&nbsp;php弱数据类型的特点使得php使用起来显得简单而灵活。不过，这同样也是一把达摩克利斯之剑。也正是由于php弱数据类型的特点，在编写php程序代码时，开发人员更需要时刻注意变量数据类型的变化，尤其是变量作为函数的参数进行传递时，更需要注意这一点。毕竟，大多数的函数参数都只期望是某种特定的数据类型。但是，由于php并不是强类型的语言，也不会强制检查变量的类型，因此我们可以向函数中传递任意类型的参数，从而导致程序报错或逻辑出现异常。<br></li>
+<li>提高程序执行效率：<br>
+&nbsp;&nbsp;&nbsp;&nbsp;显示指定参数类型，可以一定程度增加程序执行效率。<br></li>
+</ul>
+
+<h1>三.类型约束使用</h1>
+
+<h3>1.类中成员函数DEMO：</h3>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">//如下面的类</span>
+<span class="lineno"> 4</span> <span class="k">class</span> <span class="nc">MyClass</span>
+<span class="lineno"> 5</span> <span class="p">{</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span>  <span class="sd">/**</span>
+<span class="lineno"> 8</span> <span class="sd">     * 测试函数</span>
+<span class="lineno"> 9</span> <span class="sd">     * 第一个参数必须为 OtherClass 类的一个对象</span>
+<span class="lineno">10</span> <span class="sd">     */</span>
+<span class="lineno">11</span>  <span class="k">public</span> <span class="k">function</span> <span class="nf">test</span><span class="p">(</span><span class="nx">OtherClass</span> <span class="nv">$otherclass</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">12</span>      <span class="k">echo</span> <span class="nv">$otherclass</span><span class="o">-&gt;</span><span class="na">var</span><span class="p">;</span>
+<span class="lineno">13</span>  <span class="p">}</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> 
+<span class="lineno">16</span>  <span class="sd">/**</span>
+<span class="lineno">17</span> <span class="sd">     * 另一个测试函数</span>
+<span class="lineno">18</span> <span class="sd">     * 第一个参数必须为数组 </span>
+<span class="lineno">19</span> <span class="sd">     */</span>
+<span class="lineno">20</span>  <span class="k">public</span> <span class="k">function</span> <span class="nf">test_array</span><span class="p">(</span><span class="k">array</span> <span class="nv">$input_array</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">21</span>      <span class="nb">print_r</span><span class="p">(</span><span class="nv">$input_array</span><span class="p">);</span>
+<span class="lineno">22</span>  <span class="p">}</span>
+<span class="lineno">23</span> 
+<span class="lineno">24</span> 
+<span class="lineno">25</span>  <span class="sd">/**</span>
+<span class="lineno">26</span> <span class="sd">     * 第一个参数必须为递归类型</span>
+<span class="lineno">27</span> <span class="sd">     */</span>
+<span class="lineno">28</span>  <span class="k">public</span> <span class="k">function</span> <span class="nf">test_interface</span><span class="p">(</span><span class="nx">Traversable</span> <span class="nv">$iterator</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">29</span>      <span class="k">echo</span> <span class="nb">get_class</span><span class="p">(</span><span class="nv">$iterator</span><span class="p">);</span>
+<span class="lineno">30</span>  <span class="p">}</span>
+<span class="lineno">31</span>                      
+<span class="lineno">32</span>  <span class="sd">/**</span>
+<span class="lineno">33</span> <span class="sd">     * 第一个参数必须为回调类型</span>
+<span class="lineno">34</span> <span class="sd">     */</span>
+<span class="lineno">35</span>  <span class="k">public</span> <span class="k">function</span> <span class="nf">test_callable</span><span class="p">(</span><span class="nx">callable</span> <span class="nv">$callback</span><span class="p">,</span> <span class="nv">$data</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">36</span>      <span class="nb">call_user_func</span><span class="p">(</span><span class="nv">$callback</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
+<span class="lineno">37</span>  <span class="p">}</span>
+<span class="lineno">38</span> <span class="p">}</span>
+<span class="lineno">39</span> 
+<span class="lineno">40</span> <span class="c1">// OtherClass 类定义</span>
+<span class="lineno">41</span> <span class="k">class</span> <span class="nc">OtherClass</span> <span class="p">{</span>
+<span class="lineno">42</span>  <span class="k">public</span> <span class="nv">$var</span> <span class="o">=</span> <span class="s1">&#39;Hello World&#39;</span><span class="p">;</span>
+<span class="lineno">43</span> <span class="p">}</span>
+<span class="lineno">44</span> 
+<span class="lineno">45</span> 
+<span class="lineno">46</span> <span class="c1">//##########</span>
+<span class="lineno">47</span> 
+<span class="lineno">48</span> <span class="c1">// 两个类的对象</span>
+<span class="lineno">49</span> <span class="nv">$myclass</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyClass</span><span class="p">;</span>
+<span class="lineno">50</span> <span class="nv">$otherclass</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OtherClass</span><span class="p">;</span>
+<span class="lineno">51</span> 
+<span class="lineno">52</span> <span class="c1">// 致命错误：第一个参数必须是 OtherClass 类的一个对象</span>
+<span class="lineno">53</span> <span class="nv">$myclass</span><span class="o">-&gt;</span><span class="na">test</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">);</span>
+<span class="lineno">54</span> 
+<span class="lineno">55</span> <span class="c1">// 致命错误：第一个参数必须为 OtherClass 类的一个实例</span>
+<span class="lineno">56</span> <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="k">stdClass</span><span class="p">;</span>
+<span class="lineno">57</span> <span class="nv">$myclass</span><span class="o">-&gt;</span><span class="na">test</span><span class="p">(</span><span class="nv">$foo</span><span class="p">);</span>
+<span class="lineno">58</span> 
+<span class="lineno">59</span> <span class="c1">// 致命错误：第一个参数不能为 null</span>
+<span class="lineno">60</span> <span class="nv">$myclass</span><span class="o">-&gt;</span><span class="na">test</span><span class="p">(</span><span class="k">null</span><span class="p">);</span>
+<span class="lineno">61</span> 
+<span class="lineno">62</span> <span class="c1">// 正确：输出 Hello World </span>
+<span class="lineno">63</span> <span class="nv">$myclass</span><span class="o">-&gt;</span><span class="na">test</span><span class="p">(</span><span class="nv">$otherclass</span><span class="p">);</span>
+<span class="lineno">64</span> 
+<span class="lineno">65</span> <span class="c1">// 致命错误：第一个参数必须为数组</span>
+<span class="lineno">66</span> <span class="nv">$myclass</span><span class="o">-&gt;</span><span class="na">test_array</span><span class="p">(</span><span class="s1">&#39;a string&#39;</span><span class="p">);</span>
+<span class="lineno">67</span> 
+<span class="lineno">68</span> <span class="c1">// 正确：输出数组</span>
+<span class="lineno">69</span> <span class="nv">$myclass</span><span class="o">-&gt;</span><span class="na">test_array</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">));</span>
+<span class="lineno">70</span> 
+<span class="lineno">71</span> <span class="c1">// 正确：输出 ArrayObject</span>
+<span class="lineno">72</span> <span class="nv">$myclass</span><span class="o">-&gt;</span><span class="na">test_interface</span><span class="p">(</span><span class="k">new</span> <span class="nx">ArrayObject</span><span class="p">(</span><span class="k">array</span><span class="p">()));</span>
+<span class="lineno">73</span> 
+<span class="lineno">74</span> <span class="c1">// 正确：输出 int(1)</span>
+<span class="lineno">75</span> <span class="nv">$myclass</span><span class="o">-&gt;</span><span class="na">test_callable</span><span class="p">(</span><span class="s1">&#39;var_dump&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="lineno">76</span> 
+<span class="lineno">77</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<h3>2.函数DEMO：</h3>
+
+<p>类型约束不只是用在类的成员函数里，也能使用在函数里  </p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="sd">/**</span>
+<span class="lineno"> 3</span> <span class="sd"> * [testdoc description]</span>
+<span class="lineno"> 4</span> <span class="sd"> * @param  string $q</span>
+<span class="lineno"> 5</span> <span class="sd"> * @param  int    $t</span>
+<span class="lineno"> 6</span> <span class="sd"> * @param  array  $y</span>
+<span class="lineno"> 7</span> <span class="sd"> * @param  object $o</span>
+<span class="lineno"> 8</span> <span class="sd"> * @return [type]</span>
+<span class="lineno"> 9</span> <span class="sd"> */</span>
+<span class="lineno">10</span> <span class="k">function</span> <span class="nf">testdoc</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$q</span><span class="p">,</span><span class="nx">int</span> <span class="nv">$t</span><span class="p">,</span><span class="k">array</span> <span class="nv">$y</span><span class="p">,</span><span class="nx">object</span> <span class="nv">$o</span><span class="p">){</span>
+<span class="lineno">11</span>  <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$q</span><span class="p">);</span>
+<span class="lineno">12</span>  <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$t</span><span class="p">);</span>
+<span class="lineno">13</span>  <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$y</span><span class="p">);</span>
+<span class="lineno">14</span>  <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$o</span><span class="p">);</span>
+<span class="lineno">15</span> <span class="p">}</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span> <span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="k">stdClass</span><span class="p">();</span>
+<span class="lineno">18</span> <span class="nx">testdoc</span><span class="p">(</span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="nv">$obj</span><span class="p">);</span>
+<span class="lineno">19</span> 
+<span class="lineno">20</span> <span class="c1">//我上面的测试代码将会报错，因为第一个参数希望是string类的实例，第二个参数希望是int类的实例，第四个参数希望是object类的实例，</span>
+<span class="lineno">21</span> 
+<span class="lineno">22</span> <span class="c1">//然而提供的第一个参数为string字符串，第二个为int整形，第四个为stdClass类的实例，都会报致命错误，这是由于php语言在string，int都不是对象，而在c#和java里面这样的基础类型也是对象。</span>
+<span class="lineno">23</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p><a href="http://php.net/manual/zh/language.oop5.typehinting.php">官方解释：类型约束</a></p>
+
+    <nav class="article-previous fn-clear">
+        
+        <a class="prev" href="/php/2014/09/18/php-%E5%8F%8D%E5%B0%84.html" rel="bookmark">&laquo;&nbsp;php 反射</a>
+        
+        
+        <a class="next" href="/php/2014/09/18/php%E5%8A%A8%E6%80%81%E5%8F%98%E9%87%8F%EF%BC%8C%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%EF%BC%8C%E5%A0%86%E5%92%8C%E6%A0%88%E7%9A%84%E5%8C%BA%E5%88%AB.html" rel="bookmark">动态变量，静态变量，堆和栈的区别&nbsp;&raquo;</a>
+        
+    </nav>
+    <div class="comment">
+        
+        <div id="disqus_thread"></div>
+        
+    </div>
+</div>
+
+                </div>
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="https://avatars0.githubusercontent.com/u/5516045?v=3&s=460" />
+                            </div>
+                            <div class="det-text">
+                                <p>我是「邹帅」，目前从事php开发！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="/standard/2014/10/28/Web_Service-Rest_Service.html" title="Web Service与Rest Service" rel="bookmark">Web Service与Rest Service</a></li>
+                            
+                                <li><a href="/agreement/2014/10/28/rpc.html" title="rpc" rel="bookmark">rpc</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="多进程/线程的SAPI生命周期" rel="bookmark">多进程/线程的SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="单进程SAPI生命周期" rel="bookmark">单进程SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86.html" title="深入理解php原理" rel="bookmark">深入理解php原理</a></li>
+                            
+                                <li><a href="/php/2014/10/24/php_soap.html" title="php使用soap调用WebService" rel="bookmark">php使用soap调用WebService</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                                    
+                                    <li><a href="http://zous.me" title="jz-code" target="_blank">jz-code</a></li>
+                                    
+                                    <li><a href="http://jekyllrb.com" title="Jekyll" target="_blank">Jekyll</a></li>
+                                    
+                                    <li><a href="http://zous.me/themes.html" title="Jekyll Theme" target="_blank">Jekyll Theme</a></li>
+                                    
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="footer">
+                <p>Copyright 2013. All rights reserved. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, Design by <a href="http://zous.me" target="_blank">zous.me</a>.</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+            
+            <script type="text/javascript">
+                //disqus
+                var disqus_shortname = 'codemadman';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] ||
+                        document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            
+        
+    </body>
+</html>

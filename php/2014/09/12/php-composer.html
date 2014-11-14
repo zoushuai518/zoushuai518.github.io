@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>php composer - Jekyll</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="邹帅" />
+        <meta name="description" content="Just another Jekyll theme design and code by zous.me." />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/assets/css/syntax.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
+        
+    </head>
+    <body>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                首页
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                分类目录
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/archives.html">
+                                文章归档
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                友情链接
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://weibo.com/luoyoo/home" target="_blank"><i class="icon-weibo"></i></a>
+                    
+                    <a href="https://github.com/zoushuai518" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                    <a href="https://twitter.com/zoushuai518" target="_blank"><i class="icon-twitter"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">php composer</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">12 Sep 2014</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#php-ref" >php</a></span>
+    </div>
+    <h1>php 包管理之 composer</h1>
+
+<p><strong><em>简介：</em></strong></p>
+
+<ul>
+<li>对于现代语言而言，包管理器基本上是标配。Java有Maven，Python有pip，Ruby有gem，Nodejs有npm。PHP的则是<a href="http://pear.php.net/">PEAR</a><br></li>
+<li>简单来说，Composer 是一个新的安装包管理工具，服务于 PHP 生态系统。它实际上包含了两个部分：Composer 和 Packagist.下面我们就简单说一下他们各自的用途。<br></li>
+</ul>
+
+<p><strong><em>概念：</em></strong></p>
+
+<ul>
+<li><p>Composer：
+简单来说，Composer 是一个新的安装包管理工具，服务于 PHP 生态系统。它实际上包含了两个部分：<a href="https://github.com/composer/composer">Composer</a> 和 <a href="http://packagist.org/">Packagist</a>.下面我们就简单说一下他们各自的用途。<br>
+Composer 是由 Jordi Boggiano 和 Nils Aderman 创造的一个命令行工具，它的使命就是帮你为项目自动安装所依赖的开发包。Composer 中的很多理念都借鉴了 npm 和 Bundler，如果你对这两个工具有所了解的话，就会在 composer 中发现他们的身影。Composer 包含了一个依赖解析器，用来处理开发包之间复杂的依赖关系；另外，它还包含了下载器、安装器等有趣的东西。<br>
+作为一个用户，你所要做的就是在 <code>composer.json</code> 文件中声明当前项目所依赖的开发包，然后运行 <code>composer.phar install</code> 就行了。<code>composer.json</code> 文件定义了当前项目所依赖的开发包和 composer 的配置信息。下面是一个小型实例：<br>
+<pre><code>
+{
+&quot;require&quot;: {
+    &quot;monolog/monolog&quot;: &quot;1.2.*&quot;
+}
+}
+</code></pre></p></li>
+<li><p>Packagist：
+Packagist 是 Composer 的默认的开发包仓库。你可以将自己的安装包提交到 packagist，将来你在自己的 VCS （源码管理软件，比如 Github） 仓库中新建了 tag 或更新了代码，packagist 都会自动构建一个新的开发包。这就是 packagist 目前的运作方式，将来 packagist 将允许直接上传开发包。</p></li>
+</ul>
+
+<h1>一.前言：</h1>
+
+<p>1.php PEAR包管理有很多问题  </p>
+
+<ul>
+<li>  依赖处理容易出问题<br></li>
+<li>  配置复杂.<br></li>
+<li>  命令行接口难用.<br></li>
+</ul>
+
+<p>2.composer，是新出的php依赖管理工具  </p>
+
+<ul>
+<li>  开源.<br></li>
+<li>  使用简单.<br></li>
+<li>  可以简单的提交自己的开发包.<br></li>
+</ul>
+
+<h1>二.安装composer:</h1>
+
+<p>Composer需要php 5.3.2+才能运行<br>
+<pre>
+<span class="Variable">$</span>curl -sS <span class="symbol">https:</span>/<span class="regex">/getcomposer.org/installer</span> | php
+</pre>
+这个命令会将<code>composer.phar</code>下载到当前目录。PHAR（PHP 压缩包）是一个压缩格式，可以在命令行下直接运行<br>
+你可以使用<code>--install-dir</code>选项将Composer安装到指定的目录，例如：<br>
+<pre>
+<span class="Variable">$</span>curl -sS<span class="symbol"> https:</span>/<span class="regex">/getcomposer.org/installer</span> | php -- --install-dir=bin
+</pre>
+当然也可以进行全局安装：<br>
+<pre>
+<span class="Variable">$</span>curl -sS<span class="symbol"> https:</span>/<span class="regex">/getcomposer.org/installer</span> | php
+<span class="Variable">$</span>mv composer.phar /usr/local/bin/composer
+</pre>
+不过通常情况下只需将<code>composer.phar</code>的位置加入到<code>PATH</code>就可以，不一定要全局安装</p>
+
+<h1>三.声明依赖</h1>
+
+<p>在项目目录下创建一个composer.json文件，指明依赖，比如，你的项目依赖 <a href="https://github.com/Seldaek/monolog">monolog：</a><br>
+<code>
+{
+    &quot;require&quot;: {
+        &quot;monolog/monolog&quot;: &quot;1.2.*&quot;
+    }
+}
+</code></p>
+
+<h1>四.安装依赖</h1>
+
+<p>安装依赖非常简单，只需在项目目录下运行：<br>
+<code>composer install</code></p>
+
+<p>如果没有全局安装的话，则运行：<br>
+<code>php composer.phar install</code></p>
+
+<h1>五.自动加载</h1>
+
+<p>Composer提供了自动加载的特性，只需在你的代码的初始化部分中加入下面一行：<br>
+<code>require &#39;vendor/autoload.php&#39;;</code></p>
+
+<h1>六.模块仓库</h1>
+
+<p><a href="https://packagist.org/">packagist.org</a>是Composer的仓库，很多著名的PHP库都能在其中找到。你也可以<a href="https://packagist.org/packages/submit">提交你自己的作品</a>。</p>
+
+<h1>七.高级特性(5个Composer小技巧)</h1>
+
+<p>Composer是新一代的PHP依赖管理工具  </p>
+
+<h3>1. 仅更新单个库</h3>
+
+<p>只想更新某个特定的库，不想更新它的所有依赖，很简单：<br>
+<pre>
+composer update foo/bar
+</pre></p>
+
+<p>此外，这个技巧还可以用来解决“警告信息问题”。你一定见过这样的警告信息：<br>
+<pre>
+Warning: The lock file is not up to date with the latest changes in composer.json, you may be getting outdated dependencies, run update to update them.
+</pre></p>
+
+<p>擦，哪里出问题了？别惊慌！如果你编辑了<code>composer.json</code>，你应该会看到这样的信息。比如，如果你增加或更新了细节信息，比如库的描述、作者、更多参数，甚至仅仅增加了一个空格，都会改变文件的md5sum。然后<code>Composer</code>就会警告你哈希值和<code>composer.lock</code>中记载的不同。  </p>
+
+<p>那么我们该怎么办呢？<code>update</code>命令可以更新lock文件，但是如果仅仅增加了一些描述，应该是不打算更新任何库。这种情况下，只需<code>update nothing</code>：<br>
+<pre>$ composer update nothing<br />
+Loading composer repositories <span class="string">with package information</span><br />
+<span class="red">Updating dependencies<br />
+Nothing to install or update<br />
+Writing lock file<br />
+Generating autoload files</span>
+</pre></p>
+
+<p>这样一来，<code>Composer</code>不会更新库，但是会更新<code>composer.lock</code>。注意<code>nothing</code>并不是<code>update</code>命令的关键字。只是没有<code>nothing</code> 这个包导致的结果。如果你输入<code>foobar</code>，结果也一样。<br>
+如果你用的Composer版本足够新，那么你可以直接使用<code>--lock</code>选项：<br>
+<pre>
+composer <span class="string">update --lock</span>
+</pre></p>
+
+<h3>2. 不编辑composer.json的情况下安装库</h3>
+
+<p>你可能会觉得每安装一个库都需要修改composer.json太麻烦，那么你可以直接使用require命令。<br>
+<code>
+composer require &quot;foo/bar:1.0.0&quot;
+</code></p>
+
+<p>这个方法也可以用来快速地新开一个项目。<code>init</code>命令有<code>--require</code>选项，可以自动编写<code>composer.json</code>：（注意我们使用<code>-n</code>，这样就不用回答问题）<br>
+<pre>
+<code>
+$ composer init --require=foo/bar:1.0.0 -n
+$ cat composer.json
+</code>
+<code>
+{
+    &quot;require&quot;: {
+        &quot;foo/bar&quot;: &quot;1.0.0&quot;
+    }
+}
+</code>
+</pre></p>
+
+<h3>3. 派生很容易</h3>
+
+<p>初始化的时候，你试过<code>create-project</code>命令么<br>
+<code>
+composer create-project doctrine/orm path 2.2.0
+</code>
+这会自动克隆仓库，并检出指定的版本。克隆库的时候用这个命令很方便，不需要搜寻原始的URI了。  </p>
+
+<h3>4. 考虑缓存，dist包优先</h3>
+
+<p>最近一年以来的Composer会自动存档你下载的dist包。默认设置下，dist包用于加了tag的版本，例如<code>&quot;symfony/symfony&quot;: &quot;v2.1.4&quot;</code>，或者是通配符或版本区间，<code>&quot;2.1.*&quot;</code>或<code>&quot;&gt;=2.2,<2.3-dev"</code>（如果你使用<code>stable</code>作为你的<code>minimum-stability</code>。  </p>
+
+<p>dist包也可以用于诸如<code>dev-master</code>之类的分支，Github允许你下载某个git引用的压缩包。为了强制使用压缩包，而不是克隆源代码，你可以使用<code>install</code>和<code>update</code>的<code>--prefer-dist</code>选项。  </p>
+
+<p>下面是一个例子（我使用了<code>--profile</code>选项来显示执行时间）：<br>
+<pre>
+$ composer init --require=&quot;twig/twig:1.*&quot; -n --profile
+Memory usage: 3.94MB (peak: 4.08MB), time: 0s</p>
+
+<p>$ composer install --profile
+Loading composer repositories with package information
+Installing dependencies
+  - Installing twig/twig (v1.12.2)
+    Downloading: 100%</p>
+
+<p>Writing lock file
+Generating autoload files
+Memory usage: 10.13MB (peak: 12.65MB), time: 4.71s</p>
+
+<p>$ rm -rf vendor</p>
+
+<p>$ composer install --profile
+Loading composer repositories with package information
+Installing dependencies from lock file
+  - Installing twig/twig (v1.12.2)
+    Loading from cache</p>
+
+<p>Generating autoload files
+Memory usage: 4.96MB (peak: 5.57MB), time: 0.45s
+</pre>
+这里，<code>twig/twig:1.12.2</code>的压缩包被保存在<code>~/.composer/cache/files/twig/twig/1.12.2.0-v1.12.2.zip</code>。重新安装包时直接使用。</p>
+
+<h3>5. 考虑修改，源代码优先</h3>
+
+<p>当你需要修改库的时候，克隆源代码就比下载包方便了。你可以使用<code>--prefer-source</code>来强制选择克隆源代码。<br>
+<pre>
+<code>composer</code> update symfony/yaml --prefer-source
+</pre></p>
+
+<p>接下来你可以修改文件：
+<pre>
+composer status -v
+You have changes in the following dependencies:
+/path/to/app/vendor/symfony/yaml/Symfony/Component/Yaml:
+    M Dumper.php
+</pre></p>
+
+<p>当你试图更新一个修改过的库的时候，Composer会提醒你，询问是否放弃修改：
+<pre>
+$ composer update
+Loading composer repositories with package information
+Updating dependencies
+  - Updating symfony/symfony v2.2.0 (v2.2.0- =&gt; v2.2.0)
+    The package has modified files:
+    M Dumper.php
+    Discard changes [y,n,v,s,?]?
+</pre></p>
+
+<h1>为生产环境作准备</h1>
+
+<p>最后提醒一下，在部署代码到生产环境的时候，别忘了优化一下自动加载：
+<pre>
+<code>composer</code> dump-autoload --optimize
+</pre></p>
+
+<p>安装包的时候可以同样使用<code>--optimize-autoloader</code>。不加这一选项，你可能会发现<a href="http://www.ricardclau.com/2013/03/apc-vs-zend-optimizer-benchmarks-with-symfony2/">20%到25%的性能损失</a>。  </p>
+
+<p>如果你需要帮助，或者想要了解某个命令的细节，你可以阅读<a href="http://getcomposer.org/">官方文档</a>，或者查看JoliCode做的这个<a href="http://www.ricardclau.com/2013/03/apc-vs-zend-optimizer-benchmarks-with-symfony2/">交互式备忘单</a>。</p>
+
+<h1>八.Composer更换国内镜像</h1>
+
+<ul>
+<li><p>安装composer，不再赘述</p></li>
+<li><p>修改配置，使用中国镜像 先找到config文件
+<code>sudo composer config -l -g</code></p></li>
+</ul>
+
+<h2><img src="/assets/postImage/php/composer-modify-image-1.png" alt="composer-modify-image" title="composer-modify-image"></h2>
+
+<p>修改配置文件<br>
+<code>$ sudo vim /root/.composer/config.json</code><br>
+增加镜像地址<br>
+<pre><code>
+{
+    &quot;repositories&quot;: [
+        {&quot;type&quot;: &quot;composer&quot;, &quot;url&quot;: &quot;http://pkg.phpcomposer.com/repo/packagist/&quot;},
+        {&quot;packagist&quot;: false}
+    ]
+}
+</code></pre>
+修改完成，保存退出  </p>
+
+<h2><img src="/assets/postImage/php/composer-modify-image-2.png" alt="composer-modify-image" title="composer-modify-image"></h2>
+
+<ul>
+<li><p>更新composer
+<code>
+$ composer self-update
+</code></p></li>
+<li><p>创建自己的composer项目
+<pre></p>
+
+<h1>创建项目目录</h1>
+
+<p><code>$ mkdir project</code>
+<code>$ cd project</code></p>
+
+<h1>增加依赖引入swoole_framework框架包，当然也可以是其他包</h1>
+
+<p><code>$ composer require &quot;matyhtf/swoole_framework:dev-master&quot;</code>
+</pre></p></li>
+</ul>
+
+<p><a href="http://www.phpcomposer.com/">php composer</a><br>
+<a href="https://getcomposer.org/">getcomposer</a><br>
+<a href="http://docs.phpcomposer.com/">php composer docs</a><br>
+<a href="https://packagist.org/">packagist</a></p>
+
+    <nav class="article-previous fn-clear">
+        
+        <a class="prev" href="/php/2014/09/12/memory_get_usage.html" rel="bookmark">&laquo;&nbsp;获得PHP代码占用内存的情况</a>
+        
+        
+        <a class="next" href="/php/2014/09/12/php_pear_pecl.html" rel="bookmark">php pear|pecl&nbsp;&raquo;</a>
+        
+    </nav>
+    <div class="comment">
+        
+        <div id="disqus_thread"></div>
+        
+    </div>
+</div>
+
+                </div>
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="https://avatars0.githubusercontent.com/u/5516045?v=3&s=460" />
+                            </div>
+                            <div class="det-text">
+                                <p>我是「邹帅」，目前从事php开发！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="/standard/2014/10/28/Web_Service-Rest_Service.html" title="Web Service与Rest Service" rel="bookmark">Web Service与Rest Service</a></li>
+                            
+                                <li><a href="/agreement/2014/10/28/rpc.html" title="rpc" rel="bookmark">rpc</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="多进程/线程的SAPI生命周期" rel="bookmark">多进程/线程的SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="单进程SAPI生命周期" rel="bookmark">单进程SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86.html" title="深入理解php原理" rel="bookmark">深入理解php原理</a></li>
+                            
+                                <li><a href="/php/2014/10/24/php_soap.html" title="php使用soap调用WebService" rel="bookmark">php使用soap调用WebService</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                                    
+                                    <li><a href="http://zous.me" title="jz-code" target="_blank">jz-code</a></li>
+                                    
+                                    <li><a href="http://jekyllrb.com" title="Jekyll" target="_blank">Jekyll</a></li>
+                                    
+                                    <li><a href="http://zous.me/themes.html" title="Jekyll Theme" target="_blank">Jekyll Theme</a></li>
+                                    
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="footer">
+                <p>Copyright 2013. All rights reserved. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, Design by <a href="http://zous.me" target="_blank">zous.me</a>.</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+            
+            <script type="text/javascript">
+                //disqus
+                var disqus_shortname = 'codemadman';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] ||
+                        document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            
+        
+    </body>
+</html>

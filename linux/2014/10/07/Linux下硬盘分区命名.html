@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Linux下硬盘分区命名 - Jekyll</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="邹帅" />
+        <meta name="description" content="Just another Jekyll theme design and code by zous.me." />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/assets/css/syntax.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
+        
+    </head>
+    <body>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                首页
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                分类目录
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/archives.html">
+                                文章归档
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                友情链接
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://weibo.com/luoyoo/home" target="_blank"><i class="icon-weibo"></i></a>
+                    
+                    <a href="https://github.com/zoushuai518" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                    <a href="https://twitter.com/zoushuai518" target="_blank"><i class="icon-twitter"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">Linux下硬盘分区命名</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">07 Oct 2014</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#Linux-ref" >Linux</a></span>
+    </div>
+    <h3>介绍</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Linux分区的命名: /dev/xxyN /dev/ 这个字串是所有设备文件所在的目录名。因为分区在硬盘上，而硬盘是设备，所以这些文件代表了在/dev/上所有可能的分区。  
+xx    分区名的前两个字母表明分区所在设备的类型。通常是hd(IDE磁盘)或sd(SCSI磁盘)  
+y     这个字母标明分区所在的设备。例如，/dev/hda(第一个IDE磁盘)或/dev/sdb(第二个SCSI磁盘)  
+N     最后的数字代表分区。前四个(主分区或扩展分区)使用数字从1排列到4；逻辑分区从5开始。  
+
+例如:/dev/hda3是在第一个IDE硬盘上的第三个主分区或扩展分区；/dev/sdb6是在第二个SCSI硬盘上的第二个逻辑分区。  
+</code></pre></div>
+<h3>详解</h3>
+
+<p>一块硬盘最多只能有四个主分区。其中一个可以为扩展分区（主分区的特殊形式），扩展分区中可以有60个逻辑分区。linux表示分区，与顺序和类型有关。
+/dev/sda1为第一主分区<br>
+/dev/sda2为第二主分区<br>
+/dev/sda3为第三主分区<br>
+/dev/sda4为第四主分区<br>
+/dev/sda5为第一逻辑分区<br>
+/dev/sda6为第二逻辑分区<br>
+……<br>
+不管有几个主分区，逻辑分区都是从/dev/sda5开始的。也就是说，第一个逻辑分区是/dev/sda5。<br>
+而四个主分区，可能只有一个，或二个。而且不一定是从/dev/sda1开始的。  </p>
+
+<p>一般以前的DOS和windows系统（2000/XP/2003，不包括windows7），使用自带的分区工具，只能分一个主分区和一个扩展分区（内含多个逻辑分区）所以，默认情况下（不是一定，可以改变的），C盘为/dev/sda1，D盘为/dev/sda5，E盘为/dev/sda6……  </p>
+
+<p>其中/dev/sda为第一块硬盘<br>
+/dev/sdb为第二块硬盘（如果有的话），分区表示法后面的数字一样。  </p>
+
+<p><span calss="impor">grub</span>是linux系统的启动管理器，也是根据分区顺序表示，但有不同；是以0开始的，不是以1开始的。<br>
+(hd0,0)为第一主分区<br>
+(hd0,1)为第二主分区<br>
+(hd0,4)为第一逻辑分区（通常为D盘）<br>
+(hd0,5)为第二个逻辑争区（通常为E盘）<br>
+……<br>
+(hd0)为第一个硬盘<br>
+(hd1)为第二个硬盘  </p>
+
+<p>grub2是新的启动管理器，表示方法与grub有些微妙但很重要的不同<br>
+(hd0,1)为第一主分区<br>
+(hd0,2)为第二主分区<br>
+(hd0,5)为第一逻辑分区（通常为D盘）<br>
+(hd0,6)为第二个逻辑争区（通常为E盘）<br>
+……<br>
+(hd0)为第一个硬盘<br>
+(hd1)为第二个硬盘  </p>
+
+<p><span class="impor">
+备注：
+本来Linux会给IDE硬盘标记hdx，给SCSI硬盘标记sdx，按这个规定，你的SCSI硬盘该是sda。<br>
+但近来很多发行版不再细分，而是将U盘、SATA硬盘甚至存储卡、IDE硬盘等通通标记为sdx，这样一来，你的IDE硬盘也可能被命名为sdx，那么SCSI硬盘是sda还是sdb就难说了。<br>
+先看看IDE硬盘是什么：如果是hda，那么SCSI硬盘就是sda；如果是sda（sdb），那SCSI硬盘就可能是sdb（sda）。<br>
+</span></p>
+
+    <nav class="article-previous fn-clear">
+        
+        <a class="prev" href="/linux/2014/10/01/nginx_config.html" rel="bookmark">&laquo;&nbsp;nginx配置详解</a>
+        
+        
+        <a class="next" href="/tool/2014/10/07/%E9%85%8D%E7%BD%AEGit%E5%92%8CSSH%E5%AF%86%E9%92%A5%E8%BF%9E%E6%8E%A5Github.html" rel="bookmark">配置 Git 和 SSH 密钥连接...&nbsp;&raquo;</a>
+        
+    </nav>
+    <div class="comment">
+        
+        <div id="disqus_thread"></div>
+        
+    </div>
+</div>
+
+                </div>
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="https://avatars0.githubusercontent.com/u/5516045?v=3&s=460" />
+                            </div>
+                            <div class="det-text">
+                                <p>我是「邹帅」，目前从事php开发！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="/standard/2014/10/28/Web_Service-Rest_Service.html" title="Web Service与Rest Service" rel="bookmark">Web Service与Rest Service</a></li>
+                            
+                                <li><a href="/agreement/2014/10/28/rpc.html" title="rpc" rel="bookmark">rpc</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="多进程/线程的SAPI生命周期" rel="bookmark">多进程/线程的SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="单进程SAPI生命周期" rel="bookmark">单进程SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86.html" title="深入理解php原理" rel="bookmark">深入理解php原理</a></li>
+                            
+                                <li><a href="/php/2014/10/24/php_soap.html" title="php使用soap调用WebService" rel="bookmark">php使用soap调用WebService</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                                    
+                                    <li><a href="http://zous.me" title="jz-code" target="_blank">jz-code</a></li>
+                                    
+                                    <li><a href="http://jekyllrb.com" title="Jekyll" target="_blank">Jekyll</a></li>
+                                    
+                                    <li><a href="http://zous.me/themes.html" title="Jekyll Theme" target="_blank">Jekyll Theme</a></li>
+                                    
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="footer">
+                <p>Copyright 2013. All rights reserved. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, Design by <a href="http://zous.me" target="_blank">zous.me</a>.</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+            
+            <script type="text/javascript">
+                //disqus
+                var disqus_shortname = 'codemadman';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] ||
+                        document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            
+        
+    </body>
+</html>

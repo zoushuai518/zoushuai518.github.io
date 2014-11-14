@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>git flow - Jekyll</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="邹帅" />
+        <meta name="description" content="Just another Jekyll theme design and code by zous.me." />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/assets/css/syntax.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
+        
+    </head>
+    <body>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                首页
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                分类目录
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/archives.html">
+                                文章归档
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                友情链接
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://weibo.com/luoyoo/home" target="_blank"><i class="icon-weibo"></i></a>
+                    
+                    <a href="https://github.com/zoushuai518" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                    <a href="https://twitter.com/zoushuai518" target="_blank"><i class="icon-twitter"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">git flow</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">14 Oct 2014</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#tool-ref" >tool</a></span>
+    </div>
+    <h2>一.git flow介绍</h2>
+
+<p>Git Flow是构建在Git之上的一个组织软件开发活动的模型，是在Git之上构建的一项软件开发最佳实践。Git Flow是一套使用Git进行源代码管理时的一套行为规范和简化部分Git操作的工具。</p>
+
+<p>2010年5月，在一篇名为<a href="http://nvie.com/posts/a-successful-git-branching-model/">“一种成功的Git分支模型”</a>的博文中，@nvie介绍了一种在Git之上的软件开发模型。通过利用Git创建和管理分支的能力，为每个分支设定具有特定的含义名称，并将软件生命周期中的各类活动归并到不同的分支上。实现了软件开发过程不同操作的相互隔离。这种软件开发的活动模型被nwie称为“Git Flow”。</p>
+
+<p>一般而言，软件开发模型有常见的瀑布模型、迭代开发模型、以及最近出现的敏捷开发模型等不同的模型。每种模型有各自应用场景。Git Flow重点解决的是由于源代码在开发过程中的各种冲突导致开发活动混乱的问题。因此，Git flow可以很好的于各种现有开发模型相结合使用。</p>
+
+<p><img src="/assets/postImage/tool/git-flow-all.png" alt="git-flow" title="git-flow"></p>
+
+<h2>二.git flow介绍</h2>
+
+<p>Git Flow模型中定义了主分支和辅助分支两类分支。其中主分支用于组织与软件开发、部署相关的活动；辅助分支组织为了解决特定的问题而进行的各种开发活动。</p>
+
+<h3>1.主分支：</h3>
+
+<p>主分支是所有开发活动的核心分支。所有的开发活动产生的输出物最终都会反映到主分支的代码中。主分支分为master分支和develop分支</p>
+
+<p><img src="/assets/postImage/tool/git-flow-1.png" alt="git-flow-1" title="git-flow-1"></p>
+
+<h4>1&gt;.master分支:</h4>
+
+<p>上存放的应该是随时可供在生产环境中部署的代码（Production Ready state）。当开发活动告一段落，产生了一份新的可供部署的代码时，master分支上的代码会被更新。同时，每一次更新，最好添加对应的版本号标签（TAG）</p>
+
+<h4>2&gt;.develop分支:</h4>
+
+<p>develop分支是保存当前最新开发成果的分支。通常这个分支上的代码也是可进行每日夜间发布的代码（Nightly build）。因此这个分支有时也可以被称作“integration branch”。</p>
+
+<p>当develop分支上的代码已实现了软件需求说明书中所有的功能，通过了所有的测试后，并且代码已经足够稳定时，就可以将所有的开发成果合并回master分支了。对于master分支上的新提交的代码建议都打上一个新的版本号标签（TAG），供后续代码跟踪使用。</p>
+
+<p>因此，每次将develop分支上的代码合并回master分支时，我们都可以认为一个新的可供在生产环境中部署的版本就产生了。通常而言，“仅在发布新的可供部署的代码时才更新master分支上的代码”是推荐所有人都遵守的行为准则。基于此，理论上说，每当有代码提交到master分支时，我们可以使用<span class="impor">Git Hook</span>触发软件自动测试以及生产环境代码的自动更新工作。这些自动化操作将有利于减少新代码发布之后的一些事务性工作。</p>
+
+<h3>2.辅助分支：</h3>
+
+<p>辅助分支是用于组织解决特定问题的各种软件开发活动的分支。辅助分支主要用于组织软件新功能的并行开发、简化新功能开发代码的跟踪、辅助完成版本发布工作以及对生产代码的缺陷进行紧急修复工作。这些分支与主分支不同，通常只会在有限的时间范围内存在。</p>
+
+<p>辅助分支包括：</p>
+
+<ul>
+<li>用于开发新功能时所使用的feature分支；</li>
+<li>用于辅助版本发布的release分支；</li>
+<li>用于修正生产代码中的缺陷的hotfix分支。</li>
+</ul>
+
+<p>以上这些分支都有固定的使用目的和分支操作限制。从单纯技术的角度说，这些分支与Git其他分支并没有什么区别，但通过命名，我们定义了使用这些分支的方法。</p>
+
+<h4>1&gt;.feature分支:</h4>
+
+<p>使用规范：</p>
+
+<ul>
+<li>可以从develop分支发起feature分支</li>
+<li>代码必须合并回develop分支</li>
+<li>feature分支的命名可以使用除<code>master</code>，<code>develop</code>，<code>release-*</code>，<code>hotfix-*</code>之外的任何名称</li>
+</ul>
+
+<p>feature分支（有时也可以被叫做“topic分支”）通常是在开发一项新的软件功能的时候使用，这个分支上的代码变更最终合并回develop分支或者干脆被抛弃掉（例如实验性且效果不好的代码变更）。</p>
+
+<p><img src="/assets/postImage/tool/git-flow-1.png" alt="git-flow-1" title="git-flow-1"></p>
+
+<p>一般而言，feature分支代码可以保存在开发者自己的代码库中而不强制提交到主代码库里。</p>
+
+<h4>2&gt;.release分支:</h4>
+
+<p>使用规范：</p>
+
+<ul>
+<li>可以从develop分支派生</li>
+<li>必须合并回develop分支和master分支</li>
+<li>分支命名惯例：<code>release-*</code></li>
+</ul>
+
+<p>release分支是为发布新的产品版本而设计的。在这个分支上的代码允许做小的缺陷修正、准备发布版本所需的各项说明信息（版本号、发布时间、编译时间等等）。通过在release分支上进行这些工作可以让develop分支空闲出来以接受新的feature分支上的代码提交，进入新的软件开发迭代周期。</p>
+
+<p>当develop分支上的代码已经包含了所有即将发布的版本中所计划包含的软件功能，并且已通过所有测试时，我们就可以考虑准备创建release分支了。而所有在当前即将发布的版本之外的业务需求一定要确保不能混到release分支之内（避免由此引入一些不可控的系统缺陷）。</p>
+
+<p>成功的派生了release分支，并被赋予版本号之后，develop分支就可以为“下一个版本”服务了。所谓的“下一个版本”是在当前即将发布的版本之后发布的版本。版本号的命名可以依据项目定义的版本号命名规则进行。</p>
+
+<h4>3&gt;.hotfix分支:</h4>
+
+<p>使用规范：</p>
+
+<ul>
+<li>可以从master分支派生</li>
+<li>必须合并回master分支和develop分支</li>
+<li>分支命名惯例：<code>hotfix-*</code></li>
+</ul>
+
+<p>除了是计划外创建的以外，hotfix分支与release分支十分相似：都可以产生一个新的可供在生产环境部署的软件版本。</p>
+
+<p>当生产环境中的软件遇到了异常情况或者发现了严重到必须立即修复的软件缺陷的时候，就需要从master分支上指定的TAG版本派生hotfix分支来组织代码的紧急修复工作。</p>
+
+<p>这样做的显而易见的好处是不会打断正在进行的develop分支的开发工作，能够让团队中负责新功能开发的人与负责代码紧急修复的人并行的开展工作。</p>
+
+<p><img src="/assets/postImage/tool/git-flow-hotfix.png" alt="git-flow-hotfix" title="git-flow-hotfix"></p>
+
+<h2>三.flow安装</h2>
+
+<h3>1.github方式安装：</h3>
+
+<p>git clone https://github.com/nvie/gitflow</p>
+
+<h3>2.apt-get方式安装：</h3>
+
+<p>sudo apt-get install git-flow</p>
+
+<h2>四.git flow简单使用</h2>
+
+<p>git flow是git的辅助工具，实质上是一些分支-合并的脚本集合，使用git flow可以更轻松的完成对各种特性分支的操作。</p>
+
+<p>将git库转换为git-flow库：<br>
+git flow init
+实质上这一步只是为git flow中的几个特性分支命名。</p>
+
+<p>开始一个新功能：<br>
+git flow feature start xxxx</p>
+
+<p>提交这个功能到远程库：<br>
+git flow feature publish xxxx</p>
+
+<p>完成功能，合并到develop：<br>
+git flow feature finish xxxx</p>
+
+<p>记得删除远程仓库里的分支：<br>
+git push origin :xxxx</p>
+
+<p>release,hotfix与之类似，唯一的一点区别：hotfix目前没有publish功能，所以提交远程仓库的这一步要改成：<br>
+git push origin hotfix/xxxx:hotfix/xxxx</p>
+
+<p>注意：<br>
+git flow只是在本地执行分支/合并操作的脚本，不是一个流程管理工具。</p>
+
+<h2>五.git-flow使用笔记：</h2>
+
+<h3>1.构建git flow模型</h3>
+
+<p><code>git flow init #从master分支开始</code></p>
+
+<h3>2.新功能开发,分支名称f1</h3>
+
+<p><code>git flow feature start f1 #从master分支开始</code></p>
+
+<p>git-flow 从 <code>develop</code> 分支创建了一个新的分支 <code>feature/f1</code>，并自动切换到这个分支下面。然后就可以进行 f1 功能开发，中间可以多次的 <code>commit</code> 操作。当功能完成后：  </p>
+
+<p><code>git flow feature finish f1</code></p>
+
+<p><code>feature/f1</code> 分支的代码会被合并到 <code>develop</code> 里面，然后删除该分支，切换回 <code>develop</code>. 到此，新功能开发这个场景完毕。</p>
+
+<h3>3.发布分支：</h3>
+
+<p><code>git flow release start 0.1</code>
+<code>git flow release finish 0.1</code></p>
+
+<p>git-flow 会依次切换到 <code>master</code> <code>develop</code> 下合并 release/v0.1 里的修改，删除releases/v0.1分支，然后用 <code>git tag</code> 给当此发布打上 tag v0.1，可以通过 <code>git tag</code> 查看所有 tag<br>
+在release分支,可以做小幅度的修改</p>
+
+<h3>4.紧急bug修复：</h3>
+
+<p><code>git flow hotfix start bug1</code></p>
+
+<p>git-flow 从 <code>master</code> 分支创建一个新的分支 <code>hotfix/bug1</code>，并切换到该分支下。接下来要做的就是修复 bug，完成后：</p>
+
+<p><code>git flow hotfix finish bug1</code></p>
+
+<p>git-flow 会依次切换到 <code>master</code> <code>develop</code> 分支下合并 <code>hotfix/bug1</code> ，然后删掉 。到此，hotfix 完成。</p>
+
+<p>备注：git-flow的 feature|release分支都是从develop分支创建的；hotfix|support分支都是从master分支创建的</p>
+
+<p>nvie: 为了简化使用Git Flow模型时Git指令的复杂性，nvie开发出了一套<a href="https://github.com/nvie/gitflow">git增强指令集</a>。可以运行于Windows、Linux、Unix和Mac操作系统之下。有兴趣的同学可以去看看</p>
+
+<h2>五.git-flow使用完整流程：</h2>
+
+<p><a href="/tool/2014/10/15/git-flow%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B">git flow zs</a></p>
+
+    <nav class="article-previous fn-clear">
+        
+        <a class="prev" href="/php/2014/10/14/PHP%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E5%A4%9A%E7%A7%8D%E6%96%B9%E6%B3%95.html" rel="bookmark">&laquo;&nbsp;PHP读取文件多种方法</a>
+        
+        
+        <a class="next" href="/tool/2014/10/14/git-flow-%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3.html" rel="bookmark">git-flow使用详解&nbsp;&raquo;</a>
+        
+    </nav>
+    <div class="comment">
+        
+        <div id="disqus_thread"></div>
+        
+    </div>
+</div>
+
+                </div>
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="https://avatars0.githubusercontent.com/u/5516045?v=3&s=460" />
+                            </div>
+                            <div class="det-text">
+                                <p>我是「邹帅」，目前从事php开发！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="/standard/2014/10/28/Web_Service-Rest_Service.html" title="Web Service与Rest Service" rel="bookmark">Web Service与Rest Service</a></li>
+                            
+                                <li><a href="/agreement/2014/10/28/rpc.html" title="rpc" rel="bookmark">rpc</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="多进程/线程的SAPI生命周期" rel="bookmark">多进程/线程的SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="单进程SAPI生命周期" rel="bookmark">单进程SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86.html" title="深入理解php原理" rel="bookmark">深入理解php原理</a></li>
+                            
+                                <li><a href="/php/2014/10/24/php_soap.html" title="php使用soap调用WebService" rel="bookmark">php使用soap调用WebService</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                                    
+                                    <li><a href="http://zous.me" title="jz-code" target="_blank">jz-code</a></li>
+                                    
+                                    <li><a href="http://jekyllrb.com" title="Jekyll" target="_blank">Jekyll</a></li>
+                                    
+                                    <li><a href="http://zous.me/themes.html" title="Jekyll Theme" target="_blank">Jekyll Theme</a></li>
+                                    
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="footer">
+                <p>Copyright 2013. All rights reserved. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, Design by <a href="http://zous.me" target="_blank">zous.me</a>.</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+            
+            <script type="text/javascript">
+                //disqus
+                var disqus_shortname = 'codemadman';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] ||
+                        document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            
+        
+    </body>
+</html>

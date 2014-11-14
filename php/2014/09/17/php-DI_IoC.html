@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>php 依赖注入(DI) & 控制反转(IoC) - Jekyll</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="邹帅" />
+        <meta name="description" content="Just another Jekyll theme design and code by zous.me." />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/assets/css/syntax.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
+        
+    </head>
+    <body>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                首页
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                分类目录
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/archives.html">
+                                文章归档
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                友情链接
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://weibo.com/luoyoo/home" target="_blank"><i class="icon-weibo"></i></a>
+                    
+                    <a href="https://github.com/zoushuai518" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                    <a href="https://twitter.com/zoushuai518" target="_blank"><i class="icon-twitter"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">php 依赖注入(DI) & 控制反转(IoC)</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">17 Sep 2014</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#php-ref" >php</a></span>
+    </div>
+    <p><span class="impor">干货：依赖注入本质就是使代码耦合度更低；IoC容器是为了依赖过多程序过于复杂而诞生的，其目的就是配合依赖注入来解耦，使得代码更容易维护</span></p>
+
+<h1>一.依赖注入，控制反转(进阶)：</h1>
+
+<p>科普：<br>
+首先依赖注入和控制反转说的是同一个东西，是一种设计模式，这种设计模式用来减少程序间的耦合  </p>
+
+<p>先假设我们这里有一个类，类里面需要用到数据库连接，按照最最原始的办法，我们可能是这样写这个类的：  </p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="k">class</span> <span class="nc">example</span> <span class="p">{</span>
+<span class="lineno"> 3</span>     
+<span class="lineno"> 4</span>     <span class="k">private</span> <span class="nv">$_db</span><span class="p">;</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span>     <span class="k">function</span> <span class="nf">__construct</span><span class="p">(){</span>
+<span class="lineno"> 7</span>         <span class="k">include</span> <span class="s2">&quot;./Lib/Db.php&quot;</span><span class="p">;</span>
+<span class="lineno"> 8</span>         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Db</span><span class="p">(</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span><span class="s2">&quot;root&quot;</span><span class="p">,</span><span class="s2">&quot;123456&quot;</span><span class="p">,</span><span class="s2">&quot;test&quot;</span><span class="p">);</span>
+<span class="lineno"> 9</span>     <span class="p">}</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span>     <span class="k">function</span> <span class="nf">getList</span><span class="p">(){</span>
+<span class="lineno">12</span>         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;......&quot;</span><span class="p">);</span><span class="c1">//这里具体sql语句就省略不写了</span>
+<span class="lineno">13</span>     <span class="p">}</span>
+<span class="lineno">14</span> <span class="p">}</span>
+<span class="lineno">15</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>过程：<br>
+在构造函数里先将数据库类文件include进来；<br>
+然后又通过new Db并传入数据库连接信息实例化db类；<br>
+之后getList方法就可以通过$this-&gt;_db来调用数据库类，实现数据库操作。  </p>
+
+<p>看上去我们实现了想要的功能，但是这是一个噩梦的开始，以后example1,example2,example3....  越来越多的类需要用到db组件，如果都这么写的话，万一有一天数据库密码改了或者db类发生变化了，岂不是要回头修改所有类文件？  </p>
+
+<p>ok，为了解决这个问题，工厂模式出现了，我们创建了一个Factory方法，并通过Factory::getDb()方法来获得db组件的实例：  </p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="k">class</span> <span class="nc">Factory</span> <span class="p">{</span>
+<span class="lineno">3</span>     <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getDb</span><span class="p">(){</span>
+<span class="lineno">4</span>         <span class="k">include</span> <span class="s2">&quot;./Lib/Db.php&quot;</span><span class="p">;</span>
+<span class="lineno">5</span>         <span class="k">return</span> <span class="k">new</span> <span class="nx">Db</span><span class="p">(</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span><span class="s2">&quot;root&quot;</span><span class="p">,</span><span class="s2">&quot;123456&quot;</span><span class="p">,</span><span class="s2">&quot;test&quot;</span><span class="p">);</span>
+<span class="lineno">6</span>     <span class="p">}</span>
+<span class="lineno">7</span> <span class="p">}</span>
+<span class="lineno">8</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>sample类变成：  </p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="k">class</span> <span class="nc">example</span> <span class="p">{</span>
+<span class="lineno"> 3</span>     
+<span class="lineno"> 4</span>     <span class="k">private</span> <span class="nv">$_db</span><span class="p">;</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span>     <span class="k">function</span> <span class="nf">__construct</span><span class="p">(){</span>
+<span class="lineno"> 7</span>         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_db</span> <span class="o">=</span> <span class="nx">Factory</span><span class="o">::</span><span class="na">getDb</span><span class="p">();</span>
+<span class="lineno"> 8</span>     <span class="p">}</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span>     <span class="k">function</span> <span class="nf">getList</span><span class="p">(){</span>
+<span class="lineno">11</span>         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;......&quot;</span><span class="p">);</span><span class="c1">//这里具体sql语句就省略不写了</span>
+<span class="lineno">12</span>     <span class="p">}</span>
+<span class="lineno">13</span> <span class="p">}</span>
+<span class="lineno">14</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>这样就完美了吗？再次想想一下以后example1,example2,example3....所有的类，你都需要在构造函数里通过Factory::getDb();获的一个Db实例，实际上你由原来的直接与Db类的耦合变为了和Factory工厂类的耦合，工厂类只是帮你把数据库连接信息给包装起来了，虽然当数据库信息发生变化时只要修改Factory::getDb()方法就可以了，但是突然有一天工厂方法需要改名，或者getDb方法需要改名，你又怎么办？  </p>
+
+<p>当然这种需求其实还是很操蛋的，但有时候确实存在这种情况，一种解决方式是：<br>
+我们不从example类内部实例化Db组件，我们依靠从外部的注入，什么意思呢？看下面的例子：  </p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="k">class</span> <span class="nc">example</span> <span class="p">{</span>
+<span class="lineno"> 3</span>     <span class="k">private</span> <span class="nv">$_db</span><span class="p">;</span>
+<span class="lineno"> 4</span>     <span class="k">function</span> <span class="nf">getList</span><span class="p">(){</span>
+<span class="lineno"> 5</span>         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;......&quot;</span><span class="p">);</span><span class="c1">//这里具体sql语句就省略不写了</span>
+<span class="lineno"> 6</span>     <span class="p">}</span>
+<span class="lineno"> 7</span>     <span class="c1">//从外部注入db连接</span>
+<span class="lineno"> 8</span>     <span class="k">function</span> <span class="nf">setDb</span><span class="p">(</span><span class="nv">$connection</span><span class="p">){</span>
+<span class="lineno"> 9</span>         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_db</span> <span class="o">=</span> <span class="nv">$connection</span><span class="p">;</span>
+<span class="lineno">10</span>     <span class="p">}</span>
+<span class="lineno">11</span> <span class="p">}</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="c1">//调用</span>
+<span class="lineno">14</span> <span class="nv">$example</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">example</span><span class="p">();</span>
+<span class="lineno">15</span> <span class="nv">$example</span><span class="o">-&gt;</span><span class="na">setDb</span><span class="p">(</span><span class="nx">Factory</span><span class="o">::</span><span class="na">getDb</span><span class="p">());</span><span class="c1">//注入db连接</span>
+<span class="lineno">16</span> <span class="nv">$example</span><span class="o">-&gt;</span><span class="na">getList</span><span class="p">();</span>
+<span class="lineno">17</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>这样一来，example类完全与外部类解除耦合了，你可以看到Db类里面已经没有工厂方法或Db类的身影了。我们通过从外部调用example类的setDb方法，将连接实例直接注入进去。这样example完全不用关心db连接怎么生成的了。  </p>
+
+<p>这就叫<code>依赖注入</code>，实现不是在代码内部创建依赖关系，而是让其作为一个参数传递，这使得我们的程序更容易维护，降低程序代码的耦合度，实现一种松耦合。<br>
+这还没完，我们再假设example类里面除了db还要用到其他外部类，我们通过：  </p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="nv">$example</span><span class="o">-&gt;</span><span class="na">setDb</span><span class="p">(</span><span class="nx">Factory</span><span class="o">::</span><span class="na">getDb</span><span class="p">());</span><span class="c1">//注入db连接</span>
+<span class="lineno">3</span> <span class="nv">$example</span><span class="o">-&gt;</span><span class="na">setFile</span><span class="p">(</span><span class="nx">Factory</span><span class="o">::</span><span class="na">getFile</span><span class="p">());</span><span class="c1">//注入文件处理类</span>
+<span class="lineno">4</span> <span class="nv">$example</span><span class="o">-&gt;</span><span class="na">setImage</span><span class="p">(</span><span class="nx">Factory</span><span class="o">::</span><span class="na">getImage</span><span class="p">());</span><span class="c1">//注入Image处理类</span>
+<span class="lineno">5</span> <span class="c1">// ...</span>
+<span class="lineno">6</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>我们没完没了的写这么多set？累不累?<br>
+ok，为了不用每次写这么多行代码，我们又去弄了一个工厂方法：  </p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="k">class</span> <span class="nc">Factory</span> <span class="p">{</span>
+<span class="lineno"> 3</span>     <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getExample</span><span class="p">(){</span>
+<span class="lineno"> 4</span>         <span class="nv">$example</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">example</span><span class="p">();</span>
+<span class="lineno"> 5</span>         <span class="nv">$example</span><span class="o">-&gt;</span><span class="na">setDb</span><span class="p">(</span><span class="nx">Factory</span><span class="o">::</span><span class="na">getDb</span><span class="p">());</span><span class="c1">//注入db连接</span>
+<span class="lineno"> 6</span>         <span class="nv">$example</span><span class="o">-&gt;</span><span class="na">setFile</span><span class="p">(</span><span class="nx">Factory</span><span class="o">::</span><span class="na">getFile</span><span class="p">());</span><span class="c1">//注入文件处理类</span>
+<span class="lineno"> 7</span>         <span class="nv">$example</span><span class="o">-&gt;</span><span class="na">setImage</span><span class="p">(</span><span class="nx">Factory</span><span class="o">::</span><span class="na">getImage</span><span class="p">());</span><span class="c1">//注入Image处理类</span>
+<span class="lineno"> 8</span>         <span class="k">return</span> <span class="nv">$expample</span><span class="p">;</span>
+<span class="lineno"> 9</span>     <span class="p">}</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="p">}</span>
+<span class="lineno">12</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>实例化example时变为：  </p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="nv">$example</span><span class="o">=</span><span class="nx">Factory</span><span class="o">::</span><span class="na">getExample</span><span class="p">();</span>
+<span class="lineno">3</span> <span class="nv">$example</span><span class="o">-&gt;</span><span class="na">getList</span><span class="p">();</span>
+<span class="lineno">4</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>似乎完美了，但是怎么感觉又回到了上面第一次用工厂方法时的场景？这确实不是一个好的解决方案，所以又提出了一个概念：<code>容器，又叫做IoC容器、DI容器。</code>  </p>
+
+<p>我们本来是通过setXXX方法注入各种类，代码很长，方法很多，虽然可以通过一个工厂方法包装，但是还不是那么爽，好吧，我们不用setXXX方法了，这样也就不用工厂方法二次包装了，那么我们还怎么实现依赖注入呢？<br>
+这里我们引入一个约定：在example类的构造函数里传入一个名为Di $di的参数，如下：  </p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="k">class</span> <span class="nc">example</span> <span class="p">{</span>
+<span class="lineno"> 3</span>     <span class="k">private</span> <span class="nv">$_di</span><span class="p">;</span>
+<span class="lineno"> 4</span>     <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nx">Di</span> <span class="o">&amp;</span><span class="nv">$di</span><span class="p">){</span>
+<span class="lineno"> 5</span>         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_di</span> <span class="o">=</span> <span class="nv">$di</span><span class="p">;</span>
+<span class="lineno"> 6</span>     <span class="p">}</span>
+<span class="lineno"> 7</span>     <span class="c1">//通过di容器获取db实例</span>
+<span class="lineno"> 8</span>     <span class="k">function</span> <span class="nf">getList</span><span class="p">(){</span>
+<span class="lineno"> 9</span>         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_di</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;......&quot;</span><span class="p">);</span><span class="c1">//这里具体sql语句就省略不写了</span>
+<span class="lineno">10</span>     <span class="p">}</span>
+<span class="lineno">11</span> <span class="p">}</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Di</span><span class="p">();</span>
+<span class="lineno">14</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">&quot;db&quot;</span><span class="p">,</span><span class="k">function</span><span class="p">(){</span>
+<span class="lineno">15</span>    <span class="k">return</span> <span class="k">new</span> <span class="nx">Db</span><span class="p">(</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span><span class="s2">&quot;root&quot;</span><span class="p">,</span><span class="s2">&quot;root&quot;</span><span class="p">,</span><span class="s2">&quot;test&quot;</span><span class="p">);</span> 
+<span class="lineno">16</span> <span class="p">});</span>
+<span class="lineno">17</span> <span class="nv">$example</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">example</span><span class="p">(</span><span class="nv">$di</span><span class="p">);</span>
+<span class="lineno">18</span> <span class="nv">$example</span><span class="o">-&gt;</span><span class="na">getList</span><span class="p">();</span>
+<span class="lineno">19</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>Di就是IoC容器，所谓容器就是存放我们可能会用到的各种类的实例，我们通过$di-&gt;set()设置一个名为db的实例，因为是通过回调函数的方式传入的，所以set的时候并不会立即实例化db类，而是当$di-&gt;get(&#39;db&#39;)的时候才会实例化，同样，在设计di类的时候还可以融入单例模式。<br>
+这样我们只要在全局范围内申明一个Di类，将所有需要注入的类放到容器里，然后将容器作为构造函数的参数传入到example，即可在example类里面从容器中获取实例。当然也不一定是构造函数，你也可以用一个 setDi(Di $di)的方法来传入Di容器，总之约定是你制定的，你自己清楚就行。  </p>
+
+<h1>二.依赖注入，控制反转(正式demo)：</h1>
+
+<p>用PHP实现简单的控制反转(IOC) 依赖注入(DI)，用JSON配置文件  </p>
+
+<p>1.编写 Hello 的 POJO，一个 Hello 接口，两个类实现这个接口的 sayHello() 方法。其中，中文版 CnHello 类，显示中文问候；英文 EnHello 类，显示英文问候。  </p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// Hello.php</span>
+<span class="lineno"> 3</span> <span class="sd">/**</span>
+<span class="lineno"> 4</span> <span class="sd"> * @author zoushuai</span>
+<span class="lineno"> 5</span> <span class="sd"> */</span>
+<span class="lineno"> 6</span> <span class="k">interface</span> <span class="nx">Hello</span> <span class="p">{</span>
+<span class="lineno"> 7</span>     <span class="k">public</span> <span class="k">function</span> <span class="nf">sayHello</span><span class="p">();</span>
+<span class="lineno"> 8</span> <span class="p">}</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="c1">//中文版</span>
+<span class="lineno">11</span> <span class="k">class</span> <span class="nc">EnHello</span> <span class="k">implements</span> <span class="nx">Hello</span><span class="p">{</span>
+<span class="lineno">12</span>     <span class="k">private</span>  <span class="nv">$msg</span><span class="p">;</span>
+<span class="lineno">13</span> 
+<span class="lineno">14</span>     <span class="k">function</span> <span class="nf">getMsg</span><span class="p">(){</span>
+<span class="lineno">15</span>         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msg</span><span class="p">;</span>
+<span class="lineno">16</span>     <span class="p">}</span>
+<span class="lineno">17</span> 
+<span class="lineno">18</span>     <span class="k">function</span> <span class="nf">setMsg</span><span class="p">(</span><span class="nv">$value</span><span class="p">){</span>
+<span class="lineno">19</span>         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msg</span><span class="o">=</span><span class="nv">$value</span><span class="p">;</span>
+<span class="lineno">20</span>     <span class="p">}</span>
+<span class="lineno">21</span>     
+<span class="lineno">22</span>     <span class="k">function</span> <span class="nf">sayHello</span><span class="p">(){</span>
+<span class="lineno">23</span>         <span class="k">echo</span> <span class="s2">&quot;English Version:&quot;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msg</span><span class="p">;</span>
+<span class="lineno">24</span>     <span class="p">}</span>
+<span class="lineno">25</span> <span class="p">}</span>
+<span class="lineno">26</span> 
+<span class="lineno">27</span> <span class="c1">//英文版</span>
+<span class="lineno">28</span> <span class="k">class</span> <span class="nc">CnHello</span> <span class="k">implements</span> <span class="nx">Hello</span><span class="p">{</span>
+<span class="lineno">29</span>     <span class="k">private</span>  <span class="nv">$msg</span><span class="p">;</span>
+<span class="lineno">30</span> 
+<span class="lineno">31</span>     <span class="k">function</span> <span class="nf">getMsg</span><span class="p">(){</span>
+<span class="lineno">32</span>         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msg</span><span class="p">;</span>
+<span class="lineno">33</span>     <span class="p">}</span>
+<span class="lineno">34</span> 
+<span class="lineno">35</span>     <span class="k">function</span> <span class="nf">setMsg</span><span class="p">(</span><span class="nv">$value</span><span class="p">){</span>
+<span class="lineno">36</span>         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msg</span><span class="o">=</span><span class="nv">$value</span><span class="p">;</span>
+<span class="lineno">37</span>     <span class="p">}</span>
+<span class="lineno">38</span> 
+<span class="lineno">39</span>     <span class="k">function</span> <span class="nf">sayHello</span><span class="p">(){</span>
+<span class="lineno">40</span>         <span class="k">echo</span> <span class="s2">&quot;中文版&quot;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msg</span><span class="p">;</span>
+<span class="lineno">41</span>     <span class="p">}</span>
+<span class="lineno">42</span> <span class="p">}</span>
+<span class="lineno">43</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>2.自己设计了一个配置文件，使用 JSON 格式，里面有注释，看看就明白了  </p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">//备注使用双反斜杆</span>
+<span class="lineno"> 3</span> <span class="p">[</span>
+<span class="lineno"> 4</span>     <span class="c1">//英文版配置</span>
+<span class="lineno"> 5</span>     <span class="p">{</span>
+<span class="lineno"> 6</span>         <span class="c1">//类ID，方便工厂查找</span>
+<span class="lineno"> 7</span>         <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;enHello&quot;</span><span class="p">,</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span>         <span class="c1">//类名</span>
+<span class="lineno">10</span>         <span class="s2">&quot;class_name&quot;</span><span class="o">:</span><span class="s2">&quot;EnHello&quot;</span><span class="p">,</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span>         <span class="c1">//类文件</span>
+<span class="lineno">13</span>         <span class="s2">&quot;class_file&quot;</span><span class="o">:</span><span class="s2">&quot;Hello.php&quot;</span><span class="p">,</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span>         <span class="c1">//属性设置</span>
+<span class="lineno">16</span>         <span class="s2">&quot;properties&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="lineno">17</span>             <span class="p">{</span>
+<span class="lineno">18</span>                 <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;msg&quot;</span><span class="p">,</span>
+<span class="lineno">19</span>                 <span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="s2">&quot;Hello World!&quot;</span>
+<span class="lineno">20</span>             <span class="p">}</span>
+<span class="lineno">21</span>         <span class="p">]</span>
+<span class="lineno">22</span>     <span class="p">},</span>
+<span class="lineno">23</span> 
+<span class="lineno">24</span>     <span class="c1">//中文版配置</span>
+<span class="lineno">25</span>     <span class="p">{</span>
+<span class="lineno">26</span>         <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;cnHello&quot;</span><span class="p">,</span>
+<span class="lineno">27</span>         <span class="s2">&quot;class_name&quot;</span><span class="o">:</span><span class="s2">&quot;CnHello&quot;</span><span class="p">,</span>
+<span class="lineno">28</span>         <span class="s2">&quot;class_file&quot;</span><span class="o">:</span><span class="s2">&quot;Hello.php&quot;</span><span class="p">,</span>
+<span class="lineno">29</span>         <span class="s2">&quot;properties&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="lineno">30</span>             <span class="p">{</span>
+<span class="lineno">31</span>                 <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;msg&quot;</span><span class="p">,</span>
+<span class="lineno">32</span>                 <span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="s2">&quot;世界你好！&quot;</span>
+<span class="lineno">33</span>             <span class="p">}</span>
+<span class="lineno">34</span>         <span class="p">]</span>
+<span class="lineno">35</span>     <span class="p">}</span>
+<span class="lineno">36</span> <span class="p">]</span>
+<span class="lineno">37</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>3.测试。为类工厂指定上述配置文件。我们可以看见，对配置文件里的不同ID，返回了不同的类实例。调用每个实例的方法，分别输出了中文问候和英文问候。<code>可见，我们只需要改变配置文件的内容，就可以返回不同的类实例，而不需修改程序源代码。这就实现了简单的 IOC 或者 DI。</code></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// test.php</span>
+<span class="lineno"> 3</span> <span class="k">include_once</span><span class="p">(</span><span class="s2">&quot;ClassFactory.php&quot;</span><span class="p">);</span>
+<span class="lineno"> 4</span> <span class="nv">$factory</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ClassFactory</span><span class="p">(</span><span class="s2">&quot;config.json&quot;</span><span class="p">);</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="nv">$hello</span><span class="o">=</span><span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">getBean</span><span class="p">(</span><span class="s2">&quot;enHello&quot;</span><span class="p">);</span>
+<span class="lineno"> 7</span> <span class="k">echo</span> <span class="nv">$hello</span><span class="o">-&gt;</span><span class="na">sayHello</span><span class="p">()</span> <span class="o">.</span><span class="s1">&#39;&lt;br&gt;&#39;</span><span class="p">;</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="nv">$hello</span><span class="o">=</span><span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">getBean</span><span class="p">(</span><span class="s2">&quot;cnHello&quot;</span><span class="p">);</span>
+<span class="lineno">10</span> <span class="k">echo</span> <span class="nv">$hello</span><span class="o">-&gt;</span><span class="na">sayHello</span><span class="p">();</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="c1">// 输出：</span>
+<span class="lineno">13</span> <span class="c1">// English Version:Hello World!</span>
+<span class="lineno">14</span> <span class="c1">// 中文版世界你好！</span>
+<span class="lineno">15</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>4.<code>类工厂闪亮登场</code>。实现了一些简单功能，能够解析指定的配置文件，并根据配置文件生成类，同时设置指定的属性值，注释很详细，我就不多解释了。代码如下：</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// ClassFactory.php</span>
+<span class="lineno"> 3</span> <span class="sd">/**</span>
+<span class="lineno"> 4</span> <span class="sd"> * @author zoushuai</span>
+<span class="lineno"> 5</span> <span class="sd"> */</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="k">class</span> <span class="nc">ClassFactory</span> <span class="p">{</span>
+<span class="lineno"> 8</span>     <span class="k">private</span> <span class="nv">$arr_conf</span><span class="p">;</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span>     <span class="k">function</span> <span class="nf">ClassFactory</span><span class="p">(</span><span class="nv">$config_file</span><span class="p">){</span>
+<span class="lineno">11</span>         <span class="c1">//读取配置文件内容</span>
+<span class="lineno">12</span>         <span class="nv">$handle</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="nv">$config_file</span><span class="p">,</span> <span class="nx">r</span><span class="p">);</span>
+<span class="lineno">13</span>         <span class="nv">$content</span> <span class="o">=</span> <span class="nb">fread</span><span class="p">(</span><span class="nv">$handle</span><span class="p">,</span> <span class="nb">filesize</span><span class="p">(</span><span class="nv">$config_file</span><span class="p">));</span>
+<span class="lineno">14</span>         <span class="nb">fclose</span><span class="p">(</span><span class="nv">$handle</span><span class="p">);</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span>         <span class="c1">//去除注释</span>
+<span class="lineno">17</span>         <span class="nv">$content</span><span class="o">=</span><span class="nb">preg_replace</span><span class="p">(</span><span class="s2">&quot;&lt;\/\/.*?\s&gt;&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="nv">$content</span><span class="p">);</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span>         <span class="c1">//转成数组</span>
+<span class="lineno">20</span>         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">arr_conf</span><span class="o">=</span><span class="nb">json_decode</span><span class="p">(</span><span class="nv">$content</span><span class="p">,</span><span class="k">true</span><span class="p">);</span>
+<span class="lineno">21</span>     <span class="p">}</span>
+<span class="lineno">22</span> 
+<span class="lineno">23</span>      <span class="k">function</span> <span class="nf">getBean</span><span class="p">(</span><span class="nv">$class_id</span><span class="p">){</span>
+<span class="lineno">24</span>         <span class="c1">//查找匹配 $class_id 的类</span>
+<span class="lineno">25</span>         <span class="k">while</span><span class="p">(</span><span class="k">true</span><span class="p">){</span>
+<span class="lineno">26</span>             <span class="c1">//挨个测试</span>
+<span class="lineno">27</span>             <span class="nv">$conf</span><span class="o">=</span><span class="nb">each</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">arr_conf</span><span class="p">);</span>
+<span class="lineno">28</span> 
+<span class="lineno">29</span>             <span class="c1">//找不到，返回 null</span>
+<span class="lineno">30</span>             <span class="k">if</span><span class="p">(</span><span class="nv">$conf</span><span class="o">==</span><span class="k">false</span><span class="p">)</span> <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+<span class="lineno">31</span> 
+<span class="lineno">32</span>             <span class="k">if</span><span class="p">(</span><span class="nb">strcmp</span><span class="p">(</span><span class="nv">$class_id</span><span class="p">,</span><span class="nv">$conf</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">][</span><span class="s2">&quot;id&quot;</span><span class="p">])</span><span class="o">===</span><span class="mi">0</span><span class="p">){</span>
+<span class="lineno">33</span> 
+<span class="lineno">34</span>                 <span class="c1">//如果匹配则装入类文件</span>
+<span class="lineno">35</span>                 <span class="k">include_once</span><span class="p">(</span><span class="nv">$conf</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">][</span><span class="s2">&quot;class_file&quot;</span><span class="p">]);</span>
+<span class="lineno">36</span> 
+<span class="lineno">37</span>                 <span class="c1">//生成类的实例</span>
+<span class="lineno">38</span>                 <span class="c1">//print_r($conf[&quot;value&quot;][&quot;class_name&quot;]);</span>
+<span class="lineno">39</span>                 <span class="nv">$obj</span><span class="o">=</span><span class="k">new</span> <span class="nv">$conf</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">][</span><span class="s2">&quot;class_name&quot;</span><span class="p">]();</span>
+<span class="lineno">40</span> 
+<span class="lineno">41</span>                 <span class="c1">//查找被设置的属性</span>
+<span class="lineno">42</span>                 <span class="nv">$arr_prop</span><span class="o">=</span><span class="nv">$conf</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">][</span><span class="s2">&quot;properties&quot;</span><span class="p">];</span>
+<span class="lineno">43</span>                 <span class="k">while</span><span class="p">(</span><span class="nv">$prop</span><span class="o">=</span><span class="nb">each</span><span class="p">(</span><span class="nv">$arr_prop</span><span class="p">)){</span>
+<span class="lineno">44</span>                     <span class="c1">//生成属性的设置方法 setXXX ,第一个字母大写</span>
+<span class="lineno">45</span>                     <span class="nv">$set_method</span><span class="o">=</span><span class="s2">&quot;set&quot;</span><span class="o">.</span> <span class="nb">ucwords</span><span class="p">(</span><span class="nv">$prop</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]);</span>
+<span class="lineno">46</span> 
+<span class="lineno">47</span>                     <span class="c1">//调用设置方法，并设置预设值</span>
+<span class="lineno">48</span>                     <span class="nv">$obj</span><span class="o">-&gt;</span><span class="nv">$set_method</span><span class="p">(</span><span class="nv">$prop</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">][</span><span class="s2">&quot;value&quot;</span><span class="p">]);</span>
+<span class="lineno">49</span>                 <span class="p">}</span>
+<span class="lineno">50</span> 
+<span class="lineno">51</span>                 <span class="c1">//找到第一个，返回实例</span>
+<span class="lineno">52</span>                 <span class="k">return</span> <span class="nv">$obj</span><span class="p">;</span>
+<span class="lineno">53</span>             <span class="p">}</span>
+<span class="lineno">54</span>         <span class="p">}</span>
+<span class="lineno">55</span>     <span class="p">}</span>
+<span class="lineno">56</span> <span class="p">}</span>
+<span class="lineno">57</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>最后说一下，PHP是动态语言，利用一些语言特性，实现起来很简单，也没用到反射之类的概念。要是用 Java 实现可能要复杂点  </p>
+
+<ul>
+<li><a href="http://www.yuansir-web.com/2014/03/20/%E7%90%86%E8%A7%A3php-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5laravel-ioc%E5%AE%B9%E5%99%A8/">php依赖注入</a></li>
+<li><a href="http://www.thinkphp.cn/topic/12180.html">话说 依赖注入(DI) or 控制反转(IoC)</a></li>
+<li><a href="http://www.blogjava.net/myqiao/archive/2009/05/01/268454.html">用PHP实现简单的控制反转(IOC) 依赖注入(DI)，用JSON配置文件</a></li>
+</ul>
+
+    <nav class="article-previous fn-clear">
+        
+        <a class="prev" href="/linux/2014/09/17/shell.html" rel="bookmark">&laquo;&nbsp;Linux shell</a>
+        
+        
+        <a class="next" href="/mysql/2014/09/18/gaoxiao-sql.html" rel="bookmark">编写高效的SQL&nbsp;&raquo;</a>
+        
+    </nav>
+    <div class="comment">
+        
+        <div id="disqus_thread"></div>
+        
+    </div>
+</div>
+
+                </div>
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="https://avatars0.githubusercontent.com/u/5516045?v=3&s=460" />
+                            </div>
+                            <div class="det-text">
+                                <p>我是「邹帅」，目前从事php开发！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="/standard/2014/10/28/Web_Service-Rest_Service.html" title="Web Service与Rest Service" rel="bookmark">Web Service与Rest Service</a></li>
+                            
+                                <li><a href="/agreement/2014/10/28/rpc.html" title="rpc" rel="bookmark">rpc</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="多进程/线程的SAPI生命周期" rel="bookmark">多进程/线程的SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="单进程SAPI生命周期" rel="bookmark">单进程SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86.html" title="深入理解php原理" rel="bookmark">深入理解php原理</a></li>
+                            
+                                <li><a href="/php/2014/10/24/php_soap.html" title="php使用soap调用WebService" rel="bookmark">php使用soap调用WebService</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                                    
+                                    <li><a href="http://zous.me" title="jz-code" target="_blank">jz-code</a></li>
+                                    
+                                    <li><a href="http://jekyllrb.com" title="Jekyll" target="_blank">Jekyll</a></li>
+                                    
+                                    <li><a href="http://zous.me/themes.html" title="Jekyll Theme" target="_blank">Jekyll Theme</a></li>
+                                    
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="footer">
+                <p>Copyright 2013. All rights reserved. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, Design by <a href="http://zous.me" target="_blank">zous.me</a>.</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+            
+            <script type="text/javascript">
+                //disqus
+                var disqus_shortname = 'codemadman';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] ||
+                        document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            
+        
+    </body>
+</html>

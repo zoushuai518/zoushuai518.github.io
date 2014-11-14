@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>php获取客户端真实IP - Jekyll</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="邹帅" />
+        <meta name="description" content="Just another Jekyll theme design and code by zous.me." />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/assets/css/syntax.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
+        
+    </head>
+    <body>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                首页
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                分类目录
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/archives.html">
+                                文章归档
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                友情链接
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://weibo.com/luoyoo/home" target="_blank"><i class="icon-weibo"></i></a>
+                    
+                    <a href="https://github.com/zoushuai518" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                    <a href="https://twitter.com/zoushuai518" target="_blank"><i class="icon-twitter"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">php获取客户端真实IP</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">08 Oct 2014</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#php-ref" >php</a></span>
+    </div>
+    <h3>一.介绍</h3>
+
+<p>REMOTE<em>ADDR 是你的客户端跟你的服务器“握手”时候的IP。如果使用了“匿名代理”，REMOTE</em>ADDR将显示代理服务器的IP。<br>
+HTTP<em>CLIENT</em>IP 是代理服务器发送的HTTP头[是由UserAgent向HTTP头写入的]。如果是“超级匿名代理”，则返回none值。同样，REMOTE_ADDR也会被替换为这个代理服务器的IP。  </p>
+
+<p>HTTP<em>CLIENT</em>IP：可通过http头伪造<br>
+HTTP<em>X</em>FORWARDED<em>FOR：可通过http头伪造<br>
+REMOTE</em>ADDR：可能是用户真实IP也可能是代理IP  </p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">];</span> <span class="c1">//访问端（有可能是真实用户，有可能是代理的）IP  </span>
+<span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_CLIENT_IP&#39;</span><span class="p">];</span>   <span class="c1">//代理端的（有可能存在，可伪造）  </span>
+<span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">];</span> <span class="c1">//用户是在哪个IP使用的代理（有可能存在，也可以伪造）  </span>
+
+<span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p><span class="impor">顺便说下$_SERVER和getenv的区别，getenv不支持IIS的isapi方式运行的php</span></p>
+
+<h3>二.详细说明</h3>
+
+<ul>
+<li><p>没有使用代理服务器的情况
+REMOTE<em>ADDR = 您的 IP<br>
+HTTP</em>VIA = 没数值或不显示<br>
+HTTP<em>X</em>FORWARDED_FOR = 没数值或不显示  </p></li>
+<li><p>用透明代理服务器的情况：Transparent Proxies
+REMOTE<em>ADDR = 最后一个代理服务器 IP<br>
+HTTP</em>VIA = 代理服务器 IP<br>
+HTTP<em>X</em>FORWARDED_FOR = 您的真实 IP ，经过多个代理服务器时，这个值类似如下：203.98.182.163, 203.98.182.163, 203.129.72.215。<br>
+这类代理服务器还是将您的信息转发给您的访问对象，无法达到隐藏真实身份的目的。  </p></li>
+<li><p>使用普通匿名代理服务器的情况：Anonymous Proxies
+REMOTE<em>ADDR = 最后一个代理服务器 IP<br>
+HTTP</em>VIA = 代理服务器 IP<br>
+HTTP<em>X</em>FORWARDED_FOR = 代理服务器 IP ，经过多个代理服务器时，这个值类似如下：203.98.182.163, 203.98.182.163, 203.129.72.215。<br>
+隐藏了您的真实IP，但是向访问对象透露了您是使用代理服务器访问他们的。  </p></li>
+<li><p>使用欺骗性代理服务器的情况：Distorting Proxies
+REMOTE<em>ADDR = 代理服务器 IP<br>
+HTTP</em>VIA = 代理服务器 IP<br>
+HTTP<em>X</em>FORWARDED_FOR = 随机的 IP ，经过多个代理服务器时，这个值类似如下：203.98.182.163, 203.98.182.163, 203.129.72.215。<br>
+告诉了访问对象您使用了代理服务器，但编造了一个虚假的随机IP代替您的真实IP欺骗它。  </p></li>
+<li><p>使用高匿名代理服务器的情况：High Anonymity Proxies (Elite proxies)
+REMOTE<em>ADDR = 代理服务器 IP<br>
+HTTP</em>VIA = 没数值或不显示<br>
+HTTP<em>X</em>FORWARDED_FOR = 没数值或不显示 ，经过多个代理服务器时，这个值类似如下：203.98.182.163, 203.98.182.163, 203.129.72.215。<br>
+完全用代理服务器的信息替代了您的所有信息，就象您就是完全使用那台代理服务器直接访问对象。  </p></li>
+</ul>
+
+<h3>三.获取客户端真实函数</h3>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * 获得用户的真实IP地址</span>
+<span class="sd"> *</span>
+<span class="sd"> * @access  public</span>
+<span class="sd"> * @return  string</span>
+<span class="sd"> */</span>
+<span class="k">function</span> <span class="nf">real_ip</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="nv">$realip</span> <span class="o">=</span> <span class="k">NULL</span><span class="p">;</span>
+ 
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$realip</span> <span class="o">!==</span> <span class="k">NULL</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$realip</span><span class="p">;</span>
+    <span class="p">}</span>
+ 
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">]))</span>
+        <span class="p">{</span>
+            <span class="nv">$arr</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">]);</span>
+ 
+            <span class="cm">/* 取X-Forwarded-For中第一个非unknown的有效IP字符串 */</span>
+            <span class="k">foreach</span> <span class="p">(</span><span class="nv">$arr</span> <span class="k">AS</span> <span class="nv">$ip</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="nv">$ip</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$ip</span><span class="p">);</span>
+ 
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$ip</span> <span class="o">!=</span> <span class="s1">&#39;unknown&#39;</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="nv">$realip</span> <span class="o">=</span> <span class="nv">$ip</span><span class="p">;</span>
+ 
+                    <span class="k">break</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">elseif</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_CLIENT_IP&#39;</span><span class="p">]))</span>
+        <span class="p">{</span>
+            <span class="nv">$realip</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_CLIENT_IP&#39;</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">]))</span>
+            <span class="p">{</span>
+                <span class="nv">$realip</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">];</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="nv">$realip</span> <span class="o">=</span> <span class="s1">&#39;0.0.0.0&#39;</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">getenv</span><span class="p">(</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="nv">$realip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">elseif</span> <span class="p">(</span><span class="nb">getenv</span><span class="p">(</span><span class="s1">&#39;HTTP_CLIENT_IP&#39;</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="nv">$realip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="s1">&#39;HTTP_CLIENT_IP&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="nv">$realip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+ 
+    <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/[\d\.]{7,15}/&quot;</span><span class="p">,</span> <span class="nv">$realip</span><span class="p">,</span> <span class="nv">$onlineip</span><span class="p">);</span>
+    <span class="nv">$realip</span> <span class="o">=</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$onlineip</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$onlineip</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">:</span> <span class="s1">&#39;0.0.0.0&#39;</span><span class="p">;</span>
+ 
+    <span class="k">return</span> <span class="nv">$realip</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// 获取客户端真实IP function getIP()</span>
+<span class="k">function</span> <span class="nf">getIP</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">global</span> <span class="nv">$ip</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">getenv</span><span class="p">(</span><span class="s2">&quot;HTTP_CLIENT_IP&quot;</span><span class="p">))</span>
+        <span class="nv">$ip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="s2">&quot;HTTP_CLIENT_IP&quot;</span><span class="p">);</span>
+    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nb">getenv</span><span class="p">(</span><span class="s2">&quot;HTTP_X_FORWARDED_FOR&quot;</span><span class="p">))</span>
+        <span class="nv">$ip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="s2">&quot;HTTP_X_FORWARDED_FOR&quot;</span><span class="p">);</span>
+    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nb">getenv</span><span class="p">(</span><span class="s2">&quot;REMOTE_ADDR&quot;</span><span class="p">))</span>
+        <span class="nv">$ip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="s2">&quot;REMOTE_ADDR&quot;</span><span class="p">);</span>
+    <span class="k">else</span> <span class="nv">$ip</span> <span class="o">=</span> <span class="s2">&quot;Unknow&quot;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nv">$ip</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<h3>四.客户端伪造,代理ip测试</h3>
+
+<ul>
+<li>服务端获取IP:</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="nv">$s_onlineip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="nx">‘HTTP_CLIENT_IP’</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">“HTTP_CLIENT_IP</span><span class="o">:</span><span class="nx">”</span><span class="o">.</span><span class="nv">$s_onlineip</span><span class="o">.</span><span class="nx">”</span>
+<span class="nx">n”</span><span class="p">;</span>
+<span class="nv">$s_onlineip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="nx">‘HTTP_X_FORWARDED_FOR’</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">“HTTP_X_FORWARDED_FOR</span><span class="o">:</span><span class="nx">”</span><span class="o">.</span><span class="nv">$s_onlineip</span><span class="o">.</span><span class="nx">”</span>
+<span class="nx">n”</span><span class="p">;</span>
+<span class="nv">$s_onlineip</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="nx">‘REMOTE_ADDR’</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">“REMOTE_ADDR</span><span class="o">:</span><span class="nx">”</span><span class="o">.</span><span class="nv">$s_onlineip</span><span class="o">.</span><span class="nx">”</span>
+<span class="nx">n”</span><span class="p">;</span>
+<span class="nv">$s_onlineip</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">];</span>
+<span class="k">echo</span> <span class="nx">“</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">]</span><span class="o">:</span><span class="nx">”</span><span class="o">.</span><span class="nv">$s_onlineip</span><span class="o">.</span><span class="nx">”</span>
+<span class="nx">n”</span><span class="p">;</span>
+
+<span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<ul>
+<li>伪造IP测试:</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="c1">//客户端代码</span>
+<span class="nv">$url</span> <span class="o">=</span> <span class="s1">&#39;http://www.taoyiz.com/util/ip&#39;</span><span class="p">;</span>
+<span class="nv">$data_string</span> <span class="o">=</span> <span class="s1">&#39;test=test&#39;</span><span class="p">;</span>
+<span class="nv">$URL_Info</span>    <span class="o">=</span>  <span class="nb">parse_url</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$URL_Info</span><span class="p">[</span><span class="s2">&quot;port&quot;</span><span class="p">]))</span>
+<span class="nv">$URL_Info</span><span class="p">[</span><span class="s2">&quot;port&quot;</span><span class="p">]</span><span class="o">=</span><span class="mi">80</span><span class="p">;</span>
+<span class="nv">$request</span><span class="o">.=</span><span class="s1">&#39;POST &#39;</span><span class="o">.</span><span class="nv">$URL_Info</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">]</span><span class="o">.</span><span class="s1">&#39; HTTP/1.1n&#39;</span><span class="p">;</span>
+<span class="nv">$request</span><span class="o">.=</span><span class="s1">&#39;Host: &#39;</span><span class="o">.</span><span class="nv">$URL_Info</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span><span class="o">.</span><span class="s1">&#39;n&#39;</span><span class="p">;</span>
+<span class="nv">$request</span><span class="o">.=</span><span class="s1">&#39;Referer: “.$URL_Info[&quot;host&quot;].&#39;</span><span class="nx">n</span><span class="s1">&#39;;</span>
+<span class="s1">$request.=&#39;</span><span class="nx">Content</span><span class="o">-</span><span class="nx">type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">x</span><span class="o">-</span><span class="nx">www</span><span class="o">-</span><span class="nx">form</span><span class="o">-</span><span class="nx">urlencodedn</span><span class="s1">&#39;;</span>
+<span class="s1">$request.=&#39;</span><span class="nx">X</span><span class="o">-</span><span class="nx">Forwarded</span><span class="o">-</span><span class="k">For</span><span class="o">:</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.4</span><span class="nx">n</span><span class="s1">&#39;;//HTTP_X_FORWARDED_FOR的值</span>
+<span class="s1">$request.=&#39;</span><span class="nx">client_ip</span><span class="o">:</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.5</span><span class="nx">n</span><span class="s1">&#39;;//HTTP_CLIENT_IP的值</span>
+<span class="s1">$request.=&#39;</span><span class="nx">Content</span><span class="o">-</span><span class="nx">length</span><span class="o">:</span> <span class="nx">“</span><span class="o">.</span><span class="nb">strlen</span><span class="p">(</span><span class="nv">$data_string</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;n&#39;</span><span class="p">;</span>
+<span class="nv">$request</span><span class="o">.=</span><span class="s1">&#39;Connection: closen&#39;</span><span class="p">;</span>
+<span class="nv">$request</span><span class="o">.=</span><span class="s1">&#39;n&#39;</span><span class="p">;</span>
+<span class="nv">$request</span><span class="o">.=</span><span class="nv">$data_string</span><span class="o">.</span><span class="s1">&#39;n&#39;</span><span class="p">;</span>
+
+<span class="nv">$fp</span> <span class="o">=</span> <span class="nb">fsockopen</span><span class="p">(</span><span class="nv">$URL_Info</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="nv">$URL_Info</span><span class="p">[</span><span class="s2">&quot;port&quot;</span><span class="p">]);</span>
+<span class="nb">fputs</span><span class="p">(</span><span class="nv">$fp</span> <span class="nv">$request</span><span class="p">);</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="nb">feof</span><span class="p">(</span><span class="nv">$fp</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$result</span> <span class="o">.=</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$fp</span> <span class="mi">1024</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nb">fclose</span><span class="p">(</span><span class="nv">$fp</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span>
+
+<span class="c1">//输出：</span>
+<span class="c1">//HTTP_CLIENT_IP:192.168.1.5</span>
+<span class="c1">//HTTP_X_FORWARDED_FOR:192.168.1.4</span>
+<span class="c1">//REMOTE_ADDR:127.0.0.1</span>
+<span class="c1">//$_SERVER[&#39;REMOTE_ADDR&#39;]:127.0.0.1</span>
+
+<span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<ul>
+<li>代理IP测试:</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="nv">$cUrl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$cUrl</span> <span class="nx">CURLOPT_URL</span> <span class="nv">$url</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$cUrl</span> <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$cUrl</span> <span class="nx">CURLOPT_HEADER</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$cUrl</span> <span class="nx">CURLOPT_USERAGENT</span> <span class="s1">&#39;Mozilla/99.99&#39;</span><span class="p">);</span>
+<span class="c1">//curl_setopt($cUrl CURLOPT_TIMEOUT 10);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$cUrl</span> <span class="nx">CURLOPT_PROXY</span> <span class="s1">&#39;125.77.194.103:80&#39;</span><span class="p">);</span>
+<span class="nv">$c</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$cUrl</span><span class="p">);</span>
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$cUrl</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$c</span><span class="p">;</span>
+
+<span class="c1">//输出：</span>
+<span class="c1">//HTTP_CLIENT_IP:</span>
+<span class="c1">//HTTP_X_FORWARDED_FOR:</span>
+<span class="c1">//REMOTE_ADDR:125.77.194.103</span>
+<span class="c1">//$_SERVER[&#39;REMOTE_ADDR&#39;]:125.77.194.103</span>
+
+<span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+    <nav class="article-previous fn-clear">
+        
+        <a class="prev" href="/php/2014/10/08/php-%E6%A1%86%E6%9E%B6.html" rel="bookmark">&laquo;&nbsp;php 框架</a>
+        
+        
+        <a class="next" href="/agreement/2014/10/09/http2.html" rel="bookmark">http2协议&nbsp;&raquo;</a>
+        
+    </nav>
+    <div class="comment">
+        
+        <div id="disqus_thread"></div>
+        
+    </div>
+</div>
+
+                </div>
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="https://avatars0.githubusercontent.com/u/5516045?v=3&s=460" />
+                            </div>
+                            <div class="det-text">
+                                <p>我是「邹帅」，目前从事php开发！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="/standard/2014/10/28/Web_Service-Rest_Service.html" title="Web Service与Rest Service" rel="bookmark">Web Service与Rest Service</a></li>
+                            
+                                <li><a href="/agreement/2014/10/28/rpc.html" title="rpc" rel="bookmark">rpc</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="多进程/线程的SAPI生命周期" rel="bookmark">多进程/线程的SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="单进程SAPI生命周期" rel="bookmark">单进程SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86.html" title="深入理解php原理" rel="bookmark">深入理解php原理</a></li>
+                            
+                                <li><a href="/php/2014/10/24/php_soap.html" title="php使用soap调用WebService" rel="bookmark">php使用soap调用WebService</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                                    
+                                    <li><a href="http://zous.me" title="jz-code" target="_blank">jz-code</a></li>
+                                    
+                                    <li><a href="http://jekyllrb.com" title="Jekyll" target="_blank">Jekyll</a></li>
+                                    
+                                    <li><a href="http://zous.me/themes.html" title="Jekyll Theme" target="_blank">Jekyll Theme</a></li>
+                                    
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="footer">
+                <p>Copyright 2013. All rights reserved. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, Design by <a href="http://zous.me" target="_blank">zous.me</a>.</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+            
+            <script type="text/javascript">
+                //disqus
+                var disqus_shortname = 'codemadman';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] ||
+                        document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            
+        
+    </body>
+</html>

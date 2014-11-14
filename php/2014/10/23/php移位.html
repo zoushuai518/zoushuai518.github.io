@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>php位运算符 & 移位 - Jekyll</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="邹帅" />
+        <meta name="description" content="Just another Jekyll theme design and code by zous.me." />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/assets/css/syntax.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
+        
+    </head>
+    <body>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                首页
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                分类目录
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/archives.html">
+                                文章归档
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                友情链接
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://weibo.com/luoyoo/home" target="_blank"><i class="icon-weibo"></i></a>
+                    
+                    <a href="https://github.com/zoushuai518" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                    <a href="https://twitter.com/zoushuai518" target="_blank"><i class="icon-twitter"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">php位运算符 & 移位</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">23 Oct 2014</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#php-ref" >php</a></span>
+    </div>
+    <h2>一.位运算</h2>
+
+<h3>1.原理</h3>
+
+<p>在Linux文件系统中，一个用户对文件或目录所拥有的权限分为三种：”可读”、”可写”和”可执行”，分别用 1 、2 和 4 来表示，它们之间可以任意组合：有“可读”、“可写”权限就用 3 来表示（1 + 2 = 3）；有”可读“、”可执行“权限就用5来表示（1 + 4 = 5），三种权限全部拥有就用 7 表示（1 + 2 + 4 = 7）。</p>
+
+<p>实际上，这种运算是基于二进制的。</p>
+
+<p>假设可执行、可写、可读三种权限分别对应三个状态位，如果用户具有某种权限，那么将对应的状态位标识为“1”，反之则标识为“0”。如图：</p>
+
+<p><img src="/assets/postImage/php/weiyunsuan.png" alt="代码在内存中的分块" title="linux文件权限"></p>
+
+<p>如果只有“可读”权限，那么就对应二进制数：001，将这个二进制数转成十进制就得到1；如果同时具有“可读”、“可写”权限，二进制数则对应为： 011，转十进制得：3；同理，三种权限都有的，十进制就等于7。</p>
+
+<h3>2.实现</h3>
+
+<p>在PHP中，通过位运算符很容易就可以做到类似的权限控制：</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">//定义权限</span>
+<span class="lineno"> 3</span> <span class="nb">define</span><span class="p">(</span><span class="s1">&#39;READ&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">);</span>    <span class="c1">// 把可读权限放在最右边</span>
+<span class="lineno"> 4</span> <span class="nb">define</span><span class="p">(</span><span class="s1">&#39;WRITE&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">1</span><span class="p">);</span>    <span class="c1">// 可读权限向左移一位</span>
+<span class="lineno"> 5</span> <span class="nb">define</span><span class="p">(</span><span class="s1">&#39;EXCUTE&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">2</span><span class="p">);</span>   <span class="c1">// 可执行权限向左移两位</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="c1">//赋予权限</span>
+<span class="lineno"> 8</span> <span class="nv">$user_permission</span> <span class="o">=</span> <span class="nx">READ</span> <span class="o">|</span> <span class="nx">WRITE</span><span class="p">;</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="c1">//验证权限</span>
+<span class="lineno">11</span> <span class="k">echo</span> <span class="s1">&#39;可读：&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nv">$user_permission</span> <span class="o">&amp;</span> <span class="nx">READ</span><span class="p">)</span> <span class="o">?</span> <span class="s1">&#39;Yes&#39;</span> <span class="o">:</span> <span class="s1">&#39;No&#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">12</span> <span class="k">echo</span> <span class="s1">&#39;可写：&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nv">$user_permission</span> <span class="o">&amp;</span> <span class="nx">WRITE</span><span class="p">)</span> <span class="o">?</span> <span class="s1">&#39;Yes&#39;</span> <span class="o">:</span> <span class="s1">&#39;No&#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">13</span> <span class="k">echo</span> <span class="s1">&#39;可执行：&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nv">$user_permission</span> <span class="o">&amp;</span> <span class="nx">EXCUTE</span><span class="p">)</span> <span class="o">?</span> <span class="s1">&#39;Yes&#39;</span> <span class="o">:</span> <span class="s1">&#39;No&#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">14</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>PHP语言本身的错误控制 也是用位运算来做的，它甚至还利用了按位异或和按位非，使得错误控制更加精确。</p>
+
+<h3>3.优点和缺陷</h3>
+
+<p>位运算的运算对象是二进制的位，速度快，效率高，而且节省存储空间，位运算做权限控制又相当地灵活。但是，位运算也有很大的局限，因为在32位计算机上，位移不能超过32次，这就要求权限数量不超过32种。</p>
+
+<h2>二.移位操作</h2>
+
+<p>PHP主要是设计于文本操作的，其实PHP不适合做数学运算，效率也不高。(二进制移位操作)</p>
+
+<p>因为PHP只有32位有符号整数，没有64位长整型，也没有无符号整数。其整型的范围是-2^31-1～2^31，超出这个范围的，将被解释为浮点数。因此，0xFFFFFFFF，直接打印，显示的是4294967295，及2^32</p>
+
+<p>而PHP不支持浮点数的二进制位移操作，如果要进行，会先转换为整型，最后的结果，也将按照整型来返回</p>
+
+<p>同时PHP的向右位移操作，高位会填充符号位，而且PHP没有提供类似Java的&gt;&gt;&gt;来强制填充0</p>
+
+<p>如何解决这个问题呢，我考虑过使用BCMath数学函数库，直接处理字符串表示的整数，或者是GMP/BigInt扩展等。不过我想既然使用字符串，那么我可以字符串地彻底一些，把数字转换成32个二进制的字符串，再手工填充0，最后转换回来。</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="sd">/**  </span>
+<span class="lineno"> 3</span> <span class="sd"> * 无符号32位右移  </span>
+<span class="lineno"> 4</span> <span class="sd"> * @param mixed $x 要进行操作的数字，如果是字符串，必须是十进制形式  </span>
+<span class="lineno"> 5</span> <span class="sd"> * @param string $bits 右移位数  </span>
+<span class="lineno"> 6</span> <span class="sd"> * @return mixed 结果，如果超出整型范围将返回浮点数  </span>
+<span class="lineno"> 7</span> <span class="sd"> */</span>  
+<span class="lineno"> 8</span> <span class="k">function</span> <span class="nf">shr32</span><span class="p">(</span><span class="nv">$x</span><span class="p">,</span> <span class="nv">$bits</span><span class="p">){</span>   
+<span class="lineno"> 9</span>     <span class="c1">// 位移量超出范围的两种情况   </span>
+<span class="lineno">10</span>     <span class="k">if</span><span class="p">(</span><span class="nv">$bits</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">){</span>   
+<span class="lineno">11</span>         <span class="k">return</span> <span class="nv">$x</span><span class="p">;</span>   
+<span class="lineno">12</span>     <span class="p">}</span>   
+<span class="lineno">13</span>     <span class="k">if</span><span class="p">(</span><span class="nv">$bits</span> <span class="o">&gt;=</span> <span class="mi">32</span><span class="p">){</span>   
+<span class="lineno">14</span>         <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>   
+<span class="lineno">15</span>     <span class="p">}</span>   
+<span class="lineno">16</span>     <span class="c1">//转换成代表二进制数字的字符串   </span>
+<span class="lineno">17</span>     <span class="nv">$bin</span> <span class="o">=</span> <span class="nb">decbin</span><span class="p">(</span><span class="nv">$x</span><span class="p">);</span>   
+<span class="lineno">18</span>     <span class="nv">$l</span> <span class="o">=</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$bin</span><span class="p">);</span>   
+<span class="lineno">19</span>     <span class="c1">//字符串长度超出则截取底32位，长度不够，则填充高位为0到32位   </span>
+<span class="lineno">20</span>     <span class="k">if</span><span class="p">(</span><span class="nv">$l</span> <span class="o">&gt;</span> <span class="mi">32</span><span class="p">){</span>   
+<span class="lineno">21</span>         <span class="nv">$bin</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$l</span> <span class="o">-</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">);</span>   
+<span class="lineno">22</span>     <span class="p">}</span><span class="k">elseif</span><span class="p">(</span><span class="nv">$l</span> <span class="o">&lt;</span> <span class="mi">32</span><span class="p">){</span>   
+<span class="lineno">23</span>         <span class="nv">$bin</span> <span class="o">=</span> <span class="nb">str_pad</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="nx">STR_PAD_LEFT</span><span class="p">);</span>   
+<span class="lineno">24</span>     <span class="p">}</span>   
+<span class="lineno">25</span>     <span class="c1">//取出要移动的位数，并在左边填充0   </span>
+<span class="lineno">26</span>     <span class="k">return</span> <span class="nb">bindec</span><span class="p">(</span><span class="nb">str_pad</span><span class="p">(</span><span class="nb">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">32</span> <span class="o">-</span> <span class="nv">$bits</span><span class="p">),</span> <span class="mi">32</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="nx">STR_PAD_LEFT</span><span class="p">));</span>   
+<span class="lineno">27</span> <span class="p">}</span>   
+<span class="lineno">28</span> <span class="sd">/**  </span>
+<span class="lineno">29</span> <span class="sd"> * 无符号32位左移  </span>
+<span class="lineno">30</span> <span class="sd"> * @param mixed $x 要进行操作的数字，如果是字符串，必须是十进制形式  </span>
+<span class="lineno">31</span> <span class="sd"> * @param string $bits 左移位数  </span>
+<span class="lineno">32</span> <span class="sd"> * @return mixed 结果，如果超出整型范围将返回浮点数  </span>
+<span class="lineno">33</span> <span class="sd"> */</span>  
+<span class="lineno">34</span> <span class="k">function</span> <span class="nf">shl32</span> <span class="p">(</span><span class="nv">$x</span><span class="p">,</span> <span class="nv">$bits</span><span class="p">){</span>   
+<span class="lineno">35</span>     <span class="c1">// 位移量超出范围的两种情况   </span>
+<span class="lineno">36</span>     <span class="k">if</span><span class="p">(</span><span class="nv">$bits</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">){</span>   
+<span class="lineno">37</span>         <span class="k">return</span> <span class="nv">$x</span><span class="p">;</span>   
+<span class="lineno">38</span>     <span class="p">}</span>   
+<span class="lineno">39</span>     <span class="k">if</span><span class="p">(</span><span class="nv">$bits</span> <span class="o">&gt;=</span> <span class="mi">32</span><span class="p">){</span>   
+<span class="lineno">40</span>         <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>   
+<span class="lineno">41</span>     <span class="p">}</span>   
+<span class="lineno">42</span>     <span class="c1">//转换成代表二进制数字的字符串   </span>
+<span class="lineno">43</span>     <span class="nv">$bin</span> <span class="o">=</span> <span class="nb">decbin</span><span class="p">(</span><span class="nv">$x</span><span class="p">);</span>   
+<span class="lineno">44</span>     <span class="nv">$l</span> <span class="o">=</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$bin</span><span class="p">);</span>   
+<span class="lineno">45</span>     <span class="c1">//字符串长度超出则截取底32位，长度不够，则填充高位为0到32位   </span>
+<span class="lineno">46</span>     <span class="k">if</span><span class="p">(</span><span class="nv">$l</span> <span class="o">&gt;</span> <span class="mi">32</span><span class="p">){</span>   
+<span class="lineno">47</span>         <span class="nv">$bin</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$l</span> <span class="o">-</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">);</span>   
+<span class="lineno">48</span>     <span class="p">}</span><span class="k">elseif</span><span class="p">(</span><span class="nv">$l</span> <span class="o">&lt;</span> <span class="mi">32</span><span class="p">){</span>   
+<span class="lineno">49</span>         <span class="nv">$bin</span> <span class="o">=</span> <span class="nb">str_pad</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="nx">STR_PAD_LEFT</span><span class="p">);</span>   
+<span class="lineno">50</span>     <span class="p">}</span>   
+<span class="lineno">51</span>     <span class="c1">//取出要移动的位数，并在右边填充0   </span>
+<span class="lineno">52</span>     <span class="k">return</span> <span class="nb">bindec</span><span class="p">(</span><span class="nb">str_pad</span><span class="p">(</span><span class="nb">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$bits</span><span class="p">),</span> <span class="mi">32</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="nx">STR_PAD_RIGHT</span><span class="p">));</span>   
+<span class="lineno">53</span> <span class="p">}</span>   
+<span class="lineno">54</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p><a href="http://cn2.php.net/language.operators.bitwise">ext</a></p>
+
+    <nav class="article-previous fn-clear">
+        
+        <a class="prev" href="/mysql/2014/10/23/mysql%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.html" rel="bookmark">&laquo;&nbsp;mysql开启远程连接</a>
+        
+        
+        <a class="next" href="/tool/2014/10/23/UML.html" rel="bookmark">UML&nbsp;&raquo;</a>
+        
+    </nav>
+    <div class="comment">
+        
+        <div id="disqus_thread"></div>
+        
+    </div>
+</div>
+
+                </div>
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="https://avatars0.githubusercontent.com/u/5516045?v=3&s=460" />
+                            </div>
+                            <div class="det-text">
+                                <p>我是「邹帅」，目前从事php开发！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="/standard/2014/10/28/Web_Service-Rest_Service.html" title="Web Service与Rest Service" rel="bookmark">Web Service与Rest Service</a></li>
+                            
+                                <li><a href="/agreement/2014/10/28/rpc.html" title="rpc" rel="bookmark">rpc</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="多进程/线程的SAPI生命周期" rel="bookmark">多进程/线程的SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="单进程SAPI生命周期" rel="bookmark">单进程SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86.html" title="深入理解php原理" rel="bookmark">深入理解php原理</a></li>
+                            
+                                <li><a href="/php/2014/10/24/php_soap.html" title="php使用soap调用WebService" rel="bookmark">php使用soap调用WebService</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                                    
+                                    <li><a href="http://zous.me" title="jz-code" target="_blank">jz-code</a></li>
+                                    
+                                    <li><a href="http://jekyllrb.com" title="Jekyll" target="_blank">Jekyll</a></li>
+                                    
+                                    <li><a href="http://zous.me/themes.html" title="Jekyll Theme" target="_blank">Jekyll Theme</a></li>
+                                    
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="footer">
+                <p>Copyright 2013. All rights reserved. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, Design by <a href="http://zous.me" target="_blank">zous.me</a>.</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+            
+            <script type="text/javascript">
+                //disqus
+                var disqus_shortname = 'codemadman';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] ||
+                        document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            
+        
+    </body>
+</html>

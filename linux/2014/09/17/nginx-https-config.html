@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>nginx https配置 - Jekyll</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="邹帅" />
+        <meta name="description" content="Just another Jekyll theme design and code by zous.me." />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/assets/css/syntax.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
+        
+    </head>
+    <body>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                首页
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                分类目录
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/archives.html">
+                                文章归档
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                友情链接
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://weibo.com/luoyoo/home" target="_blank"><i class="icon-weibo"></i></a>
+                    
+                    <a href="https://github.com/zoushuai518" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                    <a href="https://twitter.com/zoushuai518" target="_blank"><i class="icon-twitter"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">nginx https配置</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">17 Sep 2014</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#Linux-ref" >Linux</a></span>
+    </div>
+    <h1>nginx使用ssl模块配置HTTPS支持</h1>
+
+<h2>前期准备：</h2>
+
+<ul>
+<li><p>安装openssl库</p></li>
+<li><p>nginx要开启ssl模块，nginx编译时指定–with-http<em>ssl</em>module参数即可.
+<pre>
+以下是本人的 nginx编译安装参数；使用nginx -V查看：
+<code>
+--sbin-path=/usr/local/nginx/nginx --conf-path=/usr/local/nginx/nginx.conf --pid-path=/usr/local/nginx/nginx.pid --with-http<em>ssl</em>module --with-pcre=/home/weiyan/lnmp/pcre-8.34 --with-zlib=/home/weiyan/lnmp/zlib-1.2.8 --with-openssl=/home/weiyan/lnmp/openssl-1.0.1c
+</code></pre></p></li>
+</ul>
+
+<h2>生成证书和密钥：</h2>
+
+<ol>
+<li>新建一个目录用来存放证书和私钥<br>
+<code>
+mkdir -p /usr/local/nginx/ssl/
+</code></li>
+<li>进入目录<br>
+<code>
+cd /usr/local/nginx/ssl/
+</code></li>
+<li>创建服务器私钥，命令会让你输入一个口令<br>
+<code>
+sudo openssl genrsa -des3 -out server.key 1024
+</code></li>
+<li>创建签名请求的证书（CSR） [会提示输入省份、城市、域名信息等，重要的是，email一定要是你的域名后缀的。这样就有一个 csr 文件了，提交给 ssl 提供商的时候就是这个 csr 文件]<br>
+<code>
+sudo openssl req -new -key server.key -out server.csr
+</code></li>
+<li>在加载SSL支持的Nginx并使用上述私钥时除去必须的口令<br>
+<code>
+sudo cp server.key server.key.org
+sudo openssl rsa -in server.key.org -out server.key
+</code></li>
+<li>最后标记证书使用上述私钥和证书(CSR) [这里测试，我们自己签发证书，只是浏览器会提示不受信任的站点]<br>
+<code>
+sudo openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+</code></li>
+</ol>
+
+<h2>Nginx配置</h2>
+
+<ul>
+<li><p>修改Nginx配置文件，让其包含新标记的证书和私钥<br>
+<pre><code>
+server {</p>
+
+<p>listen 443;
+server_name  pay.b5m.com;</p>
+
+<h1>开启ssl</h1>
+
+<p>ssl on;</p>
+
+<h1>加载证书</h1>
+
+<p>ssl_certificate /usr/local/nginx/ssl/server.crt;</p>
+
+<h1>加载私钥</h1>
+
+<p>ssl<em>certificate</em>key /usr/local/nginx/ssl/server.key;</p>
+
+<p>set $web_root /var/www/html/zsdemosite/https;</p>
+
+<p>location / {
+    root   $web<em>root;
+    index  index.php;
+    #重定向规则
+    #try</em>files $uri $uri/ /index.php?$args;
+}</p>
+
+<p>error_page   500 502 503 504  /50x.html;
+location = /50x.html {
+    root   html;
+}</p>
+
+<h1>proxy the PHP scripts to Apache listening on 127.0.0.1:80</h1>
+
+<h1>反响代理</h1>
+
+<h1>location ~ .php$ {</h1>
+
+<h1>proxy_pass   http://127.0.0.1;</h1>
+
+<h1>}</h1>
+
+<h1>pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</h1>
+
+<h1>zs-config</h1>
+
+<p>location ~ .php$ {
+    root   $web<em>root;
+    fastcgi</em>pass   127.0.0.1:9000;
+    fastcgi<em>index  index.php;
+    #fastcgi</em>index  new.php;
+    fastcgi<em>param  SCRIPT</em>FILENAME $document<em>root$fastcgi</em>script<em>name;
+    include        fastcgi</em>params;
+}</p>
+
+<h1>deny access to .htaccess files, if Apache&#39;s document root</h1>
+
+<h1>concurs with nginx&#39;s one</h1>
+
+<h1>location ~ /.ht {</h1>
+
+<h1>deny  all;</h1>
+
+<h1>}</h1>
+
+<p>}
+</code></pre></p></li>
+<li><p>实现80端口重定向到443,(即：http强制跳转到https)<br>
+<pre><code>
+server {
+listen 80;
+server_name  pay.b5m.com;</p>
+
+<h1>url重写</h1>
+
+<p>rewrite ^(.*) https://$server_name$1 permanent;</p>
+
+<h1>rewrite ^/(.*) https://pay.b5m.com/$1 permanent; #关键代码</h1>
+
+<p>}
+</code></pre></p></li>
+</ul>
+
+<h2>备注</h2>
+
+<p>有一些开发PHP框架会根据 $_SERVER[&#39;HTTPS&#39;] 这个 PHP 变量是否为 on 来判断当前的访问请求是否是使用 https。为此我们需要在 Nginx 配置文件中添加一句来设置这个变量。遇到 https 链接重定向后会自动跳到 http 问题的同学可以参考一下。  </p>
+
+<p>在<br>
+<pre><code>
+location ~ .php${
+    fastcgi_param HTTPS on; # 多加这一句
+}
+</code></pre></p>
+
+    <nav class="article-previous fn-clear">
+        
+        <a class="prev" href="/agreement/2014/09/17/https.html" rel="bookmark">&laquo;&nbsp;https协议</a>
+        
+        
+        <a class="next" href="/linux/2014/09/17/shell.html" rel="bookmark">Linux shell&nbsp;&raquo;</a>
+        
+    </nav>
+    <div class="comment">
+        
+        <div id="disqus_thread"></div>
+        
+    </div>
+</div>
+
+                </div>
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="https://avatars0.githubusercontent.com/u/5516045?v=3&s=460" />
+                            </div>
+                            <div class="det-text">
+                                <p>我是「邹帅」，目前从事php开发！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="/standard/2014/10/28/Web_Service-Rest_Service.html" title="Web Service与Rest Service" rel="bookmark">Web Service与Rest Service</a></li>
+                            
+                                <li><a href="/agreement/2014/10/28/rpc.html" title="rpc" rel="bookmark">rpc</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="多进程/线程的SAPI生命周期" rel="bookmark">多进程/线程的SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="单进程SAPI生命周期" rel="bookmark">单进程SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86.html" title="深入理解php原理" rel="bookmark">深入理解php原理</a></li>
+                            
+                                <li><a href="/php/2014/10/24/php_soap.html" title="php使用soap调用WebService" rel="bookmark">php使用soap调用WebService</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                                    
+                                    <li><a href="http://zous.me" title="jz-code" target="_blank">jz-code</a></li>
+                                    
+                                    <li><a href="http://jekyllrb.com" title="Jekyll" target="_blank">Jekyll</a></li>
+                                    
+                                    <li><a href="http://zous.me/themes.html" title="Jekyll Theme" target="_blank">Jekyll Theme</a></li>
+                                    
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="footer">
+                <p>Copyright 2013. All rights reserved. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, Design by <a href="http://zous.me" target="_blank">zous.me</a>.</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+            
+            <script type="text/javascript">
+                //disqus
+                var disqus_shortname = 'codemadman';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] ||
+                        document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            
+        
+    </body>
+</html>

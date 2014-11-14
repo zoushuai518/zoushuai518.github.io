@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>PHP instanceof运算符 - Jekyll</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="邹帅" />
+        <meta name="description" content="Just another Jekyll theme design and code by zous.me." />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/assets/css/syntax.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
+        
+    </head>
+    <body>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                首页
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                分类目录
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/archives.html">
+                                文章归档
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                友情链接
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://weibo.com/luoyoo/home" target="_blank"><i class="icon-weibo"></i></a>
+                    
+                    <a href="https://github.com/zoushuai518" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                    <a href="https://twitter.com/zoushuai518" target="_blank"><i class="icon-twitter"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">PHP instanceof运算符</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">18 Sep 2014</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#php-ref" >php</a></span>
+    </div>
+    <h1>一.简单的示例：</h1>
+
+<p>概念：instanceof函数是php5中新添的面向对象的函数。他主要的作用是 检测一个给定的对象是否属于（继承于）某个类（class）、某个类的子类、某个接口（interface）。如果是则返回true。反之返回false;</p>
+
+<p>理解demo1：</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="k">class</span> <span class="nc">baseClass</span> <span class="p">{</span>
+<span class="lineno"> 4</span>  
+<span class="lineno"> 5</span> <span class="p">}</span> 
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="k">class</span> <span class="nc">subClass</span> <span class="k">extends</span> <span class="nx">baseClass</span><span class="p">{</span>
+<span class="lineno"> 8</span>  
+<span class="lineno"> 9</span> <span class="p">}</span>  
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="k">interface</span> <span class="nx">aInterface</span> <span class="p">{</span>
+<span class="lineno">12</span>  
+<span class="lineno">13</span> <span class="p">}</span> 
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="k">class</span> <span class="nc">aClass</span> <span class="k">implements</span> <span class="nx">aInterface</span> <span class="p">{</span>
+<span class="lineno">16</span>  
+<span class="lineno">17</span> <span class="p">}</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span> <span class="nv">$a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">baseClass</span><span class="p">();</span>
+<span class="lineno">20</span> <span class="nb">var_dump</span><span class="p">(</span> <span class="p">(</span><span class="nv">$a</span> <span class="nx">instanceof</span> <span class="nx">baseClass</span><span class="p">));</span>
+<span class="lineno">21</span> <span class="c1">//true</span>
+<span class="lineno">22</span> 
+<span class="lineno">23</span> <span class="nv">$b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">subClass</span><span class="p">();</span>
+<span class="lineno">24</span> <span class="nb">var_dump</span><span class="p">(</span> <span class="p">(</span><span class="nv">$b</span> <span class="nx">instanceof</span> <span class="nx">baseClass</span><span class="p">));</span>
+<span class="lineno">25</span> <span class="c1">//true</span>
+<span class="lineno">26</span> 
+<span class="lineno">27</span> <span class="nv">$c</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">aClass</span><span class="p">();</span>
+<span class="lineno">28</span> <span class="nb">var_dump</span><span class="p">(</span> <span class="p">(</span><span class="nv">$c</span> <span class="nx">instanceof</span> <span class="nx">aInterface</span><span class="p">));</span>
+<span class="lineno">29</span> <span class="c1">//true</span>
+<span class="lineno">30</span> <span class="nb">var_dump</span><span class="p">(</span> <span class="p">(</span><span class="nv">$c</span> <span class="nx">instanceof</span> <span class="nx">subClass</span><span class="p">));</span> 
+<span class="lineno">31</span> <span class="c1">//false</span>
+<span class="lineno">32</span> 
+<span class="lineno">33</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<h1>二.再理解：</h1>
+
+<p>在PHP5中，通过方法传递变量的类型有不确定性。于是我们很难判断，一些操作是否可以运行。<br>
+使用instanceof运算符，可以判断当前实例是否可以有这样的一个形态。当前实例使用 instanceof与当前类，父类（向上无限追溯），已经实现的接口比较时，返回真。<br>
+<code>代码格式：实例名 instanceof 类名</code></p>
+
+<p>淡淡的忧伤：<br>
+- 对于PHP面向对象，类中的方法的参数可以是对象，在传对象的过程中任何类的对象都可以传进去，但是不同的对象传入到此方法后效果不同，比如此方法用一个对象可以调用这个对象的方法，但是如果传入的对象没有此方法，那就会报错，因为根本就没有你调用的方法啊，所以传入的对象是要有判断的。
+- 曾经我们讲过一个解决方法，那就是把方法的参数类型确定，对象参数也要指定对象类型即可，但是今天讲的是instanceof运算符来保障代码正常运行，用instanceof运算符可以在方法里面判断，性能更好，下面是一个运用instanceof运算符的例子和没用时的比较。</p>
+
+<p>1.正常运行的代码：</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="nx">classUser</span><span class="p">{</span>
+<span class="lineno"> 3</span>  <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+<span class="lineno"> 4</span>  <span class="k">public</span> <span class="k">function</span>  <span class="nf">getName</span><span class="p">(){</span>
+<span class="lineno"> 5</span>      <span class="k">return</span> <span class="s2">&quot;UserName is &quot;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+<span class="lineno"> 6</span>  <span class="p">}</span>
+<span class="lineno"> 7</span> <span class="p">}</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="k">class</span> <span class="nc">NormalUser</span> <span class="k">extends</span> <span class="nx">User</span> <span class="p">{</span>
+<span class="lineno">10</span>  <span class="k">private</span> <span class="nv">$age</span> <span class="o">=</span> <span class="mi">99</span><span class="p">;</span>
+<span class="lineno">11</span>  <span class="k">public</span> <span class="k">function</span> <span class="nf">getAge</span><span class="p">(){</span>
+<span class="lineno">12</span>      <span class="k">return</span> <span class="s2">&quot;age is &quot;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">;</span>
+<span class="lineno">13</span>  <span class="p">}</span>
+<span class="lineno">14</span> <span class="p">}</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span> <span class="k">class</span> <span class="nc">UserAdmin</span><span class="p">{</span> <span class="c1">//操作.</span>
+<span class="lineno">17</span>  <span class="k">public</span> <span class="k">static</span> <span class="k">function</span>  <span class="nf">getUserInfo</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$_user</span><span class="p">){</span>
+<span class="lineno">18</span>      <span class="k">echo</span> <span class="nv">$_user</span><span class="o">-&gt;</span><span class="na">getAge</span><span class="p">();</span>
+<span class="lineno">19</span>  <span class="p">}</span>
+<span class="lineno">20</span> <span class="p">}</span>
+<span class="lineno">21</span> 
+<span class="lineno">22</span> <span class="nv">$normalUser</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NormalUser</span><span class="p">();</span>
+<span class="lineno">23</span> <span class="nx">UserAdmin</span><span class="o">::</span><span class="na">getUserInfo</span><span class="p">(</span><span class="nv">$normalUser</span><span class="p">);</span>
+<span class="lineno">24</span> 
+<span class="lineno">25</span> <span class="c1">//程序运行结果：</span>
+<span class="lineno">26</span> <span class="c1">//age is 99</span>
+<span class="lineno">27</span> 
+<span class="lineno">28</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>2.运行异常的代码：</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="k">class</span> <span class="nc">User</span><span class="p">{</span>
+<span class="lineno"> 4</span>  <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+<span class="lineno"> 5</span>  <span class="k">public</span> <span class="k">function</span>  <span class="nf">getName</span><span class="p">(){</span>
+<span class="lineno"> 6</span>      <span class="k">return</span> <span class="s2">&quot;UserName is &quot;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+<span class="lineno"> 7</span>  <span class="p">}</span>
+<span class="lineno"> 8</span> <span class="p">}</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="k">class</span> <span class="nc">NormalUser</span> <span class="k">extends</span> <span class="nx">User</span> <span class="p">{</span>
+<span class="lineno">11</span>  <span class="k">private</span> <span class="nv">$age</span> <span class="o">=</span> <span class="mi">99</span><span class="p">;</span>
+<span class="lineno">12</span>  <span class="k">public</span> <span class="k">function</span> <span class="nf">getAge</span><span class="p">(){</span>
+<span class="lineno">13</span>      <span class="k">return</span> <span class="s2">&quot;age is &quot;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">;</span>
+<span class="lineno">14</span>  <span class="p">}</span>
+<span class="lineno">15</span> <span class="p">}</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span> <span class="k">class</span> <span class="nc">UserAdmin</span><span class="p">{</span> <span class="c1">//操作.</span>
+<span class="lineno">18</span>  <span class="k">public</span> <span class="k">static</span> <span class="k">function</span>  <span class="nf">getUserInfo</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$_user</span><span class="p">){</span>
+<span class="lineno">19</span>      <span class="k">echo</span> <span class="nv">$_user</span><span class="o">-&gt;</span><span class="na">getAge</span><span class="p">();</span>
+<span class="lineno">20</span>  <span class="p">}</span>
+<span class="lineno">21</span> <span class="p">}</span>
+<span class="lineno">22</span> 
+<span class="lineno">23</span> <span class="nv">$User</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span> <span class="c1">// 这里new的是User.</span>
+<span class="lineno">24</span> <span class="nx">UserAdmin</span><span class="o">::</span><span class="na">getUserInfo</span><span class="p">(</span><span class="nv">$User</span><span class="p">);</span>
+<span class="lineno">25</span> 
+<span class="lineno">26</span> <span class="c1">//程序运行结果：</span>
+<span class="lineno">27</span> <span class="c1">//Fatal error:  Call to undefined method User::getAge() in E:\PHPProjects\NowaMagic\php\php_InstanceofOperator.php on line 99</span>
+<span class="lineno">28</span> 
+<span class="lineno">29</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>3.使用instatnceof运算符保障代码安全，阻止抛出异常：</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">//使用instatnceof运算符，在操作前先进行类型判断。以保障代码的安全性</span>
+<span class="lineno"> 3</span> <span class="k">class</span> <span class="nc">User</span><span class="p">{</span>
+<span class="lineno"> 4</span>  <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+<span class="lineno"> 5</span>  <span class="k">public</span> <span class="k">function</span>  <span class="nf">getName</span><span class="p">(){</span>
+<span class="lineno"> 6</span>      <span class="k">return</span> <span class="s2">&quot;UserName is &quot;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+<span class="lineno"> 7</span>  <span class="p">}</span>
+<span class="lineno"> 8</span> <span class="p">}</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="k">class</span> <span class="nc">NormalUser</span> <span class="k">extends</span> <span class="nx">User</span> <span class="p">{</span>
+<span class="lineno">11</span>  <span class="k">private</span> <span class="nv">$age</span> <span class="o">=</span> <span class="mi">99</span><span class="p">;</span>
+<span class="lineno">12</span>  <span class="k">public</span> <span class="k">function</span> <span class="nf">getAge</span><span class="p">(){</span>
+<span class="lineno">13</span>      <span class="k">return</span> <span class="s2">&quot;age is &quot;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">;</span>
+<span class="lineno">14</span>  <span class="p">}</span>
+<span class="lineno">15</span> <span class="p">}</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span> <span class="k">class</span> <span class="nc">UserAdmin</span><span class="p">{</span> <span class="c1">//操作.</span>
+<span class="lineno">18</span>  <span class="k">public</span> <span class="k">static</span> <span class="k">function</span>  <span class="nf">getUserInfo</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$_user</span><span class="p">){</span>
+<span class="lineno">19</span>      <span class="k">if</span><span class="p">(</span><span class="nv">$_user</span> <span class="nx">instanceof</span> <span class="nx">NormalUser</span> <span class="p">){</span>
+<span class="lineno">20</span>          <span class="k">echo</span> <span class="nv">$_user</span><span class="o">-&gt;</span><span class="na">getAge</span><span class="p">();</span>
+<span class="lineno">21</span>      <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+<span class="lineno">22</span>          <span class="k">echo</span> <span class="s2">&quot;类型不对,不能使用这个方法.&quot;</span><span class="p">;</span>
+<span class="lineno">23</span>      <span class="p">}</span>
+<span class="lineno">24</span>  <span class="p">}</span>
+<span class="lineno">25</span> <span class="p">}</span>
+<span class="lineno">26</span> 
+<span class="lineno">27</span> <span class="nv">$User</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span> <span class="c1">// 这里new的是User.</span>
+<span class="lineno">28</span> <span class="nx">UserAdmin</span><span class="o">::</span><span class="na">getUserInfo</span><span class="p">(</span><span class="nv">$User</span><span class="p">);</span>
+<span class="lineno">29</span> 
+<span class="lineno">30</span> <span class="c1">//程序运行结果：</span>
+<span class="lineno">31</span> <span class="c1">//类型不对,不能使用这个方法.</span>
+<span class="lineno">32</span> 
+<span class="lineno">33</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+    <nav class="article-previous fn-clear">
+        
+        <a class="prev" href="/php/2014/09/18/php-AOP.html" rel="bookmark">&laquo;&nbsp;php AOP</a>
+        
+        
+        <a class="next" href="/php/2014/09/18/php-oop.html" rel="bookmark">PHP OOP&nbsp;&raquo;</a>
+        
+    </nav>
+    <div class="comment">
+        
+        <div id="disqus_thread"></div>
+        
+    </div>
+</div>
+
+                </div>
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="https://avatars0.githubusercontent.com/u/5516045?v=3&s=460" />
+                            </div>
+                            <div class="det-text">
+                                <p>我是「邹帅」，目前从事php开发！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="/standard/2014/10/28/Web_Service-Rest_Service.html" title="Web Service与Rest Service" rel="bookmark">Web Service与Rest Service</a></li>
+                            
+                                <li><a href="/agreement/2014/10/28/rpc.html" title="rpc" rel="bookmark">rpc</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="多进程/线程的SAPI生命周期" rel="bookmark">多进程/线程的SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="单进程SAPI生命周期" rel="bookmark">单进程SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86.html" title="深入理解php原理" rel="bookmark">深入理解php原理</a></li>
+                            
+                                <li><a href="/php/2014/10/24/php_soap.html" title="php使用soap调用WebService" rel="bookmark">php使用soap调用WebService</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                                    
+                                    <li><a href="http://zous.me" title="jz-code" target="_blank">jz-code</a></li>
+                                    
+                                    <li><a href="http://jekyllrb.com" title="Jekyll" target="_blank">Jekyll</a></li>
+                                    
+                                    <li><a href="http://zous.me/themes.html" title="Jekyll Theme" target="_blank">Jekyll Theme</a></li>
+                                    
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="footer">
+                <p>Copyright 2013. All rights reserved. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, Design by <a href="http://zous.me" target="_blank">zous.me</a>.</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+            
+            <script type="text/javascript">
+                //disqus
+                var disqus_shortname = 'codemadman';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] ||
+                        document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            
+        
+    </body>
+</html>

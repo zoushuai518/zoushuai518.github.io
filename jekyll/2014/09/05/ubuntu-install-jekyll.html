@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>jekyll 安装教程 - Jekyll</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="邹帅" />
+        <meta name="description" content="Just another Jekyll theme design and code by zous.me." />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/assets/css/syntax.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
+        
+    </head>
+    <body>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                首页
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                分类目录
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/archives.html">
+                                文章归档
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                友情链接
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://weibo.com/luoyoo/home" target="_blank"><i class="icon-weibo"></i></a>
+                    
+                    <a href="https://github.com/zoushuai518" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                    <a href="https://twitter.com/zoushuai518" target="_blank"><i class="icon-twitter"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">jekyll 安装教程</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">05 Sep 2014</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#jekyll-ref" >jekyll</a></span>
+    </div>
+    <h1>Ubuntu Jekyll安装</h1>
+
+<h2>1. 准备工作:</h2>
+
+<p>1&gt;.安装开发编译环境<br>
+<code>sudo apt-get install build-essential</code></p>
+
+<p>2&gt;. 用apt-get 来安装libyaml<br>
+<code>sudo apt-get install build-essential bison libyaml-dev</code></p>
+
+<p>3&gt;. 安装zlib<br>
+<code>apt-get install zlib1g-dev</code></p>
+
+<p>4&gt;. 安装sqlite3<br>
+<code>sudo apt-get install sqlite3 libsqlite3-dev</code></p>
+
+<p>5&gt;. 安装js运行环境<br>
+<code>sudo apt-get install nodejs</code></p>
+
+<p>6&gt;. 安装libssl<br>
+<code>sudo apt-get install libssl-dev</code></p>
+
+<h2>2. Ruby安装过程:</h2>
+
+<p>1&gt;. 安装ruby<br>
+<span class="impor">http://rubyonrails.org/download<br>
+下载源码 ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p0.tar.gz<br>
+ruby v1.9.2 之后打包有rubygems,不用自己动手安装了, ruby -v,gem -v查看是否安装成功</span>
+<pre><code>
+tar xvzf ruby-1.9.2-p0.tar.bz2
+cd ruby-1.9.2-p0
+./configure -prefix=/usr/local/ruby  #指定安装路径
+make &amp;&amp; sudo make install
+sudo ln -s /usr/local/ruby/bin/ruby /usr/bin/ruby
+sudo ln -s /usr/local/ruby/bin/gem /usr/bin/gem
+</code></pre></p>
+
+<p>2&gt;. 安装openssl<br>
+<pre><code>
+cd ruby-1.9.2-p0/ext/openssl
+ruby ruby extconf.rb
+make
+sudo make install
+</code></pre></p>
+
+<p>3&gt;. 安装zlib<br>
+<pre><code>
+cd ruby-1.9.2-p0/ext/zlib
+ruby extconf.rb
+make
+sudo make install
+</code></pre></p>
+
+<p>4&gt;. 改变安装源,突破墙限制<br>
+<pre><code>
+gem sources --remove http://rubygems.org/
+gem sources -a http://ruby.taobao.org/
+gem sources -l
+</code></pre></p>
+
+<p>5&gt;. 安装jekyll:<br>
+<pre><code>
+sudo gem install Jekyll
+jekyll -v   #查看jekyll版本
+gem install rdiscount       #安装Rdiscount，这个用来解析Markdown标记的包
+jekyll new myblog       #使用jekyll初始化blog_系统
+jekyll serve            #到工程目录启动服务。输入：http://localhost:4000
+</code></pre></p>
+
+<p><span class="impor">注：jekyll的运行，基于ruby &amp; nodejs。所以，必须安装Ruby &amp; nodejs ; 两者缺一不可,否则，即使jekyll安装成功，也无法运行</span></p>
+
+<h2>3. Ruby rails安装，使用。ext demo</h2>
+
+<p>1&gt;. 安装rails<br>
+<pre><code>
+gem install rails
+gem install sqlite3 -v &#39;1.3.7&#39;
+sudo ln -s /usr/local/ruby/bin/rails /usr/bin/rails
+sudo ln -s /usr/local/ruby/bin/bundle /usr/bin/bundle
+</code></pre></p>
+
+<p>2&gt;. 创建一个简单的demo应用:<br>
+首先创建一个你自己的工作目录，我的是：/root/ruby/apps，然后进入cd /root/ruby/apps<br>
+命令行输入：rails new demo --skip-bundle,等一下完成后<br>
+进入到demo目录，找到Gemfile文件，打开，将第一行：source &#39;https://rubygems.org &#39;<br>
+修改为：source &#39;http://ruby.taobao.org/&#39;<br>
+进入到demo目录，执行命令bundle install</p>
+
+<p>3&gt;. 运行应用
+只要你再输入最后一个命令，你就可以通过浏览器运行你的app了--
+demo目录下命令行输入：rails server--
+看到了吗？你的rails应用程序服务器启动成功了，赶快打开浏览器体验一下吧：--
+输入：http://localhost:3000</p>
+
+    <nav class="article-previous fn-clear">
+        
+        
+        <a class="next" href="/jekyll/2014/09/05/ubuntu-use-jekyll.html" rel="bookmark">jekyll 使用教程&nbsp;&raquo;</a>
+        
+    </nav>
+    <div class="comment">
+        
+        <div id="disqus_thread"></div>
+        
+    </div>
+</div>
+
+                </div>
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="https://avatars0.githubusercontent.com/u/5516045?v=3&s=460" />
+                            </div>
+                            <div class="det-text">
+                                <p>我是「邹帅」，目前从事php开发！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="/standard/2014/10/28/Web_Service-Rest_Service.html" title="Web Service与Rest Service" rel="bookmark">Web Service与Rest Service</a></li>
+                            
+                                <li><a href="/agreement/2014/10/28/rpc.html" title="rpc" rel="bookmark">rpc</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="多进程/线程的SAPI生命周期" rel="bookmark">多进程/线程的SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="单进程SAPI生命周期" rel="bookmark">单进程SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86.html" title="深入理解php原理" rel="bookmark">深入理解php原理</a></li>
+                            
+                                <li><a href="/php/2014/10/24/php_soap.html" title="php使用soap调用WebService" rel="bookmark">php使用soap调用WebService</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                                    
+                                    <li><a href="http://zous.me" title="jz-code" target="_blank">jz-code</a></li>
+                                    
+                                    <li><a href="http://jekyllrb.com" title="Jekyll" target="_blank">Jekyll</a></li>
+                                    
+                                    <li><a href="http://zous.me/themes.html" title="Jekyll Theme" target="_blank">Jekyll Theme</a></li>
+                                    
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="footer">
+                <p>Copyright 2013. All rights reserved. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, Design by <a href="http://zous.me" target="_blank">zous.me</a>.</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+            
+            <script type="text/javascript">
+                //disqus
+                var disqus_shortname = 'codemadman';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] ||
+                        document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            
+        
+    </body>
+</html>
