@@ -1,0 +1,9 @@
+---
+layout: post
+title: "NoSQL init"
+category: mongodb
+comments: true
+date:   2014-09-30 18:16:51
+---
+
+[10个出色的NoSQL数据库](http://www.csdn.net/article/2012-10-12/2810660-NoSQL-MongoDB-HBase)

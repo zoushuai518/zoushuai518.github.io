@@ -1,0 +1,10 @@
+---
+layout: post
+title: "php 抽象类和接口"
+category: php
+comments: true
+date:   2014-09-30 15:00:51
+---
+
+- [php抽象类和接口的区别](http://blog.sina.com.cn/s/blog_65f387740100slgd.html)
+- [php抽象类和接口](http://www.cnblogs.com/hylaz/archive/2012/11/11/2765397.html)

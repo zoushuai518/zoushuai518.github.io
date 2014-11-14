@@ -1,0 +1,12 @@
+---
+layout: post
+title: "开源的数据库连接池 SQL Relay"
+category: php
+comments: true
+date:   2014-10-15 16:35:51
+---
+
+- [转一个SQL Relay数据库连接池的PHP操作类](http://blog.csdn.net/heiyeshuwu/article/details/748897)
+- [开源的数据库连接池 SQL Relay 介绍](http://blog.csdn.net/heiyeshuwu/article/details/743303)
+- [SQL Relay](http://sqlrelay.sourceforge.net/)
+

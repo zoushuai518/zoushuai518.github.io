@@ -1,0 +1,9 @@
+---
+layout: post
+title: "vim ide"
+category: tool
+comments: true
+date:   2014-09-30 10:59:51
+---
+
+- [vim js|nodejs ide](http://www.cnblogs.com/canmusic/archive/2013/04/08/3006564.html)

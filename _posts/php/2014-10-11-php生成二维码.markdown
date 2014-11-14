@@ -1,0 +1,9 @@
+---
+layout: post
+title: "个性化自己的二维码"
+category: php
+comments: true
+date:   2014-10-11 19:35:51
+---
+
+[个性化自己的二维码](http://www.cnblogs.com/litturtle/p/3893842.html)

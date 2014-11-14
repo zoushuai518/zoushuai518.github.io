@@ -1,0 +1,20 @@
+---
+layout: post
+title: "PHP输入输出流"
+category: php
+comments: true
+date:   2014-09-26 10:50:51
+---
+
+- file_get_contents('php://input')
+
+
+PHP仅仅解析Content-Type为 application/x-www-form-urlencoded 或 multipart/form-data的Http请求。之所以这样是因为历史原因，PHP最初实现$_POST时，最流行的就是上面两种类型。因此虽说现在有些类型（比如application/json）很流行，但PHP中还是没有去实现自动处理。
+
+因为POST是全局变量，所以更改_POST会全局有效。因此对于Content-Type为 application/json 的请求，我们需要手工去解析json数据，然后修改$_POST变量。
+
+$_POST = json_decode(file_get_contents('php://input'), true);
+//此时，我们再去输出$_POST变量，则会得到我们期望的输出：
+
+array(2) { ["a"]=> string(1) "a" ["b"]=> string(1) "b" }
+

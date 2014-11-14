@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>php ActiveRecord - Jekyll Theme</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="邹帅" />
+        <meta name="description" content="Just another Jekyll theme design and code by zous.me." />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/syntax.css">
+        <link rel="stylesheet" href="/css/main.css">
+        
+    </head>
+    <body>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                首页
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                分类目录
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/archives.html">
+                                文章归档
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                友情链接
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://weibo.com/luoyoo/home" target="_blank"><i class="icon-weibo"></i></a>
+                    
+                    <a href="https://github.com/zoushuai518" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                    <a href="https://twitter.com/zoushuai518" target="_blank"><i class="icon-twitter"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">php ActiveRecord</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">17 Oct 2014</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#php-ref" >php</a></span>
+    </div>
+    <p><a href="http://www.phpactiverecord.org/">Active  Record（AR）</a>是一种流行的对象关系映射（ORM）技术。每个AR类代表一个数据表（或视图），其字段作为AR类的属性，一个AR实例代表在表中的  一行。常见的CRUD操作被作为AR类的方法执行。 于是，我们可以使用更面向对象的方法处理我们的数据。</p>
+
+<p>ActiveRecord的主要思想是：</p>
+
+<ol>
+<li><p>每一个数据库表对应创建一个类，类的每一个对象实例对应于数据库中表的一行记录；通常表的每个字段在类中都有相应的Field；</p></li>
+<li><p>ActiveRecord同时负责把自己持久化，在ActiveRecord中封装了对数据库的访问，即CURD;；</p></li>
+<li><p>ActiveRecord是一种领域模型(Domain Model)，封装了部分业务逻辑；</p></li>
+</ol>
+
+<p>ActiveRecord比较适用于：</p>
+
+<ol>
+<li><p>业务逻辑比较简单，当你的类基本上和数据库中的表一一对应时, ActiveRecord是非常方便的，即你的业务逻辑大多数是对单表操作；</p></li>
+<li><p>当发生跨表的操作时, 往往会配合使用事务脚本(Transaction Script)，把跨表事务提升到事务脚本中；</p></li>
+<li><p>ActiveRecord最大优点是简单, 直观。 一个类就包括了数据访问和业务逻辑. 如果配合代码生成器使用就更方便了；</p></li>
+</ol>
+
+<p>这些优点使ActiveRecord特别适合WEB快速开发。</p>
+
+<p>ActiveRecord不适合于:</p>
+
+<ol>
+<li><p>ActiveRecord虽然有业务逻辑, 但基本上都是基于单表的. 跨表逻辑一般会放到当发生跨表的操作时, 往往会配合使用事务脚本(Transaction Script)中. 如果对象间的关联越来越多, 你的事务脚本越来越庞大, 重复的代码越来越多, 你就要考虑Domain Model + O/R Mapper了;</p></li>
+<li><p>ActiveRecord保存了数据, 使它有时候看上去像数据传输对象(DTO). 但是ActiveRecord有数据库访问能力, 不要把它当DTO用. 尤其在跨越进程边界调用的时候, 不能传递ActiveRecord对象;</p></li>
+</ol>
+
+<p>著名的 Active Record 驱动框架:</p>
+
+<ul>
+<li>SQLObject (Python)</li>
+<li>Ruby on Rails ActiveRecord (Ruby)</li>
+<li>Yii Framework ActiveRecord (PHP)</li>
+</ul>
+
+<p>ActiveRecord不是什么:</p>
+
+<ol>
+<li><p>Row Data Gateway
+Row Data Gateway模式中每个对象也封装了数据库记录的状态和持久化到数据库的访问方法; 这两个有时候很难区分. 细微的区别在于Row Data Gateway不封装任何业务逻辑;</p></li>
+<li><p>TableGateway
+是一种数据访问模式, 对每个表有一个类, 类的方法封装了对单个表的数据操作, 如CRUD; 方法的接受表字段的值作为参数;
+比如说对表Person有DAOPerson, 有以下方法:
+int Create(string name, bool isMale)
+DataSet Find(int personId)
+void Delete(int personId)
+void Update(int personId, string name, bool isMale)
+微软的很多代码示例中使用了此模式。
+区别在于ActiveRecord的对象中保持了记录的值, 是有状态的, 而TableGateway是没有状态的, 只是一系列数据库访问方法的集合;</p></li>
+<li><p>Table Module
+Table Module是一种领域逻辑模式, 一个类对应于数据库中的一个表; Table Module通常和Table Gateway合作, 前者负责基本的业务逻辑, 后者负责数据库访问, 以达到逻辑层和持久化层的隔离; 微软的实例代码经常使用这两者, 如对表Person, 通常会定义两个类, PersonBL和PersonDB, 在PersonBL中处理验证等逻辑, 并调用PersonDB访问数据库, 层间调用使用DataSet或自定义数据传输对象传输数据</p></li>
+</ol>
+
+<p>在业务逻辑比较简单并且有和表的一一对应时, ActiveRecord相对来说更简单, 因为它在一个类中包括了业务逻辑对象和数据访问, 而且不需要数据传输对象, 减少了维护的工作量;
+和Table Module比较起来, ActiveRecord与数据库耦合更紧;</p>
+
+    <nav class="article-previous fn-clear">
+        
+        <a class="prev" href="/php/2014/10/17/OO%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99%E4%B9%8BDRY.html" rel="bookmark">&laquo;&nbsp;OO设计原则之DRY</a>
+        
+        
+        <a class="next" href="/php/2014/10/17/php_MVC_ORM_CURD_AR.html" rel="bookmark">单一入口、MVC、ORM、CURD、ActiveRecord概念&nbsp;&raquo;</a>
+        
+    </nav>
+    <div class="comment">
+        
+        <div id="disqus_thread"></div>
+        
+    </div>
+</div>
+
+                </div>
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="https://avatars0.githubusercontent.com/u/5516045?v=3&s=460" />
+                            </div>
+                            <div class="det-text">
+                                <p>我是「邹帅」，目前从事php开发！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="/standard/2014/10/28/Web_Service-Rest_Service.html" title="Web Service与Rest Service" rel="bookmark">Web Service与Rest Service</a></li>
+                            
+                                <li><a href="/agreement/2014/10/28/rpc.html" title="rpc" rel="bookmark">rpc</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="多进程/线程的SAPI生命周期" rel="bookmark">多进程/线程的SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="单进程SAPI生命周期" rel="bookmark">单进程SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86.html" title="深入理解php原理" rel="bookmark">深入理解php原理</a></li>
+                            
+                                <li><a href="/php/2014/10/24/php_soap.html" title="php使用soap调用WebService" rel="bookmark">php使用soap调用WebService</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                                    
+                                    <li><a href="http://zous.me" title="jz-code" target="_blank">jz-code</a></li>
+                                    
+                                    <li><a href="http://jekyllrb.com" title="Jekyll" target="_blank">Jekyll</a></li>
+                                    
+                                    <li><a href="http://zous.me/themes.html" title="Jekyll Theme" target="_blank">Jekyll Theme</a></li>
+                                    
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="footer">
+                <p>Copyright 2013. All rights reserved. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, Design by <a href="http://zous.me" target="_blank">zous.me</a>.</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+            
+            <script type="text/javascript">
+                //disqus
+                var disqus_shortname = 'codemadman';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] ||
+                        document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            
+        
+    </body>
+</html>

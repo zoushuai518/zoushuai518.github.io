@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>PHP对象类型在内存中的分配 - Jekyll Theme</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="邹帅" />
+        <meta name="description" content="Just another Jekyll theme design and code by zous.me." />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/syntax.css">
+        <link rel="stylesheet" href="/css/main.css">
+        
+    </head>
+    <body>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                首页
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                分类目录
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/archives.html">
+                                文章归档
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                友情链接
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://weibo.com/luoyoo/home" target="_blank"><i class="icon-weibo"></i></a>
+                    
+                    <a href="https://github.com/zoushuai518" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                    <a href="https://twitter.com/zoushuai518" target="_blank"><i class="icon-twitter"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">PHP对象类型在内存中的分配</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">12 Sep 2014</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#php-ref" >php</a></span>
+    </div>
+    <h1>PHP对象类型在内存中的分配</h1>
+
+<p>对象和整型、字符串等类型一样，也是PHP中的一种数据类型。<br>
+都是在程序中用于存储不同类型数据使用的，在程序运行时它的每部分内容都要先加载到内存中再被使用。那么对象类型的数据在内存中是如何分配的呢？先来了解一下内存结构。逻辑上内存大体被分为四段，分别为栈空间段、堆空间段、初始化数据段和代码段，程序中不同类型数据的声明将会被存在不同的内存段里面。  </p>
+
+<ul>
+<li><p>栈空间段:
+栈的特点是空间小但被CPU访问的速度快，是用户存放程序中临时创建的变量。由于栈的后进先出特点，所以栈特别方便用来保存和恢复调用现场。从这个意义上讲，我们可以把堆栈看成一个临时数据寄存、交换的内存区。用于存储占用空间长度不变并且占用空间小的数据类型的内存段，例如整型1、100、10000等在内存中占用空间是等长的，占用空间都是32位的4个字节。还有double、boolean等都可以存储在栈空间段中。  </p></li>
+<li><p>堆空间段：
+堆是用于存放进程运行中被动态分配的内存段，它大小并不固定，可动态扩张或缩减。用于存储数据长度可变或占用内存比较大的数据。例如，字符串、数组和对象就存储在这段内存中。  </p></li>
+<li><p>数据段：
+数据段用来存放可执行文件中初始化全局变量，换句话说就是存放程序静态分配的变量。  </p></li>
+<li><p>代码段：
+对象类型的数据就是一种占用空间比较大的数据类型，并且是占用的空间不定长的数据类型，所以对象创建完成以后被存放在堆内存中，但对象的引用还是存放在栈里面的。程序在运行时，占内存中的数据是可以直接存取的，而堆内存是不可以直接存取的内存，但可以通过对象的引用名称访问对象中的成员。  </p></li>
+</ul>
+
+<p>代码在内存中的分块：<br>
+<img src="/assets/postImage/php/php_obj1.jpg" alt="代码在内存中的分块" title="代码在内存中的分块"></p>
+
+<p>栈内存是可以直接存取的，而堆内存不可以直接存取。<br>
+对于我们的对象来说就是一种大的数据类型而且是占用空间不定长的类型，所以说对象是放在堆里面的，但对象名称是放在栈里面的，这样通过对象名称就可以使用对象了。
+$p1 就是我们实例出来的对象名称，同理，$p2，$p3 也是我们实例出来的对象名称，一个类可以实例出多个对象，每个对象都是独立的，
+上面的代码相当于实例出来3 个人来，每个人之间是没有联系的，只能说明他们都是人类，每 个人都有自己的姓名，性别和年龄的属性，每个人都有说话和走路的方法，只要是类里面体 现出 来的成员属性和成员方法，实例化出来的对象里面就包含了这些属性和方法。  </p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="nv">$p1</span><span class="o">=</span><span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
+<span class="lineno">3</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>对于这个条代码，$p1 是对象名称在栈内存里面new Person()是真正的对象是在堆内存 里面的，具体的请看下图：<br>
+<img src="/assets/postImage/php/php_obj2.jpg" alt="php obj in memory" title="php obj in memory"></p>
+
+<p>从上图可以看出$p1=new Person();等号右边是真正的对象实例，在堆内存里面的实体，<br>
+上图一共有3 次new Person()，所以会在堆里面开辟3 个空间，产生3 个实例对象，每个对象之间都是相互独立的，使用自己的空间，<br>
+在PHP 里面，只要有一个new 这个关键字出现就会 实例化出来一个对象，在堆里面开辟一块自己的空间。<br>
+每个在堆里面的实例对象是存储属性的，比如说，现在堆里面的实例对象里面都存有 姓 名、性别和年龄。每个属性又都有一个地址。  </p>
+
+<p>$p = new Person()等号的左边$p1是一个引用变量，通过赋值运算符“=”把对象的首地址 赋给“$p1”这个引用变量，所以$p1 是存储对象首地址的变量，$p1 放在栈内存里边，$p1 相当 于一个指针指向堆里面的对象，所以我们可以通过$p1 这个引用变量来操作对象,通常我们也称对象引用为对象。  </p>
+
+<p>当时看到这里没有完全相信，为此处特意做了验证：</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="k">class</span> <span class="nc">Person</span><span class="p">{</span>
+<span class="lineno"> 3</span>  <span class="k">public</span> <span class="nv">$name</span><span class="p">;</span>
+<span class="lineno"> 4</span> <span class="p">}</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="nx">bj1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
+<span class="lineno"> 8</span> <span class="nv">$obj1</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">&quot;test1&quot;</span><span class="p">;</span>
+<span class="lineno"> 9</span> <span class="k">echo</span> <span class="nv">$obj1</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+<span class="lineno">10</span> <span class="nv">$obj2</span> <span class="o">=</span> <span class="nv">$obj1</span><span class="p">;</span>
+<span class="lineno">11</span> <span class="nv">$obj2</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">&quot;test2&quot;</span><span class="p">;</span>
+<span class="lineno">12</span> <span class="k">echo</span> <span class="nv">$obj1</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+<span class="lineno">13</span> <span class="k">echo</span> <span class="nv">$obj2</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+<span class="lineno">14</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>通过测试结果来看，解释是对的。
+$p1 是对象的指针而不是对象本身， obj2和 obj1都指向同一块内存，同一个对象。这一点和OOP语言是一样  </p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="nx">object</span><span class="p">(</span><span class="nx">Person</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
+<span class="lineno">4</span> <span class="k">public</span> <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nx">string</span> <span class="s1">&#39;test2&#39;</span> <span class="p">(</span><span class="nx">length</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="lineno">5</span> 
+<span class="lineno">6</span> <span class="nx">object</span><span class="p">(</span><span class="nx">Person</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
+<span class="lineno">7</span> <span class="k">public</span> <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nx">string</span> <span class="s1">&#39;test2&#39;</span> <span class="p">(</span><span class="nx">length</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="lineno">8</span> <span class="c1">//可见对象的ID号是一个</span>
+<span class="lineno">9</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<h1>扩展,(clone克隆对象)</h1>
+
+<p>如果想得到一个对象的副本，用$obj2 =clone $obj1;  用了clone后会产生一个新对象，分配内存，独立于原来的obj1<br>
+参见手册此页  http://www.php.net/manual/zh/language.oop5.cloning.php  </p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="nv">$obj2</span> <span class="o">=</span> <span class="nv">$obj1</span><span class="p">;</span>
+<span class="lineno"> 3</span> <span class="nv">$obj2</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nv">$obj1</span><span class="p">;</span>
+<span class="lineno"> 4</span> <span class="c1">//一样的效果，一样的解释？</span>
+<span class="lineno"> 5</span> <span class="c1">//对于object来说，是一样的。 对于普通的变量是不一样的。</span>
+<span class="lineno"> 6</span> <span class="nv">$a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="lineno"> 7</span> <span class="nv">$b</span> <span class="o">=</span> <span class="nv">$a</span><span class="p">;</span>
+<span class="lineno"> 8</span> <span class="nv">$c</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nv">$a</span><span class="p">;</span>
+<span class="lineno"> 9</span> <span class="c1">//不一样的 </span>
+<span class="lineno">10</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+    <nav class="article-previous fn-clear">
+        
+        <a class="prev" href="/jekyll/2014/09/12/%E5%85%B3%E4%BA%8EJekyll.html" rel="bookmark">&laquo;&nbsp;关于Jekyll</a>
+        
+        
+        <a class="next" href="/tool/2014/09/12/git%E4%BB%8B%E7%BB%8D.html" rel="bookmark">Git分布式版本管理工具&nbsp;&raquo;</a>
+        
+    </nav>
+    <div class="comment">
+        
+        <div id="disqus_thread"></div>
+        
+    </div>
+</div>
+
+                </div>
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="https://avatars0.githubusercontent.com/u/5516045?v=3&s=460" />
+                            </div>
+                            <div class="det-text">
+                                <p>我是「邹帅」，目前从事php开发！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="/standard/2014/10/28/Web_Service-Rest_Service.html" title="Web Service与Rest Service" rel="bookmark">Web Service与Rest Service</a></li>
+                            
+                                <li><a href="/agreement/2014/10/28/rpc.html" title="rpc" rel="bookmark">rpc</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="多进程/线程的SAPI生命周期" rel="bookmark">多进程/线程的SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="单进程SAPI生命周期" rel="bookmark">单进程SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86.html" title="深入理解php原理" rel="bookmark">深入理解php原理</a></li>
+                            
+                                <li><a href="/php/2014/10/24/php_soap.html" title="php使用soap调用WebService" rel="bookmark">php使用soap调用WebService</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                                    
+                                    <li><a href="http://zous.me" title="jz-code" target="_blank">jz-code</a></li>
+                                    
+                                    <li><a href="http://jekyllrb.com" title="Jekyll" target="_blank">Jekyll</a></li>
+                                    
+                                    <li><a href="http://zous.me/themes.html" title="Jekyll Theme" target="_blank">Jekyll Theme</a></li>
+                                    
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="footer">
+                <p>Copyright 2013. All rights reserved. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, Design by <a href="http://zous.me" target="_blank">zous.me</a>.</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+            
+            <script type="text/javascript">
+                //disqus
+                var disqus_shortname = 'codemadman';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] ||
+                        document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            
+        
+    </body>
+</html>

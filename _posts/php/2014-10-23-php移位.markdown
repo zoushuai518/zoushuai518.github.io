@@ -1,0 +1,122 @@
+---
+layout: post
+title: "php位运算符 & 移位"
+category: php
+comments: true
+date:   2014-10-23 12:35:51
+---
+
+
+##一.位运算
+
+###1.原理
+
+在Linux文件系统中，一个用户对文件或目录所拥有的权限分为三种：”可读”、”可写”和”可执行”，分别用 1 、2 和 4 来表示，它们之间可以任意组合：有“可读”、“可写”权限就用 3 来表示（1 + 2 = 3）；有”可读“、”可执行“权限就用5来表示（1 + 4 = 5），三种权限全部拥有就用 7 表示（1 + 2 + 4 = 7）。
+
+实际上，这种运算是基于二进制的。
+
+假设可执行、可写、可读三种权限分别对应三个状态位，如果用户具有某种权限，那么将对应的状态位标识为“1”，反之则标识为“0”。如图：
+
+![代码在内存中的分块](/assets/postImage/php/weiyunsuan.png "linux文件权限")
+
+如果只有“可读”权限，那么就对应二进制数：001，将这个二进制数转成十进制就得到1；如果同时具有“可读”、“可写”权限，二进制数则对应为： 011，转十进制得：3；同理，三种权限都有的，十进制就等于7。
+
+
+###2.实现
+
+在PHP中，通过位运算符很容易就可以做到类似的权限控制：
+
+{% highlight php linenos %}
+<?php
+//定义权限
+define('READ', 1<< 0);    // 把可读权限放在最右边
+define('WRITE', 1<<1);    // 可读权限向左移一位
+define('EXCUTE', 1<<2);   // 可执行权限向左移两位
+
+//赋予权限
+$user_permission = READ | WRITE;
+
+//验证权限
+echo '可读：', ($user_permission & READ) ? 'Yes' : 'No', "\n";
+echo '可写：', ($user_permission & WRITE) ? 'Yes' : 'No', "\n";
+echo '可执行：', ($user_permission & EXCUTE) ? 'Yes' : 'No', "\n";
+?>
+{% endhighlight %}
+
+PHP语言本身的错误控制 也是用位运算来做的，它甚至还利用了按位异或和按位非，使得错误控制更加精确。
+
+###3.优点和缺陷
+
+位运算的运算对象是二进制的位，速度快，效率高，而且节省存储空间，位运算做权限控制又相当地灵活。但是，位运算也有很大的局限，因为在32位计算机上，位移不能超过32次，这就要求权限数量不超过32种。
+
+
+##二.移位操作
+
+PHP主要是设计于文本操作的，其实PHP不适合做数学运算，效率也不高。(二进制移位操作)
+
+因为PHP只有32位有符号整数，没有64位长整型，也没有无符号整数。其整型的范围是-2^31-1～2^31，超出这个范围的，将被解释为浮点数。因此，0xFFFFFFFF，直接打印，显示的是4294967295，及2^32
+
+而PHP不支持浮点数的二进制位移操作，如果要进行，会先转换为整型，最后的结果，也将按照整型来返回
+
+同时PHP的向右位移操作，高位会填充符号位，而且PHP没有提供类似Java的>>>来强制填充0
+
+如何解决这个问题呢，我考虑过使用BCMath数学函数库，直接处理字符串表示的整数，或者是GMP/BigInt扩展等。不过我想既然使用字符串，那么我可以字符串地彻底一些，把数字转换成32个二进制的字符串，再手工填充0，最后转换回来。
+
+{% highlight php linenos %}
+<?php
+/**  
+ * 无符号32位右移  
+ * @param mixed $x 要进行操作的数字，如果是字符串，必须是十进制形式  
+ * @param string $bits 右移位数  
+ * @return mixed 结果，如果超出整型范围将返回浮点数  
+ */  
+function shr32($x, $bits){   
+    // 位移量超出范围的两种情况   
+    if($bits <= 0){   
+        return $x;   
+    }   
+    if($bits >= 32){   
+        return 0;   
+    }   
+    //转换成代表二进制数字的字符串   
+    $bin = decbin($x);   
+    $l = strlen($bin);   
+    //字符串长度超出则截取底32位，长度不够，则填充高位为0到32位   
+    if($l > 32){   
+        $bin = substr($bin, $l - 32, 32);   
+    }elseif($l < 32){   
+        $bin = str_pad($bin, 32, '0', STR_PAD_LEFT);   
+    }   
+    //取出要移动的位数，并在左边填充0   
+    return bindec(str_pad(substr($bin, 0, 32 - $bits), 32, '0', STR_PAD_LEFT));   
+}   
+/**  
+ * 无符号32位左移  
+ * @param mixed $x 要进行操作的数字，如果是字符串，必须是十进制形式  
+ * @param string $bits 左移位数  
+ * @return mixed 结果，如果超出整型范围将返回浮点数  
+ */  
+function shl32 ($x, $bits){   
+    // 位移量超出范围的两种情况   
+    if($bits <= 0){   
+        return $x;   
+    }   
+    if($bits >= 32){   
+        return 0;   
+    }   
+    //转换成代表二进制数字的字符串   
+    $bin = decbin($x);   
+    $l = strlen($bin);   
+    //字符串长度超出则截取底32位，长度不够，则填充高位为0到32位   
+    if($l > 32){   
+        $bin = substr($bin, $l - 32, 32);   
+    }elseif($l < 32){   
+        $bin = str_pad($bin, 32, '0', STR_PAD_LEFT);   
+    }   
+    //取出要移动的位数，并在右边填充0   
+    return bindec(str_pad(substr($bin, $bits), 32, '0', STR_PAD_RIGHT));   
+}   
+?>
+{% endhighlight %}
+
+[ext](http://cn2.php.net/language.operators.bitwise)

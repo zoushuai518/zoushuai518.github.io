@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>SQL语言分类 - Jekyll Theme</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="邹帅" />
+        <meta name="description" content="Just another Jekyll theme design and code by zous.me." />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/syntax.css">
+        <link rel="stylesheet" href="/css/main.css">
+        
+    </head>
+    <body>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                首页
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                分类目录
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/archives.html">
+                                文章归档
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                友情链接
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://weibo.com/luoyoo/home" target="_blank"><i class="icon-weibo"></i></a>
+                    
+                    <a href="https://github.com/zoushuai518" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                    <a href="https://twitter.com/zoushuai518" target="_blank"><i class="icon-twitter"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">SQL语言分类</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">16 Oct 2014</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#mysql-ref" >mysql</a></span>
+    </div>
+    <p><span class="impor">SQL语言共分为四大类：</span>数据查询语言DQL，数据操纵语言DML，数据定义语言DDL，数据控制语言DCL</p>
+
+<h3>一.数据查询语言DQL</h3>
+
+<p>数据查询语言DQL基本结构是由SELECT子句，FROM子句，WHERE
+子句组成的查询块：
+SELECT &lt;字段名表&gt;
+FROM &lt;表或视图名&gt;
+WHERE &lt;查询条件&gt;</p>
+
+<h3>二.数据操纵语言DML</h3>
+
+<p>数据操纵语言DML主要有三种形式：
+-  插入：INSERT
+-  更新：UPDATE
+-  删除：DELETE
+-  数据定义语言DDL</p>
+
+<h3>三.数据定义语言DDL用来创建数据库中的各种对象-----表、视图、</h3>
+
+<p>索引、同义词、聚簇等如：
+CREATE TABLE/VIEW/INDEX/SYN/CLUSTER
+表 视图 索引 同义词 簇</p>
+
+<p>DDL操作是隐性提交的！不能rollback</p>
+
+<h3>四.数据控制语言DCL</h3>
+
+<pre>
+数据控制语言DCL用来授予或回收访问数据库的某种特权，并控制
+数据库操纵事务发生的时间及效果，对数据库实行监视等。如：
+1) GRANT：授权。
+2) ROLLBACK [WORK] TO [SAVEPOINT]：回退到某一点。
+回滚---ROLLBACK
+回滚命令使数据库状态回到上次最后提交的状态。其格式为：
+SQL>ROLLBACK;
+3) COMMIT [WORK]：提交。
+    在数据库的插入、删除和修改操作时，只有当事务在提交到数据
+库时才算完成。在事务提交前，只有操作数据库的这个人才能有权看
+到所做的事情，别人只有在最后提交完成后才可以看到。
+提交数据有三种类型：显式提交、隐式提交及自动提交。下面分
+别说明这三种类型。
+(1) 显式提交
+用COMMIT命令直接完成的提交为显式提交。其格式为：
+SQL>COMMIT；
+(2) 隐式提交
+用SQL命令间接完成的提交为隐式提交。这些命令是：
+ALTER，AUDIT，COMMENT，CONNECT，CREATE，DISCONNECT，DROP，
+EXIT，GRANT，NOAUDIT，QUIT，REVOKE，RENAME。
+(3) 自动提交
+若把AUTOCOMMIT设置为ON，则在插入、修改、删除语句执行后，
+系统将自动进行提交，这就是自动提交。其格式为：
+SQL>SET AUTOCOMMIT ON；
+</pre>
+
+    <nav class="article-previous fn-clear">
+        
+        <a class="prev" href="/php/2014/10/16/%E5%BC%80%E6%BA%90%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0SQLRelay.html" rel="bookmark">&laquo;&nbsp;开源的数据库连接池 SQL Relay</a>
+        
+        
+        <a class="next" href="/php/2014/10/16/php_SAPI.html" rel="bookmark">php & SAPI&nbsp;&raquo;</a>
+        
+    </nav>
+    <div class="comment">
+        
+        <div id="disqus_thread"></div>
+        
+    </div>
+</div>
+
+                </div>
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="https://avatars0.githubusercontent.com/u/5516045?v=3&s=460" />
+                            </div>
+                            <div class="det-text">
+                                <p>我是「邹帅」，目前从事php开发！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="/standard/2014/10/28/Web_Service-Rest_Service.html" title="Web Service与Rest Service" rel="bookmark">Web Service与Rest Service</a></li>
+                            
+                                <li><a href="/agreement/2014/10/28/rpc.html" title="rpc" rel="bookmark">rpc</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="多进程/线程的SAPI生命周期" rel="bookmark">多进程/线程的SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="单进程SAPI生命周期" rel="bookmark">单进程SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86.html" title="深入理解php原理" rel="bookmark">深入理解php原理</a></li>
+                            
+                                <li><a href="/php/2014/10/24/php_soap.html" title="php使用soap调用WebService" rel="bookmark">php使用soap调用WebService</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                                    
+                                    <li><a href="http://zous.me" title="jz-code" target="_blank">jz-code</a></li>
+                                    
+                                    <li><a href="http://jekyllrb.com" title="Jekyll" target="_blank">Jekyll</a></li>
+                                    
+                                    <li><a href="http://zous.me/themes.html" title="Jekyll Theme" target="_blank">Jekyll Theme</a></li>
+                                    
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="footer">
+                <p>Copyright 2013. All rights reserved. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, Design by <a href="http://zous.me" target="_blank">zous.me</a>.</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+            
+            <script type="text/javascript">
+                //disqus
+                var disqus_shortname = 'codemadman';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] ||
+                        document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            
+        
+    </body>
+</html>

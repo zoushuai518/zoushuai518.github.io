@@ -1,16 +1,304 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-   <title>zoushuai blog</title>
-   <link href="http://127.0.0.1:4000/atom.xml" rel="self" type="application/atom+xml"/>
-   <link href="http://127.0.0.1:4000" rel="alternate" type="text/html" />
-   <updated>2014-11-14T14:20:36+08:00</updated>
-   <id>http://127.0.0.1:4000</id>
+   <title>Jekyll Theme</title>
+   <link href="/atom.xml" rel="self" type="application/atom+xml"/>
+   <link href="" rel="alternate" type="text/html" />
+   <updated>2014-11-14T15:04:56+08:00</updated>
+   <id></id>
    <author>
-     <name>zoushuai</name>
+     <name>邹帅</name>
      <email>zoushuai518@gmail.com</email>
    </author>
 
+   
+   <entry>
+     <title>Web Service与Rest Service</title>
+     <link href="/standard/2014/10/28/Web_Service-Rest_Service.html"/>
+     <updated>2014-10-28T19:16:51+08:00</updated>
+     <id>/standard/2014/10/28/Web_Service-Rest_Service</id>
+     <content type="html">&lt;p&gt;&lt;a href=&quot;http://my.oschina.net/lilw/blog/170518&quot;&gt;关于Web Service和Rest Service理解&lt;/a&gt;&lt;/p&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>rpc</title>
+     <link href="/agreement/2014/10/28/rpc.html"/>
+     <updated>2014-10-28T18:16:51+08:00</updated>
+     <id>/agreement/2014/10/28/rpc</id>
+     <content type="html"></content>
+   </entry>
+   
+   <entry>
+     <title>多进程/线程的SAPI生命周期</title>
+     <link href="/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html"/>
+     <updated>2014-10-25T02:35:51+08:00</updated>
+     <id>/php/2014/10/25/多进程_线程的SAPI生命周期</id>
+     <content type="html">&lt;h2&gt;多进程的SAPI生命周期&lt;/h2&gt;
+
+&lt;p&gt;通常PHP是编译为apache的一个模块来处理PHP请求。Apache一般会采用多进程模式， Apache启动后会fork出多个子进程，每个进程的内存空间独立，每个子进程都会经过开始和结束环节， 不过每个进程的开始阶段只在进程fork出来以来后进行，在整个进程的生命周期内可能会处理多个请求。 只有在Apache关闭或者进程被结束之后才会进行关闭阶段，在这两个阶段之间会随着每个请求重复请求开始-请求关闭的环节。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/postImage/php/duojincheng1.jpg&quot; alt=&quot;php多进程/多进程SAPI生命周期&quot; title=&quot;php多进程/多进程SAPI生命周期&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;多进程SAPI生命周期&lt;/p&gt;
+
+&lt;h2&gt;多线程的SAPI生命周期&lt;/h2&gt;
+
+&lt;p&gt;多线程模式和多进程中的某个进程类似，不同的是在整个进程的生命周期内会并行的重复着 请求开始-请求关闭的环节。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/postImage/php/duojincheng2.jpg&quot; alt=&quot;php多进程/多进程SAPI生命周期&quot; title=&quot;php多进程/多进程SAPI生命周期&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;多线程SAPI生命周期&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/1290&quot;&gt;多进程/线程的SAPI生命周期&lt;/a&gt;&lt;/p&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>单进程SAPI生命周期</title>
+     <link href="/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html"/>
+     <updated>2014-10-25T02:35:51+08:00</updated>
+     <id>/php/2014/10/25/单进程SAPI生命周期</id>
+     <content type="html">&lt;p&gt;CLI/CGI模式的PHP属于单进程的SAPI模式。这类的请求在处理一次请求后就关闭。也就是只会经过如下几个环节： 开始 - 请求开始 - 请求关闭 - 结束 SAPI接口实现就完成了其生命周期。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/postImage/php/danjincheng1.jpg&quot; alt=&quot;php单进程SAPI生命周期&quot; title=&quot;php单进程SAPI生命周期&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;单进程多请求则如下图所示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/postImage/php/danjincheng2.jpg&quot; alt=&quot;php单进程SAPI生命周期&quot; title=&quot;php单进程SAPI生命周期&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/1289&quot;&gt;单进程SAPI生命周期&lt;/a&gt;&lt;/p&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>深入理解php原理</title>
+     <link href="/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86.html"/>
+     <updated>2014-10-24T03:59:51+08:00</updated>
+     <id>/php/2014/10/24/深入理解php原理</id>
+     <content type="html">&lt;p&gt;深入理解php原理 search baidu list&lt;/p&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>php使用soap调用WebService</title>
+     <link href="/php/2014/10/24/php_soap.html"/>
+     <updated>2014-10-24T03:59:51+08:00</updated>
+     <id>/php/2014/10/24/php_soap</id>
+     <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/2156&quot;&gt;php soap&lt;/a&gt;&lt;/p&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>mysql字段类型</title>
+     <link href="/tool/2014/10/24/mysql%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B.html"/>
+     <updated>2014-10-24T01:49:51+08:00</updated>
+     <id>/tool/2014/10/24/mysql字段类型</id>
+     <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/Alacky/articles/937826.html&quot;&gt;link&lt;/a&gt;&lt;/p&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>SSH原理与运用</title>
+     <link href="/tool/2014/10/24/ssh.html"/>
+     <updated>2014-10-24T00:49:51+08:00</updated>
+     <id>/tool/2014/10/24/ssh</id>
+     <content type="html">&lt;h3&gt;一.介绍&lt;/h3&gt;
+
+&lt;p&gt;SSH是每一台Linux电脑的标准配置。&lt;/p&gt;
+
+&lt;p&gt;随着Linux设备从电脑逐渐扩展到手机、外设和家用电器，SSH的使用范围也越来越广。不仅程序员离不开它，很多普通用户也每天使用。&lt;/p&gt;
+
+&lt;p&gt;SSH具备多种功能，可以用于很多场合。有些事情，没有它就是办不成。本文是我的学习笔记，总结和解释了SSH的常见用法，希望对大家有用。&lt;/p&gt;
+
+&lt;p&gt;虽然本文内容只涉及初级应用，较为简单，但是需要读者具备最基本的&amp;quot;Shell知识&amp;quot;和了解&amp;quot;公钥加密&amp;quot;的概念。如果你对它们不熟悉，我推荐先阅读&lt;a href=&quot;http://www.ee.surrey.ac.uk/Teaching/Unix/&quot;&gt;《UNIX / Linux 初学者教程》&lt;/a&gt;和&lt;a href=&quot;http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html&quot;&gt;《数字签名是什么？》&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h3&gt;二.什么是SSH&lt;/h3&gt;
+
+&lt;p&gt;简单说，SSH是一种网络协议，用于计算机之间的加密登录。&lt;/p&gt;
+
+&lt;p&gt;如果一个用户从本地计算机，使用SSH协议登录另一台远程计算机，我们就可以认为，这种登录是安全的，即使被中途截获，密码也不会泄露。&lt;/p&gt;
+
+&lt;p&gt;最早的时候，互联网通信都是明文通信，一旦被截获，内容就暴露无疑。1995年，芬兰学者Tatu Ylonen设计了SSH协议，将登录信息全部加密，成为互联网安全的一个基本解决方案，迅速在全世界获得推广，目前已经成为Linux系统的标准配置。&lt;/p&gt;
+
+&lt;p&gt;需要指出的是，SSH只是一种协议，存在多种实现，既有商业实现，也有开源实现。本文针对的实现是OpenSSH，它是自由软件，应用非常广泛。&lt;/p&gt;
+
+&lt;p&gt;此外，本文只讨论SSH在Linux Shell中的用法。如果要在Windows系统中使用SSH，会用到另一种软件PuTTY，这需要另文介绍。&lt;/p&gt;
+
+&lt;h3&gt;三.最基本的用法&lt;/h3&gt;
+
+&lt;p&gt;SSH主要用于远程登录。假定你要以用户名user，登录远程主机host，只要一条简单命令就可以了。&lt;/p&gt;
+
+&lt;p&gt;　　$ ssh user@host&lt;/p&gt;
+
+&lt;p&gt;如果本地用户名与远程用户名一致，登录时可以省略用户名。&lt;/p&gt;
+
+&lt;p&gt;　　$ ssh host&lt;/p&gt;
+
+&lt;p&gt;SSH的默认端口是22，也就是说，你的登录请求会送进远程主机的22端口。使用p参数，可以修改这个端口。&lt;/p&gt;
+
+&lt;p&gt;　　$ ssh -p 2222 user@host&lt;/p&gt;
+
+&lt;p&gt;上面这条命令表示，ssh直接连接远程主机的2222端口。&lt;/p&gt;
+
+&lt;h3&gt;四.中间人攻击&lt;/h3&gt;
+
+&lt;p&gt;SSH之所以能够保证安全，原因在于它采用了公钥加密。&lt;/p&gt;
+
+&lt;p&gt;整个过程是这样的：（1）远程主机收到用户的登录请求，把自己的公钥发给用户。（2）用户使用这个公钥，将登录密码加密后，发送回来。（3）远程主机用自己的私钥，解密登录密码，如果密码正确，就同意用户登录。&lt;/p&gt;
+
+&lt;p&gt;这个过程本身是安全的，但是实施的时候存在一个风险：如果有人截获了登录请求，然后冒充远程主机，将伪造的公钥发给用户，那么用户很难辨别真伪。因为不像https协议，SSH协议的公钥是没有证书中心（CA）公证的，也就是说，都是自己签发的。&lt;/p&gt;
+
+&lt;p&gt;可以设想，如果攻击者插在用户与远程主机之间（比如在公共的wifi区域），用伪造的公钥，获取用户的登录密码。再用这个密码登录远程主机，那么SSH的安全机制就荡然无存了。这种风险就是著名的&amp;quot;中间人攻击&amp;quot;（Man-in-the-middle attack）。&lt;/p&gt;
+
+&lt;p&gt;SSH协议是如何应对的呢？&lt;/p&gt;
+
+&lt;h3&gt;五.口令登录&lt;/h3&gt;
+
+&lt;p&gt;如果你是第一次登录对方主机，系统会出现下面的提示：&lt;/p&gt;
+
+&lt;p&gt;　　$ssh user@host&lt;/p&gt;
+
+&lt;p&gt;　　The authenticity of host &amp;#39;host (12.18.429.21)&amp;#39; can&amp;#39;t be established.&lt;/p&gt;
+
+&lt;p&gt;　　RSA key fingerprint is 98:2e:d7:e0:de:9f:ac:67:28:c2:42:2d:37:16:58:4d.&lt;/p&gt;
+
+&lt;p&gt;　　Are you sure you want to continue connecting (yes/no)?&lt;/p&gt;
+
+&lt;p&gt;这段话的意思是，无法确认host主机的真实性，只知道它的公钥指纹，问你还想继续连接吗？&lt;/p&gt;
+
+&lt;p&gt;所谓&amp;quot;公钥指纹&amp;quot;，是指公钥长度较长（这里采用RSA算法，长达1024位），很难比对，所以对其进行MD5计算，将它变成一个128位的指纹。上例中是98:2e:d7:e0:de:9f:ac:67:28:c2:42:2d:37:16:58:4d，再进行比较，就容易多了。&lt;/p&gt;
+
+&lt;p&gt;很自然的一个问题就是，用户怎么知道远程主机的公钥指纹应该是多少？回答是没有好办法，远程主机必须在自己的网站上贴出公钥指纹，以便用户自行核对。&lt;/p&gt;
+
+&lt;p&gt;假定经过风险衡量以后，用户决定接受这个远程主机的公钥。&lt;/p&gt;
+
+&lt;p&gt;　　Are you sure you want to continue connecting (yes/no)? yes&lt;/p&gt;
+
+&lt;p&gt;系统会出现一句提示，表示host主机已经得到认可。&lt;/p&gt;
+
+&lt;p&gt;　　Warning: Permanently added &amp;#39;host,12.18.429.21&amp;#39; (RSA) to the list of known hosts.&lt;/p&gt;
+
+&lt;p&gt;然后，会要求输入密码。&lt;/p&gt;
+
+&lt;p&gt;　　Password: (enter password)&lt;/p&gt;
+
+&lt;p&gt;如果密码正确，就可以登录了。&lt;/p&gt;
+
+&lt;p&gt;当远程主机的公钥被接受以后，它就会被保存在文件$HOME/.ssh/known_hosts之中。下次再连接这台主机，系统就会认出它的公钥已经保存在本地了，从而跳过警告部分，直接提示输入密码。&lt;/p&gt;
+
+&lt;p&gt;每个SSH用户都有自己的known&lt;em&gt;hosts文件，此外系统也有一个这样的文件，通常是/etc/ssh/ssh&lt;/em&gt;known_hosts，保存一些对所有用户都可信赖的远程主机的公钥。&lt;/p&gt;
+
+&lt;h3&gt;六.公钥登录&lt;/h3&gt;
+
+&lt;p&gt;使用密码登录，每次都必须输入密码，非常麻烦。好在SSH还提供了公钥登录，可以省去输入密码的步骤。&lt;/p&gt;
+
+&lt;p&gt;所谓&amp;quot;公钥登录&amp;quot;，原理很简单，就是用户将自己的公钥储存在远程主机上。登录的时候，远程主机会向用户发送一段随机字符串，用户用自己的私钥加密后，再发回来。远程主机用事先储存的公钥进行解密，如果成功，就证明用户是可信的，直接允许登录shell，不再要求密码。&lt;/p&gt;
+
+&lt;p&gt;这种方法要求用户必须提供自己的公钥。如果没有现成的，可以直接用ssh-keygen生成一个：&lt;/p&gt;
+
+&lt;p&gt;　　$ ssh-keygen&lt;/p&gt;
+
+&lt;p&gt;运行上面的命令以后，系统会出现一系列提示，可以一路回车。其中有一个问题是，要不要对私钥设置口令（passphrase），如果担心私钥的安全，这里可以设置一个。&lt;/p&gt;
+
+&lt;p&gt;运行结束以后，在$HOME/.ssh/目录下，会新生成两个文件：id&lt;em&gt;rsa.pub和id&lt;/em&gt;rsa。前者是你的公钥，后者是你的私钥。&lt;/p&gt;
+
+&lt;p&gt;这时再输入下面的命令，将公钥传送到远程主机host上面：&lt;/p&gt;
+
+&lt;p&gt;　　$ ssh-copy-id user@host&lt;/p&gt;
+
+&lt;p&gt;好了，从此你再登录，就不需要输入密码了。&lt;/p&gt;
+
+&lt;p&gt;如果还是不行，就打开远程主机的/etc/ssh/sshd_config这个文件，检查下面几行前面&amp;quot;#&amp;quot;注释是否取掉。&lt;/p&gt;
+
+&lt;p&gt;　　RSAAuthentication yes
+　　PubkeyAuthentication yes
+　　AuthorizedKeysFile .ssh/authorized_keys&lt;/p&gt;
+
+&lt;p&gt;然后，重启远程主机的ssh服务。&lt;/p&gt;
+
+&lt;p&gt;　　// ubuntu系统
+　　service ssh restart&lt;/p&gt;
+
+&lt;p&gt;　　// debian系统
+　　/etc/init.d/ssh restart&lt;/p&gt;
+
+&lt;h3&gt;七.authorized_keys文件&lt;/h3&gt;
+
+&lt;p&gt;远程主机将用户的公钥，保存在登录后的用户主目录的$HOME/.ssh/authorized&lt;em&gt;keys文件中。公钥就是一段字符串，只要把它追加在authorized&lt;/em&gt;keys文件的末尾就行了。&lt;/p&gt;
+
+&lt;p&gt;这里不使用上面的ssh-copy-id命令，改用下面的命令，解释公钥的保存过程：&lt;/p&gt;
+
+&lt;p&gt;　　$ ssh user@host &amp;#39;mkdir -p .ssh &amp;amp;&amp;amp; cat &amp;gt;&amp;gt; .ssh/authorized&lt;em&gt;keys&amp;#39; &amp;lt; ~/.ssh/id&lt;/em&gt;rsa.pub&lt;/p&gt;
+
+&lt;p&gt;这条命令由多个语句组成，依次分解开来看：（1）&amp;quot;$ ssh user@host&amp;quot;，表示登录远程主机；（2）单引号中的mkdir .ssh &amp;amp;&amp;amp; cat &amp;gt;&amp;gt; .ssh/authorized&lt;em&gt;keys，表示登录后在远程shell上执行的命令：（3）&amp;quot;$ mkdir -p .ssh&amp;quot;的作用是，如果用户主目录中的.ssh目录不存在，就创建一个；（4）&amp;#39;cat &amp;gt;&amp;gt; .ssh/authorized&lt;/em&gt;keys&amp;#39; &amp;lt; ~/.ssh/id&lt;em&gt;rsa.pub的作用是，将本地的公钥文件~/.ssh/id&lt;/em&gt;rsa.pub，重定向追加到远程文件authorized_keys的末尾。&lt;/p&gt;
+
+&lt;p&gt;写入authorized_keys文件后，公钥登录的设置就完成了。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/tool/2014/10/23/ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95&quot;&gt;6-7 ssh免密码登录&lt;/a&gt;&lt;/p&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>ssh免密码登录</title>
+     <link href="/tool/2014/10/23/ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95.html"/>
+     <updated>2014-10-23T20:49:51+08:00</updated>
+     <id>/tool/2014/10/23/ssh免密码登录</id>
+     <content type="html">&lt;p&gt;ssh 无密码登录要使用公钥与私钥。linux下可以用用ssh-keygen生成公钥/私钥对，下面我以CentOS为例。&lt;/p&gt;
+
+&lt;p&gt;有机器A(192.168.1.155)，B(192.168.1.181)。现想A通过ssh免密码登录到B。&lt;/p&gt;
+
+&lt;p&gt;1.在A机下生成公钥/私钥对。&lt;br&gt;
+&lt;code&gt;[chenlb@A ~]$ ssh-keygen -t rsa -P &amp;#39;&amp;#39;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;-P表示密码，-P &amp;#39;&amp;#39; 就表示空密码，也可以不用-P参数，这样就要三车回车，用-P就一次回车。
+它在/home/chenlb下生成.ssh目录，.ssh下有id&lt;em&gt;rsa和id&lt;/em&gt;rsa.pub。&lt;/p&gt;
+
+&lt;p&gt;2.把A机下的id&lt;em&gt;rsa.pub复制到B机下，在B机的.ssh/authorized&lt;/em&gt;keys文件里，我用scp复制。
+&lt;pre&gt;&lt;code&gt;
+[chenlb@A ~]$ scp .ssh/id&lt;em&gt;rsa.pub chenlb@192.168.1.181:/home/chenlb/id&lt;/em&gt;rsa.pub 
+chenlb@192.168.1.181&amp;#39;s password:
+id_rsa.pub                                    100%  223     0.2KB/s   00:00
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;由于还没有免密码登录的，所以要输入密码。&lt;/p&gt;
+
+&lt;p&gt;3.B机把从A机复制的id&lt;em&gt;rsa.pub添加到.ssh/authorzied&lt;/em&gt;keys文件里。
+&lt;pre&gt;&lt;code&gt;
+[chenlb@B ~]$ cat id&lt;em&gt;rsa.pub &amp;gt;&amp;gt; .ssh/authorized&lt;/em&gt;keys
+[chenlb@B ~]$ chmod 600 .ssh/authorized_keys
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;authorized_keys的权限要是600。&lt;/p&gt;
+
+&lt;p&gt;4.A机登录B机。
+&lt;pre&gt;&lt;code&gt;
+[chenlb@A ~]$ ssh 192.168.1.181
+The authenticity of host &amp;#39;192.168.1.181 (192.168.1.181)&amp;#39; can&amp;#39;t be established.
+RSA key fingerprint is 00:a6:a8:87:eb:c7:40:10:39:cc:a0:eb:50:d9:6a:5b.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added &amp;#39;192.168.1.181&amp;#39; (RSA) to the list of known hosts.
+Last login: Thu Jul  3 09:53:18 2008 from chenlb
+[chenlb@B ~]$
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;第一次登录是时要你输入yes。&lt;/p&gt;
+
+&lt;p&gt;现在A机可以无密码登录B机了。&lt;/p&gt;
+
+&lt;p&gt;小结：登录的机子可有私钥，被登录的机子要有登录机子的公钥。这个公钥/私钥对一般在私钥宿主机产生。上面是用rsa算法的公钥/私钥对，当然也可以用dsa(对应的文件是id&lt;em&gt;dsa，id&lt;/em&gt;dsa.pub)&lt;/p&gt;
+
+&lt;p&gt;想让A，B机无密码互登录，那B机以上面同样的方式配置即可。&lt;/p&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>UML</title>
+     <link href="/tool/2014/10/23/UML.html"/>
+     <updated>2014-10-23T20:49:51+08:00</updated>
+     <id>/tool/2014/10/23/UML</id>
+     <content type="html"></content>
+   </entry>
    
 
 </feed>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>获得PHP代码占用内存的情况 - Jekyll Theme</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="邹帅" />
+        <meta name="description" content="Just another Jekyll theme design and code by zous.me." />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/syntax.css">
+        <link rel="stylesheet" href="/css/main.css">
+        
+    </head>
+    <body>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                首页
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                分类目录
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/archives.html">
+                                文章归档
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                友情链接
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://weibo.com/luoyoo/home" target="_blank"><i class="icon-weibo"></i></a>
+                    
+                    <a href="https://github.com/zoushuai518" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                    <a href="https://twitter.com/zoushuai518" target="_blank"><i class="icon-twitter"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">获得PHP代码占用内存的情况</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">12 Sep 2014</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#php-ref" >php</a></span>
+    </div>
+    <h1>获得PHP代码占用内存的情况</h1>
+
+<p>想要知道编写的 PHP 脚本需要占用多少内存么？很简单，直接使用 PHP 查看当前分配给 PHP 脚本的内存的函数 memory<em>get</em>usage() 就可以了。  </p>
+
+<p>demo1:  </p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="k">echo</span> <span class="nb">memory_get_usage</span><span class="p">(),</span> <span class="s1">&#39;&lt;br /&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">3</span> <span class="nv">$tmp</span> <span class="o">=</span> <span class="nb">str_repeat</span><span class="p">(</span><span class="s1">&#39;http://www.nowamagic.net/&#39;</span><span class="p">,</span> <span class="mi">4000</span><span class="p">);</span>
+<span class="lineno">4</span> <span class="k">echo</span> <span class="nb">memory_get_usage</span><span class="p">(),</span> <span class="s1">&#39;&lt;br /&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">5</span> <span class="nb">unset</span><span class="p">(</span><span class="nv">$tmp</span><span class="p">);</span>
+<span class="lineno">6</span> <span class="k">echo</span> <span class="nb">memory_get_usage</span><span class="p">();</span>
+<span class="lineno">7</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>上面的程序后面的注释代表了它们的输出（单位为 byte(s)），也就是当时 PHP 脚本使用的内存（不含 memory<em>get</em>usage() 函数本身占用的内存）。
+由上面的例子可以看出，要想减少内存的占用，可以使用 PHP unset() 函数把不再需要使用的变量删除。类似的还有：PHP mysql<em>free</em>result() 函数，可以清空不再需要的查询数据库得到的结果集，这样也能得到更多可用内存。
+PHP memory<em>get</em>usage() 函数还可以有个参数，$real<em>usage，其值为布尔值。默认为 FALSE，表示得到的内存使用量不包括该函数（PHP 内存管理器）占用的内存；当设置为 TRUE 时，得到的内存为包括该函数（PHP 内存管理器）占用的内存。
+所以在实际编程中，可以用 memory</em>get_usage() 函数比较各个方法占用内存的高低，来选择使用哪种占用内存小的方法。  </p>
+
+<p>demo2:  </p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="sd">/**</span>
+<span class="lineno"> 4</span> <span class="sd"> * PHP单位转换</span>
+<span class="lineno"> 5</span> <span class="sd"> * @param int $size 大小,单位b</span>
+<span class="lineno"> 6</span> <span class="sd"> * @return 返回单位大小</span>
+<span class="lineno"> 7</span> <span class="sd"> */</span>
+<span class="lineno"> 8</span> <span class="k">function</span> <span class="nf">formatBytes</span><span class="p">(</span><span class="nv">$size</span><span class="p">)</span> <span class="p">{</span> 
+<span class="lineno"> 9</span>  <span class="nv">$units</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39; B&#39;</span><span class="p">,</span> <span class="s1">&#39; KB&#39;</span><span class="p">,</span> <span class="s1">&#39; MB&#39;</span><span class="p">,</span> <span class="s1">&#39; GB&#39;</span><span class="p">,</span> <span class="s1">&#39; TB&#39;</span><span class="p">);</span> 
+<span class="lineno">10</span>  <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$size</span> <span class="o">&gt;=</span> <span class="mi">1024</span> <span class="o">&amp;&amp;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">11</span>      <span class="nv">$size</span> <span class="o">/=</span> <span class="mi">1024</span><span class="p">;</span> 
+<span class="lineno">12</span>  <span class="p">}</span>
+<span class="lineno">13</span>      <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="nv">$size</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="nv">$units</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span> 
+<span class="lineno">14</span>  <span class="p">}</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span> <span class="sd">/**</span>
+<span class="lineno">17</span> <span class="sd"> * 获取程序占用内存情况</span>
+<span class="lineno">18</span> <span class="sd"> * @param boolean $real_usage FALSE不包括函数本身占用内存,TRUE包括函数本身占用内容</span>
+<span class="lineno">19</span> <span class="sd"> * @return int $memoryUsage 返回php代码占用的内存</span>
+<span class="lineno">20</span> <span class="sd"> */</span>
+<span class="lineno">21</span> <span class="k">function</span> <span class="nf">get_memory_usage</span><span class="p">(</span><span class="nv">$real_usage</span> <span class="o">=</span> <span class="k">FALSE</span><span class="p">)</span>
+<span class="lineno">22</span> <span class="p">{</span>
+<span class="lineno">23</span>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">function_exists</span><span class="p">(</span><span class="s1">&#39;memory_get_usage&#39;</span><span class="p">))</span> 
+<span class="lineno">24</span>  <span class="p">{</span>
+<span class="lineno">25</span>      <span class="sd">/**</span>
+<span class="lineno">26</span> <span class="sd">         * 取得内存使用情况</span>
+<span class="lineno">27</span> <span class="sd">         * @return integer</span>
+<span class="lineno">28</span> <span class="sd">         */</span>
+<span class="lineno">29</span>      <span class="c1">//function memory_get_usage()</span>
+<span class="lineno">30</span>      <span class="c1">//{</span>
+<span class="lineno">31</span>          <span class="nv">$pid</span> <span class="o">=</span> <span class="nb">getmypid</span><span class="p">();</span>
+<span class="lineno">32</span>          <span class="k">if</span> <span class="p">(</span><span class="nx">IS_WIN</span><span class="p">)</span> 
+<span class="lineno">33</span>          <span class="p">{</span>
+<span class="lineno">34</span>              <span class="nb">exec</span><span class="p">(</span><span class="s1">&#39;tasklist /FI &quot;PID eq &#39;</span> <span class="o">.</span> <span class="nv">$pid</span> <span class="o">.</span> <span class="s1">&#39;&quot; /FO LIST&#39;</span><span class="p">,</span> <span class="nv">$output</span><span class="p">);</span>
+<span class="lineno">35</span>              <span class="k">return</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="s1">&#39;/[^0-9]/&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nv">$output</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">;</span>
+<span class="lineno">36</span>          <span class="p">}</span> 
+<span class="lineno">37</span>          <span class="k">else</span> 
+<span class="lineno">38</span>          <span class="p">{</span>
+<span class="lineno">39</span>              <span class="nb">exec</span><span class="p">(</span><span class="s2">&quot;ps -eo%mem,rss,pid | grep </span><span class="si">$pid</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$output</span><span class="p">);</span>
+<span class="lineno">40</span>              <span class="nv">$output</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="nv">$output</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="lineno">41</span>              <span class="k">return</span> <span class="nv">$output</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">;</span>
+<span class="lineno">42</span>          <span class="p">}</span>
+<span class="lineno">43</span>      <span class="c1">//}</span>
+<span class="lineno">44</span>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">45</span>      <span class="k">return</span> <span class="nb">memory_get_usage</span><span class="p">(</span><span class="nv">$real_usage</span><span class="p">);</span>
+<span class="lineno">46</span>      <span class="c1">//return formatBytes(memory_get_usage($real_usage));</span>
+<span class="lineno">47</span>  <span class="p">}</span>
+<span class="lineno">48</span> <span class="p">}</span>
+<span class="lineno">49</span> 
+<span class="lineno">50</span> <span class="c1">//memory_get_usage();  </span>
+<span class="lineno">51</span> <span class="nv">$m1</span> <span class="o">=</span> <span class="nx">get_memory_usage</span><span class="p">();</span>  
+<span class="lineno">52</span> <span class="c1">//$m1 = memory_get_usage();  </span>
+<span class="lineno">53</span> <span class="k">echo</span> <span class="s1">&#39;&lt;br /&gt; m1:&#39;</span><span class="p">,</span><span class="nx">formatBytes</span><span class="p">(</span><span class="nv">$m1</span><span class="p">);</span>
+<span class="lineno">54</span>   
+<span class="lineno">55</span> <span class="nv">$a</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span><span class="p">;</span>  
+<span class="lineno">56</span> <span class="nv">$b</span> <span class="o">=</span>  <span class="nb">str_repeat</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>  
+<span class="lineno">57</span>   
+<span class="lineno">58</span> <span class="nv">$m2</span> <span class="o">=</span> <span class="nb">memory_get_usage</span><span class="p">();</span>  
+<span class="lineno">59</span> <span class="k">echo</span> <span class="s1">&#39;&lt;br /&gt; m2:&#39;</span><span class="p">,</span><span class="nx">formatBytes</span><span class="p">(</span><span class="nv">$m2</span><span class="p">);</span>
+<span class="lineno">60</span>   
+<span class="lineno">61</span> <span class="nb">unset</span><span class="p">(</span><span class="nv">$b</span><span class="p">);</span>  
+<span class="lineno">62</span>   
+<span class="lineno">63</span> <span class="nv">$m3</span> <span class="o">=</span> <span class="nb">memory_get_usage</span><span class="p">();</span>  
+<span class="lineno">64</span> <span class="k">echo</span> <span class="s1">&#39;&lt;br /&gt; m3:&#39;</span><span class="p">,</span><span class="nx">formatBytes</span><span class="p">(</span><span class="nv">$m3</span><span class="p">);</span>
+<span class="lineno">65</span> 
+<span class="lineno">66</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p><a href="http://www.nowamagic.net/php/php_MemoryGetUsage.php">原文链接</a>  </p>
+
+    <nav class="article-previous fn-clear">
+        
+        <a class="prev" href="/jekyll/2014/09/12/jekyll-%E4%B8%AD%E7%9A%84%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE.html" rel="bookmark">&laquo;&nbsp;jekyll中的语法高亮</a>
+        
+        
+        <a class="next" href="/php/2014/09/12/php-composer.html" rel="bookmark">php composer&nbsp;&raquo;</a>
+        
+    </nav>
+    <div class="comment">
+        
+        <div id="disqus_thread"></div>
+        
+    </div>
+</div>
+
+                </div>
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="https://avatars0.githubusercontent.com/u/5516045?v=3&s=460" />
+                            </div>
+                            <div class="det-text">
+                                <p>我是「邹帅」，目前从事php开发！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="/standard/2014/10/28/Web_Service-Rest_Service.html" title="Web Service与Rest Service" rel="bookmark">Web Service与Rest Service</a></li>
+                            
+                                <li><a href="/agreement/2014/10/28/rpc.html" title="rpc" rel="bookmark">rpc</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="多进程/线程的SAPI生命周期" rel="bookmark">多进程/线程的SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="单进程SAPI生命周期" rel="bookmark">单进程SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86.html" title="深入理解php原理" rel="bookmark">深入理解php原理</a></li>
+                            
+                                <li><a href="/php/2014/10/24/php_soap.html" title="php使用soap调用WebService" rel="bookmark">php使用soap调用WebService</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                                    
+                                    <li><a href="http://zous.me" title="jz-code" target="_blank">jz-code</a></li>
+                                    
+                                    <li><a href="http://jekyllrb.com" title="Jekyll" target="_blank">Jekyll</a></li>
+                                    
+                                    <li><a href="http://zous.me/themes.html" title="Jekyll Theme" target="_blank">Jekyll Theme</a></li>
+                                    
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="footer">
+                <p>Copyright 2013. All rights reserved. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, Design by <a href="http://zous.me" target="_blank">zous.me</a>.</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+            
+            <script type="text/javascript">
+                //disqus
+                var disqus_shortname = 'codemadman';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] ||
+                        document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            
+        
+    </body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>php strlen和mb_strlen的区别 - Jekyll Theme</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="邹帅" />
+        <meta name="description" content="Just another Jekyll theme design and code by zous.me." />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/syntax.css">
+        <link rel="stylesheet" href="/css/main.css">
+        
+    </head>
+    <body>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                首页
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                分类目录
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/archives.html">
+                                文章归档
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                友情链接
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://weibo.com/luoyoo/home" target="_blank"><i class="icon-weibo"></i></a>
+                    
+                    <a href="https://github.com/zoushuai518" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                    <a href="https://twitter.com/zoushuai518" target="_blank"><i class="icon-twitter"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">php strlen和mb_strlen的区别</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">29 Sep 2014</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#php-ref" >php</a></span>
+    </div>
+    <p><span class="impor">干货：strlen和mb<em>strlen都是返回字符串的长度；strlen纯英文ok；纯中文、中英混合两个返回长度不同；后者建议使用mb</em>strlen。<br>
+mb<em>strlen不是php内置函数，使用此函数，需要开启php</em>mbstring扩展。
+</span></p>
+
+<ul>
+<li>strlen返回的是字符串的</span class="impor">字节数</span>。(英文字符串长度和字节数相同)</li>
+<li><p>mb_strlen真正返回的是字符串的长度，它和字符编码相关。(gbk:{英文：1个字符占用1个字节长度；中文：1个字符占用2个字节长度}；utf8:{英文：1个字符占用1个字节长度；中文：1个字符占用3个字节长度})</p></li>
+<li><p>strlen不能处理中文或者中英文混合字符串</p></li>
+<li><p>mb_strlen可以处理，strlen所不能的字符串</p></li>
+</ul>
+
+<h3>DEMO:</h3>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">//测试时文件的编码方式要是UTF8  </span>
+<span class="lineno"> 4</span> <span class="nv">$str</span><span class="o">=</span><span class="s1">&#39;中文a字1符&#39;</span><span class="p">;</span>  
+<span class="lineno"> 5</span> <span class="k">echo</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$str</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;&lt;br&gt;&#39;</span><span class="p">;</span><span class="c1">//14  </span>
+<span class="lineno"> 6</span> <span class="k">echo</span> <span class="nb">mb_strlen</span><span class="p">(</span><span class="nv">$str</span><span class="p">,</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;&lt;br&gt;&#39;</span><span class="p">;</span><span class="c1">//6  </span>
+<span class="lineno"> 7</span> <span class="k">echo</span> <span class="nb">mb_strlen</span><span class="p">(</span><span class="nv">$str</span><span class="p">,</span><span class="s1">&#39;gbk&#39;</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;&lt;br&gt;&#39;</span><span class="p">;</span><span class="c1">//8  </span>
+<span class="lineno"> 8</span> <span class="k">echo</span> <span class="nb">mb_strlen</span><span class="p">(</span><span class="nv">$str</span><span class="p">,</span><span class="s1">&#39;gb2312&#39;</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;&lt;br&gt;&#39;</span><span class="p">;</span><span class="c1">//10  </span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="c1">//结果分析：在strlen计算时，对待一个UTF8的中文字符是3个长度，所以“中文a字1符”长度是3*4+2=14</span>
+<span class="lineno">11</span> <span class="c1">//在mb_strlen计算时，选定内码为UTF8，则会将一个中文字符当作长度1来计算，所以“中文a字1符”长度是6 .</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<ul>
+<li><a href="http://cn2.php.net/strlen">strlen</a></li>
+<li><a href="http://cn2.php.net/manual/zh/function.mb-strlen.php">mb_strlen</a></li>
+<li><a href="http://cn2.php.net/manual/zh/function.mb-internal-encoding.php">mb<em>internal</em>encoding</a></li>
+</ul>
+
+    <nav class="article-previous fn-clear">
+        
+        <a class="prev" href="/php/2014/09/29/php-fastcgi_finish_request.html" rel="bookmark">&laquo;&nbsp;fastcgi_finish_request</a>
+        
+        
+        <a class="next" href="/php/2014/09/29/php-%E4%BB%8EYii2%E7%9A%84Request%E7%9C%8B%E5%85%B6CSRF%E9%98%B2%E8%8C%83%E7%AD%96%E7%95%A5.html" rel="bookmark">从Yii2的Request看其CSRF防范策略&nbsp;&raquo;</a>
+        
+    </nav>
+    <div class="comment">
+        
+        <div id="disqus_thread"></div>
+        
+    </div>
+</div>
+
+                </div>
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="https://avatars0.githubusercontent.com/u/5516045?v=3&s=460" />
+                            </div>
+                            <div class="det-text">
+                                <p>我是「邹帅」，目前从事php开发！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="/standard/2014/10/28/Web_Service-Rest_Service.html" title="Web Service与Rest Service" rel="bookmark">Web Service与Rest Service</a></li>
+                            
+                                <li><a href="/agreement/2014/10/28/rpc.html" title="rpc" rel="bookmark">rpc</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="多进程/线程的SAPI生命周期" rel="bookmark">多进程/线程的SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="单进程SAPI生命周期" rel="bookmark">单进程SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86.html" title="深入理解php原理" rel="bookmark">深入理解php原理</a></li>
+                            
+                                <li><a href="/php/2014/10/24/php_soap.html" title="php使用soap调用WebService" rel="bookmark">php使用soap调用WebService</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                                    
+                                    <li><a href="http://zous.me" title="jz-code" target="_blank">jz-code</a></li>
+                                    
+                                    <li><a href="http://jekyllrb.com" title="Jekyll" target="_blank">Jekyll</a></li>
+                                    
+                                    <li><a href="http://zous.me/themes.html" title="Jekyll Theme" target="_blank">Jekyll Theme</a></li>
+                                    
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="footer">
+                <p>Copyright 2013. All rights reserved. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, Design by <a href="http://zous.me" target="_blank">zous.me</a>.</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+            
+            <script type="text/javascript">
+                //disqus
+                var disqus_shortname = 'codemadman';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] ||
+                        document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            
+        
+    </body>
+</html>

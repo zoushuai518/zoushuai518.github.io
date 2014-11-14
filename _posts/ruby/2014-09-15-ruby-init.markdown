@@ -1,0 +1,14 @@
+---
+layout: post
+title: "ruby"
+category: ruby
+comments: true
+date:   2014-09-12 10:59:51
+---
+
+#### ruby开发
+
+[学习Ruby你需要了解的相关知识（rvm, gem, bundle, rake, rails等）](http://www.jb51.net/article/51591.htm)
+
+持续更新中...
+

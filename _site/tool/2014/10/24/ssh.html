@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>SSH原理与运用 - Jekyll Theme</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="邹帅" />
+        <meta name="description" content="Just another Jekyll theme design and code by zous.me." />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/syntax.css">
+        <link rel="stylesheet" href="/css/main.css">
+        
+    </head>
+    <body>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                首页
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                分类目录
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/archives.html">
+                                文章归档
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                友情链接
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://weibo.com/luoyoo/home" target="_blank"><i class="icon-weibo"></i></a>
+                    
+                    <a href="https://github.com/zoushuai518" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                    <a href="https://twitter.com/zoushuai518" target="_blank"><i class="icon-twitter"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">SSH原理与运用</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">24 Oct 2014</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#tool-ref" >tool</a></span>
+    </div>
+    <h3>一.介绍</h3>
+
+<p>SSH是每一台Linux电脑的标准配置。</p>
+
+<p>随着Linux设备从电脑逐渐扩展到手机、外设和家用电器，SSH的使用范围也越来越广。不仅程序员离不开它，很多普通用户也每天使用。</p>
+
+<p>SSH具备多种功能，可以用于很多场合。有些事情，没有它就是办不成。本文是我的学习笔记，总结和解释了SSH的常见用法，希望对大家有用。</p>
+
+<p>虽然本文内容只涉及初级应用，较为简单，但是需要读者具备最基本的&quot;Shell知识&quot;和了解&quot;公钥加密&quot;的概念。如果你对它们不熟悉，我推荐先阅读<a href="http://www.ee.surrey.ac.uk/Teaching/Unix/">《UNIX / Linux 初学者教程》</a>和<a href="http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html">《数字签名是什么？》</a>。</p>
+
+<h3>二.什么是SSH</h3>
+
+<p>简单说，SSH是一种网络协议，用于计算机之间的加密登录。</p>
+
+<p>如果一个用户从本地计算机，使用SSH协议登录另一台远程计算机，我们就可以认为，这种登录是安全的，即使被中途截获，密码也不会泄露。</p>
+
+<p>最早的时候，互联网通信都是明文通信，一旦被截获，内容就暴露无疑。1995年，芬兰学者Tatu Ylonen设计了SSH协议，将登录信息全部加密，成为互联网安全的一个基本解决方案，迅速在全世界获得推广，目前已经成为Linux系统的标准配置。</p>
+
+<p>需要指出的是，SSH只是一种协议，存在多种实现，既有商业实现，也有开源实现。本文针对的实现是OpenSSH，它是自由软件，应用非常广泛。</p>
+
+<p>此外，本文只讨论SSH在Linux Shell中的用法。如果要在Windows系统中使用SSH，会用到另一种软件PuTTY，这需要另文介绍。</p>
+
+<h3>三.最基本的用法</h3>
+
+<p>SSH主要用于远程登录。假定你要以用户名user，登录远程主机host，只要一条简单命令就可以了。</p>
+
+<p>　　$ ssh user@host</p>
+
+<p>如果本地用户名与远程用户名一致，登录时可以省略用户名。</p>
+
+<p>　　$ ssh host</p>
+
+<p>SSH的默认端口是22，也就是说，你的登录请求会送进远程主机的22端口。使用p参数，可以修改这个端口。</p>
+
+<p>　　$ ssh -p 2222 user@host</p>
+
+<p>上面这条命令表示，ssh直接连接远程主机的2222端口。</p>
+
+<h3>四.中间人攻击</h3>
+
+<p>SSH之所以能够保证安全，原因在于它采用了公钥加密。</p>
+
+<p>整个过程是这样的：（1）远程主机收到用户的登录请求，把自己的公钥发给用户。（2）用户使用这个公钥，将登录密码加密后，发送回来。（3）远程主机用自己的私钥，解密登录密码，如果密码正确，就同意用户登录。</p>
+
+<p>这个过程本身是安全的，但是实施的时候存在一个风险：如果有人截获了登录请求，然后冒充远程主机，将伪造的公钥发给用户，那么用户很难辨别真伪。因为不像https协议，SSH协议的公钥是没有证书中心（CA）公证的，也就是说，都是自己签发的。</p>
+
+<p>可以设想，如果攻击者插在用户与远程主机之间（比如在公共的wifi区域），用伪造的公钥，获取用户的登录密码。再用这个密码登录远程主机，那么SSH的安全机制就荡然无存了。这种风险就是著名的&quot;中间人攻击&quot;（Man-in-the-middle attack）。</p>
+
+<p>SSH协议是如何应对的呢？</p>
+
+<h3>五.口令登录</h3>
+
+<p>如果你是第一次登录对方主机，系统会出现下面的提示：</p>
+
+<p>　　$ssh user@host</p>
+
+<p>　　The authenticity of host &#39;host (12.18.429.21)&#39; can&#39;t be established.</p>
+
+<p>　　RSA key fingerprint is 98:2e:d7:e0:de:9f:ac:67:28:c2:42:2d:37:16:58:4d.</p>
+
+<p>　　Are you sure you want to continue connecting (yes/no)?</p>
+
+<p>这段话的意思是，无法确认host主机的真实性，只知道它的公钥指纹，问你还想继续连接吗？</p>
+
+<p>所谓&quot;公钥指纹&quot;，是指公钥长度较长（这里采用RSA算法，长达1024位），很难比对，所以对其进行MD5计算，将它变成一个128位的指纹。上例中是98:2e:d7:e0:de:9f:ac:67:28:c2:42:2d:37:16:58:4d，再进行比较，就容易多了。</p>
+
+<p>很自然的一个问题就是，用户怎么知道远程主机的公钥指纹应该是多少？回答是没有好办法，远程主机必须在自己的网站上贴出公钥指纹，以便用户自行核对。</p>
+
+<p>假定经过风险衡量以后，用户决定接受这个远程主机的公钥。</p>
+
+<p>　　Are you sure you want to continue connecting (yes/no)? yes</p>
+
+<p>系统会出现一句提示，表示host主机已经得到认可。</p>
+
+<p>　　Warning: Permanently added &#39;host,12.18.429.21&#39; (RSA) to the list of known hosts.</p>
+
+<p>然后，会要求输入密码。</p>
+
+<p>　　Password: (enter password)</p>
+
+<p>如果密码正确，就可以登录了。</p>
+
+<p>当远程主机的公钥被接受以后，它就会被保存在文件$HOME/.ssh/known_hosts之中。下次再连接这台主机，系统就会认出它的公钥已经保存在本地了，从而跳过警告部分，直接提示输入密码。</p>
+
+<p>每个SSH用户都有自己的known<em>hosts文件，此外系统也有一个这样的文件，通常是/etc/ssh/ssh</em>known_hosts，保存一些对所有用户都可信赖的远程主机的公钥。</p>
+
+<h3>六.公钥登录</h3>
+
+<p>使用密码登录，每次都必须输入密码，非常麻烦。好在SSH还提供了公钥登录，可以省去输入密码的步骤。</p>
+
+<p>所谓&quot;公钥登录&quot;，原理很简单，就是用户将自己的公钥储存在远程主机上。登录的时候，远程主机会向用户发送一段随机字符串，用户用自己的私钥加密后，再发回来。远程主机用事先储存的公钥进行解密，如果成功，就证明用户是可信的，直接允许登录shell，不再要求密码。</p>
+
+<p>这种方法要求用户必须提供自己的公钥。如果没有现成的，可以直接用ssh-keygen生成一个：</p>
+
+<p>　　$ ssh-keygen</p>
+
+<p>运行上面的命令以后，系统会出现一系列提示，可以一路回车。其中有一个问题是，要不要对私钥设置口令（passphrase），如果担心私钥的安全，这里可以设置一个。</p>
+
+<p>运行结束以后，在$HOME/.ssh/目录下，会新生成两个文件：id<em>rsa.pub和id</em>rsa。前者是你的公钥，后者是你的私钥。</p>
+
+<p>这时再输入下面的命令，将公钥传送到远程主机host上面：</p>
+
+<p>　　$ ssh-copy-id user@host</p>
+
+<p>好了，从此你再登录，就不需要输入密码了。</p>
+
+<p>如果还是不行，就打开远程主机的/etc/ssh/sshd_config这个文件，检查下面几行前面&quot;#&quot;注释是否取掉。</p>
+
+<p>　　RSAAuthentication yes
+　　PubkeyAuthentication yes
+　　AuthorizedKeysFile .ssh/authorized_keys</p>
+
+<p>然后，重启远程主机的ssh服务。</p>
+
+<p>　　// ubuntu系统
+　　service ssh restart</p>
+
+<p>　　// debian系统
+　　/etc/init.d/ssh restart</p>
+
+<h3>七.authorized_keys文件</h3>
+
+<p>远程主机将用户的公钥，保存在登录后的用户主目录的$HOME/.ssh/authorized<em>keys文件中。公钥就是一段字符串，只要把它追加在authorized</em>keys文件的末尾就行了。</p>
+
+<p>这里不使用上面的ssh-copy-id命令，改用下面的命令，解释公钥的保存过程：</p>
+
+<p>　　$ ssh user@host &#39;mkdir -p .ssh &amp;&amp; cat &gt;&gt; .ssh/authorized<em>keys&#39; &lt; ~/.ssh/id</em>rsa.pub</p>
+
+<p>这条命令由多个语句组成，依次分解开来看：（1）&quot;$ ssh user@host&quot;，表示登录远程主机；（2）单引号中的mkdir .ssh &amp;&amp; cat &gt;&gt; .ssh/authorized<em>keys，表示登录后在远程shell上执行的命令：（3）&quot;$ mkdir -p .ssh&quot;的作用是，如果用户主目录中的.ssh目录不存在，就创建一个；（4）&#39;cat &gt;&gt; .ssh/authorized</em>keys&#39; &lt; ~/.ssh/id<em>rsa.pub的作用是，将本地的公钥文件~/.ssh/id</em>rsa.pub，重定向追加到远程文件authorized_keys的末尾。</p>
+
+<p>写入authorized_keys文件后，公钥登录的设置就完成了。</p>
+
+<p><a href="/tool/2014/10/23/ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95">6-7 ssh免密码登录</a></p>
+
+    <nav class="article-previous fn-clear">
+        
+        <a class="prev" href="/tool/2014/10/23/ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95.html" rel="bookmark">&laquo;&nbsp;ssh免密码登录</a>
+        
+        
+        <a class="next" href="/tool/2014/10/24/mysql%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B.html" rel="bookmark">mysql字段类型&nbsp;&raquo;</a>
+        
+    </nav>
+    <div class="comment">
+        
+        <div id="disqus_thread"></div>
+        
+    </div>
+</div>
+
+                </div>
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="https://avatars0.githubusercontent.com/u/5516045?v=3&s=460" />
+                            </div>
+                            <div class="det-text">
+                                <p>我是「邹帅」，目前从事php开发！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="/standard/2014/10/28/Web_Service-Rest_Service.html" title="Web Service与Rest Service" rel="bookmark">Web Service与Rest Service</a></li>
+                            
+                                <li><a href="/agreement/2014/10/28/rpc.html" title="rpc" rel="bookmark">rpc</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%9A%84SAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="多进程/线程的SAPI生命周期" rel="bookmark">多进程/线程的SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/25/%E5%8D%95%E8%BF%9B%E7%A8%8BSAPI%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" title="单进程SAPI生命周期" rel="bookmark">单进程SAPI生命周期</a></li>
+                            
+                                <li><a href="/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86.html" title="深入理解php原理" rel="bookmark">深入理解php原理</a></li>
+                            
+                                <li><a href="/php/2014/10/24/php_soap.html" title="php使用soap调用WebService" rel="bookmark">php使用soap调用WebService</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                                    
+                                    <li><a href="http://zous.me" title="jz-code" target="_blank">jz-code</a></li>
+                                    
+                                    <li><a href="http://jekyllrb.com" title="Jekyll" target="_blank">Jekyll</a></li>
+                                    
+                                    <li><a href="http://zous.me/themes.html" title="Jekyll Theme" target="_blank">Jekyll Theme</a></li>
+                                    
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="footer">
+                <p>Copyright 2013. All rights reserved. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, Design by <a href="http://zous.me" target="_blank">zous.me</a>.</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+            
+            <script type="text/javascript">
+                //disqus
+                var disqus_shortname = 'codemadman';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] ||
+                        document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            
+        
+    </body>
+</html>

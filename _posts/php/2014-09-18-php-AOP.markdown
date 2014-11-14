@@ -1,0 +1,12 @@
+---
+layout: post
+title: "php AOP"
+category: php
+comments: true
+date:   2014-09-18 14:20:51
+---
+
+#### php AOP
+
+- [php AOP面向切面编程](http://www.cnblogs.com/xpbb/p/3282829.html)
+- [PHP系列学习之AOP](http://www.cnblogs.com/baochuan/archive/2012/08/22/2644529.html)

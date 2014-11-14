@@ -1,0 +1,11 @@
+---
+layout: post
+title: "php 面试题"
+category: php
+comments: true
+date:   2014-09-18 10:50:51
+---
+
+#### php 面试题
+
+待需...

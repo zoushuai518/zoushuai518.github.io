@@ -1,0 +1,102 @@
+---
+layout: post
+title: "git flow完整使用流程"
+category: tool
+comments: true
+date:   2014-10-15 10:59:51
+---
+
+##一.git模拟git flow
+
+###模拟场景(开发购物车)
+
+1.创建一个特性分支:
+<pre><code>
+git checkout -b feature/cart develop
+git add .
+git add -u
+git add commit -m''
+git pull origin feature/cart
+git push origin feature/cart
+</code></pre>
+
+在feature/cart分支正常开发  
+功能测试通过，进入2步骤，如果功能不理想或者失败则直接丢弃该分支
+
+2.开发完成合并到develop:
+<pre><code>
+git checkout develop
+git merge –no-ff feature/cart
+git branch -d feature/cart
+git push origin develop
+</code></pre>
+因只有开发完成的feature分支才允许merge到develop分支，因为发布分支从此分支创建  
+develop分支和master分支时间线要保持一致
+
+3.创建一个发布分支:
+<pre><code>
+git checkout -b releases-1.2 develop
+git commit -a -m "Bumped version number to 1.2"
+git push origin releases-1.2
+</code></pre>
+
+4.release合并到master分支:
+<pre><code>
+git checkout master
+git merge –no-ff release-1.2
+git tag -a v1.2 -m 'my version 1.2'
+git push origin v1.2
+</code></pre>
+
+5.为了能保留发布分支上的变更，我们还需要将分支合并回develop:
+<pre><code>
+git checkout develop
+git merge –no-ff release-1.2
+git push origin develop
+git branch -d release-1.2
+</code></pre>
+
+6.bug紧急bug修复,hotfix分支:
+<pre><code>
+git checkout -b hotfix-1.2.1 master
+git commit -a -m "Bumped version number to 1.2.1"
+git checkout master
+git merge –no-ff hotfix-1.2.1
+git tag -a 1.2.1
+git push origin v1.2.1
+git checkout develop
+git merge –no-ff hotfix-1.2.1
+git push origin develop
+git branch -d hotfix-1.2.1
+</code></pre>
+hotfix分支要从master分支的最近一个tag节点拉取
+
+<span class="impor">注：</span>除了master|develop这两个主分支之外，其它的三个(feature|release|hotfix)分支存在都有时效性，如果是一个人负责一个项目的开发，feature|release|hotfix分支可以只存在与开发者的本地，无需提交远程(当然，提交也并无影响)
+
+
+##二.git flow
+(git flow初始化：git flow init)
+
+<pre><code>
+git flow feature start cart			#创建特性分支
+git add .							#
+git add -u							#
+git commit -m''						#开发,提交commit
+git flow feature publish cart		#feature/cart push到remote,多人开发；单人开发可以跳过此步骤,只commit即可
+git flow feature finish cart		#结束feature/cart, 会把feature/cart自动合并到develop,并且删除feature/cart
+git flow release start cart-1.1		#创建release分支
+git flow release finish cart-1.1	#结束release分支,中间可以做小幅修改,自动合并到master|develop分支,删除release分支,自动创建cart-1.1 tag,同时会让你为tag添加一个commit(commit必须添加,否则finish release分支会失败)。如果产生冲突，本地解决并提交后，重新执行上面的finish命令。成功后，feature分支会被删除，本地位于主干
+git push origin master
+git flow hotfix start bug1			#创建bug修复
+git add .							#
+git add -u							#
+git commit -m''						#开发,提交commit
+git flow hotfix finish bug1			#结束bug修复,自动合并到master|develop分支,删除bug1
+git push origin master
+</code></pre>
+
+<span class="impor">注：</span>
+
+- git flow是git命令的集合；如果过程中有冲突，则需要手动解决
+- git flow流程里所有git命令,流程都可以正常使用
+
