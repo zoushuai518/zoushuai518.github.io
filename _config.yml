@@ -5,9 +5,9 @@ paginate: 15
 safe:  false
 
 #Site config
-title: Jekyll Theme
+title: Jekyll
 description: Just another Jekyll theme design and code by zous.me.
-keywords: Jekyll Theme
+keywords: Jekyll
 url: 
 feed: /atom.xml
 favicon: http://jekyllrb.com/favicon.png
