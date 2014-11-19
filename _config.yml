@@ -72,3 +72,7 @@ disqus:
 duoshuo:
   config: false
   id: codemadman
+
+googleAnaly:
+ config: true
+ id: zoushui blog
