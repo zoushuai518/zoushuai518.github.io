@@ -36,6 +36,7 @@ date:   2014-09-16 10:59:51
 - [JSHlint](http://www.jshint.com/install/)：
 - [JSlint](http://www.jslint.com/)：
 - [prismjs](http://prismjs.com/)：js不同语言语法高亮插件
+- [prettify.js](https://code.google.com/p/google-code-prettify/)：使用Google Code Prettify 实现代码高亮
 - [graphael](http://graphael.cs.arizona.edu/)：http://www.cnblogs.com/lhb25/archive/2013/01/09/gRaphael-javascript-chart-library.html
 - [raphaeljs](http://raphaeljs.com/)：
 - [highcharts](http://www.hcharts.cn/)：

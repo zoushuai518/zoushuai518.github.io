@@ -1,0 +1,10 @@
+---
+layout: post
+title: "mysql锁机制"
+category: mysql
+comments: true
+date:   2014-11-19 16:16:51
+---
+
+[link](http://blog.csdn.net/forever_feng/article/details/4368003)
+

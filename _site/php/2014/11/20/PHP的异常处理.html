@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>PHP的异常处理 - Jekyll</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="邹帅" />
+        <meta name="description" content="Just another Jekyll theme design and code by zous.me." />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/assets/css/syntax.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
+        
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-56893240-1', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+        
+    </head>
+    <body>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                首页
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                分类目录
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/archives.html">
+                                文章归档
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                友情链接
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://weibo.com/luoyoo/home" target="_blank"><i class="icon-weibo"></i></a>
+                    
+                    <a href="https://github.com/zoushuai518" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                    <a href="https://twitter.com/zoushuai518" target="_blank"><i class="icon-twitter"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">PHP的异常处理</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">20 Nov 2014</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#php-ref" >php</a></span>
+    </div>
+    <h4>一.关于异常</h4>
+
+<ul>
+<li>Exception:php内置的异常处理类</li>
+<li>throw:throw负责,抛出异常。在try语句中[执行],可以[不]使用throw抛出异常 [throw new exception php]</li>
+<li>try .. catch:catch负责捕获[throw抛出的]异常</li>
+</ul>
+
+<h4>二.异常处理之详解[php]</h4>
+
+<h5>2.1什么是异常？</h5>
+
+<p>PHP 5 提供了一种新的面向对象的错误处理方法。<br>
+异常处理用于在指定的错误（异常）情况发生时改变脚本的正常流程。这种情况称为异常。  </p>
+
+<p>当异常被触发时，通常会发生：</p>
+
+<ul>
+<li>当前代码状态被保存</li>
+<li>代码执行被切换到预定义的异常处理器函数</li>
+<li>根据情况，处理器也许会从保存的代码状态重新开始执行代码，终止脚本执行，或从代码中另外的位置继续执行脚本</li>
+</ul>
+
+<p>我们将展示不同的错误处理方法：</p>
+
+<ul>
+<li>异常的基本使用</li>
+<li>创建自定义的异常处理器</li>
+<li>多个异常</li>
+<li>重新抛出异常</li>
+<li>设置顶层异常处理器</li>
+</ul>
+
+<h5>2.2异常的基本使用</h5>
+
+<p>当异常被抛出时，其后的代码不会继续执行，PHP 会尝试查找匹配的 &quot;catch&quot; 代码块。  </p>
+
+<p>如果异常没有被捕获，而且又没用使用 set<em>exception</em>handler() 作相应的处理的话，那么将发生一个严重的错误（致命错误），并且输出 &quot;Uncaught Exception&quot; （未捕获异常）的错误消息。  </p>
+
+<p>让我们尝试抛出一个异常，同时不去捕获它：</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">//create function with an exception</span>
+<span class="lineno"> 3</span> <span class="k">function</span> <span class="nf">checkNum</span><span class="p">(</span><span class="nv">$number</span><span class="p">)</span>
+<span class="lineno"> 4</span> <span class="p">{</span>
+<span class="lineno"> 5</span>     <span class="k">if</span><span class="p">(</span><span class="nv">$number</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">)</span>
+<span class="lineno"> 6</span>     <span class="p">{</span>
+<span class="lineno"> 7</span>         <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s2">&quot;Value must be 1 or below&quot;</span><span class="p">);</span>
+<span class="lineno"> 8</span>     <span class="p">}</span>
+<span class="lineno"> 9</span>     <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno">10</span> <span class="p">}</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="c1">//trigger exception</span>
+<span class="lineno">13</span> <span class="nx">checkNum</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="c1">// 上面的代码会获得类似这样的一个错误：</span>
+<span class="lineno">16</span> <span class="c1">// Fatal error: Uncaught exception &#39;Exception&#39; </span>
+<span class="lineno">17</span> <span class="c1">// with message &#39;Value must be 1 or below&#39; in C:\webfolder\test.php:6 </span>
+<span class="lineno">18</span> <span class="c1">// Stack trace: #0 C:\webfolder\test.php(12): </span>
+<span class="lineno">19</span> <span class="c1">// checkNum(28) #1 {main} thrown in C:\webfolder\test.php on line 6</span>
+<span class="lineno">20</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<h5>2.3Try, throw 和 catch</h5>
+
+<p>要避免上面例子出现的错误，我们需要创建适当的代码来处理异常。  </p>
+
+<p>正确的处理程序应当包括：</p>
+
+<ul>
+<li>Try - 使用异常的函数应该位于 &quot;try&quot; 代码块内。如果没有触发异常，则代码将照常继续执行。但是如果异常被触发，会抛出一个异常。</li>
+<li>Throw - 这里规定如何触发异常。每一个 &quot;throw&quot; 必须对应至少一个 &quot;catch&quot;</li>
+<li>Catch - &quot;catch&quot; 代码块会捕获异常，并创建一个包含异常信息的对象</li>
+</ul>
+
+<p>让我们触发一个异常：</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">//创建可抛出一个异常的函数</span>
+<span class="lineno"> 3</span> <span class="k">function</span> <span class="nf">checkNum</span><span class="p">(</span><span class="nv">$number</span><span class="p">)</span>
+<span class="lineno"> 4</span> <span class="p">{</span>
+<span class="lineno"> 5</span>     <span class="k">if</span><span class="p">(</span><span class="nv">$number</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">)</span>
+<span class="lineno"> 6</span>     <span class="p">{</span>
+<span class="lineno"> 7</span>         <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s2">&quot;Value must be 1 or below&quot;</span><span class="p">);</span>
+<span class="lineno"> 8</span>     <span class="p">}</span>
+<span class="lineno"> 9</span>     <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno">10</span> <span class="p">}</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="c1">//在 &quot;try&quot; 代码块中触发异常</span>
+<span class="lineno">13</span> <span class="k">try</span>
+<span class="lineno">14</span> <span class="p">{</span>
+<span class="lineno">15</span>     <span class="nx">checkNum</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="lineno">16</span>     <span class="c1">//If the exception is thrown, this text will not be shown</span>
+<span class="lineno">17</span>     <span class="k">echo</span> <span class="s1">&#39;If you see this, the number is 1 or below&#39;</span><span class="p">;</span>
+<span class="lineno">18</span> <span class="p">}</span>
+<span class="lineno">19</span> <span class="c1">//捕获异常</span>
+<span class="lineno">20</span> <span class="k">catch</span><span class="p">(</span><span class="nx">Exception</span> <span class="nv">$e</span><span class="p">)</span>
+<span class="lineno">21</span> <span class="p">{</span>
+<span class="lineno">22</span>     <span class="k">echo</span> <span class="s1">&#39;Message: &#39;</span> <span class="o">.</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+<span class="lineno">23</span> <span class="p">}</span>
+<span class="lineno">24</span> <span class="c1">// 上面代码将获得类似这样一个错误：</span>
+<span class="lineno">25</span> <span class="c1">// Message: Value must be 1 or below </span>
+<span class="lineno">26</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>例子解释：  </p>
+
+<p>上面的代码抛出了一个异常，并捕获了它：</p>
+
+<ul>
+<li>创建 checkNum() 函数。它检测数字是否大于 1。如果是，则抛出一个异常。</li>
+<li>在 &quot;try&quot; 代码块中调用 checkNum() 函数。</li>
+<li>checkNum() 函数中的异常被抛出</li>
+<li>&quot;catch&quot; 代码块接收到该异常，并创建一个包含异常信息的对象 ($e)。</li>
+<li>通过从这个 exception 对象调用 $e-&gt;getMessage()，输出来自该异常的错误消息</li>
+</ul>
+
+<p>不过，为了遵循“每个 throw 必须对应一个 catch”的原则，可以设置一个顶层的异常处理器来处理漏掉的错误。</p>
+
+<h5>2.4创建一个自定义的 Exception 类</h5>
+
+<p>创建自定义的异常处理程序非常简单。我们简单地创建了一个专门的类，当 PHP 中发生异常时，可调用其函数。该类必须是 exception 类的一个扩展。  </p>
+
+<p>这个自定义的 exception 类继承了 PHP 的 exception 类的所有属性，您可向其添加自定义的函数。  </p>
+
+<p>我们开始创建 exception 类：</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="k">class</span> <span class="nc">customException</span> <span class="k">extends</span> <span class="nx">Exception</span>
+<span class="lineno"> 3</span> <span class="p">{</span>
+<span class="lineno"> 4</span>     <span class="k">public</span> <span class="k">function</span> <span class="nf">errorMessage</span><span class="p">()</span>
+<span class="lineno"> 5</span>     <span class="p">{</span>
+<span class="lineno"> 6</span>         <span class="c1">//error message</span>
+<span class="lineno"> 7</span>         <span class="nv">$errorMsg</span> <span class="o">=</span> <span class="s1">&#39;Error on line &#39;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getLine</span><span class="p">()</span><span class="o">.</span><span class="s1">&#39; in &#39;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">()</span>
+<span class="lineno"> 8</span>         <span class="o">.</span><span class="s1">&#39;: &lt;b&gt;&#39;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()</span><span class="o">.</span><span class="s1">&#39;&lt;/b&gt; is not a valid E-Mail address&#39;</span><span class="p">;</span>
+<span class="lineno"> 9</span>         <span class="k">return</span> <span class="nv">$errorMsg</span><span class="p">;</span>
+<span class="lineno">10</span>     <span class="p">}</span>
+<span class="lineno">11</span> <span class="p">}</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="nv">$email</span> <span class="o">=</span> <span class="s2">&quot;someone@example...com&quot;</span><span class="p">;</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="k">try</span>
+<span class="lineno">16</span> <span class="p">{</span>
+<span class="lineno">17</span>     <span class="c1">//check if </span>
+<span class="lineno">18</span>     <span class="k">if</span><span class="p">(</span><span class="nb">filter_var</span><span class="p">(</span><span class="nv">$email</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_EMAIL</span><span class="p">)</span> <span class="o">===</span> <span class="k">FALSE</span><span class="p">)</span>
+<span class="lineno">19</span>     <span class="p">{</span>
+<span class="lineno">20</span>     <span class="c1">//throw exception if email is not valid</span>
+<span class="lineno">21</span>     <span class="k">throw</span> <span class="k">new</span> <span class="nx">customException</span><span class="p">(</span><span class="nv">$email</span><span class="p">);</span>
+<span class="lineno">22</span>     <span class="p">}</span>
+<span class="lineno">23</span> <span class="p">}</span>
+<span class="lineno">24</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">customException</span> <span class="nv">$e</span><span class="p">)</span>
+<span class="lineno">25</span> <span class="p">{</span>
+<span class="lineno">26</span>     <span class="c1">//display custom message</span>
+<span class="lineno">27</span>     <span class="k">echo</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">errorMessage</span><span class="p">();</span>
+<span class="lineno">28</span> <span class="p">}</span>
+<span class="lineno">29</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>这个新的类是旧的 exception 类的副本，外加 errorMessage() 函数。正因为它是旧类的副本，因此它从旧类继承了属性和方法，我们可以使用 exception 类的方法，比如 getLine() 、 getFile() 以及 getMessage()。  </p>
+
+<p>例子解释：  </p>
+
+<p>上面的代码抛出了一个异常，并通过一个自定义的 exception 类来捕获它：  </p>
+
+<ul>
+<li>customException() 类是作为旧的 exception 类的一个扩展来创建的。这样它就继承了旧类的所有属性和方法。</li>
+<li>创建 errorMessage() 函数。如果 e-mail 地址不合法，则该函数返回一条错误消息</li>
+<li>把 $email 变量设置为不合法的 e-mail 地址字符串</li>
+<li>执行 &quot;try&quot; 代码块，由于 e-mail 地址不合法，因此抛出一个异常</li>
+<li>&quot;catch&quot; 代码块捕获异常，并显示错误消息</li>
+</ul>
+
+<h5>2.5多个异常</h5>
+
+<p>可以为一段脚本使用多个异常，来检测多种情况。  </p>
+
+<p>可以使用多个 if..else 代码块，或一个 switch 代码块，或者嵌套多个异常。这些异常能够使用不同的 exception 类，并返回不同的错误消息：</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="k">class</span> <span class="nc">customException</span> <span class="k">extends</span> <span class="nx">Exception</span>
+<span class="lineno"> 3</span> <span class="p">{</span>
+<span class="lineno"> 4</span>     <span class="k">public</span> <span class="k">function</span> <span class="nf">errorMessage</span><span class="p">()</span>
+<span class="lineno"> 5</span>     <span class="p">{</span>
+<span class="lineno"> 6</span>         <span class="c1">//error message</span>
+<span class="lineno"> 7</span>         <span class="nv">$errorMsg</span> <span class="o">=</span> <span class="s1">&#39;Error on line &#39;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getLine</span><span class="p">()</span><span class="o">.</span><span class="s1">&#39; in &#39;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">()</span>
+<span class="lineno"> 8</span>         <span class="o">.</span><span class="s1">&#39;: &lt;b&gt;&#39;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()</span><span class="o">.</span><span class="s1">&#39;&lt;/b&gt; is not a valid E-Mail address&#39;</span><span class="p">;</span>
+<span class="lineno"> 9</span>         <span class="k">return</span> <span class="nv">$errorMsg</span><span class="p">;</span>
+<span class="lineno">10</span>     <span class="p">}</span>
+<span class="lineno">11</span> <span class="p">}</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="nv">$email</span> <span class="o">=</span> <span class="s2">&quot;someone@example.com&quot;</span><span class="p">;</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="k">try</span>
+<span class="lineno">16</span> <span class="p">{</span>
+<span class="lineno">17</span>     <span class="c1">//check if </span>
+<span class="lineno">18</span>     <span class="k">if</span><span class="p">(</span><span class="nb">filter_var</span><span class="p">(</span><span class="nv">$email</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_EMAIL</span><span class="p">)</span> <span class="o">===</span> <span class="k">FALSE</span><span class="p">)</span>
+<span class="lineno">19</span>     <span class="p">{</span>
+<span class="lineno">20</span>         <span class="c1">//throw exception if email is not valid</span>
+<span class="lineno">21</span>         <span class="k">throw</span> <span class="k">new</span> <span class="nx">customException</span><span class="p">(</span><span class="nv">$email</span><span class="p">);</span>
+<span class="lineno">22</span>     <span class="p">}</span>
+<span class="lineno">23</span>     <span class="c1">//check for &quot;example&quot; in mail address</span>
+<span class="lineno">24</span>     <span class="k">if</span><span class="p">(</span><span class="nb">strpos</span><span class="p">(</span><span class="nv">$email</span><span class="p">,</span> <span class="s2">&quot;example&quot;</span><span class="p">)</span> <span class="o">!==</span> <span class="k">FALSE</span><span class="p">)</span>
+<span class="lineno">25</span>     <span class="p">{</span>
+<span class="lineno">26</span>         <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">$email</span><span class="s2"> is an example e-mail&quot;</span><span class="p">);</span>
+<span class="lineno">27</span>     <span class="p">}</span>
+<span class="lineno">28</span> <span class="p">}</span>
+<span class="lineno">29</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">customException</span> <span class="nv">$e</span><span class="p">)</span>
+<span class="lineno">30</span> <span class="p">{</span>
+<span class="lineno">31</span>     <span class="k">echo</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">errorMessage</span><span class="p">();</span>
+<span class="lineno">32</span> <span class="p">}</span>
+<span class="lineno">33</span> <span class="k">catch</span><span class="p">(</span><span class="nx">Exception</span> <span class="nv">$e</span><span class="p">)</span>
+<span class="lineno">34</span> <span class="p">{</span>
+<span class="lineno">35</span>     <span class="k">echo</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+<span class="lineno">36</span> <span class="p">}</span>
+<span class="lineno">37</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>例子解释：  </p>
+
+<p>上面的代码测试了两种条件，如何任何条件不成立，则抛出一个异常：</p>
+
+<ul>
+<li>customException() 类是作为旧的 exception 类的一个扩展来创建的。这样它就继承了旧类的所有属性和方法。</li>
+<li>创建 errorMessage() 函数。如果 e-mail 地址不合法，则该函数返回一个错误消息。</li>
+<li>执行 &quot;try&quot; 代码块，在第一个条件下，不会抛出异常。</li>
+<li>由于 e-mail 含有字符串 &quot;example&quot;，第二个条件会触发异常。</li>
+<li>&quot;catch&quot; 代码块会捕获异常，并显示恰当的错误消息</li>
+</ul>
+
+<p>如果没有捕获 customException，紧紧捕获了 base exception，则在那里处理异常。</p>
+
+<h5>2.6重新抛出异常</h5>
+
+<p>有时，当异常被抛出时，您也许希望以不同于标准的方式对它进行处理。可以在一个 &quot;catch&quot; 代码块中再次抛出异常。  </p>
+
+<p>脚本应该对用户隐藏系统错误。对程序员来说，系统错误也许很重要，但是用户对它们并不感兴趣。为了让用户更容易使用，您可以再次抛出带有对用户比较友好的消息的异常：</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="k">class</span> <span class="nc">customException</span> <span class="k">extends</span> <span class="nx">Exception</span>
+<span class="lineno"> 3</span> <span class="p">{</span>
+<span class="lineno"> 4</span>     <span class="k">public</span> <span class="k">function</span> <span class="nf">errorMessage</span><span class="p">()</span>
+<span class="lineno"> 5</span>     <span class="p">{</span>
+<span class="lineno"> 6</span>         <span class="c1">//error message</span>
+<span class="lineno"> 7</span>         <span class="nv">$errorMsg</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()</span><span class="o">.</span><span class="s1">&#39; is not a valid E-Mail address.&#39;</span><span class="p">;</span>
+<span class="lineno"> 8</span>         <span class="k">return</span> <span class="nv">$errorMsg</span><span class="p">;</span>
+<span class="lineno"> 9</span>     <span class="p">}</span>
+<span class="lineno">10</span> <span class="p">}</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="nv">$email</span> <span class="o">=</span> <span class="s2">&quot;someone@example.com&quot;</span><span class="p">;</span>
+<span class="lineno">13</span> 
+<span class="lineno">14</span> <span class="k">try</span>
+<span class="lineno">15</span> <span class="p">{</span>
+<span class="lineno">16</span>     <span class="k">try</span>
+<span class="lineno">17</span>     <span class="p">{</span>
+<span class="lineno">18</span>         <span class="c1">//check for &quot;example&quot; in mail address</span>
+<span class="lineno">19</span>         <span class="k">if</span><span class="p">(</span><span class="nb">strpos</span><span class="p">(</span><span class="nv">$email</span><span class="p">,</span> <span class="s2">&quot;example&quot;</span><span class="p">)</span> <span class="o">!==</span> <span class="k">FALSE</span><span class="p">)</span>
+<span class="lineno">20</span>         <span class="p">{</span>
+<span class="lineno">21</span>             <span class="c1">//throw exception if email is not valid</span>
+<span class="lineno">22</span>             <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="nv">$email</span><span class="p">);</span>
+<span class="lineno">23</span>         <span class="p">}</span>
+<span class="lineno">24</span>     <span class="p">}</span>
+<span class="lineno">25</span>     <span class="k">catch</span><span class="p">(</span><span class="nx">Exception</span> <span class="nv">$e</span><span class="p">)</span>
+<span class="lineno">26</span>     <span class="p">{</span>
+<span class="lineno">27</span>         <span class="c1">//re-throw exception</span>
+<span class="lineno">28</span>         <span class="k">throw</span> <span class="k">new</span> <span class="nx">customException</span><span class="p">(</span><span class="nv">$email</span><span class="p">);</span>
+<span class="lineno">29</span>     <span class="p">}</span>
+<span class="lineno">30</span> <span class="p">}</span>
+<span class="lineno">31</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">customException</span> <span class="nv">$e</span><span class="p">)</span>
+<span class="lineno">32</span> <span class="p">{</span>
+<span class="lineno">33</span>     <span class="c1">//display custom message</span>
+<span class="lineno">34</span>     <span class="k">echo</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">errorMessage</span><span class="p">();</span>
+<span class="lineno">35</span> <span class="p">}</span>
+<span class="lineno">36</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>例子解释：  </p>
+
+<p>上面的代码检测在邮件地址中是否含有字符串 &quot;example&quot;。如果有，则再次抛出异常：</p>
+
+<ul>
+<li>customException() 类是作为旧的 exception 类的一个扩展来创建的。这样它就继承了旧类的所有属性和方法。</li>
+<li>创建 errorMessage() 函数。如果 e-mail 地址不合法，则该函数返回一个错误消息。</li>
+<li>把 $email 变量设置为一个有效的邮件地址，但含有字符串 &quot;example&quot;。</li>
+<li>&quot;try&quot; 代码块包含另一个 &quot;try&quot; 代码块，这样就可以再次抛出异常。</li>
+<li>由于 e-mail 包含字符串 &quot;example&quot;，因此触发异常。</li>
+<li>&quot;catch&quot; 捕获到该异常，并重新抛出 &quot;customException&quot;。</li>
+<li>捕获到 &quot;customException&quot;，并显示一条错误消息。</li>
+</ul>
+
+<p>如果在其目前的 &quot;try&quot; 代码块中异常没有被捕获，则它将在更高层级上查找 catch 代码块。</p>
+
+<h5>2.7设置顶层异常处理器 （Top Level Exception Handler）</h5>
+
+<p>set<em>exception</em>handler() 函数可设置处理所有未捕获异常的用户定义函数。</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="k">function</span> <span class="nf">myException</span><span class="p">(</span><span class="nv">$exception</span><span class="p">)</span>
+<span class="lineno"> 3</span> <span class="p">{</span>
+<span class="lineno"> 4</span>     <span class="k">echo</span> <span class="s2">&quot;&lt;b&gt;Exception:&lt;/b&gt; &quot;</span> <span class="p">,</span> <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+<span class="lineno"> 5</span> <span class="p">}</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="nb">set_exception_handler</span><span class="p">(</span><span class="s1">&#39;myException&#39;</span><span class="p">);</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s1">&#39;Uncaught Exception occurred&#39;</span><span class="p">);</span>
+<span class="lineno">10</span> <span class="c1">// 以上代码的输出应该类似这样：</span>
+<span class="lineno">11</span> <span class="c1">// Exception: Uncaught Exception occurred</span>
+<span class="lineno">12</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>在上面的代码中，不存在 &quot;catch&quot; 代码块，而是触发顶层的异常处理程序。应该使用此函数来捕获所有未被捕获的异常。</p>
+
+<h5>2.8异常的规则</h5>
+
+<ul>
+<li>需要进行异常处理的代码应该放入 try 代码块内，以便捕获潜在的异常。</li>
+<li>每个 try 或 throw 代码块必须至少拥有一个对应的 catch 代码块。</li>
+<li>使用多个 catch 代码块可以捕获不同种类的异常。</li>
+<li>可以在 try 代码块内的 catch 代码块中再次抛出（re-thrown）异常。</li>
+</ul>
+
+<h5>简而言之：如果抛出了异常，就必须捕获它。</h5>
+
+<p><a href="http://www.w3school.com.cn/php/php_exception.asp">php_exception</a>  </p>
+
+    <nav class="article-previous fn-clear">
+        
+        <a class="prev" href="/mysql/2014/11/20/mysql%E9%94%81%E6%9C%BA%E5%88%B6.html" rel="bookmark">&laquo;&nbsp;mysql锁机制</a>
+        
+        
+        <a class="next" href="/php/2014/11/21/PHP%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1.html" rel="bookmark">php定时执行计划任务&nbsp;&raquo;</a>
+        
+    </nav>
+    <div class="comment">
+        
+        <div id="disqus_thread"></div>
+        
+    </div>
+</div>
+
+                </div>
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="https://avatars0.githubusercontent.com/u/5516045?v=3&s=460" />
+                            </div>
+                            <div class="det-text">
+                                <p>我是「邹帅」，目前从事php开发！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="/php/2014/11/22/php_namespace.html" title="php 命名空间" rel="bookmark">php 命名空间</a></li>
+                            
+                                <li><a href="/php/2014/11/21/PHP%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1.html" title="php定时执行计划任务" rel="bookmark">php定时执行计划任务</a></li>
+                            
+                                <li><a href="/php/2014/11/20/PHP%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.html" title="PHP的异常处理" rel="bookmark">PHP的异常处理</a></li>
+                            
+                                <li><a href="/mysql/2014/11/20/mysql%E9%94%81%E6%9C%BA%E5%88%B6.html" title="mysql锁机制" rel="bookmark">mysql锁机制</a></li>
+                            
+                                <li><a href="/mysql/2014/11/20/mysql%E4%BA%8B%E5%8A%A1.html" title="mysql事务" rel="bookmark">mysql事务</a></li>
+                            
+                                <li><a href="/standard/2014/10/28/Web_Service-Rest_Service.html" title="Web Service与Rest Service" rel="bookmark">Web Service与Rest Service</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                                    
+                                    <li><a href="http://zous.me" title="jz-code" target="_blank">jz-code</a></li>
+                                    
+                                    <li><a href="http://jekyllrb.com" title="Jekyll" target="_blank">Jekyll</a></li>
+                                    
+                                    <li><a href="http://zous.me/themes.html" title="Jekyll Theme" target="_blank">Jekyll Theme</a></li>
+                                    
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="footer">
+                <p>Copyright 2013. All rights reserved. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, Design by <a href="http://zous.me" target="_blank">zous.me</a>.</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+            
+            <script type="text/javascript">
+                //disqus
+                var disqus_shortname = 'codemadman';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] ||
+                        document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            
+        
+    </body>
+</html>

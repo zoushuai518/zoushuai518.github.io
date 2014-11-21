@@ -8,5 +8,7 @@ date:   2014-09-12 09:35:51
 
 #### yii2
 
-[yii2 doc](http://yii2.techbrood.com/)  
-待须...
+- [yii2 doc](http://yii2.techbrood.com/)
+- [yii2 api](http://www.yiichina.com/api/2.0)
+- [yii2 api](http://www.yiiframework.com/doc-2.0/index.html)
+- [yii1 api](http://www.yiichina.com/api/1.1)

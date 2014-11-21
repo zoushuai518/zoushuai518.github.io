@@ -153,7 +153,7 @@ git-flow 会依次切换到 `master` `develop` 分支下合并 `hotfix/bug1` ，
 
 nvie: 为了简化使用Git Flow模型时Git指令的复杂性，nvie开发出了一套[git增强指令集](https://github.com/nvie/gitflow)。可以运行于Windows、Linux、Unix和Mac操作系统之下。有兴趣的同学可以去看看
 
-##五.git-flow使用完整流程：
+##六.git-flow使用完整流程：
 
 [git flow zs](/tool/2014/10/15/git-flow使用完整流程)
 

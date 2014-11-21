@@ -6,6 +6,4 @@ comments: true
 date:   2014-09-12 12:32:51
 ---
 
-#### crontab
-
 [crontab](http://blog.csdn.net/ethanzhao/article/details/4406017)

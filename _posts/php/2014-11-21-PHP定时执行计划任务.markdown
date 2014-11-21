@@ -1,0 +1,91 @@
+---
+layout: post
+title: "php定时执行计划任务"
+category: php
+comments: true
+date:   2014-11-21 11:32:51
+---
+
+php定时执行计划任务 有三种实现方式：
+
+- windows计划任务，不常用,再次不再赘述
+- linux 的脚本实现
+- PHP自身实现定时执行计划任务
+
+
+##### linux 的脚本实现
+
+1.在Crontab中使用PHP执行脚本  
+
+就像在Crontab中调用普通的shell脚本一样（具体Crontab用法），使用PHP程序来调用PHP脚本。  
+每一小时执行myscript.php如下：
+<pre><code>
+//#crontab -e
+00 * * * * /usr/local/bin/php /home/john/myscript.php 
+</code></pre>
+/usr/local/bin/php为PHP程序的路径。
+
+2.在Crontab中使用URL执行脚本  
+
+如果你的PHP脚本可以通过URL触发，你可以使用lynx或curl或wget来配置你的Crontab。  
+下面的例子是使用Lynx文本浏览器访问URL来每小时执行PHP脚本。Lynx文本浏览器默认使用对话方式打开URL。但是，像下面的，我们在lynx命令行中使用-dump选项来把URL的输出转换来标准输出。  
+<pre><code>
+00 * * * * lynx -dump http://www.centos.bz/myscript.php  
+</code></pre>
+
+下面的例子是使用CURL访问URL来每5分执行PHP脚本。Curl默认在标准输出显示输出。使用”curl -o”选项，你也可以把脚本的输出转储到临时文件。  
+<pre><code>
+*/5 * * * * /usr/bin/curl -o temp.txt http://www.centos.bz/myscript.php
+</code></pre>
+
+下面的例子是使用WGET访问URL来每10分执行PHP脚本。-q选项表示安静模式。”-O temp.txt”表示输出会发送到临时文件。
+<pre><code>
+*/10 * * * * /usr/bin/wget -q -O temp.txt http://www.centos.bz/myscript.php 
+</code></pre>
+
+zs扩展:
+如果程序使用了框架,url已经被重写;可以在 myscript.php文件中写一个http_request方法(使用php curl),来请求重写的url path,已用来实现定时执行php功能代码。
+
+##### php自身实现定时执行计划任务
+
+使用php让浏览器刷新需要解决几个问题
+
+- PHP脚本执行时间限制，默认的是30m 解决办法：set_time_limit();或者修改PHP.ini 设置max_execution_time时间（不推荐）
+- 如果客户端浏览器关闭，程序可能就被迫终止，解决办法：ignore_user_abort即使关闭页面依然正常执行 
+- 如果程序一直执行很有可能会消耗大量的资源，解决办法使用sleep使用程序休眠一会，然后在执行
+
+PHP定时执行的代码：
+{% highlight php linenos %}
+<?php
+    ignore_user_abort();//关掉浏览器，PHP脚本也可以继续执行.
+    set_time_limit(3000);// 通过set_time_limit(0)可以让程序无限制的执行下去
+    $interval=5;// 每隔5s运行 
+
+    //方法1--死循环
+    do{
+        echo '测试'.time().'<br/>';
+        sleep($interval);// 等待5s
+    }while(true);
+
+    //方法2---sleep 定时执行
+    require_once './curlClass.php';//引入文件
+
+    $curl = new httpCurl();//实例化
+    $stime = $curl->getmicrotime();
+    for($i=0;$i<=10;$i++){ 
+        echo '测试'.time().'<br/>';
+        sleep($interval);// 等待5s
+    }
+    ob_flush();
+    flush();
+    $etime = $curl->getmicrotime();
+    echo '<hr>';
+    echo round(($etime-stime),4);//程序执行时间
+?>
+{% endhighlight %}
+
+测试的时候发现这个效率并不是很高
+
+#####总结：
+PHP定时执行任务的效率不是很高，建议关于定时执行任务的工作还是交给shell来做吧，比较那才是王道。
+
