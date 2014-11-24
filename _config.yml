@@ -52,8 +52,6 @@ customLinks:
       url: http://zous.me
     - text: Jekyll
       url: http://jekyllrb.com
-    - text: Jekyll Theme
-      url: http://zous.me/themes.html
     message: Friends
   - item:
     - text: Font Awesome

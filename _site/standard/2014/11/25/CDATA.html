@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>创建一个自己的 Composer/Packagist包 - Jekyll</title>
+        <title>CDATA - Jekyll</title>
         <!-- meta -->
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta name="generator" content="Jekyll" />
@@ -94,25 +94,51 @@
             <div class="container fn-clear">
                 <div class="main">
                     <div class="article article-post">
-    <h2 class="title">创建一个自己的 Composer/Packagist包</h2>
+    <h2 class="title">CDATA</h2>
     <div class="info">
         <span class="info-title"><i class="icon-calendar"></i> Published: </span>
-        <span class="info-date">16 Sep 2014</span>
+        <span class="info-date">25 Nov 2014</span>
         <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
-        <span class="info-link"><a href="/categories.html#php-ref" >php</a></span>
+        <span class="info-link"><a href="/categories.html#standard-ref" >standard</a></span>
     </div>
-    <h1>如何创建一个自己的 Composer/Packagist 包</h1>
+    <h5>一.xml解析</h5>
 
-<h1>即：搭建自己的 Composer服务，公共的代码写在此自定义仓库中；组内的其他开发人员可以通过 Composer来进获取,即所谓的依赖管理</h1>
+<ul>
+<li>XML 解析器通常会解析 XML 文档中所有的文本。</li>
+<li>当某个 XML 元素被解析时，其标签之间的文本也会被解析</li>
+</ul>
 
-<p><a href="https://github.com/zoushuai518/composer-car">创建一个自己的 Composer/Packagist 包</a></p>
+<h5>二.PCDATA</h5>
+
+<ul>
+<li>XML 的特殊字符（&amp;、&lt; 和 &gt;）在 PCDATA 中可以识别，并用于解析元素名称和实体。PCDATA（字符数据）区域被解析器视为数据块，从而允许您在数据流中包含任意字符。</li>
+</ul>
+
+<h5>三.CDATA</h5>
+
+<ul>
+<li>术语 CDATA 指的是不应由 XML 解析器进行解析的文本数据（Unparsed Character Data）。</li>
+<li>在 XML 元素中，&quot;&lt;&quot; 和 &quot;&amp;&quot; 是非法的。</li>
+<li>&quot;&lt;&quot; 会产生错误，因为解析器会把该字符解释为新元素的开始。</li>
+<li>&quot;&amp;&quot; 也会产生错误，因为解析器会把该字符解释为字符实体的开始。</li>
+<li>某些文本，比如 JavaScript 代码，包含大量 &quot;&lt;&quot; 或 &quot;&amp;&quot; 字符。为了避免错误，可以将脚本代码定义为 CDATA。</li>
+<li>CDATA 部分中的所有内容都会被解析器忽略。</li>
+<li>CDATA 部分由 &quot;&lt;![CDATA[ 开始，由 ]]&gt;&quot; 结束</li>
+</ul>
+
+<h5>关于 CDATA 部分的注释：</h5>
+
+<ul>
+<li>CDATA 部分不能包含字符串 &quot;]]&gt;&quot;。也不允许嵌套的 CDATA 部分。</li>
+<li>标记 CDATA 部分结尾的 &quot;]]&gt;&quot; 不能包含空格或折行。</li>
+</ul>
+
+<p><a href="http://www.w3school.com.cn/xml/xml_cdata.asp">ext link</a></p>
 
     <nav class="article-previous fn-clear">
         
-        <a class="prev" href="/asset/2014/09/16/PJAX.html" rel="bookmark">&laquo;&nbsp;PJAX</a>
+        <a class="prev" href="/php/2014/11/22/php_namespace.html" rel="bookmark">&laquo;&nbsp;php 命名空间</a>
         
-        
-        <a class="next" href="/asset/2014/09/16/front-list.html" rel="bookmark">前端技术&nbsp;&raquo;</a>
         
     </nav>
     <div class="comment">

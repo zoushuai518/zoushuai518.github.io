@@ -1,0 +1,37 @@
+---
+layout: post
+title: "CDATA"
+category: standard
+comments: true
+date:   2014-11-24 17:16:51
+---
+
+#####一.xml解析
+
+- XML 解析器通常会解析 XML 文档中所有的文本。
+- 当某个 XML 元素被解析时，其标签之间的文本也会被解析
+
+
+#####二.PCDATA
+
+- XML 的特殊字符（&、< 和 >）在 PCDATA 中可以识别，并用于解析元素名称和实体。PCDATA（字符数据）区域被解析器视为数据块，从而允许您在数据流中包含任意字符。
+
+
+#####三.CDATA
+
+- 术语 CDATA 指的是不应由 XML 解析器进行解析的文本数据（Unparsed Character Data）。
+- 在 XML 元素中，"<" 和 "&" 是非法的。
+- "<" 会产生错误，因为解析器会把该字符解释为新元素的开始。
+- "&" 也会产生错误，因为解析器会把该字符解释为字符实体的开始。
+- 某些文本，比如 JavaScript 代码，包含大量 "<" 或 "&" 字符。为了避免错误，可以将脚本代码定义为 CDATA。
+- CDATA 部分中的所有内容都会被解析器忽略。
+- CDATA 部分由 "<![CDATA[ 开始，由 ]]>" 结束
+
+
+#####关于 CDATA 部分的注释：
+- CDATA 部分不能包含字符串 "]]>"。也不允许嵌套的 CDATA 部分。
+- 标记 CDATA 部分结尾的 "]]>" 不能包含空格或折行。
+
+
+[ext link](http://www.w3school.com.cn/xml/xml_cdata.asp)
+

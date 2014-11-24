@@ -4,13 +4,54 @@
    <title>Jekyll</title>
    <link href="/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="" rel="alternate" type="text/html" />
-   <updated>2014-11-21T19:15:08+08:00</updated>
+   <updated>2014-11-24T17:24:58+08:00</updated>
    <id></id>
    <author>
      <name>邹帅</name>
      <email>zoushuai518@gmail.com</email>
    </author>
 
+   
+   <entry>
+     <title>CDATA</title>
+     <link href="/standard/2014/11/25/CDATA.html"/>
+     <updated>2014-11-25T01:16:51+08:00</updated>
+     <id>/standard/2014/11/25/CDATA</id>
+     <content type="html">&lt;h5&gt;一.xml解析&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;XML 解析器通常会解析 XML 文档中所有的文本。&lt;/li&gt;
+&lt;li&gt;当某个 XML 元素被解析时，其标签之间的文本也会被解析&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5&gt;二.PCDATA&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;XML 的特殊字符（&amp;amp;、&amp;lt; 和 &amp;gt;）在 PCDATA 中可以识别，并用于解析元素名称和实体。PCDATA（字符数据）区域被解析器视为数据块，从而允许您在数据流中包含任意字符。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5&gt;三.CDATA&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;术语 CDATA 指的是不应由 XML 解析器进行解析的文本数据（Unparsed Character Data）。&lt;/li&gt;
+&lt;li&gt;在 XML 元素中，&amp;quot;&amp;lt;&amp;quot; 和 &amp;quot;&amp;amp;&amp;quot; 是非法的。&lt;/li&gt;
+&lt;li&gt;&amp;quot;&amp;lt;&amp;quot; 会产生错误，因为解析器会把该字符解释为新元素的开始。&lt;/li&gt;
+&lt;li&gt;&amp;quot;&amp;amp;&amp;quot; 也会产生错误，因为解析器会把该字符解释为字符实体的开始。&lt;/li&gt;
+&lt;li&gt;某些文本，比如 JavaScript 代码，包含大量 &amp;quot;&amp;lt;&amp;quot; 或 &amp;quot;&amp;amp;&amp;quot; 字符。为了避免错误，可以将脚本代码定义为 CDATA。&lt;/li&gt;
+&lt;li&gt;CDATA 部分中的所有内容都会被解析器忽略。&lt;/li&gt;
+&lt;li&gt;CDATA 部分由 &amp;quot;&amp;lt;![CDATA[ 开始，由 ]]&amp;gt;&amp;quot; 结束&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5&gt;关于 CDATA 部分的注释：&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CDATA 部分不能包含字符串 &amp;quot;]]&amp;gt;&amp;quot;。也不允许嵌套的 CDATA 部分。&lt;/li&gt;
+&lt;li&gt;标记 CDATA 部分结尾的 &amp;quot;]]&amp;gt;&amp;quot; 不能包含空格或折行。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.w3school.com.cn/xml/xml_cdata.asp&quot;&gt;ext link&lt;/a&gt;&lt;/p&gt;
+</content>
+   </entry>
    
    <entry>
      <title>php 命名空间</title>
@@ -518,15 +559,6 @@
 &lt;p&gt;&lt;img src=&quot;/assets/postImage/php/danjincheng2.jpg&quot; alt=&quot;php单进程SAPI生命周期&quot; title=&quot;php单进程SAPI生命周期&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/1289&quot;&gt;单进程SAPI生命周期&lt;/a&gt;&lt;/p&gt;
-</content>
-   </entry>
-   
-   <entry>
-     <title>深入理解php原理</title>
-     <link href="/php/2014/10/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3php%E5%8E%9F%E7%90%86.html"/>
-     <updated>2014-10-24T03:59:51+08:00</updated>
-     <id>/php/2014/10/24/深入理解php原理</id>
-     <content type="html">&lt;p&gt;深入理解php原理 search baidu list&lt;/p&gt;
 </content>
    </entry>
    
