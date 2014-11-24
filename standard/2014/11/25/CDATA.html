@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CDATA - Jekyll</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="邹帅" />
+        <meta name="description" content="Just another Jekyll theme design and code by zous.me." />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/assets/css/syntax.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
+        
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-56893240-1', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+        
+    </head>
+    <body>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                首页
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                分类目录
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/archives.html">
+                                文章归档
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                友情链接
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://weibo.com/luoyoo/home" target="_blank"><i class="icon-weibo"></i></a>
+                    
+                    <a href="https://github.com/zoushuai518" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                    <a href="https://twitter.com/zoushuai518" target="_blank"><i class="icon-twitter"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">CDATA</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">25 Nov 2014</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#standard-ref" >standard</a></span>
+    </div>
+    <h5>一.xml解析</h5>
+
+<ul>
+<li>XML 解析器通常会解析 XML 文档中所有的文本。</li>
+<li>当某个 XML 元素被解析时，其标签之间的文本也会被解析</li>
+</ul>
+
+<h5>二.PCDATA</h5>
+
+<ul>
+<li>XML 的特殊字符（&amp;、&lt; 和 &gt;）在 PCDATA 中可以识别，并用于解析元素名称和实体。PCDATA（字符数据）区域被解析器视为数据块，从而允许您在数据流中包含任意字符。</li>
+</ul>
+
+<h5>三.CDATA</h5>
+
+<ul>
+<li>术语 CDATA 指的是不应由 XML 解析器进行解析的文本数据（Unparsed Character Data）。</li>
+<li>在 XML 元素中，&quot;&lt;&quot; 和 &quot;&amp;&quot; 是非法的。</li>
+<li>&quot;&lt;&quot; 会产生错误，因为解析器会把该字符解释为新元素的开始。</li>
+<li>&quot;&amp;&quot; 也会产生错误，因为解析器会把该字符解释为字符实体的开始。</li>
+<li>某些文本，比如 JavaScript 代码，包含大量 &quot;&lt;&quot; 或 &quot;&amp;&quot; 字符。为了避免错误，可以将脚本代码定义为 CDATA。</li>
+<li>CDATA 部分中的所有内容都会被解析器忽略。</li>
+<li>CDATA 部分由 &quot;&lt;![CDATA[ 开始，由 ]]&gt;&quot; 结束</li>
+</ul>
+
+<h5>关于 CDATA 部分的注释：</h5>
+
+<ul>
+<li>CDATA 部分不能包含字符串 &quot;]]&gt;&quot;。也不允许嵌套的 CDATA 部分。</li>
+<li>标记 CDATA 部分结尾的 &quot;]]&gt;&quot; 不能包含空格或折行。</li>
+</ul>
+
+<p><a href="http://www.w3school.com.cn/xml/xml_cdata.asp">ext link</a></p>
+
+    <nav class="article-previous fn-clear">
+        
+        <a class="prev" href="/php/2014/11/22/php_namespace.html" rel="bookmark">&laquo;&nbsp;php 命名空间</a>
+        
+        
+    </nav>
+    <div class="comment">
+        
+        <div id="disqus_thread"></div>
+        
+    </div>
+</div>
+
+                </div>
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="https://avatars0.githubusercontent.com/u/5516045?v=3&s=460" />
+                            </div>
+                            <div class="det-text">
+                                <p>我是「邹帅」，目前从事php开发！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="/standard/2014/11/25/CDATA.html" title="CDATA" rel="bookmark">CDATA</a></li>
+                            
+                                <li><a href="/php/2014/11/22/php_namespace.html" title="php 命名空间" rel="bookmark">php 命名空间</a></li>
+                            
+                                <li><a href="/php/2014/11/21/PHP%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1.html" title="php定时执行计划任务" rel="bookmark">php定时执行计划任务</a></li>
+                            
+                                <li><a href="/php/2014/11/20/PHP%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.html" title="PHP的异常处理" rel="bookmark">PHP的异常处理</a></li>
+                            
+                                <li><a href="/mysql/2014/11/20/mysql%E9%94%81%E6%9C%BA%E5%88%B6.html" title="mysql锁机制" rel="bookmark">mysql锁机制</a></li>
+                            
+                                <li><a href="/mysql/2014/11/20/mysql%E4%BA%8B%E5%8A%A1.html" title="mysql事务" rel="bookmark">mysql事务</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                                    
+                                    <li><a href="http://zous.me" title="jz-code" target="_blank">jz-code</a></li>
+                                    
+                                    <li><a href="http://jekyllrb.com" title="Jekyll" target="_blank">Jekyll</a></li>
+                                    
+                                    <li><a href="http://zous.me/themes.html" title="Jekyll Theme" target="_blank">Jekyll Theme</a></li>
+                                    
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="footer">
+                <p>Copyright 2013. All rights reserved. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, Design by <a href="http://zous.me" target="_blank">zous.me</a>.</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+            
+            <script type="text/javascript">
+                //disqus
+                var disqus_shortname = 'codemadman';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] ||
+                        document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            
+        
+    </body>
+</html>

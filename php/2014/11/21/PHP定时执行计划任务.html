@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>php定时执行计划任务 - Jekyll</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="邹帅" />
+        <meta name="description" content="Just another Jekyll theme design and code by zous.me." />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/assets/css/syntax.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
+        
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-56893240-1', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+        
+    </head>
+    <body>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                首页
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                分类目录
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/archives.html">
+                                文章归档
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                友情链接
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://weibo.com/luoyoo/home" target="_blank"><i class="icon-weibo"></i></a>
+                    
+                    <a href="https://github.com/zoushuai518" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                    <a href="https://twitter.com/zoushuai518" target="_blank"><i class="icon-twitter"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">php定时执行计划任务</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">21 Nov 2014</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#php-ref" >php</a></span>
+    </div>
+    <p>php定时执行计划任务 有三种实现方式：</p>
+
+<ul>
+<li>windows计划任务，不常用,再次不再赘述</li>
+<li>linux 的脚本实现</li>
+<li>PHP自身实现定时执行计划任务</li>
+</ul>
+
+<h5>linux 的脚本实现</h5>
+
+<p>1.在Crontab中使用PHP执行脚本  </p>
+
+<p>就像在Crontab中调用普通的shell脚本一样（具体Crontab用法），使用PHP程序来调用PHP脚本。<br>
+每一小时执行myscript.php如下：
+<pre><code>
+//#crontab -e
+00 * * * * /usr/local/bin/php /home/john/myscript.php 
+</code></pre>
+/usr/local/bin/php为PHP程序的路径。</p>
+
+<p>2.在Crontab中使用URL执行脚本  </p>
+
+<p>如果你的PHP脚本可以通过URL触发，你可以使用lynx或curl或wget来配置你的Crontab。<br>
+下面的例子是使用Lynx文本浏览器访问URL来每小时执行PHP脚本。Lynx文本浏览器默认使用对话方式打开URL。但是，像下面的，我们在lynx命令行中使用-dump选项来把URL的输出转换来标准输出。<br>
+<pre><code>
+00 * * * * lynx -dump http://www.centos.bz/myscript.php<br>
+</code></pre></p>
+
+<p>下面的例子是使用CURL访问URL来每5分执行PHP脚本。Curl默认在标准输出显示输出。使用”curl -o”选项，你也可以把脚本的输出转储到临时文件。<br>
+<pre><code>
+*/5 * * * * /usr/bin/curl -o temp.txt http://www.centos.bz/myscript.php
+</code></pre></p>
+
+<p>下面的例子是使用WGET访问URL来每10分执行PHP脚本。-q选项表示安静模式。”-O temp.txt”表示输出会发送到临时文件。
+<pre><code>
+*/10 * * * * /usr/bin/wget -q -O temp.txt http://www.centos.bz/myscript.php 
+</code></pre></p>
+
+<p>zs扩展:
+如果程序使用了框架,url已经被重写;可以在 myscript.php文件中写一个http_request方法(使用php curl),来请求重写的url path,已用来实现定时执行php功能代码。</p>
+
+<h5>php自身实现定时执行计划任务</h5>
+
+<p>使用php让浏览器刷新需要解决几个问题</p>
+
+<ul>
+<li>PHP脚本执行时间限制，默认的是30m 解决办法：set<em>time</em>limit();或者修改PHP.ini 设置max<em>execution</em>time时间（不推荐）</li>
+<li>如果客户端浏览器关闭，程序可能就被迫终止，解决办法：ignore<em>user</em>abort即使关闭页面依然正常执行 </li>
+<li>如果程序一直执行很有可能会消耗大量的资源，解决办法使用sleep使用程序休眠一会，然后在执行</li>
+</ul>
+
+<p>PHP定时执行的代码：</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span>     <span class="nb">ignore_user_abort</span><span class="p">();</span><span class="c1">//关掉浏览器，PHP脚本也可以继续执行.</span>
+<span class="lineno"> 3</span>     <span class="nb">set_time_limit</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span><span class="c1">// 通过set_time_limit(0)可以让程序无限制的执行下去</span>
+<span class="lineno"> 4</span>     <span class="nv">$interval</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span><span class="c1">// 每隔5s运行 </span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span>     <span class="c1">//方法1--死循环</span>
+<span class="lineno"> 7</span>     <span class="k">do</span><span class="p">{</span>
+<span class="lineno"> 8</span>         <span class="k">echo</span> <span class="s1">&#39;测试&#39;</span><span class="o">.</span><span class="nb">time</span><span class="p">()</span><span class="o">.</span><span class="s1">&#39;&lt;br/&gt;&#39;</span><span class="p">;</span>
+<span class="lineno"> 9</span>         <span class="nb">sleep</span><span class="p">(</span><span class="nv">$interval</span><span class="p">);</span><span class="c1">// 等待5s</span>
+<span class="lineno">10</span>     <span class="p">}</span><span class="k">while</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span>     <span class="c1">//方法2---sleep 定时执行</span>
+<span class="lineno">13</span>     <span class="k">require_once</span> <span class="s1">&#39;./curlClass.php&#39;</span><span class="p">;</span><span class="c1">//引入文件</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span>     <span class="nv">$curl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">httpCurl</span><span class="p">();</span><span class="c1">//实例化</span>
+<span class="lineno">16</span>     <span class="nv">$stime</span> <span class="o">=</span> <span class="nv">$curl</span><span class="o">-&gt;</span><span class="na">getmicrotime</span><span class="p">();</span>
+<span class="lineno">17</span>     <span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;=</span><span class="mi">10</span><span class="p">;</span><span class="nv">$i</span><span class="o">++</span><span class="p">){</span> 
+<span class="lineno">18</span>         <span class="k">echo</span> <span class="s1">&#39;测试&#39;</span><span class="o">.</span><span class="nb">time</span><span class="p">()</span><span class="o">.</span><span class="s1">&#39;&lt;br/&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">19</span>         <span class="nb">sleep</span><span class="p">(</span><span class="nv">$interval</span><span class="p">);</span><span class="c1">// 等待5s</span>
+<span class="lineno">20</span>     <span class="p">}</span>
+<span class="lineno">21</span>     <span class="nb">ob_flush</span><span class="p">();</span>
+<span class="lineno">22</span>     <span class="nb">flush</span><span class="p">();</span>
+<span class="lineno">23</span>     <span class="nv">$etime</span> <span class="o">=</span> <span class="nv">$curl</span><span class="o">-&gt;</span><span class="na">getmicrotime</span><span class="p">();</span>
+<span class="lineno">24</span>     <span class="k">echo</span> <span class="s1">&#39;&lt;hr&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">25</span>     <span class="k">echo</span> <span class="nb">round</span><span class="p">((</span><span class="nv">$etime</span><span class="o">-</span><span class="nx">stime</span><span class="p">),</span><span class="mi">4</span><span class="p">);</span><span class="c1">//程序执行时间</span>
+<span class="lineno">26</span> <span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>测试的时候发现这个效率并不是很高</p>
+
+<h5>总结：</h5>
+
+<p>PHP定时执行任务的效率不是很高，建议关于定时执行任务的工作还是交给shell来做吧，比较那才是王道。</p>
+
+    <nav class="article-previous fn-clear">
+        
+        <a class="prev" href="/php/2014/11/20/PHP%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.html" rel="bookmark">&laquo;&nbsp;PHP的异常处理</a>
+        
+        
+        <a class="next" href="/php/2014/11/22/php_namespace.html" rel="bookmark">php 命名空间&nbsp;&raquo;</a>
+        
+    </nav>
+    <div class="comment">
+        
+        <div id="disqus_thread"></div>
+        
+    </div>
+</div>
+
+                </div>
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="https://avatars0.githubusercontent.com/u/5516045?v=3&s=460" />
+                            </div>
+                            <div class="det-text">
+                                <p>我是「邹帅」，目前从事php开发！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="/standard/2014/11/25/CDATA.html" title="CDATA" rel="bookmark">CDATA</a></li>
+                            
+                                <li><a href="/php/2014/11/22/php_namespace.html" title="php 命名空间" rel="bookmark">php 命名空间</a></li>
+                            
+                                <li><a href="/php/2014/11/21/PHP%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1.html" title="php定时执行计划任务" rel="bookmark">php定时执行计划任务</a></li>
+                            
+                                <li><a href="/php/2014/11/20/PHP%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.html" title="PHP的异常处理" rel="bookmark">PHP的异常处理</a></li>
+                            
+                                <li><a href="/mysql/2014/11/20/mysql%E9%94%81%E6%9C%BA%E5%88%B6.html" title="mysql锁机制" rel="bookmark">mysql锁机制</a></li>
+                            
+                                <li><a href="/mysql/2014/11/20/mysql%E4%BA%8B%E5%8A%A1.html" title="mysql事务" rel="bookmark">mysql事务</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                                    
+                                    <li><a href="http://zous.me" title="jz-code" target="_blank">jz-code</a></li>
+                                    
+                                    <li><a href="http://jekyllrb.com" title="Jekyll" target="_blank">Jekyll</a></li>
+                                    
+                                    <li><a href="http://zous.me/themes.html" title="Jekyll Theme" target="_blank">Jekyll Theme</a></li>
+                                    
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="footer">
+                <p>Copyright 2013. All rights reserved. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, Design by <a href="http://zous.me" target="_blank">zous.me</a>.</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+            
+            <script type="text/javascript">
+                //disqus
+                var disqus_shortname = 'codemadman';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] ||
+                        document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            
+        
+    </body>
+</html>
