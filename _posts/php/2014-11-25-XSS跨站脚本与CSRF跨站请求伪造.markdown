@@ -1,0 +1,15 @@
+---
+layout: post
+title: "XSS跨站脚本与CSRF跨站请求伪造"
+category: php
+comments: true
+date:   2014-11-25 14:41:51
+---
+
+#####[XSS](/php/2014/10/10/Xss攻击.html)
+
+
+#####[CSRF](/php/2014/09/29/php-CSRF攻击.html)
+
+[link](http://www.nowamagic.net/librarys/veda/detail/606)
+

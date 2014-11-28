@@ -1,0 +1,12 @@
+---
+layout: post
+title: "PHP xinc持续集成服务器"
+category: php
+comments: true
+date:   2014-11-28 11:00:51
+---
+
+
+- [xinc](https://code.google.com/p/xinc/)
+- [Xinc是持续集成PHP工程的一种方法](http://why100000.com/Htmls/tabPHP568.htm)
+- [Xinc 持续集成服务器](http://www1.huachu.com.cn/read/readbookinfo.asp?sectionid=1000000027)

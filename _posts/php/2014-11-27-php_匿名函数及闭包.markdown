@@ -1,0 +1,9 @@
+---
+layout: post
+title: "php匿名函数及闭包"
+category: php
+comments: true
+date:   2014-11-27 14:35:51
+---
+
+[匿名函数及闭包](http://www.nowamagic.net/librarys/veda/detail/1490)

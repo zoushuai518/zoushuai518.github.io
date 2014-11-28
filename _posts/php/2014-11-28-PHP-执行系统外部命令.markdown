@@ -1,0 +1,9 @@
+---
+layout: post
+title: "PHP 执行系统外部命令 system() exec() passthru()"
+category: php
+comments: true
+date:   2014-11-28 11:00:51
+---
+
+[PHP 执行系统外部命令 system() exec() passthru()](http://www.jb51.net/article/19618.htm)

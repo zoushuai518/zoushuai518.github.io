@@ -1,0 +1,12 @@
+---
+layout: post
+title: "PHP 的 Phing 项目部署工具"
+category: php
+comments: true
+date:   2014-11-28 11:00:51
+---
+
+- [PHP 的 phing 项目部署工具](http://blog.csdn.net/zhangking/article/details/5734258)
+- [PHP 实现的项目构建工具](http://blog.hickwu.com/posts/12)
+- [phing](http://www.phing.info/)
+
