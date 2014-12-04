@@ -7,4 +7,6 @@ date:   2014-09-16 10:59:51
 ---
 
 #### golaravel
-[golaravel](http://www.golaravel.com/)
+
+- [golaravel](http://www.golaravel.com/)
+- [10个Laravel4开发人员必用扩展包](http://blog.csdn.net/iefreer/article/details/37542395)
