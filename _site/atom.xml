@@ -4,13 +4,24 @@
    <title>Jekyll</title>
    <link href="/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="" rel="alternate" type="text/html" />
-   <updated>2014-11-28T12:35:38+08:00</updated>
+   <updated>2014-12-04T16:53:45+08:00</updated>
    <id></id>
    <author>
      <name>邹帅</name>
      <email>zoushuai518@gmail.com</email>
    </author>
 
+   
+   <entry>
+     <title>关系非关系型数据库选型</title>
+     <link href="/mysql/2014/12/05/%E5%85%B3%E7%B3%BB%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E5%9E%8B.html"/>
+     <updated>2014-12-05T00:16:51+08:00</updated>
+     <id>/mysql/2014/12/05/关系非关系型数据库选型</id>
+     <content type="html">&lt;p&gt;临时：  &lt;/p&gt;
+
+&lt;p&gt;采用关系型数据库还是非关系型数据库完全取决于你的业务场景，如果你要实现实时要求高，数据一致性要求高的场景，关系型数据库；如果你要实现海量数据的查询和高并发，非关系型数据库（考虑Facebook一张表有一亿用户，如果用关系型数据库查询。磁盘IO也快撑不住了，而非关系型数据库则完全没有这个问题）&lt;/p&gt;
+</content>
+   </entry>
    
    <entry>
      <title>PHP 执行系统外部命令 system() exec() passthru()</title>
@@ -156,7 +167,8 @@
 &lt;li&gt;sprintf() 把格式化的字符串写入一个变量中&lt;/li&gt;
 &lt;li&gt;strip_tags() 函数剥去 HTML、XML 以及 PHP 的标签&lt;/li&gt;
 &lt;li&gt;htmlentities() 函数把字符转换为 HTML 实体&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;htmlspecialchars() 函数把一些预定义的字符转换为 HTML 实体&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;htmlspecialchars() 函数把一些预定义的字符转换为 HTML 实体&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;str_replace() 函数使用一个字符串替换字符串中的另一些字符&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;printf() 输出格式化字符串&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;sprintf() 函数把格式化的字符串写入一个变量中&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;vprintf() 输出格式化字符串&lt;/p&gt;&lt;/li&gt;
@@ -267,21 +279,6 @@
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://www.w3school.com.cn/xml/xml_cdata.asp&quot;&gt;ext link&lt;/a&gt;&lt;/p&gt;
-</content>
-   </entry>
-   
-   <entry>
-     <title>php 命名空间</title>
-     <link href="/php/2014/11/22/php_namespace.html"/>
-     <updated>2014-11-22T03:59:51+08:00</updated>
-     <id>/php/2014/11/22/php_namespace</id>
-     <content type="html">&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://php.net/manual/zh/language.namespaces.rationale.php&quot;&gt;命名空间概述&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/yjf512/archive/2013/05/14/3077285.html&quot;&gt;PHP的命名空间&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.php100.com/html/webkaifa/PHP/PHP/2010/0706/4905.html&quot;&gt;PHP命名空间真的槽糕吗&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/molaifeng/article/details/24331307&quot;&gt;php中namespace几点易误解的地方&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.jb51.net/article/36389.htm&quot;&gt;PHP命名空间(Namespace)的使用详解&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </content>
    </entry>
    
