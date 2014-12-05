@@ -14,6 +14,7 @@ date:   2014-11-25 10:00:51
 - htmlentities() 函数把字符转换为 HTML 实体
 - htmlspecialchars() 函数把一些预定义的字符转换为 HTML 实体
 - str_replace() 函数使用一个字符串替换字符串中的另一些字符
+- strncmp() 函数比较两个字符串
 
 - printf() 输出格式化字符串
 - sprintf() 函数把格式化的字符串写入一个变量中
