@@ -7,3 +7,5 @@ date:   2014-11-27 14:35:51
 ---
 
 [匿名函数及闭包](http://www.nowamagic.net/librarys/veda/detail/1490)
+
+[临时-函数的分类](http://www.nowamagic.net/librarys/veda/detail/1462)
