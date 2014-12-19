@@ -18,3 +18,113 @@ $_POST = json_decode(file_get_contents('php://input'), true);
 
 array(2) { ["a"]=> string(1) "a" ["b"]=> string(1) "b" }
 
+
+
+-
+php接收二进制文件转换成图片
+$GLOBALS['HTTP_RAW_POST_DATA']
+
+最近在做Flash在线裁剪图片 生成图片的东西。
+通过Flash POST 图片的二进制数据给php，由php生成图片保存。
+
+开始想到用$_POST来接受。后来发现行不通。
+查阅了很多资料 明白了所以然，这里做一个笔记：
+
+于PHP默认只识别application/x-www.form-urlencoded标准的数据类型。
+因此，对型如text/xml 或者 soap 或者 application/octet-stream 之类的内容无法解析，如果用$_POST数组来接收就会失败！
+故保留原型，交给$GLOBALS['HTTP_RAW_POST_DATA'] 来接收。
+
+另外还有一项 php://input 也可以实现此这个功能
+
+php://input 允许读取 POST 的原始数据。和 $HTTP_RAW_POST_DATA 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.ini 设置。php://input和 $HTTP_RAW_POST_DATA 不能用于 enctype="multipart/form-data"。
+
+我在Flash中使用JPGEncoder把BitMapData转成二进制，然后post给php
+
+php页面代码如下：
+
+<?php
+$filename="teststream.jpg";//要生成的图片名字
+
+$xmlstr =  $GLOBALS[HTTP_RAW_POST_DATA];
+if(empty($xmlstr)) $xmlstr = file_get_contents('php://input');
+
+$jpg = $xmlstr;//得到post过来的二进制原始数据
+$file = fopen("cache/pic/".$filename,"w");//打开文件准备写入
+fwrite($file,$jpg);//写入
+fclose($file);//关闭
+
+?>
+
+
+-
+<?php
+//生成图片
+$imgDir = 'uploadImg/';
+$filename="nissangcj".$mobile.".jpg";///要生成的图片名字
+
+$xmlstr =  $GLOBALS[HTTP_RAW_POST_DATA];
+if(empty($xmlstr)) {
+    $xmlstr = file_get_contents('php://input');
+}
+ 
+$jpg = $xmlstr;//得到post过来的二进制原始数据
+if(empty($jpg))
+{
+    echo 'nostream';
+    exit();
+}
+
+$file = fopen("./".$imgDir.$filename,"w");//打开文件准备写入
+fwrite($file,$jpg);//写入
+fclose($file);//关闭
+
+$filePath = './'.$imgDir.$filename;
+
+//图片是否存在
+if(!file_exists($filePath))
+{
+    echo 'createFail';
+    exit();
+}
+?>
+
+
+-
+
+首先这个代码的php文件就作为图片文件.
+<?php //设文件名为test.php
+$data=file_get_contents("1.jpg");   //这里就是把图像读取成字符串了
+$im = imagecreatefromstring($data); //这里主要检查上面的字符串  是否为图片的字符串
+if ($im !== false) {
+    header('Content-Type: image/jpeg'); //对应jpeg的类型
+    imagejpeg($im);////也要对应jpeg的类型
+    imagedestroy($im);
+}
+else {
+    echo '图片未读入';
+}
+
+=========
+然后再另一个html或php中写上<img src='test.php' />显示该图片
+?>
+
+-
+
+
+-
+<?php
+header("Content-Type: image/jpeg");
+$filename = time().'.png';
+$str = base64_decode($logo);
+$fp = fopen($imgPath . $filename, 'w');
+fwrite($fp, $str);
+fclose($fp);
+?>
+
+-
+
+http://www.5idev.com/p-php_imagecreatefrom_gif_jpeg_png.shtml
+http://php.net/manual/zh/function.imagecreatefromstring.php
+
+
+2014-12-18 zs is not note

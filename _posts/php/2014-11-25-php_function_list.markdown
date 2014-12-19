@@ -65,6 +65,8 @@ date:   2014-11-25 10:00:51
 
 #####Image Functions
 
+- imagecreatefrom 系列函数用于从文件或 URL 载入一幅图像，成功返回图像资源，失败则返回一个空字符串 ; 载入图像
+
 
 #####IMAP Funictions
 
