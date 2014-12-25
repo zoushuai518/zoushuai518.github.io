@@ -36,6 +36,8 @@ date:   2014-09-18 10:50:51
 
 - [http://www.cnblogs.com/cate/php/](http://www.cnblogs.com/cate/php/)
 
+- [张宴的博客](http://zyan.cc)
+
 
 ### php 常用工具
 
