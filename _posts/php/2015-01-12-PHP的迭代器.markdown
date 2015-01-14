@@ -1,0 +1,12 @@
+---
+layout: post
+title: "PHP迭代器"
+category: php
+comments: true
+date:   2015-01-12 17:20:51
+---
+
+#### PHP迭代器
+
+[PHP迭代器](http://www.nowamagic.net/librarys/veda/detail/2161)
+
