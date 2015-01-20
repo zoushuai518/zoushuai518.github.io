@@ -1,0 +1,13 @@
+---
+layout: post
+title: "Linux输入输出重定向"
+category: Linux
+comments: true
+date:   2015-01-20 17:32:51
+---
+
+- [Linux中的输入输出重定向 ](http://blog.chinaunix.net/uid-13342902-id-2901680.html)
+- [linux shell数据重定向（输入重定向与输出重定向）详细分析](http://www.cnblogs.com/chengmo/archive/2010/10/20/1855805.html)
+- [Linux下的输入/输出重定向](http://blog.csdn.net/cneaglelee/article/details/6216557)
+- [linux重定向、crontab定时执行任务等知识总结](http://blog.sina.com.cn/s/blog_5815d5eb0101ckee.html)
+

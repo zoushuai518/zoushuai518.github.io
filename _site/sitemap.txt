@@ -15,6 +15,7 @@
 /page8/index.html
 /page9/index.html
 
+/linux/2015/01/21/linux%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91.html
 /php/2015/01/13/PHP%E7%9A%84%E8%BF%AD%E4%BB%A3%E5%99%A8.html
 /php/2014/12/18/php-curl%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6.html
 /mysql/2014/12/05/%E5%85%B3%E7%B3%BB%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E5%9E%8B.html
