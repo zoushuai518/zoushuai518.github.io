@@ -114,6 +114,111 @@
 
 <p>array(2) { [&quot;a&quot;]=&gt; string(1) &quot;a&quot; [&quot;b&quot;]=&gt; string(1) &quot;b&quot; }</p>
 
+<p>-
+php接收二进制文件转换成图片
+$GLOBALS[&#39;HTTP<em>RAW</em>POST_DATA&#39;]</p>
+
+<p>最近在做Flash在线裁剪图片 生成图片的东西。
+通过Flash POST 图片的二进制数据给php，由php生成图片保存。</p>
+
+<p>开始想到用$_POST来接受。后来发现行不通。
+查阅了很多资料 明白了所以然，这里做一个笔记：</p>
+
+<p>于PHP默认只识别application/x-www.form-urlencoded标准的数据类型。
+因此，对型如text/xml 或者 soap 或者 application/octet-stream 之类的内容无法解析，如果用$<em>POST数组来接收就会失败！
+故保留原型，交给$GLOBALS[&#39;HTTP</em>RAW<em>POST</em>DATA&#39;] 来接收。</p>
+
+<p>另外还有一项 php://input 也可以实现此这个功能</p>
+
+<p>php://input 允许读取 POST 的原始数据。和 $HTTP<em>RAW</em>POST<em>DATA 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.ini 设置。php://input和 $HTTP</em>RAW<em>POST</em>DATA 不能用于 enctype=&quot;multipart/form-data&quot;。</p>
+
+<p>我在Flash中使用JPGEncoder把BitMapData转成二进制，然后post给php</p>
+
+<p>php页面代码如下：</p>
+
+<p>&lt;?php
+$filename=&quot;teststream.jpg&quot;;//要生成的图片名字</p>
+
+<p>$xmlstr =  $GLOBALS[HTTP<em>RAW</em>POST<em>DATA];
+if(empty($xmlstr)) $xmlstr = file</em>get_contents(&#39;php://input&#39;);</p>
+
+<p>$jpg = $xmlstr;//得到post过来的二进制原始数据
+$file = fopen(&quot;cache/pic/&quot;.$filename,&quot;w&quot;);//打开文件准备写入
+fwrite($file,$jpg);//写入
+fclose($file);//关闭</p>
+
+<p>?&gt;</p>
+
+<p>-
+&lt;?php
+//生成图片
+$imgDir = &#39;uploadImg/&#39;;
+$filename=&quot;nissangcj&quot;.$mobile.&quot;.jpg&quot;;///要生成的图片名字</p>
+
+<p>$xmlstr =  $GLOBALS[HTTP<em>RAW</em>POST<em>DATA];
+if(empty($xmlstr)) {
+    $xmlstr = file</em>get_contents(&#39;php://input&#39;);
+}</p>
+
+<p>$jpg = $xmlstr;//得到post过来的二进制原始数据
+if(empty($jpg))
+{
+    echo &#39;nostream&#39;;
+    exit();
+}</p>
+
+<p>$file = fopen(&quot;./&quot;.$imgDir.$filename,&quot;w&quot;);//打开文件准备写入
+fwrite($file,$jpg);//写入
+fclose($file);//关闭</p>
+
+<p>$filePath = &#39;./&#39;.$imgDir.$filename;</p>
+
+<p>//图片是否存在
+if(!file_exists($filePath))
+{
+    echo &#39;createFail&#39;;
+    exit();
+}
+?&gt;</p>
+
+<p>-</p>
+
+<p>首先这个代码的php文件就作为图片文件.
+&lt;?php //设文件名为test.php
+$data=file<em>get</em>contents(&quot;1.jpg&quot;);   //这里就是把图像读取成字符串了
+$im = imagecreatefromstring($data); //这里主要检查上面的字符串  是否为图片的字符串
+if ($im !== false) {
+    header(&#39;Content-Type: image/jpeg&#39;); //对应jpeg的类型
+    imagejpeg($im);////也要对应jpeg的类型
+    imagedestroy($im);
+}
+else {
+    echo &#39;图片未读入&#39;;
+}</p>
+
+<p>=========
+然后再另一个html或php中写上<img src='test.php' />显示该图片
+?&gt;</p>
+
+<p>-</p>
+
+<p>-
+&lt;?php
+header(&quot;Content-Type: image/jpeg&quot;);
+$filename = time().&#39;.png&#39;;
+$str = base64_decode($logo);
+$fp = fopen($imgPath . $filename, &#39;w&#39;);
+fwrite($fp, $str);
+fclose($fp);
+?&gt;</p>
+
+<p>-</p>
+
+<p>http://www.5idev.com/p-php<em>imagecreatefrom</em>gif<em>jpeg</em>png.shtml
+http://php.net/manual/zh/function.imagecreatefromstring.php</p>
+
+<p>2014-12-18 zs is not note</p>
+
     <nav class="article-previous fn-clear">
         
         <a class="prev" href="/php/2014/09/26/php-session%E5%85%B1%E4%BA%AB.html" rel="bookmark">&laquo;&nbsp;PHP session共享</a>
@@ -147,6 +252,10 @@
                         <h4 class="title">Recent Posts</h4>
                         <ul class="list">
                             
+                                <li><a href="/php/2015/01/13/PHP%E7%9A%84%E8%BF%AD%E4%BB%A3%E5%99%A8.html" title="PHP迭代器" rel="bookmark">PHP迭代器</a></li>
+                            
+                                <li><a href="/php/2014/12/18/php-curl%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6.html" title="php curl 上传文件" rel="bookmark">php curl 上传文件</a></li>
+                            
                                 <li><a href="/mysql/2014/12/05/%E5%85%B3%E7%B3%BB%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E5%9E%8B.html" title="关系非关系型数据库选型" rel="bookmark">关系非关系型数据库选型</a></li>
                             
                                 <li><a href="/php/2014/11/28/PHP-%E6%89%A7%E8%A1%8C%E7%B3%BB%E7%BB%9F%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4.html" title="PHP 执行系统外部命令 system() exec() passthru()" rel="bookmark">PHP 执行系统外部命令 system() exec() passthru()</a></li>
@@ -154,10 +263,6 @@
                                 <li><a href="/php/2014/11/28/PHP-xinc.html" title="PHP xinc持续集成服务器" rel="bookmark">PHP xinc持续集成服务器</a></li>
                             
                                 <li><a href="/php/2014/11/28/PHP-phing.html" title="PHP 的 Phing 项目部署工具" rel="bookmark">PHP 的 Phing 项目部署工具</a></li>
-                            
-                                <li><a href="/php/2014/11/27/php_%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E5%8F%8A%E9%97%AD%E5%8C%85.html" title="php匿名函数及闭包" rel="bookmark">php匿名函数及闭包</a></li>
-                            
-                                <li><a href="/php/2014/11/27/%E5%AD%A6%E4%B9%A0php%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD.html" title="学习php必备技能" rel="bookmark">学习php必备技能</a></li>
                             
                         </ul>
                     </div>

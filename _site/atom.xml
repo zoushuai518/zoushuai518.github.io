@@ -4,13 +4,33 @@
    <title>Jekyll</title>
    <link href="/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="" rel="alternate" type="text/html" />
-   <updated>2014-12-04T16:53:45+08:00</updated>
+   <updated>2015-01-20T10:29:46+08:00</updated>
    <id></id>
    <author>
      <name>邹帅</name>
      <email>zoushuai518@gmail.com</email>
    </author>
 
+   
+   <entry>
+     <title>PHP迭代器</title>
+     <link href="/php/2015/01/13/PHP%E7%9A%84%E8%BF%AD%E4%BB%A3%E5%99%A8.html"/>
+     <updated>2015-01-13T01:20:51+08:00</updated>
+     <id>/php/2015/01/13/PHP的迭代器</id>
+     <content type="html">&lt;h4&gt;PHP迭代器&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/2161&quot;&gt;PHP迭代器&lt;/a&gt;&lt;/p&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>php curl 上传文件</title>
+     <link href="/php/2014/12/18/php-curl%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6.html"/>
+     <updated>2014-12-18T19:25:51+08:00</updated>
+     <id>/php/2014/12/18/php-curl上传文件</id>
+     <content type="html">&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/cyuyan112233/article/details/21007163&quot;&gt;php curl 上传文件&lt;/a&gt;&lt;/p&gt;
+</content>
+   </entry>
    
    <entry>
      <title>关系非关系型数据库选型</title>
@@ -64,6 +84,8 @@
      <updated>2014-11-27T22:35:51+08:00</updated>
      <id>/php/2014/11/27/php_匿名函数及闭包</id>
      <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/1490&quot;&gt;匿名函数及闭包&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/1462&quot;&gt;临时-函数的分类&lt;/a&gt;&lt;/p&gt;
 </content>
    </entry>
    
@@ -152,133 +174,6 @@
 &lt;li&gt;&lt;a href=&quot;http://pecl.php.net/package/printer&quot;&gt;printer pecl package&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://php.net/manual/fa/ref.printer.php&quot;&gt;link&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</content>
-   </entry>
-   
-   <entry>
-     <title>php常用函数列表</title>
-     <link href="/php/2014/11/25/php_function_list.html"/>
-     <updated>2014-11-25T18:00:51+08:00</updated>
-     <id>/php/2014/11/25/php_function_list</id>
-     <content type="html">&lt;h5&gt;String Functions&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;str_pad() 把字符串填充为指定的长度&lt;/li&gt;
-&lt;li&gt;sprintf() 把格式化的字符串写入一个变量中&lt;/li&gt;
-&lt;li&gt;strip_tags() 函数剥去 HTML、XML 以及 PHP 的标签&lt;/li&gt;
-&lt;li&gt;htmlentities() 函数把字符转换为 HTML 实体&lt;/li&gt;
-&lt;li&gt;htmlspecialchars() 函数把一些预定义的字符转换为 HTML 实体&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;str_replace() 函数使用一个字符串替换字符串中的另一些字符&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;printf() 输出格式化字符串&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;sprintf() 函数把格式化的字符串写入一个变量中&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;vprintf() 输出格式化字符串&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;fprintf() 将格式化后的字符串写入到流&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;vfprintf() 将格式化字符串写入流&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;vsprintf() 返回格式化字符串&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;fscanf() 从文中格式化输出&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;ctype_print() 做可打印字符检测&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5&gt;pattern Functions&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;split() 用正则表达式将字符串分割到数组中&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5&gt;Array Functions&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;array_flip() 函数返回一个反转后的数组，如果同一值出现了多次，则最后一个键名将作为它的值，所有其他的键名都将丢失&lt;/li&gt;
-&lt;li&gt;shuffle() 函数把数组中的元素按随机顺序重新排列&lt;/li&gt;
-&lt;li&gt;sizeof() 函数计算数组中的单元数目或对象中的属性个数&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5&gt;File Functions&lt;/h5&gt;
-
-&lt;h5&gt;Filesystem Functions&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;popen() 函数打开进程文件指针&lt;/li&gt;
-&lt;li&gt;proc_open() 执行一个命令，并且打开用来输入/输出的文件指针&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5&gt;Calendar Functions&lt;/h5&gt;
-
-&lt;h5&gt;Date/Time Functions&lt;/h5&gt;
-
-&lt;h5&gt;Db Functions&lt;/h5&gt;
-
-&lt;h5&gt;Directory Functions&lt;/h5&gt;
-
-&lt;h5&gt;HTTP Functions&lt;/h5&gt;
-
-&lt;h5&gt;Image Functions&lt;/h5&gt;
-
-&lt;h5&gt;IMAP Funictions&lt;/h5&gt;
-
-&lt;h5&gt;LDAP Functions&lt;/h5&gt;
-
-&lt;h5&gt;Mail Functions&lt;/h5&gt;
-
-&lt;h5&gt;Network Functions&lt;/h5&gt;
-
-&lt;h5&gt;SNMPF Functions&lt;/h5&gt;
-
-&lt;h5&gt;URL Functions&lt;/h5&gt;
-
-&lt;h5&gt;Variable Functions&lt;/h5&gt;
-
-&lt;h5&gt;XML Functions&lt;/h5&gt;
-
-&lt;h5&gt;System Functions&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;php&lt;em&gt;sapi&lt;/em&gt;name() 返回 web 服务器和 PHP 之间的接口类型&lt;/li&gt;
-&lt;li&gt;system() 输出并返回最后一行shell结果&lt;/li&gt;
-&lt;li&gt;exec() 不输出结果，返回最后一行shell结果，所有结果可以保存到一个返回的数组里面&lt;/li&gt;
-&lt;li&gt;passthru() 只调用命令，把命令的运行结果原样地直接输出到标准输出设备上&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-   </entry>
-   
-   <entry>
-     <title>CDATA</title>
-     <link href="/standard/2014/11/25/CDATA.html"/>
-     <updated>2014-11-25T01:16:51+08:00</updated>
-     <id>/standard/2014/11/25/CDATA</id>
-     <content type="html">&lt;h5&gt;一.xml解析&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;XML 解析器通常会解析 XML 文档中所有的文本。&lt;/li&gt;
-&lt;li&gt;当某个 XML 元素被解析时，其标签之间的文本也会被解析&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5&gt;二.PCDATA&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;XML 的特殊字符（&amp;amp;、&amp;lt; 和 &amp;gt;）在 PCDATA 中可以识别，并用于解析元素名称和实体。PCDATA（字符数据）区域被解析器视为数据块，从而允许您在数据流中包含任意字符。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5&gt;三.CDATA&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;术语 CDATA 指的是不应由 XML 解析器进行解析的文本数据（Unparsed Character Data）。&lt;/li&gt;
-&lt;li&gt;在 XML 元素中，&amp;quot;&amp;lt;&amp;quot; 和 &amp;quot;&amp;amp;&amp;quot; 是非法的。&lt;/li&gt;
-&lt;li&gt;&amp;quot;&amp;lt;&amp;quot; 会产生错误，因为解析器会把该字符解释为新元素的开始。&lt;/li&gt;
-&lt;li&gt;&amp;quot;&amp;amp;&amp;quot; 也会产生错误，因为解析器会把该字符解释为字符实体的开始。&lt;/li&gt;
-&lt;li&gt;某些文本，比如 JavaScript 代码，包含大量 &amp;quot;&amp;lt;&amp;quot; 或 &amp;quot;&amp;amp;&amp;quot; 字符。为了避免错误，可以将脚本代码定义为 CDATA。&lt;/li&gt;
-&lt;li&gt;CDATA 部分中的所有内容都会被解析器忽略。&lt;/li&gt;
-&lt;li&gt;CDATA 部分由 &amp;quot;&amp;lt;![CDATA[ 开始，由 ]]&amp;gt;&amp;quot; 结束&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5&gt;关于 CDATA 部分的注释：&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;CDATA 部分不能包含字符串 &amp;quot;]]&amp;gt;&amp;quot;。也不允许嵌套的 CDATA 部分。&lt;/li&gt;
-&lt;li&gt;标记 CDATA 部分结尾的 &amp;quot;]]&amp;gt;&amp;quot; 不能包含空格或折行。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.w3school.com.cn/xml/xml_cdata.asp&quot;&gt;ext link&lt;/a&gt;&lt;/p&gt;
 </content>
    </entry>
    
