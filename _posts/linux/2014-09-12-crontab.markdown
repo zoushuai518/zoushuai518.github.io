@@ -11,4 +11,5 @@ date:   2014-09-12 12:32:51
 - [2496213](http://www.cnblogs.com/cute/archive/2012/05/11/2496213.html)
 - [2850483](http://www.cnblogs.com/peida/archive/2013/01/08/2850483.html)
 - [php-cron-job-linux-crontab](https://www.centos.bz/2011/07/php-cron-job-linux-crontab/)
+- [7477826](http://blog.csdn.net/tswisdom/article/details/7477826)
 
