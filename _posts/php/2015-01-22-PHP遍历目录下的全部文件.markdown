@@ -1,0 +1,13 @@
+---
+layout: post
+title: "用PHP遍历目录下的全部文件"
+category: php
+comments: true
+date:   2015-01-22 17:20:51
+---
+
+#### PHP遍历目录下的全部文件
+
+- [用PHP遍历目录下的全部文件](http://www.nowamagic.net/php/php_TraversalAllFilesInDir.php)
+- [php遍历目录与文件夹的多种方法详解](http://www.jb51.net/article/43186.htm)
+

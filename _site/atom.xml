@@ -4,13 +4,27 @@
    <title>Jekyll</title>
    <link href="/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="" rel="alternate" type="text/html" />
-   <updated>2015-01-20T17:16:47+08:00</updated>
+   <updated>2015-01-22T18:21:24+08:00</updated>
    <id></id>
    <author>
      <name>邹帅</name>
      <email>zoushuai518@gmail.com</email>
    </author>
 
+   
+   <entry>
+     <title>用PHP遍历目录下的全部文件</title>
+     <link href="/php/2015/01/23/PHP%E9%81%8D%E5%8E%86%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E5%85%A8%E9%83%A8%E6%96%87%E4%BB%B6.html"/>
+     <updated>2015-01-23T01:20:51+08:00</updated>
+     <id>/php/2015/01/23/PHP遍历目录下的全部文件</id>
+     <content type="html">&lt;h4&gt;PHP遍历目录下的全部文件&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.nowamagic.net/php/php_TraversalAllFilesInDir.php&quot;&gt;用PHP遍历目录下的全部文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.jb51.net/article/43186.htm&quot;&gt;php遍历目录与文件夹的多种方法详解&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+   </entry>
    
    <entry>
      <title>Linux输入输出重定向</title>
@@ -163,19 +177,6 @@
 &lt;p&gt;浮躁的人容易问：我到底该学什么：－－别问，学就对了；&lt;/p&gt;
 
 &lt;p&gt;浮躁的人容易问：PHP有钱途吗：－－建议你去抢银行&lt;/p&gt;
-</content>
-   </entry>
-   
-   <entry>
-     <title>XSS跨站脚本与CSRF跨站请求伪造</title>
-     <link href="/php/2014/11/25/XSS%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E4%B8%8ECSRF%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0.html"/>
-     <updated>2014-11-25T22:41:51+08:00</updated>
-     <id>/php/2014/11/25/XSS跨站脚本与CSRF跨站请求伪造</id>
-     <content type="html">&lt;h5&gt;&lt;a href=&quot;/php/2014/10/10/Xss%E6%94%BB%E5%87%BB.html&quot;&gt;XSS&lt;/a&gt;&lt;/h5&gt;
-
-&lt;h5&gt;&lt;a href=&quot;/php/2014/09/29/php-CSRF%E6%94%BB%E5%87%BB.html&quot;&gt;CSRF&lt;/a&gt;&lt;/h5&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/606&quot;&gt;link&lt;/a&gt;&lt;/p&gt;
 </content>
    </entry>
    
