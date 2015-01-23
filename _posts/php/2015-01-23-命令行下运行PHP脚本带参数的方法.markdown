@@ -1,0 +1,65 @@
+---
+layout: post
+title: "命令行下运行PHP脚本带参数的方法"
+category: php
+comments: true
+date:   2015-01-23 13:20:51
+---
+
+
+#### 1. [使用标准的输入和输出](/php/2015/01/23/php的标准输入与输出.html)
+
+
+#### 2. 使用命令行自变量
+
+在命令行里输入程序参数来更改其运行方式是很常见的做法。你也可以对CLI程序这样做。PHP CLI带有两个特殊的变量，专门用来达到这个 
+
+目的：一个是$argv变量，它通过命令行把传递给PHP脚本的参数保存为单独的数组元素；另一个是$argc变量，它用来保存$argv数组里元素的 个数。 
+
+用PHP脚本编写一段读取$argv并处理它所含参数的代码是很简单的。
+
+- demo1
+{% highlight php linenos %}
+<?php
+print_r($argv);
+?>
+{% endhighlight %}
+
+Run this script by passing it some arbitrary values, and check the output:
+
+shell> php phptest.php chocolate 276 "killer tie, dude!"
+Array
+(
+    [0] => test.php
+    [1] => chocolate
+    [2] => 276
+    [3] => killer tie, dude!
+)
+
+正如你可以从输出的结果看到的，传递给test.php的值会自动地作为数组元素出现在$argv里。要注意的是，$argvis的第一个自变量总是脚本自己的名称
+
+
+- demo2
+
+{% highlight php linenos %}
+<?php
+// check for all required arguments
+// first argument is always name of script!
+if ($argc != 4) {
+    die("Usage: book.php <check-in-date> <num-nights> <room-type> ");
+}
+
+// remove first argument
+array_shift($argv);
+
+// get and use remaining arguments
+$checkin = $argv[0];
+$nights = $argv[1];
+$type = $argv[2];
+echo "You have requested a $type room for $nights nights, checking in on $checkin. Thank you for your order! ";
+?>
+{% endhighlight %}
+
+shell> php phpbook.php 21/05/2005 7 single
+You have requested a single room for 7 nights, checking in on 21/05/2005. Thank you for your order!
+

@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>php 命名空间 - Jekyll</title>
+        <title>php的标准输入与输出 - Jekyll</title>
         <!-- meta -->
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta name="generator" content="Jekyll" />
@@ -94,27 +94,96 @@
             <div class="container fn-clear">
                 <div class="main">
                     <div class="article article-post">
-    <h2 class="title">php 命名空间</h2>
+    <h2 class="title">php的标准输入与输出</h2>
     <div class="info">
         <span class="info-title"><i class="icon-calendar"></i> Published: </span>
-        <span class="info-date">22 Nov 2014</span>
+        <span class="info-date">23 Jan 2015</span>
         <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
         <span class="info-link"><a href="/categories.html#php-ref" >php</a></span>
     </div>
-    <ul>
-<li><a href="http://php.net/manual/zh/language.namespaces.rationale.php">命名空间概述</a></li>
-<li><a href="http://www.cnblogs.com/yjf512/archive/2013/05/14/3077285.html">PHP的命名空间</a></li>
-<li><a href="http://www.php100.com/html/webkaifa/PHP/PHP/2010/0706/4905.html">PHP命名空间真的槽糕吗</a></li>
-<li><a href="http://blog.csdn.net/molaifeng/article/details/24331307">php中namespace几点易误解的地方</a></li>
-<li><a href="http://www.jb51.net/article/36389.htm">PHP命名空间(Namespace)的使用详解</a></li>
-</ul>
+    <h3>php的标准输入与输出</h3>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// ask for input</span>
+<span class="nb">fwrite</span><span class="p">(</span><span class="nx">STDOUT</span><span class="p">,</span> <span class="s2">&quot;Enter your name: &quot;</span><span class="p">);</span>
+
+<span class="c1">// get input</span>
+<span class="nv">$name</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nb">fgets</span><span class="p">(</span><span class="nx">STDIN</span><span class="p">));</span><span class="nx">　</span><span class="c1">// 接收用户输入</span>
+
+<span class="c1">// write input back</span>
+<span class="nb">fwrite</span><span class="p">(</span><span class="nx">STDOUT</span><span class="p">,</span> <span class="s2">&quot;Hello, </span><span class="si">$name</span><span class="s2">!&quot;</span><span class="p">);</span>
+
+<span class="c1">// 运行方法：</span>
+<span class="c1">// 运行：php inouttest.php</span>
+
+<span class="c1">// 运行结果为：</span>
+<span class="c1">// Enter your name: davy</span>
+<span class="c1">// Hello, davy!</span>
+
+<span class="c1">// php cli 模式</span>
+<span class="c1">// 常量    说明</span>
+<span class="c1">// STDIN    标准的输入设备</span>
+<span class="c1">// STDOUT    标准的输出设备</span>
+<span class="c1">// STDERR    标准的错误设备</span>
+
+<span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>可以在PHP脚本里使用这三个常量，以接受用户的输入，或者显示处理和计算的结果。</p>
+
+<p>PHP处理过程如下：fwrite()函数首先会向标准的输出设备写一条消息，询问用户的姓名。然后它会把从标准输入设备获得的用户输入信息读取到一个PHP变量里，并它把合并成为一个字符串。然后就用fwrite()把这个字符串打印输出到标准的输出设备上</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">while</span><span class="p">(</span><span class="nv">$str</span> <span class="o">=</span> <span class="nb">fread</span><span class="p">(</span><span class="nx">STDIN</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)){</span>
+     <span class="k">echo</span> <span class="s2">&quot;you print:&quot;</span><span class="o">.</span><span class="nv">$str</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
+
+<p>接受用户输入参数,输出到设备上;如此循环1000次</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">//PHP CLI中，有三个系统常量，分别是STDIN、STDOUT、STDERR，代表文件句柄。</span>
+
+<span class="sd">/**</span>
+<span class="sd"> *@ 标准输入</span>
+<span class="sd"> *@ php://stdin &amp; STDIN</span>
+<span class="sd"> *@ STDIN是一个文件句柄，等同于fopen(&quot;php://stdin&quot;, &#39;r&#39;)</span>
+<span class="sd"> */</span>
+<span class="nv">$fh</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;php://stdin&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">&quot;[php://stdin]请输入任意字符：&quot;</span><span class="p">;</span>
+<span class="nv">$str</span> <span class="o">=</span> <span class="nb">fread</span><span class="p">(</span><span class="nv">$fh</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">&quot;[php://stdin]你输入的是：&quot;</span><span class="o">.</span><span class="nv">$str</span><span class="p">;</span>
+<span class="nb">fclose</span><span class="p">(</span><span class="nv">$fh</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">&quot;[STDIN]请输入任意字符：&quot;</span><span class="p">;</span>
+<span class="nv">$str</span> <span class="o">=</span> <span class="nb">fread</span><span class="p">(</span><span class="nx">STDIN</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">&quot;[STDIN]你输入的是：&quot;</span><span class="o">.</span><span class="nv">$str</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> *@ 标准输出</span>
+<span class="sd"> *@ php://stdout &amp; STDOUT</span>
+<span class="sd"> *@ STDOUT是一个文件句柄，等同于fopen(&quot;php://stdout&quot;, &#39;w&#39;)</span>
+<span class="sd"> */</span>
+<span class="nv">$fh</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;php://stdout&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">);</span>
+<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$fh</span><span class="p">,</span> <span class="s2">&quot;标准输出php://stdout/n&quot;</span><span class="p">);</span>
+<span class="nb">fclose</span><span class="p">(</span><span class="nv">$fh</span><span class="p">);</span>
+<span class="nb">fwrite</span><span class="p">(</span><span class="nx">STDOUT</span><span class="p">,</span> <span class="s2">&quot;标准输出STDOUT/n&quot;</span><span class="p">);</span>
+
+<span class="sd">/**</span>
+<span class="sd"> *@ 标准错误，默认情况下会发送至用户终端</span>
+<span class="sd"> *@ php://stderr &amp; STDERR</span>
+<span class="sd"> *@ STDERR是一个文件句柄，等同于fopen(&quot;php://stderr&quot;, &#39;w&#39;)</span>
+<span class="sd"> */</span>
+<span class="nv">$fh</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;php://stderr&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">);</span>
+<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$fh</span><span class="p">,</span> <span class="s2">&quot;标准错误php://stderr/n&quot;</span><span class="p">);</span>
+<span class="nb">fclose</span><span class="p">(</span><span class="nv">$fh</span><span class="p">);</span>
+<span class="nb">fwrite</span><span class="p">(</span><span class="nx">STDERR</span><span class="p">,</span> <span class="s2">&quot;标准错误STDERR/n&quot;</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span></code></pre></div>
 
     <nav class="article-previous fn-clear">
         
-        <a class="prev" href="/php/2014/11/21/PHP%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1.html" rel="bookmark">&laquo;&nbsp;php定时执行计划任务</a>
+        <a class="prev" href="/linux/2015/01/23/linux-stdout,stdin,stderr.html" rel="bookmark">&laquo;&nbsp;linux中stdout,stdin,stderr</a>
         
         
-        <a class="next" href="/standard/2014/11/25/CDATA.html" rel="bookmark">CDATA&nbsp;&raquo;</a>
+        <a class="next" href="/php/2015/01/23/%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8B%E8%BF%90%E8%A1%8CPHP%E8%84%9A%E6%9C%AC%E5%B8%A6%E5%8F%82%E6%95%B0%E7%9A%84%E6%96%B9%E6%B3%95.html" rel="bookmark">命令行下运行PHP脚本带参数的方法&nbsp;&raquo;</a>
         
     </nav>
     <div class="comment">

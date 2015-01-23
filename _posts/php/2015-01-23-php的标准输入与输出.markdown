@@ -1,0 +1,92 @@
+---
+layout: post
+title: "php的标准输入与输出"
+category: php
+comments: true
+date:   2015-01-23 13:20:51
+---
+
+### php的标准输入与输出
+
+{% highlight php %}
+<?php
+// ask for input
+fwrite(STDOUT, "Enter your name: ");
+
+// get input
+$name = trim(fgets(STDIN));　// 接收用户输入
+
+// write input back
+fwrite(STDOUT, "Hello, $name!");
+
+// 运行方法：
+// 运行：php inouttest.php
+
+// 运行结果为：
+// Enter your name: davy
+// Hello, davy!
+
+// php cli 模式
+// 常量    说明
+// STDIN    标准的输入设备
+// STDOUT    标准的输出设备
+// STDERR    标准的错误设备
+
+?>
+{% endhighlight %}
+
+
+可以在PHP脚本里使用这三个常量，以接受用户的输入，或者显示处理和计算的结果。
+
+PHP处理过程如下：fwrite()函数首先会向标准的输出设备写一条消息，询问用户的姓名。然后它会把从标准输入设备获得的用户输入信息读取到一个PHP变量里，并它把合并成为一个字符串。然后就用fwrite()把这个字符串打印输出到标准的输出设备上
+
+{% highlight php %}
+<?php
+while($str = fread(STDIN, 1000)){
+     echo "you print:".$str;
+}
+?>
+{% endhighlight %}
+
+接受用户输入参数,输出到设备上;如此循环1000次
+
+
+{% highlight php %}
+<?php
+//PHP CLI中，有三个系统常量，分别是STDIN、STDOUT、STDERR，代表文件句柄。
+
+/**
+ *@ 标准输入
+ *@ php://stdin & STDIN
+ *@ STDIN是一个文件句柄，等同于fopen("php://stdin", 'r')
+ */
+$fh = fopen('php://stdin', 'r');
+echo "[php://stdin]请输入任意字符：";
+$str = fread($fh, 1000);
+echo "[php://stdin]你输入的是：".$str;
+fclose($fh);
+echo "[STDIN]请输入任意字符：";
+$str = fread(STDIN, 1000);
+echo "[STDIN]你输入的是：".$str;
+
+/**
+ *@ 标准输出
+ *@ php://stdout & STDOUT
+ *@ STDOUT是一个文件句柄，等同于fopen("php://stdout", 'w')
+ */
+$fh = fopen('php://stdout', 'w');
+fwrite($fh, "标准输出php://stdout/n");
+fclose($fh);
+fwrite(STDOUT, "标准输出STDOUT/n");
+
+/**
+ *@ 标准错误，默认情况下会发送至用户终端
+ *@ php://stderr & STDERR
+ *@ STDERR是一个文件句柄，等同于fopen("php://stderr", 'w')
+ */
+$fh = fopen('php://stderr', 'w');
+fwrite($fh, "标准错误php://stderr/n");
+fclose($fh);
+fwrite(STDERR, "标准错误STDERR/n");
+?>
+{% endhighlight %}
