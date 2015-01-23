@@ -4,13 +4,43 @@
    <title>Jekyll</title>
    <link href="/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="" rel="alternate" type="text/html" />
-   <updated>2015-01-23T14:23:38+08:00</updated>
+   <updated>2015-01-23T14:54:12+08:00</updated>
    <id></id>
    <author>
      <name>邹帅</name>
      <email>zoushuai518@gmail.com</email>
    </author>
 
+   
+   <entry>
+     <title>PHP计划任务:如何使用Linux的Crontab执行PHP脚本</title>
+     <link href="/php/2015/01/23/PHP%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1:%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Linux%E7%9A%84Crontab%E6%89%A7%E8%A1%8CPHP%E8%84%9A%E6%9C%AC.html"/>
+     <updated>2015-01-23T22:20:51+08:00</updated>
+     <id>/php/2015/01/23/PHP计划任务:如何使用Linux的Crontab执行PHP脚本</id>
+     <content type="html">&lt;p&gt;我们的PHP程序有时候需要定时执行，我们可以使用ignore&lt;em&gt;user&lt;/em&gt;abort函数或是在页面放置js让用户帮我们实现。但这两种方法都不太可靠，不稳定。我们可以借助Linux的Crontab工具来稳定可靠地触发PHP执行任务。
+下面介绍Crontab的两种方法。&lt;/p&gt;
+
+&lt;p&gt;一、在Crontab中使用PHP执行脚本&lt;br&gt;
+就像在Crontab中调用普通的shell脚本一样（具体Crontab用法），使用PHP程序来调用PHP脚本&lt;br&gt;
+每一小时执行myscript.php如下:&lt;br&gt;
+shell&amp;gt; crontab -e&lt;br&gt;
+00 * * * * /usr/local/bin/php /home/john/myscript.php&lt;br&gt;
+/usr/local/bin/php为PHP程序的路径。&lt;/p&gt;
+
+&lt;p&gt;二、在Crontab中使用URL执行脚本&lt;br&gt;
+如果你的PHP脚本可以通过URL触发，你可以使用lynx或curl或wget来配置你的Crontab。&lt;br&gt;
+下面的例子是使用Lynx文本浏览器访问URL来每小时执行PHP脚本。Lynx文本浏览器默认使用对话方式打开URL。  &lt;/p&gt;
+
+&lt;p&gt;但是，像下面的，我们在lynx命令行中使用-dump选项来把URL的输出转换来标准输出。&lt;br&gt;
+00 * * * * lynx -dump http://www.centos.bz/myscript.php  &lt;/p&gt;
+
+&lt;p&gt;下面的例子是使用CURL访问URL来每5分执行PHP脚本。Curl默认在标准输出显示输出。使用&amp;quot;curl -o&amp;quot;选项，你也可以把脚本的输出转储到临时文件。&lt;br&gt;
+*/5 * * * * /usr/bin/curl -o temp.txt http://www.centos.bz/myscript.php  &lt;/p&gt;
+
+&lt;p&gt;下面的例子是使用WGET访问URL来每10分执行PHP脚本。-q选项表示安静模式。&amp;quot;-O temp.txt&amp;quot;表示输出会发送到临时文件。&lt;br&gt;
+*/10 * * * * /usr/bin/wget -q -O temp.txt http://www.centos.bz/myscript.php&lt;/p&gt;
+</content>
+   </entry>
    
    <entry>
      <title>命令行下运行PHP脚本带参数的方法</title>
@@ -242,19 +272,6 @@ You have requested a single room for 7 nights, checking in on 21/05/2005. Thank 
      <updated>2014-11-28T19:00:51+08:00</updated>
      <id>/php/2014/11/28/PHP-执行系统外部命令</id>
      <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.jb51.net/article/19618.htm&quot;&gt;PHP 执行系统外部命令 system() exec() passthru()&lt;/a&gt;&lt;/p&gt;
-</content>
-   </entry>
-   
-   <entry>
-     <title>PHP xinc持续集成服务器</title>
-     <link href="/php/2014/11/28/PHP-xinc.html"/>
-     <updated>2014-11-28T19:00:51+08:00</updated>
-     <id>/php/2014/11/28/PHP-xinc</id>
-     <content type="html">&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://code.google.com/p/xinc/&quot;&gt;xinc&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://why100000.com/Htmls/tabPHP568.htm&quot;&gt;Xinc是持续集成PHP工程的一种方法&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www1.huachu.com.cn/read/readbookinfo.asp?sectionid=1000000027&quot;&gt;Xinc 持续集成服务器&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </content>
    </entry>
    

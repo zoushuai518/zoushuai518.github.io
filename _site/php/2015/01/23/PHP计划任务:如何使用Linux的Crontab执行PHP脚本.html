@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>E-R模型 - Jekyll</title>
+        <title>PHP计划任务:如何使用Linux的Crontab执行PHP脚本 - Jekyll</title>
         <!-- meta -->
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta name="generator" content="Jekyll" />
@@ -94,20 +94,40 @@
             <div class="container fn-clear">
                 <div class="main">
                     <div class="article article-post">
-    <h2 class="title">E-R模型</h2>
+    <h2 class="title">PHP计划任务:如何使用Linux的Crontab执行PHP脚本</h2>
     <div class="info">
         <span class="info-title"><i class="icon-calendar"></i> Published: </span>
-        <span class="info-date">23 Oct 2014</span>
+        <span class="info-date">23 Jan 2015</span>
         <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
-        <span class="info-link"><a href="/categories.html#mysql-ref" >mysql</a></span>
+        <span class="info-link"><a href="/categories.html#php-ref" >php</a></span>
     </div>
-    
+    <p>我们的PHP程序有时候需要定时执行，我们可以使用ignore<em>user</em>abort函数或是在页面放置js让用户帮我们实现。但这两种方法都不太可靠，不稳定。我们可以借助Linux的Crontab工具来稳定可靠地触发PHP执行任务。
+下面介绍Crontab的两种方法。</p>
+
+<p>一、在Crontab中使用PHP执行脚本<br>
+就像在Crontab中调用普通的shell脚本一样（具体Crontab用法），使用PHP程序来调用PHP脚本<br>
+每一小时执行myscript.php如下:<br>
+shell&gt; crontab -e<br>
+00 * * * * /usr/local/bin/php /home/john/myscript.php<br>
+/usr/local/bin/php为PHP程序的路径。</p>
+
+<p>二、在Crontab中使用URL执行脚本<br>
+如果你的PHP脚本可以通过URL触发，你可以使用lynx或curl或wget来配置你的Crontab。<br>
+下面的例子是使用Lynx文本浏览器访问URL来每小时执行PHP脚本。Lynx文本浏览器默认使用对话方式打开URL。  </p>
+
+<p>但是，像下面的，我们在lynx命令行中使用-dump选项来把URL的输出转换来标准输出。<br>
+00 * * * * lynx -dump http://www.centos.bz/myscript.php  </p>
+
+<p>下面的例子是使用CURL访问URL来每5分执行PHP脚本。Curl默认在标准输出显示输出。使用&quot;curl -o&quot;选项，你也可以把脚本的输出转储到临时文件。<br>
+*/5 * * * * /usr/bin/curl -o temp.txt http://www.centos.bz/myscript.php  </p>
+
+<p>下面的例子是使用WGET访问URL来每10分执行PHP脚本。-q选项表示安静模式。&quot;-O temp.txt&quot;表示输出会发送到临时文件。<br>
+*/10 * * * * /usr/bin/wget -q -O temp.txt http://www.centos.bz/myscript.php</p>
+
     <nav class="article-previous fn-clear">
         
-        <a class="prev" href="/php/2014/10/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81.html" rel="bookmark">&laquo;&nbsp;计算机中的原码、反码和补码 </a>
+        <a class="prev" href="/php/2015/01/23/%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8B%E8%BF%90%E8%A1%8CPHP%E8%84%9A%E6%9C%AC%E5%B8%A6%E5%8F%82%E6%95%B0%E7%9A%84%E6%96%B9%E6%B3%95.html" rel="bookmark">&laquo;&nbsp;命令行下运行PHP脚本带参数的方法</a>
         
-        
-        <a class="next" href="/mysql/2014/10/23/mysql%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.html" rel="bookmark">mysql开启远程连接&nbsp;&raquo;</a>
         
     </nav>
     <div class="comment">
