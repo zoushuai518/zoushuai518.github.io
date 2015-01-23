@@ -2,13 +2,13 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>为什么要使用原码、反码、补码 - Jekyll</title>
+        <title>zoushuai - Jekyll</title>
         <!-- meta -->
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta name="generator" content="Jekyll" />
         <meta name="author" content="邹帅" />
         <meta name="description" content="Just another Jekyll theme design and code by zous.me." />
-        <meta name="keywords" content="" />
+        <meta name="keywords" content="for Jekyll , zoushuai" />
         <!-- atom -->
         <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
         <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
@@ -93,76 +93,67 @@
         <div class="contain fn-clear">
             <div class="container fn-clear">
                 <div class="main">
-                    <div class="article article-post">
-    <h2 class="title">为什么要使用原码、反码、补码</h2>
-    <div class="info">
-        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
-        <span class="info-date">21 Oct 2014</span>
-        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
-        <span class="info-link"><a href="/categories.html#php-ref" >php</a></span>
+                    
+    <div class="article">
+        <h3 class="title"><a href="/jekyll/2014/09/05/ubuntu-install-jekyll.html" title="jekyll 安装教程">jekyll 安装教程</a></h3>
+        <article class="rexp">
+            <p><h1>Ubuntu Jekyll安装</h1>
+</p>
+        </article>
+        <a href="/jekyll/2014/09/05/ubuntu-install-jekyll.html" class="more"><i class="icon-link"></i></a>
+        <div class="info">
+            <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+            <span class="info-date">05 Sep 2014</span>
+        </div>
     </div>
-    <p>关键词：原码,反码,补码</p>
 
-<p>前言：随着学习计算机知识的加深，许多地方都遇到原码、反码、补码。很多关于计算机的书籍都介绍原码、反码、补码的表示方法，但是为什么要用到原码、反码、补码却没详细说。为什么要使用？它们的原理是什么呢?我搜索了许多资料，也查找了许多书籍，终于弄明白了这个问题，收集整理如下。</p>
 
-<p>我们知道数值在计算机中表示形式为机器数（机器数的概念见我的另一篇日志《<a href="/php/2014/10/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81">计算机中的原码、反码和补码</a>》），计算机只能识别0和1，使用的是二进制。而在日常生活中人们使用的是十进制，并且我们用的数值有正负之分。于是在计算机中就用一个数的最高位存放符号(0为正，1为负)。这就是机器数的原码了。</p>
-
-<p>有了数值的表示方法就可以对数进行算术运算，但是很快就发现用带符号位的原码进行乘除运算时结果正确，而在加减运算的时候就出现了问题，如下：假设字长为8bits</p>
-
-<p>十进制　　(1) 10 - (1)10 = (1)10 + (-1)10 = (0)10</p>
-
-<p>二进制　　(0 0000001)原 + (1 0000001)原 = (1 0000010)原 = ( -2 )　显然不正确。</p>
-
-<p>因为在两个整数的加法运算中是没有问题的，于是就发现问题出现在带符号位的负数身上。对除符号位外的其余各位逐位取反就产生了反码。反码的取值空间和原码相同且一一对应。下面是反码的减法运算：</p>
-
-<p>(1)10 - (1)10 = (1)10 + (-1)10 = (0)10</p>
-
-<p>(0 0000001)反 + (1 1111110)反 = (1 1111111)反 = ( -0 )　有问题。</p>
-
-<p>(1)10 - (2)10 = (1)10 + (-2)10 = (-1)10</p>
-
-<p>(0 0000001)反 + (1 1111101)反 = (11111110)反 = (-1)　正确。</p>
-
-<p>问题出现在(+0)和(-0)上，在人们的计算概念中零是没有正负之分的。（印度人首先将零作为标记并放入运算之中，包含有零号的印度数学和十进制计数对人类文明的贡献极大）。</p>
-
-<p>于是就引入了补码概念。负数的补码就是对反码加一，而正数的补码不变，正数的原码反码补码是一样的。在补码中用(-128)代替了(-0)，这个是人为规定的，所以补码的表示范围为：</p>
-
-<p>(-128~0~127)共256个。</p>
-
-<p>注意：(-128)没有相对应的原码和反码， (-128) = (1 0000000)  补码的加减运算如下：</p>
-
-<p>(1)10 - (1)10 = (1)10 + (-1)10 = (0)10</p>
-
-<p>(0 0000001)补 + (1 1111111)补 = (0 0000000)补 = ( 0 )　正确。</p>
-
-<p>(1)10 - (2)10 = (1)10 + (-2)10 = (-1)10</p>
-
-<p>(00000001)补 + (11111110)补 = (11111111)补 = (-1)　正确。</p>
-
-<p>所以补码的设计目的是：</p>
-
-<p>⑴ 使符号位能与有效值部分一起参加运算，从而简化运算规则。补码机器数中的符号位，并不是强加上去的，是数据本身的自然组成部分，可以正常地参与运算。</p>
-
-<p>⑵ 使减法运算转换为加法运算，进一步简化计算机中运算器的线路设计。</p>
-
-<p>所有这些转换都是在计算机的最底层进行的，而在我们使用的汇编、c等其他高级语言中使用的都是原码。</p>
-
-<p><a href="http://indian.blog.163.com/blog/static/1088158200611853949863/">原文链接</a></p>
-
-    <nav class="article-previous fn-clear">
-        
-        <a class="prev" href="/php/2014/10/17/php_ORM.html" rel="bookmark">&laquo;&nbsp;php ORM框架&简单实现</a>
-        
-        
-        <a class="next" href="/php/2014/10/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81.html" rel="bookmark">计算机中的原码、反码和补码 &nbsp;&raquo;</a>
-        
+    <nav class="pagination fn-clear">
+        <span class="pagination-icon"><i class=" icon-copy"></i></span>
+        <ul class="pagination-list">
+            
+                
+                    <li><a href="/">1</a></li>
+                
+            
+                
+                    <li><a href="/page2/">2</a></li>
+                
+            
+                
+                    <li><a href="/page3/">3</a></li>
+                
+            
+                
+                    <li><a href="/page4/">4</a></li>
+                
+            
+                
+                    <li><a href="/page5/">5</a></li>
+                
+            
+                
+                    <li><a href="/page6/">6</a></li>
+                
+            
+                
+                    <li><a href="/page7/">7</a></li>
+                
+            
+                
+                    <li><a href="/page8/">8</a></li>
+                
+            
+                
+                    <li><a href="/page9/">9</a></li>
+                
+            
+                
+                    <li class="current"><a href="javascript:void(0);">10</a></li>
+                
+            
+        </ul>
     </nav>
-    <div class="comment">
-        
-        <div id="disqus_thread"></div>
-        
-    </div>
-</div>
 
                 </div>
                 <div class="aside">
@@ -223,19 +214,6 @@
             </div>
         </div>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        
-            
-            <script type="text/javascript">
-                //disqus
-                var disqus_shortname = 'codemadman';
-                (function() {
-                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-                    (document.getElementsByTagName('head')[0] ||
-                        document.getElementsByTagName('body')[0]).appendChild(dsq);
-                })();
-            </script>
-            
         
     </body>
 </html>

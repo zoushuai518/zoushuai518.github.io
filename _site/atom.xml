@@ -4,13 +4,32 @@
    <title>Jekyll</title>
    <link href="/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="" rel="alternate" type="text/html" />
-   <updated>2015-01-22T18:21:24+08:00</updated>
+   <updated>2015-01-23T11:11:42+08:00</updated>
    <id></id>
    <author>
      <name>邹帅</name>
      <email>zoushuai518@gmail.com</email>
    </author>
 
+   
+   <entry>
+     <title>linux中stdout,stdin,stderr</title>
+     <link href="/linux/2015/01/23/linux-stdout,stdin,stderr.html"/>
+     <updated>2015-01-23T19:32:51+08:00</updated>
+     <id>/linux/2015/01/23/linux-stdout,stdin,stderr</id>
+     <content type="html">&lt;p&gt;stdout, stdin, stderr的中文名字分别是标准输出，标准输入和标准错误。  &lt;/p&gt;
+
+&lt;p&gt;在Linux下，当一个用户进程被创建的时候，系统会自动为该进程创建三个数据流，也就是题目中所提到的这三个。那么什么是数据流呢（stream）？我们知道，一个程序要运行，需要有输入、输出，如果出错，还要能表现出自身的错误。这是就要从某个地方读入数据、将数据输出到某个地方，这就够成了数据流。  &lt;/p&gt;
+
+&lt;p&gt;因此，一个进程初期所拥有的这么三个数据流，就分别是标准输出、标准输入和标准错误，分别用stdout, stdin, stderr来表示。对于这三个数据流来说，默认是表现在用户终端上的.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.sina.com.cn/s/blog_912673ce01013qq9.html&quot;&gt;linux中stdout,stdin,stderr意义&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://blog.chinaunix.net/uid-20671208-id-3588619.html&quot;&gt;Linux Shell 文件描述符 及 stdin stdout stderr 重定向&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/acmee/article/details/6613060&quot;&gt;如何在Linux终端里用Shell和C输出带颜色的文字&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+   </entry>
    
    <entry>
      <title>用PHP遍历目录下的全部文件</title>
@@ -114,69 +133,6 @@
      <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/1490&quot;&gt;匿名函数及闭包&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/1462&quot;&gt;临时-函数的分类&lt;/a&gt;&lt;/p&gt;
-</content>
-   </entry>
-   
-   <entry>
-     <title>学习php必备技能</title>
-     <link href="/php/2014/11/27/%E5%AD%A6%E4%B9%A0php%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD.html"/>
-     <updated>2014-11-27T18:35:51+08:00</updated>
-     <id>/php/2014/11/27/学习php必备技能</id>
-     <content type="html">&lt;p&gt;很多学PHP的人一直也搞不清楚，一个PHP程序员和Java程序员或者是.net程序员有什么不同，告诉你，其实都一样，没有什么不同。下面的内容，就是针对一个Java程序员掌握的技能对比PHP来说的！告诉你，它们其实是一样的，不过是工具而已，没有高低贵贱之分。只不过你不熟练，不知道而已。&lt;/p&gt;
-
-&lt;p&gt;1.语法：必须比较熟悉，在写代码的时候IDE的编辑器对某一行报错应该能够根据报错信息知道是什么样的语法错误，并且知道如何修正。&lt;/p&gt;
-
-&lt;p&gt;2.命令：必须熟悉PHP带的一些常用命令及其常用选项，熟悉那些命令，自己运行php.exe -h 如果这些命令你没有全部使用过，那么你对PHP实际上还很不了解。&lt;/p&gt;
-
-&lt;p&gt;3.工具：必须至少熟练使用一种IDE的开发工具，例如：Eclipse、Netbeans、zend或者editplus，ultraedit，包括进行工程管理、常用选项的设置、PHP插件的安装配置以及进行调试。&lt;/p&gt;
-
-&lt;p&gt;4.API：PHP的核心API是非常庞大的，但是有一些内容笔者认为是必须熟悉的，否则不可能熟练的运用PHP，包括：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;文件目录处理函数包80%以上的函数的功能的灵活运用。&lt;/li&gt;
-&lt;li&gt;日期时间函数中的80%以上的函数的功能的灵活运用。&lt;/li&gt;
-&lt;li&gt;数学函数库中的100%的内容。&lt;/li&gt;
-&lt;li&gt;网络库中的60%以上的内容，对各个函数的功能比较熟悉。&lt;/li&gt;
-&lt;li&gt;字符串处理函数下的60%以上的内容，特别是各种处理函数。&lt;/li&gt;
-&lt;li&gt;正则表达式函数下的90%以上的内容，特别是各种正则处理。&lt;/li&gt;
-&lt;li&gt;一些安全库下的40%以上的内容，如果对于安全没有接触的话根本就不可能掌握PHP。&lt;/li&gt;
-&lt;li&gt;XML处理，熟悉SAX、DOM以及JDOM的优缺点并且能够使用其中的一种完成XML的解析及内容处理。&lt;/li&gt;
-&lt;li&gt;图形图像函数库下的80%以上的内容，特别是一些图像生成和处理。&lt;/li&gt;
-&lt;li&gt;MySQL 数据库函数下的90%以上的内容，特别是处理各种数据的函数。&lt;/li&gt;
-&lt;li&gt;数组处理函数下的90%以上的内容，特别是各种操作处理函数。&lt;/li&gt;
-&lt;li&gt;其它PEAR，PECL，和一些扩展类库中的80%以上的内容，特别是一些常用的类的处理。&lt;/li&gt;
-&lt;li&gt;针对不同的需求，查找不同的函数库。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;5.测试：必须熟悉使用phpunit编写测试用例完成代码的自动测试。&lt;/p&gt;
-
-&lt;p&gt;6.管理：必须熟悉使用xinc, phing等完成工程管理的常用任务，例如工程编译、生成phpdoc、生成、版本控制、自动测试。&lt;/p&gt;
-
-&lt;p&gt;7.排错：应该可以根据异常信息比较快速的定位问题的原因和大致位置。&lt;/p&gt;
-
-&lt;p&gt;8.思想：必须掌握OOP的主要要求，这样使用PHP开发的系统才能是真正的PHP系统。&lt;/p&gt;
-
-&lt;p&gt;9.规范：编写的代码必须符合流行的编码规范，这样程序的可读性才比较好。&lt;/p&gt;
-
-&lt;p&gt;10.博学：掌握OOA、OOD、MS SQL Server、Oracle 、Zendframework、cakephp、symfony、模板技术等流行技术，掌握软件架构设计思想、搜索引擎优化、缓存系统设计、网站负载均衡、系统性能调优等实用技术。&lt;/p&gt;
-
-&lt;p&gt;综合上述，没发现PHP和java有什么不同。PHP和Java，还是.net一样要学的东西有很多。&lt;/p&gt;
-
-&lt;p&gt;如果可选的语言有好几种，那么，选择其中学习难度最小的一种。&lt;/p&gt;
-
-&lt;p&gt;不要轻信广告，不要轻信媒体。唯一可以相信的是你的市场。&lt;/p&gt;
-
-&lt;p&gt;个人可以喜欢一种、两种甚至好几种语言，但一定不要排斥其他任何一种语言。&lt;/p&gt;
-
-&lt;p&gt;附一段对话：&lt;/p&gt;
-
-&lt;p&gt;浮躁的人容易说：PHP语言不行，应该学Java，C#，VB.NET：－－是你自己不行了吧！？&lt;/p&gt;
-
-&lt;p&gt;浮躁的人容易问：PHP和Java，C#，VB.NET哪个好；－－都好－－只要你能学好；&lt;/p&gt;
-
-&lt;p&gt;浮躁的人容易问：我到底该学什么：－－别问，学就对了；&lt;/p&gt;
-
-&lt;p&gt;浮躁的人容易问：PHP有钱途吗：－－建议你去抢银行&lt;/p&gt;
 </content>
    </entry>
    
