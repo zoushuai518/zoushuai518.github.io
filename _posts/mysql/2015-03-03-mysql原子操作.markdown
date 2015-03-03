@@ -1,0 +1,11 @@
+---
+layout: post
+title: "mysql原子操作"
+category: mysql
+comments: true
+date:   2015-03-03 16:46:51
+---
+
+
+#### mysql原子操作
+
