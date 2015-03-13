@@ -1,0 +1,9 @@
+---
+layout: post
+title: "PHP连接池"
+category: php
+comments: true
+date:   2015-03-11 16:35:51
+---
+
+PHP连接池

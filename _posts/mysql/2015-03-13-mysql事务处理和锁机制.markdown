@@ -1,0 +1,11 @@
+---
+layout: post
+title: "mysql事务处理和锁机制"
+category: mysql
+comments: true
+date:   2015-03-13 17:16:51
+---
+
+- [mysql事务处理和锁机制](http://blog.csdn.net/forever_feng/article/details/4368003)
+- [MySQL死锁问题实例分析及解决方法](http://www.51testing.com/html/27/n-243727.html)
+- [一个MySQL死锁问题的解决](http://blog.sina.com.cn/s/blog_575b0ca50100vmsn.html)

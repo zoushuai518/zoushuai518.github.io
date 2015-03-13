@@ -1,0 +1,13 @@
+---
+layout: post
+title: "MySQL索引"
+category: mysql
+comments: true
+date:   2015-03-12 10:16:51
+---
+
+
+MySQL索引
+
+- [MySQL索引类型一览 让MySQL高效运行起来](http://www.php100.com/html/webkaifa/database/Mysql/2010/0409/4279.html)
+
