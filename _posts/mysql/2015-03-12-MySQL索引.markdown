@@ -10,4 +10,5 @@ date:   2015-03-12 10:16:51
 MySQL索引
 
 - [MySQL索引类型一览 让MySQL高效运行起来](http://www.php100.com/html/webkaifa/database/Mysql/2010/0409/4279.html)
+- [MySQL索引背后的之使用策略及优化(高性能索引策略)](http://www.jb51.net/article/29572.htm)
 

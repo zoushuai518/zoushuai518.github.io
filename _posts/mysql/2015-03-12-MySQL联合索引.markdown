@@ -7,9 +7,10 @@ date:   2015-03-12 10:16:51
 ---
 
 
-MySQL联合索引
+MySQL联合索引 | 复合索引
 
 - [MySQL:联合索引与Where子句的优化](http://www.php100.com/html/webkaifa/database/Mysql/2012/0112/9658.html)
 - [mysql联合索引详解](http://itlab.idcquan.com/linux/MYSQL/925211.html)
 - [mysql 创建联合索引](http://www.shangxueba.com/jingyan/1614732.html)
+- [复合索引和多个单列索引的效率比较 | mysql复合索引效率](http://blog.chinaunix.net/uid-7692530-id-2567605.html)
 

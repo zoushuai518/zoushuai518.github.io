@@ -1,0 +1,9 @@
+---
+layout: post
+title: "MySQL读写分离"
+category: mysql
+comments: true
+date:   2015-03-26 16:16:51
+---
+
+- MySQL读写分离
