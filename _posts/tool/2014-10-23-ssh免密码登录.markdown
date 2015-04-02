@@ -30,6 +30,7 @@ id_rsa.pub                                    100%  223     0.2KB/s   00:00
 3.B机把从A机复制的id_rsa.pub添加到.ssh/authorzied_keys文件里。
 <pre><code>
 [chenlb@B ~]$ cat id_rsa.pub >> .ssh/authorized_keys
+"[chenlb@B ~]$ cat id_rsa.pub >> /home/chenlb/.ssh/authorized_keys
 [chenlb@B ~]$ chmod 600 .ssh/authorized_keys
 </code></pre>
 
