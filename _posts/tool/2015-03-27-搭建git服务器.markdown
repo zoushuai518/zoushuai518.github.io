@@ -60,7 +60,9 @@ zs@zs-work:~$ scp ~/.ssh/id_rsa.pub root@192.168.130.100:~/
 </code></pre>
 
 Git就会创建一个裸仓库，裸仓库没有工作区，因为服务器上的Git仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区，并且服务器上的Git仓库通常都以.git结尾。然后，把owner改为git:  
+<pre><code>
 [root@centos-git-server ~]# chown -R git:git vd.git
+</code></pre>
 
 
 6. 禁用shell登录:  
@@ -75,9 +77,9 @@ Git就会创建一个裸仓库，裸仓库没有工作区，因为服务器上�
 现在，可以通过git clone命令克隆远程仓库了，在各自的电脑上运行：
 <pre><code>
 zs@zs-work:~$ git clone git@192.168.130.100:/home/git/vd.git
-</code></pre>
 Cloning into 'sample'...
 warning: You appear to have cloned an empty repository.
+</code></pre>
 剩下的推送就简单了。
 
 
@@ -92,7 +94,7 @@ warning: You appear to have cloned an empty repository.
 
 
 
-zs注: git服务认证方式可以是 http/ssh等--
+zs注: git服务认证方式可以是 https/ssh等--
 
 
 客户端初始、增加及使用项目git-test:  
