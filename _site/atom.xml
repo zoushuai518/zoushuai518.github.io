@@ -4,7 +4,7 @@
    <title>Jekyll</title>
    <link href="/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="" rel="alternate" type="text/html" />
-   <updated>2015-01-23T14:54:12+08:00</updated>
+   <updated>2015-04-14T11:41:11+08:00</updated>
    <id></id>
    <author>
      <name>邹帅</name>
@@ -13,265 +13,239 @@
 
    
    <entry>
-     <title>PHP计划任务:如何使用Linux的Crontab执行PHP脚本</title>
-     <link href="/php/2015/01/23/PHP%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1:%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Linux%E7%9A%84Crontab%E6%89%A7%E8%A1%8CPHP%E8%84%9A%E6%9C%AC.html"/>
-     <updated>2015-01-23T22:20:51+08:00</updated>
-     <id>/php/2015/01/23/PHP计划任务:如何使用Linux的Crontab执行PHP脚本</id>
-     <content type="html">&lt;p&gt;我们的PHP程序有时候需要定时执行，我们可以使用ignore&lt;em&gt;user&lt;/em&gt;abort函数或是在页面放置js让用户帮我们实现。但这两种方法都不太可靠，不稳定。我们可以借助Linux的Crontab工具来稳定可靠地触发PHP执行任务。
-下面介绍Crontab的两种方法。&lt;/p&gt;
+     <title>搭建git服务器</title>
+     <link href="/tool/2015/03/28/%E6%90%AD%E5%BB%BAgit%E6%9C%8D%E5%8A%A1%E5%99%A8.html"/>
+     <updated>2015-03-28T00:59:51+08:00</updated>
+     <id>/tool/2015/03/28/搭建git服务器</id>
+     <content type="html">&lt;h4&gt;环境CentOS6.6&lt;/h4&gt;
 
-&lt;p&gt;一、在Crontab中使用PHP执行脚本&lt;br&gt;
-就像在Crontab中调用普通的shell脚本一样（具体Crontab用法），使用PHP程序来调用PHP脚本&lt;br&gt;
-每一小时执行myscript.php如下:&lt;br&gt;
-shell&amp;gt; crontab -e&lt;br&gt;
-00 * * * * /usr/local/bin/php /home/john/myscript.php&lt;br&gt;
-/usr/local/bin/php为PHP程序的路径。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;安装必须的依赖包
+&lt;pre&gt;&lt;code&gt;
+[root@centos-git-server ~]# yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel
+[root@centos-git-server ~]# yum -y install gcc make
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;编译安装git服务
+&lt;pre&gt;&lt;code&gt;
+[root@centos-git-server ~]# wget http://git-core.googlecode.com/files/git-1.9.0.tar.gz
+[root@centos-git-server ~]# tar zxvf git-1.9.0.tar.gz
+[root@centos-git-server ~]# cd git-1.9.0
+[root@centos-git-server ~]# make prefix=/usr/local all
+[root@centos-git-server ~]# make prefix=/usr/local install  #root用户运行&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;二、在Crontab中使用URL执行脚本&lt;br&gt;
-如果你的PHP脚本可以通过URL触发，你可以使用lynx或curl或wget来配置你的Crontab。&lt;br&gt;
-下面的例子是使用Lynx文本浏览器访问URL来每小时执行PHP脚本。Lynx文本浏览器默认使用对话方式打开URL。  &lt;/p&gt;
+&lt;p&gt;&amp;quot;[root@centos-git-server ~]# ./configure
+&amp;quot;[root@centos-git-server ~]# make &amp;amp;&amp;amp; make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 
-&lt;p&gt;但是，像下面的，我们在lynx命令行中使用-dump选项来把URL的输出转换来标准输出。&lt;br&gt;
-00 * * * * lynx -dump http://www.centos.bz/myscript.php  &lt;/p&gt;
+&lt;p&gt;安装成功之后查看git版本号:  &lt;/p&gt;
 
-&lt;p&gt;下面的例子是使用CURL访问URL来每5分执行PHP脚本。Curl默认在标准输出显示输出。使用&amp;quot;curl -o&amp;quot;选项，你也可以把脚本的输出转储到临时文件。&lt;br&gt;
-*/5 * * * * /usr/bin/curl -o temp.txt http://www.centos.bz/myscript.php  &lt;/p&gt;
+&lt;p&gt;查看版本号：git --version
+/usr/local/bin/git --version
+ln -s /usr/local/bin/git /usr/bin/git
+git version 1.9.0&lt;/p&gt;
 
-&lt;p&gt;下面的例子是使用WGET访问URL来每10分执行PHP脚本。-q选项表示安静模式。&amp;quot;-O temp.txt&amp;quot;表示输出会发送到临时文件。&lt;br&gt;
-*/10 * * * * /usr/bin/wget -q -O temp.txt http://www.centos.bz/myscript.php&lt;/p&gt;
-</content>
-   </entry>
-   
-   <entry>
-     <title>命令行下运行PHP脚本带参数的方法</title>
-     <link href="/php/2015/01/23/%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8B%E8%BF%90%E8%A1%8CPHP%E8%84%9A%E6%9C%AC%E5%B8%A6%E5%8F%82%E6%95%B0%E7%9A%84%E6%96%B9%E6%B3%95.html"/>
-     <updated>2015-01-23T21:20:51+08:00</updated>
-     <id>/php/2015/01/23/命令行下运行PHP脚本带参数的方法</id>
-     <content type="html">&lt;h4&gt;1. &lt;a href=&quot;/php/2015/01/23/php%E7%9A%84%E6%A0%87%E5%87%86%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA.html&quot;&gt;使用标准的输入和输出&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;到此git服务安装完成  &lt;/p&gt;
 
-&lt;h4&gt;2. 使用命令行自变量&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;创建一个git用户，用来运行git服务&lt;br&gt;
+&lt;pre&gt;&lt;code&gt;
+[root@centos-git-server ~]# adduser git
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;创建证书登录:&lt;br&gt;
+&lt;pre&gt;&lt;code&gt;
+zs@zs-work:~$ ssh-keygen -t rsa
+zs@zs-work:~$ scp ~/.ssh/id_rsa.pub root@192.168.130.100:~/
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;在命令行里输入程序参数来更改其运行方式是很常见的做法。你也可以对CLI程序这样做。PHP CLI带有两个特殊的变量，专门用来达到这个 &lt;/p&gt;
+&lt;p&gt;我们这里使用&lt;a href=&quot;/tool/2014/10/23/ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95.html&quot;&gt;ssh免密码登录&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;目的：一个是$argv变量，它通过命令行把传递给PHP脚本的参数保存为单独的数组元素；另一个是$argc变量，它用来保存$argv数组里元素的 个数。 &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;初始化Git仓库：&lt;br&gt;
+先选定一个目录作为Git仓库，假定是/home/git/vd.git，在/home/git目录下输入命令：
+&lt;pre&gt;&lt;code&gt;
+[root@centos-git-server ~]# git init --bare vd.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;用PHP脚本编写一段读取$argv并处理它所含参数的代码是很简单的。&lt;/p&gt;
+&lt;p&gt;Git就会创建一个裸仓库，裸仓库没有工作区，因为服务器上的Git仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区，并且服务器上的Git仓库通常都以.git结尾。然后，把owner改为git:&lt;br&gt;
+&lt;pre&gt;&lt;code&gt;
+[root@centos-git-server ~]# chown -R git:git vd.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;demo1&lt;/li&gt;
-&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;禁用shell登录:&lt;br&gt;
+出于安全考虑，第二步创建的git用户不允许登录shell，这可以通过编辑/etc/passwd文件完成。找到类似下面的一行：&lt;br&gt;
+&lt;code&gt;git:x:1001:1001:,,,:/home/git:/bin/bash&lt;/code&gt;
+改为:&lt;br&gt;
+&lt;code&gt;git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell&lt;/code&gt;
+这样，git用户可以正常通过ssh使用git，但无法登录shell，因为我们为git用户指定的git-shell每次一登录就自动退出。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;克隆远程仓库:&lt;br&gt;
+现在，可以通过git clone命令克隆远程仓库了，在各自的电脑上运行：
+&lt;pre&gt;&lt;code&gt;
+zs@zs-work:~$ git clone git@192.168.130.100:/home/git/vd.git
+Cloning into &amp;#39;sample&amp;#39;...
+warning: You appear to have cloned an empty repository.
+&lt;/code&gt;&lt;/pre&gt;
+剩下的推送就简单了。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;管理公钥&lt;br&gt;
+&lt;a href=&quot;https://github.com/res0nat0r/gitosis&quot;&gt;Gitosis&lt;/a&gt;&lt;br&gt;
+如果团队很小，把每个人的公钥收集起来放到服务器的&lt;code&gt;/home/git/.ssh/authorized_keys&lt;/code&gt;文件里就是可行的。如果团队有几百号人，就没法这么玩了，这时，可以用Gitosis来管理公钥。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;管理权限&lt;br&gt;
+&lt;a href=&quot;https://github.com/sitaramc/gitolite&quot;&gt;Gitolite&lt;/a&gt;&lt;br&gt;
+有很多不但视源代码如生命，而且视员工为窃贼的公司，会在版本控制系统里设置一套完善的权限控制，每个人是否有读写权限会精确到每个分支甚至每个目录下。因为Git是为Linux源代码托管而开发的，所以Git也继承了开源社区的精神，不支持权限控制。不过，因为Git支持钩子（hook），所以，可以在服务器端编写一系列脚本来控制提交等操作，达到权限控制的目的。Gitolite就是这个工具。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;print_r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;zs注: git服务认证方式可以是 https/ssh等--&lt;/p&gt;
 
-&lt;p&gt;Run this script by passing it some arbitrary values, and check the output:&lt;/p&gt;
+&lt;p&gt;客户端初始、增加及使用项目git-test:&lt;br&gt;
+&lt;pre&gt;&lt;code&gt;
+zs@zs-work:~$ cd /git-repo
+zs@zs-work:~$ mkdir git-test
+zs@zs-work:~$ cd git-test
+zs@zs-work:~$ git init
+zs@zs-work:~$ touch README
+zs@zs-work:~$ git add .
+zs@zs-work:~$ git commit -a -m &amp;quot;init git-test&amp;quot;
+zs@zs-work:~$ git remote add origin git@192.168.56.1:git-test.git
+&amp;quot;zs@zs-work:~$ git remote add origin git@192.168.130.100:git-vd.git
+zs@zs-work:~$ git push origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 
-&lt;p&gt;shell&amp;gt; php phptest.php chocolate 276 &amp;quot;killer tie, dude!&amp;quot;
-Array
-(
-    [0] =&amp;gt; test.php
-    [1] =&amp;gt; chocolate
-    [2] =&amp;gt; 276
-    [3] =&amp;gt; killer tie, dude!
-)&lt;/p&gt;
+&lt;p&gt;注解：在新项目git-test里首次推送数据到服务器前，需先设定该服务器地址为远程仓库，但你不用事先到服务器上手工创建该项目的裸仓库— Gitosis 会在第一次遇到推送时自动创建。&lt;/p&gt;
 
-&lt;p&gt;正如你可以从输出的结果看到的，传递给test.php的值会自动地作为数组元素出现在$argv里。要注意的是，$argvis的第一个自变量总是脚本自己的名称&lt;/p&gt;
+&lt;p&gt;客户端安装git客户端:&lt;br&gt;
+&lt;pre&gt;&lt;code&gt;
+zs@zs-weimob:~$ sudo apt-get install git
+&amp;quot;zs@zs-weimob:~$ yum install git
+zs@zs-weimob:~$ git --version
+git version 1.7.1
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;demo2&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// check for all required arguments&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// first argument is always name of script!&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$argc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;die&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Usage: book.php &amp;lt;check-in-date&amp;gt; &amp;lt;num-nights&amp;gt; &amp;lt;room-type&amp;gt; &amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// remove first argument&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;array_shift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// get and use remaining arguments&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$checkin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$nights&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;You have requested a &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$type&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; room for &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$nights&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; nights, checking in on &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$checkin&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;. Thank you for your order! &amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;16&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;shell&amp;gt; php phpbook.php 21/05/2005 7 single
-You have requested a single room for 7 nights, checking in on 21/05/2005. Thank you for your order!&lt;/p&gt;
-</content>
-   </entry>
-   
-   <entry>
-     <title>php的标准输入与输出</title>
-     <link href="/php/2015/01/23/php%E7%9A%84%E6%A0%87%E5%87%86%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA.html"/>
-     <updated>2015-01-23T21:20:51+08:00</updated>
-     <id>/php/2015/01/23/php的标准输入与输出</id>
-     <content type="html">&lt;h3&gt;php的标准输入与输出&lt;/h3&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// ask for input&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;fwrite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;STDOUT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Enter your name: &amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// get input&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;trim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;fgets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;STDIN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;　&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// 接收用户输入&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// write input back&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;fwrite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;STDOUT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hello, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;!&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 运行方法：&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 运行：php inouttest.php&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 运行结果为：&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Enter your name: davy&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Hello, davy!&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// php cli 模式&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 常量    说明&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// STDIN    标准的输入设备&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// STDOUT    标准的输出设备&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// STDERR    标准的错误设备&lt;/span&gt;
-
-&lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;可以在PHP脚本里使用这三个常量，以接受用户的输入，或者显示处理和计算的结果。&lt;/p&gt;
-
-&lt;p&gt;PHP处理过程如下：fwrite()函数首先会向标准的输出设备写一条消息，询问用户的姓名。然后它会把从标准输入设备获得的用户输入信息读取到一个PHP变量里，并它把合并成为一个字符串。然后就用fwrite()把这个字符串打印输出到标准的输出设备上&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;fread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;STDIN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)){&lt;/span&gt;
-     &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;you print:&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;接受用户输入参数,输出到设备上;如此循环1000次&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//PHP CLI中，有三个系统常量，分别是STDIN、STDOUT、STDERR，代表文件句柄。&lt;/span&gt;
-
-&lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt; *@ 标准输入&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt; *@ php://stdin &amp;amp; STDIN&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt; *@ STDIN是一个文件句柄，等同于fopen(&amp;quot;php://stdin&amp;quot;, &amp;#39;r&amp;#39;)&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt; */&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$fh&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;fopen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;php://stdin&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;[php://stdin]请输入任意字符：&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;fread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$fh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;[php://stdin]你输入的是：&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;fclose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$fh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;[STDIN]请输入任意字符：&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;fread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;STDIN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;[STDIN]你输入的是：&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt; *@ 标准输出&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt; *@ php://stdout &amp;amp; STDOUT&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt; *@ STDOUT是一个文件句柄，等同于fopen(&amp;quot;php://stdout&amp;quot;, &amp;#39;w&amp;#39;)&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt; */&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$fh&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;fopen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;php://stdout&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;fwrite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$fh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;标准输出php://stdout/n&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;fclose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$fh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;fwrite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;STDOUT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;标准输出STDOUT/n&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt; *@ 标准错误，默认情况下会发送至用户终端&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt; *@ php://stderr &amp;amp; STDERR&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt; *@ STDERR是一个文件句柄，等同于fopen(&amp;quot;php://stderr&amp;quot;, &amp;#39;w&amp;#39;)&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt; */&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$fh&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;fopen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;php://stderr&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;fwrite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$fh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;标准错误php://stderr/n&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;fclose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$fh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;fwrite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;STDERR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;标准错误STDERR/n&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-</content>
-   </entry>
-   
-   <entry>
-     <title>linux中stdout,stdin,stderr</title>
-     <link href="/linux/2015/01/23/linux-stdout,stdin,stderr.html"/>
-     <updated>2015-01-23T19:32:51+08:00</updated>
-     <id>/linux/2015/01/23/linux-stdout,stdin,stderr</id>
-     <content type="html">&lt;p&gt;stdout, stdin, stderr的中文名字分别是标准输出，标准输入和标准错误。  &lt;/p&gt;
-
-&lt;p&gt;在Linux下，当一个用户进程被创建的时候，系统会自动为该进程创建三个数据流，也就是题目中所提到的这三个。那么什么是数据流呢（stream）？我们知道，一个程序要运行，需要有输入、输出，如果出错，还要能表现出自身的错误。这是就要从某个地方读入数据、将数据输出到某个地方，这就够成了数据流。  &lt;/p&gt;
-
-&lt;p&gt;因此，一个进程初期所拥有的这么三个数据流，就分别是标准输出、标准输入和标准错误，分别用stdout, stdin, stderr来表示。对于这三个数据流来说，默认是表现在用户终端上的.&lt;/p&gt;
+&lt;h4&gt;ext&lt;/h4&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://blog.sina.com.cn/s/blog_912673ce01013qq9.html&quot;&gt;linux中stdout,stdin,stderr意义&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://blog.chinaunix.net/uid-20671208-id-3588619.html&quot;&gt;Linux Shell 文件描述符 及 stdin stdout stderr 重定向&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/acmee/article/details/6613060&quot;&gt;如何在Linux终端里用Shell和C输出带颜色的文字&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;[gitosis ??]&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;[gitolite ??]&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000&quot;&gt;搭建Git服务器&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.centoscn.com/CentosServer/ftp/2014/0414/2789.html&quot;&gt;CentOS 6.5下Git服务器搭建&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
    </entry>
    
    <entry>
-     <title>用PHP遍历目录下的全部文件</title>
-     <link href="/php/2015/01/23/PHP%E9%81%8D%E5%8E%86%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E5%85%A8%E9%83%A8%E6%96%87%E4%BB%B6.html"/>
-     <updated>2015-01-23T01:20:51+08:00</updated>
-     <id>/php/2015/01/23/PHP遍历目录下的全部文件</id>
-     <content type="html">&lt;h4&gt;PHP遍历目录下的全部文件&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.nowamagic.net/php/php_TraversalAllFilesInDir.php&quot;&gt;用PHP遍历目录下的全部文件&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.jb51.net/article/43186.htm&quot;&gt;php遍历目录与文件夹的多种方法详解&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-   </entry>
-   
-   <entry>
-     <title>Linux输入输出重定向</title>
-     <link href="/linux/2015/01/21/linux%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91.html"/>
-     <updated>2015-01-21T01:32:51+08:00</updated>
-     <id>/linux/2015/01/21/linux输入输出重定向</id>
+     <title>MySQL读写分离</title>
+     <link href="/mysql/2015/03/27/MySQL%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB.html"/>
+     <updated>2015-03-27T00:16:51+08:00</updated>
+     <id>/mysql/2015/03/27/MySQL读写分离</id>
      <content type="html">&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://blog.chinaunix.net/uid-13342902-id-2901680.html&quot;&gt;Linux中的输入输出重定向 &lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/chengmo/archive/2010/10/20/1855805.html&quot;&gt;linux shell数据重定向（输入重定向与输出重定向）详细分析&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/cneaglelee/article/details/6216557&quot;&gt;Linux下的输入/输出重定向&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://blog.sina.com.cn/s/blog_5815d5eb0101ckee.html&quot;&gt;linux重定向、crontab定时执行任务等知识总结&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;MySQL读写分离&lt;/li&gt;
 &lt;/ul&gt;
 </content>
    </entry>
    
    <entry>
-     <title>PHP迭代器</title>
-     <link href="/php/2015/01/13/PHP%E7%9A%84%E8%BF%AD%E4%BB%A3%E5%99%A8.html"/>
-     <updated>2015-01-13T01:20:51+08:00</updated>
-     <id>/php/2015/01/13/PHP的迭代器</id>
-     <content type="html">&lt;h4&gt;PHP迭代器&lt;/h4&gt;
+     <title>MySQL EXPLAIN</title>
+     <link href="/mysql/2015/03/27/MySQL_EXPLAIN.html"/>
+     <updated>2015-03-27T00:16:51+08:00</updated>
+     <id>/mysql/2015/03/27/MySQL_EXPLAIN</id>
+     <content type="html">&lt;ul&gt;
+&lt;li&gt;MySQL EXPLAIN&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>mysql事务处理和锁机制</title>
+     <link href="/mysql/2015/03/14/mysql%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86%E5%92%8C%E9%94%81%E6%9C%BA%E5%88%B6.html"/>
+     <updated>2015-03-14T01:16:51+08:00</updated>
+     <id>/mysql/2015/03/14/mysql事务处理和锁机制</id>
+     <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/forever_feng/article/details/4368003&quot;&gt;mysql事务处理和锁机制&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.51testing.com/html/27/n-243727.html&quot;&gt;MySQL死锁问题实例分析及解决方法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.sina.com.cn/s/blog_575b0ca50100vmsn.html&quot;&gt;一个MySQL死锁问题的解决&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>MySQL联合索引</title>
+     <link href="/mysql/2015/03/12/MySQL%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95.html"/>
+     <updated>2015-03-12T18:16:51+08:00</updated>
+     <id>/mysql/2015/03/12/MySQL联合索引</id>
+     <content type="html">&lt;p&gt;MySQL联合索引 | 复合索引&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://www.nowamagic.net/librarys/veda/detail/2161&quot;&gt;PHP迭代器&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.php100.com/html/webkaifa/database/Mysql/2012/0112/9658.html&quot;&gt;MySQL:联合索引与Where子句的优化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://itlab.idcquan.com/linux/MYSQL/925211.html&quot;&gt;mysql联合索引详解&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.shangxueba.com/jingyan/1614732.html&quot;&gt;mysql 创建联合索引&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.chinaunix.net/uid-7692530-id-2567605.html&quot;&gt;复合索引和多个单列索引的效率比较 | mysql复合索引效率&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </content>
    </entry>
    
    <entry>
-     <title>php curl 上传文件</title>
-     <link href="/php/2014/12/18/php-curl%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6.html"/>
-     <updated>2014-12-18T19:25:51+08:00</updated>
-     <id>/php/2014/12/18/php-curl上传文件</id>
-     <content type="html">&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/cyuyan112233/article/details/21007163&quot;&gt;php curl 上传文件&lt;/a&gt;&lt;/p&gt;
-</content>
-   </entry>
-   
-   <entry>
-     <title>关系非关系型数据库选型</title>
-     <link href="/mysql/2014/12/05/%E5%85%B3%E7%B3%BB%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E5%9E%8B.html"/>
-     <updated>2014-12-05T00:16:51+08:00</updated>
-     <id>/mysql/2014/12/05/关系非关系型数据库选型</id>
-     <content type="html">&lt;p&gt;临时：  &lt;/p&gt;
+     <title>MySQL索引</title>
+     <link href="/mysql/2015/03/12/MySQL%E7%B4%A2%E5%BC%95.html"/>
+     <updated>2015-03-12T18:16:51+08:00</updated>
+     <id>/mysql/2015/03/12/MySQL索引</id>
+     <content type="html">&lt;p&gt;MySQL索引&lt;/p&gt;
 
-&lt;p&gt;采用关系型数据库还是非关系型数据库完全取决于你的业务场景，如果你要实现实时要求高，数据一致性要求高的场景，关系型数据库；如果你要实现海量数据的查询和高并发，非关系型数据库（考虑Facebook一张表有一亿用户，如果用关系型数据库查询。磁盘IO也快撑不住了，而非关系型数据库则完全没有这个问题）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.php100.com/html/webkaifa/database/Mysql/2010/0409/4279.html&quot;&gt;MySQL索引类型一览 让MySQL高效运行起来&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.jb51.net/article/29572.htm&quot;&gt;MySQL索引背后的之使用策略及优化(高性能索引策略)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </content>
    </entry>
    
    <entry>
-     <title>PHP 执行系统外部命令 system() exec() passthru()</title>
-     <link href="/php/2014/11/28/PHP-%E6%89%A7%E8%A1%8C%E7%B3%BB%E7%BB%9F%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4.html"/>
-     <updated>2014-11-28T19:00:51+08:00</updated>
-     <id>/php/2014/11/28/PHP-执行系统外部命令</id>
-     <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.jb51.net/article/19618.htm&quot;&gt;PHP 执行系统外部命令 system() exec() passthru()&lt;/a&gt;&lt;/p&gt;
+     <title>PHP连接池</title>
+     <link href="/php/2015/03/12/php%E8%BF%9E%E6%8E%A5%E6%B1%A0.html"/>
+     <updated>2015-03-12T00:35:51+08:00</updated>
+     <id>/php/2015/03/12/php连接池</id>
+     <content type="html">&lt;p&gt;PHP连接池&lt;/p&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>mysql原子操作</title>
+     <link href="/mysql/2015/03/04/mysql%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C.html"/>
+     <updated>2015-03-04T00:46:51+08:00</updated>
+     <id>/mysql/2015/03/04/mysql原子操作</id>
+     <content type="html">&lt;h4&gt;mysql原子操作&lt;/h4&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>web压力测试工具</title>
+     <link href="/php/2015/03/04/web_Pressure_Test.html"/>
+     <updated>2015-03-04T00:20:51+08:00</updated>
+     <id>/php/2015/03/04/web_Pressure_Test</id>
+     <content type="html">&lt;h4&gt;web压力测试工具&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/zoushuai518/php/blob/master/PhpExt/web_Pressure_Test.md&quot;&gt;web压力测试工具&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>mysql 性能测试工具</title>
+     <link href="/mysql/2015/03/04/mysql%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7.html"/>
+     <updated>2015-03-04T00:16:51+08:00</updated>
+     <id>/mysql/2015/03/04/mysql性能测试工具</id>
+     <content type="html">&lt;h4&gt;mysql 性能测试工具&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;&quot;&gt;The MySQL Benchmark Suite&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://jeremy.zawodny.com/mysql/super-smack/&quot;&gt;MySQL super-smack&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://jeremy.zawodny.com/mysql/mybench/&quot;&gt;MyBench&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://dev.mysql.com/doc/refman/5.5/en/mysqlslap.html&quot;&gt;MySQL mysqlslap help&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.ha97.com/5182.html&quot;&gt;MySQL自带的性能压力测试工具mysqlslap详解&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;mysqlslap -a -c 500 -i 10 -uroot -p123465&lt;/p&gt;
 </content>
    </entry>
    

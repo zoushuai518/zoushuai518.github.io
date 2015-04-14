@@ -101,7 +101,37 @@
         <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
         <span class="info-link"><a href="/categories.html#mysql-ref" >mysql</a></span>
     </div>
-    
+    <h4>一. 定义</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">事务是DBMS得执行单位。它由有限的数据库操作序列组成得。但不是任意的数据库操作序列都能成为事务。一般来说，事务是必须满足4个条件（ACID）
+
+- 原子性（Autmic）：确保工作单元内的所有操作都成功完成，否则事务将被中止在故障点，和以前的操作将回滚到以前的状态。即使因为故障而使事务不能完成，在rollback时也要消除对数据库得影响！
+- 一致性（Consistency）：事务的操作应该使数据库从一个一致状态转变倒另一个一致的状态！
+- 隔离性（Isolation）：如果多个事务并发执行，要确保事务操作彼此独立和透明！
+- 持久性（Durability）：一个成功执行得事务对数据库得作用是持久得，即使数据库应故障出错，也应该能够恢复！
+</code></pre></div>
+<h4>二. mysql实现事务</h4>
+
+<p>MYSQL的事务处理主要有两种方法。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">1、用begin,rollback,commit来实现
+
+    - begin 开始一个事务
+    - rollback 事务回滚
+    - commit  事务确认
+
+2、直接用set来改变mysql的自动提交模式来实现事务的处理
+
+    MYSQL默认是自动提交的，也就是你提交一个QUERY，它就直接执行！我们可以通过
+
+    set autocommit=0   禁止自动提交
+
+    set autocommit=1 开启自动提交
+</code></pre></div>
+<p>但注意当你用 set autocommit=0 的时候，你以后所有的SQL都将做为事务处理，直到你用commit确认或rollback结束，注意当你结束这个事务的同时也开启了个新的事务！按第一种方法只将当前的作为一个事务！</p>
+
+<p>推荐使用第一种方式</p>
+
+<p>MYSQL中只有INNODB和BDB类型的数据表才能支持事务处理！其他的类型是不支持！</p>
+
     <nav class="article-previous fn-clear">
         
         <a class="prev" href="/standard/2014/10/28/Web_Service-Rest_Service.html" rel="bookmark">&laquo;&nbsp;Web Service与Rest Service</a>
@@ -135,17 +165,17 @@
                         <h4 class="title">Recent Posts</h4>
                         <ul class="list">
                             
-                                <li><a href="/php/2015/01/23/PHP%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1:%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Linux%E7%9A%84Crontab%E6%89%A7%E8%A1%8CPHP%E8%84%9A%E6%9C%AC.html" title="PHP计划任务:如何使用Linux的Crontab执行PHP脚本" rel="bookmark">PHP计划任务:如何使用Linux的Crontab执行PHP脚本</a></li>
+                                <li><a href="/tool/2015/03/28/%E6%90%AD%E5%BB%BAgit%E6%9C%8D%E5%8A%A1%E5%99%A8.html" title="搭建git服务器" rel="bookmark">搭建git服务器</a></li>
                             
-                                <li><a href="/php/2015/01/23/%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8B%E8%BF%90%E8%A1%8CPHP%E8%84%9A%E6%9C%AC%E5%B8%A6%E5%8F%82%E6%95%B0%E7%9A%84%E6%96%B9%E6%B3%95.html" title="命令行下运行PHP脚本带参数的方法" rel="bookmark">命令行下运行PHP脚本带参数的方法</a></li>
+                                <li><a href="/mysql/2015/03/27/MySQL%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB.html" title="MySQL读写分离" rel="bookmark">MySQL读写分离</a></li>
                             
-                                <li><a href="/php/2015/01/23/php%E7%9A%84%E6%A0%87%E5%87%86%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA.html" title="php的标准输入与输出" rel="bookmark">php的标准输入与输出</a></li>
+                                <li><a href="/mysql/2015/03/27/MySQL_EXPLAIN.html" title="MySQL EXPLAIN" rel="bookmark">MySQL EXPLAIN</a></li>
                             
-                                <li><a href="/linux/2015/01/23/linux-stdout,stdin,stderr.html" title="linux中stdout,stdin,stderr" rel="bookmark">linux中stdout,stdin,stderr</a></li>
+                                <li><a href="/mysql/2015/03/14/mysql%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86%E5%92%8C%E9%94%81%E6%9C%BA%E5%88%B6.html" title="mysql事务处理和锁机制" rel="bookmark">mysql事务处理和锁机制</a></li>
                             
-                                <li><a href="/php/2015/01/23/PHP%E9%81%8D%E5%8E%86%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E5%85%A8%E9%83%A8%E6%96%87%E4%BB%B6.html" title="用PHP遍历目录下的全部文件" rel="bookmark">用PHP遍历目录下的全部文件</a></li>
+                                <li><a href="/mysql/2015/03/12/MySQL%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95.html" title="MySQL联合索引" rel="bookmark">MySQL联合索引</a></li>
                             
-                                <li><a href="/linux/2015/01/21/linux%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91.html" title="Linux输入输出重定向" rel="bookmark">Linux输入输出重定向</a></li>
+                                <li><a href="/mysql/2015/03/12/MySQL%E7%B4%A2%E5%BC%95.html" title="MySQL索引" rel="bookmark">MySQL索引</a></li>
                             
                         </ul>
                     </div>
