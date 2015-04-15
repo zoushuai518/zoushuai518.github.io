@@ -1,0 +1,14 @@
+---
+layout: post
+title: "mysql两阶段提交协议"
+category: mysql
+comments: true
+date:   2015-04-15 12:16:51
+---
+
+为了能够更好地解决实际的问题，2PC协议存在很多的变种，例如：树形2PC协议（或称递归2PC协议）、动态2阶段提交协议（D2PC）等。
+
+
+- [两阶段提交协议，分布式事务控制（2PC）](http://www.2cto.com/database/201411/351097.html)
+- [两阶段提交与三阶段提交的区别](http://my.oschina.net/digerl/blog/34139)
+

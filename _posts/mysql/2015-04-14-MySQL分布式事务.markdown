@@ -1,0 +1,240 @@
+---
+layout: post
+title: "mysql分布式事务XA"
+category: mysql
+comments: true
+date:   2015-04-14 16:16:51
+---
+
+MySQL XA分为两类，内部XA与外部XA;内部XA用于同一实例下跨多个引擎的事务，由大家熟悉的Binlog作为协调者;外部XA用于跨多MySQL实例的分布式事务，需要应用层介入作为协调者(崩溃时的悬挂事务，全局提交还是回滚，需要由应用层决定，对应用层的实现要求较高);
+
+Binlog作为内部XA的协调者，在binlog中出现的内部xid，在crash recover时，由binlog负责提交。(这是因为，binlog不进行prepare， 只进行commit，因此在binlog中出现的内部xid，一定能够保证其在底层各存储引擎中已经完成prepare)。
+
+MySQL数据库外部XA可以用在分布式数据库代理层，实现对MySQL数据库的分布式事务支持，例如开源的代理工具：网易的DDB，淘宝的TDDL，B2B的Cobar等等。
+
+
+事务(Transaction)是访问并可能更新数据库中各种数据项的一个程序执行单元；
+
+事务应该具有4个属性：原子性、一致性、隔离性、持续性
+
+- 原子性（atomicity）。一个事务是一个不可分割的工作单位，事务中包括的诸操作要么都做，要么都不做。
+- 一致性（consistency）。事务必须是使数据库从一个一致性状态变到另一个一致性状态。一致性与原子性是密切相关的。
+- 隔离性（isolation）。一个事务的执行不能被其他事务干扰。即一个事务内部的操作及使用的数据对并发的其他事务是隔离的，并发执行的各个事务之间不能互相干扰。
+- 持久性（durability）。持续性也称永久性（permanence），指一个事务一旦提交，它对数据库中数据的改变就应该是永久性的。接下来的其他操作或故障不应该对其有任何影响。
+
+分布式事务：分布式事务的参与者、资源管理器、事务管理器等位于不用的节点上，这些不同的节点相互协作共同完成一个具有逻辑完整性的事务。
+
+
+XA协议由Tuxedo首先提出的，并交给X/Open组织，作为资源管理器（数据库）与事务管理器的接口标准。目前，Oracle、Informix、DB2和Sybase等各大数据库厂家都提供对XA的支持。XA协议采用两阶段提交方式来管理分布式事务。XA接口提供资源管理器与事务管理器之间进行通信的标准接口。XA协议包括两套函数，以xa_开头的及以ax_开头的。
+
+
+Innodb存储引擎支持XA事务，通过XA事务可以支持分布式事务的实现。分布式事务指的是允许多个独立的事务资源（transac tional resources）参与一个全局的事务中。事务资源通常是关系型数据库系统，也可以是其它类型的资源。
+
+全局事务要求在其中所有参与的事务要么全部提交，要么全部回滚，这对于事务原有的ACID要求又有了提高。另外，在使用分布式事务时候，InnoDB存储引擎的事务隔离级别必须设置成serialiable。
+
+
+分布式事务是由一个或者多个Resource Managerd，一个事务管理器Transaction Manager以及一个应用程序 Application Program组成。
+
+资源管理器：提供访问事务资源的方法，通常一个数据库就是一个资源管理器。
+
+事务管理器：协调参与全局事务中的各个事务。需要和参与全局事务中的资源管理器进行通信。
+
+应用程序：定义事务的边界，指定全局事务中的操作。
+
+在mysql中的分布式事务中，资源管理器就是mysql数据库，事务管理器为连接到mysql服务器的客户端。如下图所示：
+![mysql分布式事务](/assets/postImage/mysql/mysql_XA.jpg "mysql分布式事务")
+
+分布式事务使用两段式提交（two-phase commit）的方式。在第一个阶段，所有参与全局事务的节点都开始准备，告诉事务管理器它们准备好提交了。第二个阶段，事务管理器告诉资源管理器执行rollback或者commit，如果任何一个节点显示不能commit，那么所有的节点就得全部rollback。
+
+
+#### 1.php mysql 简单实现分布式事务思想:
+
+Mysql完成一个完整xa事务的典型过程:
+
+<pre><code>
+XA START 'xatest';
+INSERT INTO user VALUES(1,'Colin');
+INSERT INTO user VALUES(2,'Colin');
+XA END 'xatest';
+XA PREPARE 'xatest';
+XA COMMIT 'xatest';
+</code></pre>
+
+根据2PC，PHP如果想实现跨数据库事务处理，那么他担当的角色相当于事务管理器(TM)  
+根据2PC,事务过程可细分为3个阶段:
+
+- 1pc
+- 2pc-prepare阶段
+- 2pc-committ阶段
+
+1pc，2pc-prepare阶段每个分支事务执行失败应该都不是问题，因为只要在2pc-committ阶段之前，都可以用rollback方法。问题就在于commit阶段，假设第一个分支事务已经执行成功，但是第二个事务执行失败，那么如何保持两个数据库数据一致。事务管理器的作用就是要保证两个数据库的提交都回滚、要么保证数据库的提交都成功。
+
+<span class="impor">主流2pc的做法是设法让失败的事务提交成功，而不是让成功的事务回滚。如果非要让成功的事务回滚，那么只能是数据库库管理员根据服务器Log手动回滚了（或者有个补偿式</span>
+
+
+下面就php如何实现2pc-commit阶段关键问题探讨
+
+问题1： 假设有两个分支事务，第一个提交成功了，第二个由于数据库服务器突然宕机导致失败，怎么保证一致性？
+
+问题2： 同样假设有两个分支事务，第一个提交成功了，实际第二个也提交成功了，只是在返回成功消息给PHP端事务管理器（TM）的时候，网络中断，但是TM此时认为第二个事务是失败的，如何处理一致性？
+
+{% highlight php linenos %}
+<?php
+
+function xa_transaction() {
+  // 假设有两个数据库$db1,$db2
+  $dbs = {$db1, $db2};
+  /** 1pc:          忽略 */
+  /** 2pc - prepare 忽略 */
+
+  /** 2pc - committ */
+  // 首先得记录那些失败的分支事务
+  $errs = array();
+  foreach($dbs AS $db) {
+    //记录失败的db
+    if(!$db->commit()) { 
+        $errs[] = $db;
+    } else {
+        tm_log('committed') // 事务管理器日志记录committed.
+    }
+  }
+
+  // 反复执行那些失败的事务，直到成功（不回滚成功的分支事务，而是提交失败的分支事务）
+  foreach($errs AS $db) {
+    $prepared_tranaction = $db->recover(); 
+
+    if(prepared_tranaction is null) { // 针对问题2，更新事务管理器日志记录为committed.
+      tm_log('committed') // 事务管理器日志记录committed.
+    } else {                 // 针对问题1，重新提交
+      
+      $db->commit();
+    }
+  }
+}
+
+?>
+{% endhighlight %}
+
+有必要说明的是这里的关键代码: $db->recover();
+其对应着mysql的sql命令xa recover, 该SQL可以查询处当前处于prepared状态还没有committ的事务, 从而可以判定是否要重新提交该分支事务还是简单记录tm端log状态
+
+问题3： 同样假设有两个分支事务，第一个提交成功了，但当刚准备执行第二个事务时，客户端垮掉了。如何保证一致性?
+
+此时，是一个重要的考验TM的地方，它必须有个机制保证客户端重启时，能够重新构造这个全局事务，正确判定其中哪个分支事务没有成功。保证这个机制的实现就是LOG,这个Log在TM端保存，在全局事务的每个关键步骤，TM都应该记录分支事务执行状态，对于该情况导致的问题，当客户端恢复的时候，它分析Log找出失败的事务重新执行其面的提到的xa_transaction()
+
+TM/RM的网络结构，仅供参考:
+![mysql TM/RM网络结构](/assets/postImage/mysql/mysql_TM-RM.png "mysql TM/RM网络结构")
+
+
+#### 2.php简单demo:
+
+{% highlight php linenos %}
+<?php
+
+public function testAction(){
+    $goods_id=1;
+    $goods_name = "大西瓜";
+    $num = 1;
+    $rs_order = $this->test->createorder($goods_id,$goods_name,$num);
+    $rs_goods = $this->test->deduction($goods_id,$num);
+    if($rs_order['status'] =="success" && $rs_goods['status']=="success"){
+        $this->test->commitdb($rs_order['XA']);
+        $this->test->commitdb1($rs_goods['XA']);
+    }else{
+        $this->test->rollbackdb($rs_order['XA']);
+        $this->test->rollbackdb1($rs_goods['XA']);
+    }
+    print_r($rs_order);
+    echo "<br />";
+    print_r($rs_goods);
+    die("dddd");
+}
+
+public function createorder($goods_id,$goods_name,$num){
+    $XA = uniqid("");
+    $this->_db->query("XA START '$XA'");
+    $_rs = true;
+    try {
+        $data = array();
+        $data['order_id'] = "V".date("YmdHis");
+        $data['goods_name'] = $goods_name;
+        $data['goods_num'] = $num;
+        $this->_db->insert("temp_orders",$data);
+        $rs =  $this->_db->lastInsertId();
+        if($rs){
+            $_rs = true;
+        }else{
+            $_rs = false;
+        }
+    } catch (Exception $e) {
+        $_rs = false;
+    }
+    $this->_db->query("XA END '$XA'");
+        if($_rs){
+                $this->_db->query("XA PREPARE '$XA'");
+                return array("status"=>"success","XA"=>$XA);
+        }else{
+                return array("status"=>"nosuccess","XA"=>$XA);
+        }
+}
+
+public function deduction($id){
+    $XA = uniqid("");
+    $this->db1->query("XA START '$XA'");
+    $last_rs = true;
+    try {
+        $sql = "select * from temp_goods where id = '$id' and goods_num>0";
+        $rs = $this->db1->fetchRow($sql);
+        if(!empty($rs)){
+            $sql = "update temp_goods set goods_num = goods_num-1 where id = '$id'";
+            $rd = $this->db1->query($sql);
+            if($rd){
+                $last_rs = true;
+            }else{
+                $last_rs = false;
+            }
+        }else{
+                $last_rs = false;;
+        }
+    } catch (Exception $e) {
+        $last_rs = false;;
+    }
+        $this->db1->query("XA END '$XA'");
+
+        if($last_rs){
+            $this->db1->query("XA PREPARE '$XA'");
+            return array("status"=>"success","XA"=>$XA);
+        }else{
+            return array("status"=>"nosuccess","XA"=>$XA);
+        }
+
+}
+
+//提交事务！
+public function commitdb($xa){
+    return $this->_db->query("XA COMMIT '$xa'");
+}
+
+//回滚事务
+public function rollbackdb($xa){
+    return $this->_db->query("XA ROLLBACK '$xa'");
+}
+
+//提交事务！
+public function commitdb1($xa){
+    return $this->db1->query("XA COMMIT '$xa'");
+}
+
+//回滚事务
+public function rollbackdb1($xa){
+    return $this->db1->query("XA ROLLBACK '$xa'");
+}
+
+?>
+{% endhighlight %}
+
+
+- [MySQL5.6全局事务ID(GTID)](/mysql/2015/04/15/MySQL5.6全局事务ID(GTID).html)
+- [关于分布式事务、两阶段提交、一阶段提交、Best Efforts 1PC模式和事务补偿机制的研究](http://blog.csdn.net/bluishglc/article/details/7612811)
+
+
