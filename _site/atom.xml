@@ -4,7 +4,7 @@
    <title>Jekyll</title>
    <link href="/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="" rel="alternate" type="text/html" />
-   <updated>2015-04-15T17:44:11+08:00</updated>
+   <updated>2015-04-16T14:18:01+08:00</updated>
    <id></id>
    <author>
      <name>邹帅</name>
@@ -494,20 +494,19 @@ XA COMMIT 'xatest';
      <id>/tool/2015/03/28/搭建git服务器</id>
      <content type="html">&lt;h4&gt;环境CentOS6.6&lt;/h4&gt;
 
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;安装必须的依赖包
+&lt;p&gt;1.安装必须的依赖包
 &lt;pre&gt;&lt;code&gt;
 [root@centos-git-server ~]# yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel
 [root@centos-git-server ~]# yum -y install gcc make
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;编译安装git服务
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;2.编译安装git服务
 &lt;pre&gt;&lt;code&gt;
 [root@centos-git-server ~]# wget http://git-core.googlecode.com/files/git-1.9.0.tar.gz
 [root@centos-git-server ~]# tar zxvf git-1.9.0.tar.gz
 [root@centos-git-server ~]# cd git-1.9.0
 [root@centos-git-server ~]# make prefix=/usr/local all
-[root@centos-git-server ~]# make prefix=/usr/local install  #root用户运行&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
+[root@centos-git-server ~]# make prefix=/usr/local install  #root用户运行&lt;/p&gt;
 
 &lt;p&gt;&amp;quot;[root@centos-git-server ~]# ./configure
 &amp;quot;[root@centos-git-server ~]# make &amp;amp;&amp;amp; make install
@@ -522,55 +521,53 @@ git version 1.9.0&lt;/p&gt;
 
 &lt;p&gt;到此git服务安装完成  &lt;/p&gt;
 
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;创建一个git用户，用来运行git服务&lt;br&gt;
+&lt;p&gt;3.创建一个git用户，用来运行git服务&lt;br&gt;
 &lt;pre&gt;&lt;code&gt;
 [root@centos-git-server ~]# adduser git
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;创建证书登录:&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;4.创建证书登录:&lt;br&gt;
 &lt;pre&gt;&lt;code&gt;
 zs@zs-work:~$ ssh-keygen -t rsa
 zs@zs-work:~$ scp ~/.ssh/id_rsa.pub root@192.168.130.100:~/
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 
 &lt;p&gt;我们这里使用&lt;a href=&quot;/tool/2014/10/23/ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95.html&quot;&gt;ssh免密码登录&lt;/a&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-&lt;li&gt;初始化Git仓库：&lt;br&gt;
+&lt;p&gt;5.初始化Git仓库：&lt;br&gt;
 先选定一个目录作为Git仓库，假定是/home/git/vd.git，在/home/git目录下输入命令：
 &lt;pre&gt;&lt;code&gt;
 [root@centos-git-server ~]# git init --bare vd.git
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 
 &lt;p&gt;Git就会创建一个裸仓库，裸仓库没有工作区，因为服务器上的Git仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区，并且服务器上的Git仓库通常都以.git结尾。然后，把owner改为git:&lt;br&gt;
 &lt;pre&gt;&lt;code&gt;
 [root@centos-git-server ~]# chown -R git:git vd.git
 &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;禁用shell登录:&lt;br&gt;
+&lt;p&gt;6.禁用shell登录:&lt;br&gt;
 出于安全考虑，第二步创建的git用户不允许登录shell，这可以通过编辑/etc/passwd文件完成。找到类似下面的一行：&lt;br&gt;
 &lt;code&gt;git:x:1001:1001:,,,:/home/git:/bin/bash&lt;/code&gt;
 改为:&lt;br&gt;
 &lt;code&gt;git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell&lt;/code&gt;
-这样，git用户可以正常通过ssh使用git，但无法登录shell，因为我们为git用户指定的git-shell每次一登录就自动退出。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;克隆远程仓库:&lt;br&gt;
+这样，git用户可以正常通过ssh使用git，但无法登录shell，因为我们为git用户指定的git-shell每次一登录就自动退出。&lt;/p&gt;
+
+&lt;p&gt;7.克隆远程仓库:&lt;br&gt;
 现在，可以通过git clone命令克隆远程仓库了，在各自的电脑上运行：
 &lt;pre&gt;&lt;code&gt;
 zs@zs-work:~$ git clone git@192.168.130.100:/home/git/vd.git
 Cloning into &amp;#39;sample&amp;#39;...
 warning: You appear to have cloned an empty repository.
 &lt;/code&gt;&lt;/pre&gt;
-剩下的推送就简单了。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;管理公钥&lt;br&gt;
+剩下的推送就简单了。&lt;/p&gt;
+
+&lt;p&gt;8.管理公钥&lt;br&gt;
 &lt;a href=&quot;https://github.com/res0nat0r/gitosis&quot;&gt;Gitosis&lt;/a&gt;&lt;br&gt;
-如果团队很小，把每个人的公钥收集起来放到服务器的&lt;code&gt;/home/git/.ssh/authorized_keys&lt;/code&gt;文件里就是可行的。如果团队有几百号人，就没法这么玩了，这时，可以用Gitosis来管理公钥。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;管理权限&lt;br&gt;
+如果团队很小，把每个人的公钥收集起来放到服务器的&lt;code&gt;/home/git/.ssh/authorized_keys&lt;/code&gt;文件里就是可行的。如果团队有几百号人，就没法这么玩了，这时，可以用Gitosis来管理公钥。&lt;/p&gt;
+
+&lt;p&gt;9.管理权限&lt;br&gt;
 &lt;a href=&quot;https://github.com/sitaramc/gitolite&quot;&gt;Gitolite&lt;/a&gt;&lt;br&gt;
-有很多不但视源代码如生命，而且视员工为窃贼的公司，会在版本控制系统里设置一套完善的权限控制，每个人是否有读写权限会精确到每个分支甚至每个目录下。因为Git是为Linux源代码托管而开发的，所以Git也继承了开源社区的精神，不支持权限控制。不过，因为Git支持钩子（hook），所以，可以在服务器端编写一系列脚本来控制提交等操作，达到权限控制的目的。Gitolite就是这个工具。&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
+有很多不但视源代码如生命，而且视员工为窃贼的公司，会在版本控制系统里设置一套完善的权限控制，每个人是否有读写权限会精确到每个分支甚至每个目录下。因为Git是为Linux源代码托管而开发的，所以Git也继承了开源社区的精神，不支持权限控制。不过，因为Git支持钩子（hook），所以，可以在服务器端编写一系列脚本来控制提交等操作，达到权限控制的目的。Gitolite就是这个工具。&lt;/p&gt;
 
 &lt;p&gt;zs注: git服务认证方式可以是 https/ssh等--&lt;/p&gt;
 
@@ -602,7 +599,8 @@ git version 1.7.1
 
 &lt;ul&gt;
 &lt;li&gt;[gitosis ??]&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;[gitolite ??]&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;[gitolite ??]&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;/tool/2014/10/14/gitlab.html&quot;&gt;gitlab&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000&quot;&gt;搭建Git服务器&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.centoscn.com/CentosServer/ftp/2014/0414/2789.html&quot;&gt;CentOS 6.5下Git服务器搭建&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;

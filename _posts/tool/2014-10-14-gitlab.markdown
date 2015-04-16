@@ -6,3 +6,4 @@ comments: true
 date:   2014-10-14 15:59:51
 ---
 
+[用GitLab搭建自己的私有GitHub](http://segmentfault.com/a/1190000000345686)
